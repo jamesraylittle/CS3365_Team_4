@@ -16,6 +16,24 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".EditHealthPopup"
+            android:label="@string/title_activity_edit_health_popup"
+            android:parentActivityName=".CharacterSheet"
+            android:theme="@style/AppTheme.popup" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="group4softwareengineer.dmhelper.CharacterSheet" />
+        </activity>
+        <activity
+            android:name=".EditXpPopup"
+            android:label="@string/title_activity_edit_xp_popup"
+            android:parentActivityName=".CharacterSheet"
+            android:theme="@style/AppTheme.popup" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="group4softwareengineer.dmhelper.CharacterSheet" />
+        </activity>
     </application>
 
 </manifest>

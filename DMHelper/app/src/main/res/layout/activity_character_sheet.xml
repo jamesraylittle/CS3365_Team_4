@@ -3,6 +3,323 @@
     android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    android:paddingBottom="@dimen/activity_vertical_margin" tools:context=".CharacterSheet">
+    android:paddingBottom="@dimen/activity_vertical_margin" tools:context=".CharacterSheet"
+    android:id="@+id/layout">
+
+    <Button
+        android:layout_width="150dp"
+        android:layout_height="40dp"
+        android:text="@string/skill_button"
+        android:id="@+id/skillsButton"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"></Button>
+
+
+
+    <Button
+        android:layout_width="100dp"
+        android:layout_height="40dp"
+        android:text="@string/racial_button"
+        android:id="@+id/racialClassButton"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_toEndOf="@+id/skillsButton"
+        android:layout_above="@+id/featsButton"/>
+
+    <Button
+        android:layout_width="150dp"
+        android:layout_height="40dp"
+        android:text="@string/feats_button"
+        android:id="@+id/featsButton"
+        android:layout_below="@+id/skillsButton"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        android:layout_width="200dp"
+        android:layout_height="40dp"
+        android:text="@string/languages_button"
+        android:id="@+id/languagesButton"
+        android:layout_below="@+id/skillsButton"
+        android:layout_toEndOf="@+id/skillsButton" />
+
+    <Button
+        android:layout_width="150dp"
+        android:layout_height="40dp"
+        android:text="@string/magic_button"
+        android:id="@+id/magicButton"
+        android:layout_below="@+id/spellsButton"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        android:layout_width="150dp"
+        android:layout_height="40dp"
+        android:text="@string/spells_button"
+        android:id="@+id/spellsButton"
+        android:layout_below="@+id/featsButton"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        android:layout_width="200dp"
+        android:layout_height="40dp"
+        android:text="@string/inventory_button"
+        android:id="@+id/inventoryButton"
+        android:layout_alignTop="@+id/spellsButton"
+        android:layout_alignStart="@+id/languagesButton"
+        android:layout_alignEnd="@+id/racialClassButton" />
+    <Button
+        android:layout_width="200dp"
+        android:layout_height="40dp"
+        android:text="@string/companion_button"
+        android:id="@+id/companionButton"
+        android:layout_alignTop="@+id/magicButton"
+        android:layout_alignStart="@+id/languagesButton"
+        android:layout_alignEnd="@+id/racialClassButton" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:text=""
+        android:ems="10"
+        android:id="@+id/charName"
+        android:layout_below="@+id/charNameTag"
+        android:layout_toStartOf="@+id/playerName" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Character Name"
+        android:id="@+id/charNameTag"
+        android:layout_below="@+id/magicButton"
+        android:layout_alignParentStart="true" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:text=""
+        android:ems="10"
+        android:id="@+id/playerName"
+        android:layout_alignTop="@+id/charName"
+        android:layout_alignParentEnd="true"
+        android:layout_toEndOf="@+id/levelTag" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Player Name"
+        android:id="@+id/playerNameTag"
+        android:layout_below="@+id/companionButton"
+        android:layout_alignStart="@+id/playerName" />
+
+    <Spinner
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/Class_spinner"
+        android:layout_below="@+id/classTag"
+        android:layout_alignParentStart="true"
+        android:layout_toStartOf="@+id/levelTag" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Class"
+        android:id="@+id/classTag"
+        android:layout_alignTop="@+id/levelTag"
+        android:layout_alignParentStart="true" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:ems="10"
+        android:id="@+id/LevelText"
+        android:layout_below="@+id/levelTag"
+        android:layout_alignEnd="@+id/levelTag"
+        android:layout_alignStart="@+id/alignmentTag" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Level"
+        android:id="@+id/levelTag"
+        android:layout_below="@+id/charName"
+        android:layout_toEndOf="@+id/magicButton" />
+
+    <Spinner
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/Race_Spinner"
+        android:layout_below="@+id/levelTag"
+        android:layout_toEndOf="@+id/LevelText" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Race"
+        android:id="@+id/raceTag"
+        android:layout_marginStart="15dp"
+        android:layout_above="@+id/Race_Spinner"
+        android:layout_alignStart="@+id/Race_Spinner" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:ems="10"
+        android:id="@+id/ReligionText"
+        android:layout_below="@+id/religionTag"
+        android:layout_alignParentStart="true"
+        android:layout_toStartOf="@+id/LevelText"
+        android:layout_alignEnd="@+id/religionTag" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Religion / Patron Deity"
+        android:id="@+id/religionTag"
+        android:layout_below="@+id/Class_spinner"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Alignment"
+        android:id="@+id/alignmentTag"
+        android:layout_below="@+id/Race_Spinner"
+        android:layout_toEndOf="@+id/levelTag" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Height"
+        android:id="@+id/heightTag"
+        android:layout_below="@+id/ReligionText"
+        android:layout_alignParentStart="true" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:ems="10"
+        android:id="@+id/heightText"
+        android:layout_below="@+id/heightTag"
+        android:layout_alignParentStart="true"
+        android:layout_toStartOf="@+id/weightText" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:ems="10"
+        android:id="@+id/weightText"
+
+        android:layout_alignTop="@+id/heightText"
+        android:layout_alignStart="@+id/weightTag"
+        android:layout_toStartOf="@+id/playerName"
+        android:layout_alignEnd="@+id/weightTag" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Weight"
+        android:id="@+id/weightTag"
+        android:layout_above="@+id/weightText"
+        android:layout_alignEnd="@+id/charNameTag" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Looks"
+        android:id="@+id/looksTag"
+        android:layout_above="@+id/weightText"
+        android:layout_alignEnd="@+id/Class_spinner" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:ems="10"
+        android:id="@+id/looksText"
+        android:layout_below="@+id/looksTag"
+        android:layout_alignParentEnd="true"
+        android:layout_toEndOf="@+id/weightText" />
+
+    <ProgressBar
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/healthBar"
+        android:layout_below="@+id/heightText"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="16dp"
+        android:layout_toStartOf="@+id/Race_Spinner" />
+
+    <ProgressBar
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/xpBar"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/xpTag"
+        android:layout_toStartOf="@+id/Race_Spinner"
+        android:layout_alignBottom="@+id/xpButton"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Health"
+        android:id="@+id/textView"
+        android:layout_below="@+id/weightText"
+        android:layout_alignStart="@+id/xpTag" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Experiance"
+        android:id="@+id/xpTag"
+        android:layout_below="@+id/healthBar"
+        android:layout_alignEnd="@+id/weightText" />
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Edit Health"
+        android:id="@+id/healthButton"
+        android:layout_alignStart="@+id/Race_Spinner"
+        android:layout_alignParentEnd="true"
+        android:layout_below="@+id/looksText"
+         />
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Edit XP"
+        android:id="@+id/xpButton"
+        android:layout_alignEnd="@+id/languagesButton"
+        android:layout_alignStart="@+id/healthButton"
+        android:layout_below="@+id/healthButton" />
+
+    <Spinner
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/Alignment_Spinner"
+        android:layout_below="@+id/alignmentTag"
+        android:layout_alignParentEnd="true"
+        android:layout_alignStart="@+id/alignmentTag" />
+
 
 </RelativeLayout>
