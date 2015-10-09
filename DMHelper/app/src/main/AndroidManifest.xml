@@ -34,6 +34,14 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="group4softwareengineer.dmhelper.CharacterSheet" />
         </activity>
+        <activity
+            android:name=".LoadNewActivity"
+            android:label="@string/title_activity_load_new" >
+        </activity>
+        <activity
+            android:name=".NewAdventureActivity"
+            android:label="@string/title_activity_new_adventure" >
+        </activity>
     </application>
 
 </manifest>
