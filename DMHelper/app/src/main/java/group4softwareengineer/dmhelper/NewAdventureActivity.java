@@ -52,6 +52,13 @@ public class NewAdventureActivity extends AppCompatActivity {
         Intent intent = new Intent(this, CharacterSheet.class);
         startActivity(intent);
     }
+
+    public void addMonster (View view)
+    {
+        Intent intent = new Intent(this, SearchScreen.class);
+        startActivity(intent);
+    }
+
     public void showCharacterSheet (View view)
     {
         Intent intent = new Intent(this, CharacterSheet.class);

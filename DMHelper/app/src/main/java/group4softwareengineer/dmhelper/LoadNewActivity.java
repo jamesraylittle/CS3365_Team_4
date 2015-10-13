@@ -7,6 +7,9 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
+
+import java.io.IOException;
 
 public class LoadNewActivity extends AppCompatActivity {
 
@@ -42,9 +45,20 @@ public class LoadNewActivity extends AppCompatActivity {
 
     public void newAdventure(View view)
     {
-        Intent intent = new Intent(this, NewAdventureActivity.class);
+        int numPlayers;
         EditText editText = (EditText)findViewById(R.id.number_players);
-        int numPlayers = Integer.parseInt(editText.getText().toString());
+        try {
+            numPlayers = Integer.parseInt(editText.getText().toString());
+        }
+        catch (Exception e) {
+            Toast.makeText(getApplicationContext(), "Please enter a number 1-5", Toast.LENGTH_LONG).show();
+            return;
+        }
+        if (numPlayers < 1 || numPlayers > 5) {
+            Toast.makeText(getApplicationContext(), "Please enter a number 1-5", Toast.LENGTH_LONG).show();
+            return;
+        }
+        Intent intent = new Intent(this, NewAdventureActivity.class);
         intent.putExtra("numPlayers", numPlayers);
         startActivity(intent);
     }

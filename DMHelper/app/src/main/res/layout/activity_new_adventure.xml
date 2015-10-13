@@ -27,7 +27,8 @@
         android:text="Add Monster"
         android:id="@+id/add_monster_button"
         android:layout_alignTop="@+id/add_player_button"
-        android:layout_alignParentEnd="true" />
+        android:layout_alignParentEnd="true"
+        android:onClick="addMonster" />
 
     <Button
         android:layout_width="75dp"
