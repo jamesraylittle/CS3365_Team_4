@@ -71,6 +71,7 @@ public class SearchScreen extends Activity {
 
         if (query.getCount() <= 0) { // If no results, clear the list
             listUsers.clear();
+            Toast.makeText(getApplicationContext(), "No results found.", Toast.LENGTH_LONG).show();
             return;
         }
         else { // Otherwise, populate the list with the results
