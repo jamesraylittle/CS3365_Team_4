@@ -1,7 +1,9 @@
 package group4.dmhelper;
 
 import android.app.ActionBar;
+import android.app.AlertDialog;
 import android.app.FragmentTransaction;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
@@ -46,6 +48,23 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
         getActionBar().setDisplayShowHomeEnabled(false);  // hides action bar icon
         getActionBar().setDisplayShowTitleEnabled(false); // hides action bar title
         mViewPager.setCurrentItem(1);
+    }
+
+    @Override
+    public void onBackPressed() {
+        new AlertDialog.Builder(this)
+                .setIcon(android.R.drawable.ic_dialog_alert)
+                .setTitle("Leaving game")
+                .setMessage("Are you sure you want to leave the game?")
+                .setPositiveButton("Yes", new DialogInterface.OnClickListener()
+                {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        finish();
+                    }
+                })
+                .setNegativeButton("No", null)
+                .show();
     }
 
     @Override
