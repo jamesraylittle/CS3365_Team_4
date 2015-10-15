@@ -12,17 +12,13 @@ import android.widget.TextView;
  */
 public class FragmentGame extends Fragment {
 
-    TextView text;
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_temp, container, false);
+        return inflater.inflate(R.layout.fragment_game, container, false);
     }
 
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        text = ((TextView) getView().findViewById(R.id.tempText));
-        text.setText("Game Screen");
     }
 }

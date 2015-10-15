@@ -29,6 +29,7 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
         actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
 
         mViewPager = (ViewPager) findViewById(R.id.pager);
+        mViewPager.setOffscreenPageLimit(3);
         mViewPager.setAdapter(mAppSectionsPagerAdapter);
         mViewPager.setOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
             @Override
