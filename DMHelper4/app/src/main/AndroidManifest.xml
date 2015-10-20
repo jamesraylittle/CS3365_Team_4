@@ -32,6 +32,20 @@
             android:windowSoftInputMode="adjustPan"
             android:noHistory="true">
         </activity>
+        <activity
+            android:name=".Activities.ActivitySearchItems"
+            android:label="Main Activity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan"
+            android:noHistory="true">
+        </activity>
+        <activity
+            android:name=".Activities.ActivitySearchFeats"
+            android:label="Main Activity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan"
+            android:noHistory="true">
+        </activity>
     </application>
 
 </manifest>

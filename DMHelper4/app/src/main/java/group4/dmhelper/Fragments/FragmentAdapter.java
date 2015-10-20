@@ -3,14 +3,13 @@ package group4.dmhelper.Fragments;
 import android.content.Context;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
 
-public class SampleFragmentPagerAdapter extends FragmentPagerAdapter {
+public class FragmentAdapter extends android.support.v4.app.FragmentPagerAdapter {
     final int PAGE_COUNT = 3;
     private String tabTitles[] = new String[] { "Feed", "Game", "Search" };
     private Context context;
 
-    public SampleFragmentPagerAdapter(FragmentManager fm, Context context) {
+    public FragmentAdapter(FragmentManager fm, Context context) {
         super(fm);
         this.context = context;
     }

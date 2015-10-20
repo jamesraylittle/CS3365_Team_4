@@ -24,20 +24,20 @@ import group4.dmhelper.R;
 /**
  * Created by Kyle on 10/16/2015.
  */
-public class ActivitySearchMonsters extends Activity {
+public class ActivitySearchFeats extends Activity {
 
     DataBaseHelper myDbHelper;
-    EditText nameInput, familyInput;
-    Spinner typeInput, sizeInput;
+    EditText nameInput;
+    Spinner typeInput;
     ListView searchResults;
     ListAdapter adapter;
     List<String> listUsers = new ArrayList<>();
-    private String[] arraySize, arrayType;
+    private String[] arraySize;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_seach_monster);
+        setContentView(R.layout.activity_search_feat);
         initializeWidgets();
         initializeDB();
     }
@@ -58,36 +58,26 @@ public class ActivitySearchMonsters extends Activity {
     }
 
     private void initializeWidgets() {
-        //Spinners
+        //Spinner
         this.arraySize = new String[] {
-                "Any", "Colossal", "Colossal+", "Diminutive", "Fine", "Gargantuan", "Huge",
-                "Large", "Medium", "Small", "Tiny"
+                "Any", "Divine", "Divine, Epic", "Epic", "Epic, Psionic", "General", "General, Fighter",
+                "Item Creation", "Item Creation, Epic", "Metamagic", "Metamagic, Epic", "Metapsionic",
+                "Psionic", "Special", "Type of Feat", "Wild, Epic"
         };
-        sizeInput = (Spinner) findViewById(R.id.spinner_search_monster_size);
+        typeInput = (Spinner) findViewById(R.id.spinner_search_feat_type);
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this,
                 android.R.layout.simple_spinner_item, arraySize);
         adapter.setDropDownViewResource(R.layout.spinner_layout_dropdown);
-        sizeInput.setAdapter(adapter);
+        typeInput.setAdapter(adapter);
 
-        this.arrayType = new String[] {
-                "Any", "Aberration", "Animal", "Construct", "Dragon", "Elemental", "Fey", "Giant", "Humanoid",
-                "Magical Beast", "Monstrous Humanoid", "Ooze", "Outsider", "Plant", "Undead", "Vermin"
-        };
-        typeInput = (Spinner) findViewById(R.id.spinner_search_monster_type);
-        ArrayAdapter<String> adapter2 = new ArrayAdapter<>(this,
-                android.R.layout.simple_spinner_item, arrayType);
-        adapter2.setDropDownViewResource(R.layout.spinner_layout_dropdown);
-        typeInput.setAdapter(adapter2);
-
-        //EditTexts
-        nameInput = (EditText)findViewById(R.id.editTxt_search_monster_name);
-        familyInput = (EditText)findViewById(R.id.editTxt_seach_monster_family);
+        //EditText
+        nameInput = (EditText)findViewById(R.id.editText_search_feat_name);
 
         //ListView
-        searchResults = (ListView)findViewById(R.id.listView_search_monster);
+        searchResults = (ListView)findViewById(R.id.listView_search_feat);
     }
 
-    public void doSearchMonsters(View view) {
+    public void doSearchFeats(View view) {
         InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
         imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
         performSearch();
@@ -95,30 +85,18 @@ public class ActivitySearchMonsters extends Activity {
 
     private void performSearch() {
         String name = nameInput.getText().toString();
-        String family = familyInput.getText().toString();
-        String size = sizeInput.getSelectedItem().toString();
         String type = typeInput.getSelectedItem().toString();
-        String defaultStart = "select name from monster where name like ? and family like ? ";
+        String defaultStart = "select name from feat where name like ? ";
         myDbHelper.openDataBase();
-        if (!type.equals("Any") && !size.equals("Any")) {
+        if (type.equals("Any")) {
             populateList(
-                    myDbHelper.performRawQuery(defaultStart + "and type = ? and size = ? order by name asc",
-                            new String[]{"%" + name + "%", "%" + family + "%", type, size}));
-        }
-        else if (!type.equals("Any") && size.equals("Any")) {
-            populateList(
-                    myDbHelper.performRawQuery(defaultStart + "and type = ? order by name asc",
-                            new String[]{"%" + name + "%", "%" + family + "%", type}));
-        }
-        else if (type.equals("Any") && !size.equals("Any")) {
-            populateList(
-                    myDbHelper.performRawQuery(defaultStart + "and size = ? order by name asc",
-                            new String[]{"%" + name + "%", "%" + family + "%", size}));
+                    myDbHelper.performRawQuery(defaultStart + "order by name asc",
+                            new String[]{"%" + name + "%"}));
         }
         else {
             populateList(
-                    myDbHelper.performRawQuery(defaultStart + "order by name asc",
-                            new String[]{"%" + name + "%", "%" + family + "%"}));
+                    myDbHelper.performRawQuery(defaultStart + "and type = ? order by name asc",
+                            new String[]{"%" + name + "%", type}));
         }
         myDbHelper.close();
     }

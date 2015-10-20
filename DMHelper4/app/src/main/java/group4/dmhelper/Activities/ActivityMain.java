@@ -7,7 +7,7 @@ import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 
-import group4.dmhelper.Fragments.SampleFragmentPagerAdapter;
+import group4.dmhelper.Fragments.FragmentAdapter;
 import group4.dmhelper.R;
 
 public class ActivityMain extends AppCompatActivity  {
@@ -17,7 +17,7 @@ public class ActivityMain extends AppCompatActivity  {
         setContentView(R.layout.activity_main);
 
         ViewPager viewPager = (ViewPager) findViewById(R.id.viewpager);
-        viewPager.setAdapter(new SampleFragmentPagerAdapter(getSupportFragmentManager(),
+        viewPager.setAdapter(new FragmentAdapter(getSupportFragmentManager(),
                 ActivityMain.this));
 
         TabLayout tabLayout = (TabLayout) findViewById(R.id.sliding_tabs);

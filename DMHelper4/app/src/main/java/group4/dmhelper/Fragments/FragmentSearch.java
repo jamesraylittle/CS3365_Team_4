@@ -11,10 +11,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.Toast;
 
-//import group4.dmhelper.Activities.ActivitySearchMonsters;
+import group4.dmhelper.Activities.ActivitySearchFeats;
+import group4.dmhelper.Activities.ActivitySearchItems;
 import group4.dmhelper.Activities.ActivitySearchMonsters;
-import group4.dmhelper.Activities.ActivityStart;
 import group4.dmhelper.R;
 
 
@@ -45,9 +46,27 @@ public class FragmentSearch extends Fragment implements View.OnClickListener {
 
     @Override
     public void onClick(View v) {
+        Intent intent;
         switch (v.getId()) {
             case R.id.btnSearchMonster:
-                Intent intent = new Intent(getContext(), ActivitySearchMonsters.class);
+                intent = new Intent(getContext(), ActivitySearchMonsters.class);
+                startActivity(intent);
+                break;
+            case R.id.btnSearchItems:
+                intent = new Intent(getContext(), ActivitySearchItems.class);
+                startActivity(intent);
+                break;
+            case R.id.btnSearchEquipment:
+                Toast.makeText(getContext().getApplicationContext(), "Non Functional", Toast.LENGTH_LONG).show();
+                break;
+            case R.id.btnSearchPowers:
+                Toast.makeText(getContext().getApplicationContext(), "Non Functional", Toast.LENGTH_LONG).show();
+                break;
+            case R.id.btnSearchClasses:
+                Toast.makeText(getContext().getApplicationContext(), "Non Functional", Toast.LENGTH_LONG).show();
+                break;
+            case R.id.btnSearchFeats:
+                intent = new Intent(getContext(), ActivitySearchFeats.class);
                 startActivity(intent);
                 break;
         }
