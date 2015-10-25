@@ -13,9 +13,11 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.Toast;
 
+import group4.dmhelper.Activities.ActivitySearchEquipment;
 import group4.dmhelper.Activities.ActivitySearchFeats;
 import group4.dmhelper.Activities.ActivitySearchItems;
 import group4.dmhelper.Activities.ActivitySearchMonsters;
+import group4.dmhelper.Activities.ActivitySearchSpells;
 import group4.dmhelper.R;
 
 
@@ -25,17 +27,15 @@ public class FragmentSearch extends Fragment implements View.OnClickListener {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_search, container, false);
         Button b1 = (Button) view.findViewById(R.id.btnSearchMonster);
-        Button b2 = (Button) view.findViewById(R.id.btnSearchClasses);
-        Button b3 = (Button) view.findViewById(R.id.btnSearchEquipment);
-        Button b4 = (Button) view.findViewById(R.id.btnSearchFeats);
-        Button b5 = (Button) view.findViewById(R.id.btnSearchPowers);
-        Button b6 = (Button) view.findViewById(R.id.btnSearchItems);
+        Button b2 = (Button) view.findViewById(R.id.btnSearchEquipment);
+        Button b3 = (Button) view.findViewById(R.id.btnSearchFeats);
+        Button b4 = (Button) view.findViewById(R.id.btnSearchSpells);
+        Button b5 = (Button) view.findViewById(R.id.btnSearchItems);
         b1.setOnClickListener(this);
         b2.setOnClickListener(this);
         b3.setOnClickListener(this);
         b4.setOnClickListener(this);
         b5.setOnClickListener(this);
-        b6.setOnClickListener(this);
         return view;
     }
 
@@ -57,13 +57,12 @@ public class FragmentSearch extends Fragment implements View.OnClickListener {
                 startActivity(intent);
                 break;
             case R.id.btnSearchEquipment:
-                Toast.makeText(getContext().getApplicationContext(), "Non Functional", Toast.LENGTH_LONG).show();
+                intent = new Intent(getContext(), ActivitySearchEquipment.class);
+                startActivity(intent);
                 break;
-            case R.id.btnSearchPowers:
-                Toast.makeText(getContext().getApplicationContext(), "Non Functional", Toast.LENGTH_LONG).show();
-                break;
-            case R.id.btnSearchClasses:
-                Toast.makeText(getContext().getApplicationContext(), "Non Functional", Toast.LENGTH_LONG).show();
+            case R.id.btnSearchSpells:
+                intent = new Intent(getContext(), ActivitySearchSpells.class);
+                startActivity(intent);
                 break;
             case R.id.btnSearchFeats:
                 intent = new Intent(getContext(), ActivitySearchFeats.class);

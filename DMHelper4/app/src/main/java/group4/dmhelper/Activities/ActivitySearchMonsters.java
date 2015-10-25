@@ -38,18 +38,33 @@ public class ActivitySearchMonsters extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_seach_monster);
+        myDbHelper = new DataBaseHelper(this);
         initializeWidgets();
-        initializeDB();
     }
 
-    private void initializeDB() {
-        myDbHelper = new DataBaseHelper(this);
+    @Override
+    protected void onPause() {
+        super.onPause();
         try {
-            myDbHelper.createDataBase();
-        } catch (IOException ioe) {
-            throw new Error("Unable to create database");
+            myDbHelper.close();
+        }catch(SQLException sqle){
+            throw sqle;
         }
+    }
 
+    @Override
+    protected void onStop() {
+        super.onStop();
+        try {
+            myDbHelper.close();
+        }catch(SQLException sqle){
+            throw sqle;
+        }
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
         try {
             myDbHelper.openDataBase();
         }catch(SQLException sqle){

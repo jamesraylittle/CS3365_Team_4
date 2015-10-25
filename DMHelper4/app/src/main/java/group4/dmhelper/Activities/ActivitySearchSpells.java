@@ -22,28 +22,28 @@ import group4.dmhelper.Database.DataBaseHelper;
 import group4.dmhelper.R;
 
 /**
- * Created by Kyle on 10/16/2015.
+ * Created by Kyle on 10/24/2015.
  */
-public class ActivitySearchFeats extends Activity {
+public class ActivitySearchSpells extends Activity {
 
     DataBaseHelper myDbHelper;
     EditText nameInput;
-    Spinner typeInput;
+    Spinner schoolInput, subInput;
     ListView searchResults;
     ListAdapter adapter;
     List<String> listUsers = new ArrayList<>();
-    private String[] arraySize;
+    private String[] arraySchool, arraySub;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_search_feat);
+        setContentView(R.layout.activity_search_spell);
         myDbHelper = new DataBaseHelper(this);
         initializeWidgets();
     }
 
     @Override
-    protected void onPause() {
+     protected void onPause() {
         super.onPause();
         try {
             myDbHelper.close();
@@ -73,26 +73,37 @@ public class ActivitySearchFeats extends Activity {
     }
 
     private void initializeWidgets() {
-        //Spinner
-        this.arraySize = new String[] {
-                "Any", "Divine", "Divine, Epic", "Epic", "Epic, Psionic", "General", "General, Fighter",
-                "Item Creation", "Item Creation, Epic", "Metamagic", "Metamagic, Epic", "Metapsionic",
-                "Psionic", "Special", "Type of Feat", "Wild, Epic"
+        //Spinners
+        this.arraySchool = new String[] {
+                "Any", "Calling", "Charm", "Compulsion", "Creation", "Creation or Calling", "Creation, Healing",
+                "Death, Evil", "Figment", "Figment, Glamer", "Glamer", "Healing", "None", "Pattern", "Phantasm",
+                "Scrying", "Shadow", "Summoning", "Teleportation"
         };
-        typeInput = (Spinner) findViewById(R.id.spinner_search_feat_type);
+        subInput = (Spinner) findViewById(R.id.spinner_search_spell_subschool);
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this,
-                android.R.layout.simple_spinner_item, arraySize);
+                android.R.layout.simple_spinner_item, arraySchool);
         adapter.setDropDownViewResource(R.layout.spinner_layout_dropdown);
-        typeInput.setAdapter(adapter);
+        subInput.setAdapter(adapter);
+
+        this.arraySub = new String[] {
+                "Any", "Abjuration", "Conjuration", "Conjuration, Necromancy", "Divination", "Divination, Enchantment",
+                "Enchantment", "Enchantment [Mind-Affecting]", "Evocation", "Illusion", "Necromancy",
+                "Necromancy, Illusion (Figment)", "Transmutation", "Universal"
+        };
+        schoolInput = (Spinner) findViewById(R.id.spinner_search_spell_school);
+        ArrayAdapter<String> adapter2 = new ArrayAdapter<>(this,
+                android.R.layout.simple_spinner_item, arraySub);
+        adapter2.setDropDownViewResource(R.layout.spinner_layout_dropdown);
+        schoolInput.setAdapter(adapter2);
 
         //EditText
-        nameInput = (EditText)findViewById(R.id.editText_search_feat_name);
+        nameInput = (EditText)findViewById(R.id.editTxt_search_spell_name);
 
         //ListView
-        searchResults = (ListView)findViewById(R.id.listView_search_feat);
+        searchResults = (ListView)findViewById(R.id.listView_search_spell);
     }
 
-    public void doSearchFeats(View view) {
+    public void doSearchSpells(View view) {
         InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
         imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
         performSearch();
@@ -100,18 +111,29 @@ public class ActivitySearchFeats extends Activity {
 
     private void performSearch() {
         String name = nameInput.getText().toString();
-        String type = typeInput.getSelectedItem().toString();
-        String defaultStart = "select name from feat where name like ? ";
+        String school = schoolInput.getSelectedItem().toString();
+        String sub = subInput.getSelectedItem().toString();
+        String defaultStart = "select name from spell where name like ? ";
         myDbHelper.openDataBase();
-        if (type.equals("Any")) {
+        if (!sub.equals("Any") && !school.equals("Any")) {
             populateList(
-                    myDbHelper.performRawQuery(defaultStart + "order by name asc",
-                            new String[]{"%" + name + "%"}));
+                    myDbHelper.performRawQuery(defaultStart + "and subschool = ? and school = ? order by name asc",
+                            new String[]{"%" + name + "%", sub, school}));
+        }
+        else if (!sub.equals("Any") && school.equals("Any")) {
+            populateList(
+                    myDbHelper.performRawQuery(defaultStart + "and subschool = ? order by name asc",
+                            new String[]{"%" + name + "%", sub}));
+        }
+        else if (sub.equals("Any") && !school.equals("Any")) {
+            populateList(
+                    myDbHelper.performRawQuery(defaultStart + "and school = ? order by name asc",
+                            new String[]{"%" + name + "%", school}));
         }
         else {
             populateList(
-                    myDbHelper.performRawQuery(defaultStart + "and type = ? order by name asc",
-                            new String[]{"%" + name + "%", type}));
+                    myDbHelper.performRawQuery(defaultStart + "order by name asc",
+                            new String[]{"%" + name + "%"}));
         }
         myDbHelper.close();
     }

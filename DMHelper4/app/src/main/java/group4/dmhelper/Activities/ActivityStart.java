@@ -17,7 +17,7 @@ public class ActivityStart extends AppCompatActivity {
 
     public void newAdventure(View view)
     {
-        Intent intent = new Intent(this, ActivityMain.class);
+        Intent intent = new Intent(this, ActivityGame.class);
         startActivity(intent);
     }
 }

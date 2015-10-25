@@ -2,7 +2,6 @@ package group4.dmhelper.Activities;
 
 import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
 import android.database.Cursor;
 import android.database.SQLException;
 import android.os.Bundle;
@@ -23,22 +22,22 @@ import group4.dmhelper.Database.DataBaseHelper;
 import group4.dmhelper.R;
 
 /**
- * Created by Kyle on 10/16/2015.
+ * Created by Kyle on 10/24/2015.
  */
-public class ActivitySearchItems extends Activity {
+public class ActivitySearchEquipment extends Activity {
 
     DataBaseHelper myDbHelper;
     EditText nameInput;
-    Spinner catInput, subInput, specialInput;
+    Spinner catInput, subInput, famInput;
     ListView searchResults;
     ListAdapter adapter;
-    List<String> listUsers = new ArrayList<>();
-    private String[] arrayCat, arraySub, arraySpecial;
+    List<String> listItems = new ArrayList<>();
+    private String[] arrayCat, arraySub, arrayFam;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_seach_item);
+        setContentView(R.layout.activity_search_equipment);
         myDbHelper = new DataBaseHelper(this);
         initializeWidgets();
     }
@@ -77,42 +76,46 @@ public class ActivitySearchItems extends Activity {
         //Spinners
         /////////////category/////////////
         this.arrayCat = new String[] {
-                "Any", "Armor", "Armor, Shield", "Artifact", "Cursed", "Oil", "Potion", "Potion, Oil", "Psicrown",
-                "Ring", "Rod", "Scroll", "Shield", "Staff", "Universal Items", "Wand", "Weapon", "Wondrous"
+                "Any", "Armor", "Exotic Weapons", "Item", "Martial Weapons", "Service", "Simple Weapons"
         };
-        catInput = (Spinner) findViewById(R.id.spinner_search_item_category);
+        catInput = (Spinner) findViewById(R.id.spinner_search_equipment_category);
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this,
                 android.R.layout.simple_spinner_item, arrayCat);
         adapter.setDropDownViewResource(R.layout.spinner_layout_dropdown);
+
         catInput.setAdapter(adapter);
         /////////////subcategory/////////////
         this.arraySub = new String[] {
-                "Any", "Arcane", "Divine", "Epic", "Epic, Psionic", "Major Artifact",
-                "Minor Artifact", "None", "Psionic", "Psionic, Minor Artifact", "Shield"
+                "Any", "Adventuring Gear", "Ammunition", "Clothing", "Extras", "Food, Drink, and Lodging",
+                "Heavy armor", "Light Melee Weapons", "Light armor", "Medium armor", "Mounts and Related Gear",
+                "None", "One-Handed Melee Weapons", "Ranged Weapons", "Shields", "Special Substances and Items",
+                "Spellcasting and Services", "Tools and Skill Kits", "Transport", "Two-Handed Melee Weapons",
+                "Unarmed Attacks"
         };
-        subInput = (Spinner) findViewById(R.id.spinner_search_item_subcategory);
+        subInput = (Spinner) findViewById(R.id.spinner_search_equipment_subcategory);
         ArrayAdapter<String> adapter2 = new ArrayAdapter<>(this,
                 android.R.layout.simple_spinner_item, arraySub);
         adapter2.setDropDownViewResource(R.layout.spinner_layout_dropdown);
         subInput.setAdapter(adapter2);
+
         /////////////special ability/////////////
-        this.arraySpecial = new String[] {
-                "Any", "Yes", "No"
+        this.arrayFam = new String[] {
+                "Any", "Armor and Shields", "Goods and Services", "Trade Goods", "Weapons"
         };
-        specialInput = (Spinner) findViewById(R.id.spinner_search_item_specialability);
+        famInput = (Spinner) findViewById(R.id.spinner_search_equipment_family);
         ArrayAdapter<String> adapter3 = new ArrayAdapter<>(this,
-                android.R.layout.simple_spinner_item, arraySpecial);
+                android.R.layout.simple_spinner_item, arrayFam);
         adapter3.setDropDownViewResource(R.layout.spinner_layout_dropdown);
-        specialInput.setAdapter(adapter3);
+        famInput.setAdapter(adapter3);
 
         //EditText
-        nameInput = (EditText)findViewById(R.id.editTxt_search_item_name);
+        nameInput = (EditText)findViewById(R.id.editTxt_search_equipment_name);
 
         //ListView
-        searchResults = (ListView)findViewById(R.id.listView_search_item);
+        searchResults = (ListView)findViewById(R.id.listView_search_equipment);
     }
 
-    public void doSearchItems(View view) {
+    public void doSearchEquipment(View view) {
         InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
         imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
         performSearch();
@@ -122,43 +125,43 @@ public class ActivitySearchItems extends Activity {
         String name = nameInput.getText().toString();
         String cat = catInput.getSelectedItem().toString();
         String sub = subInput.getSelectedItem().toString();
-        String spec = specialInput.getSelectedItem().toString();
-        String defaultStart = "select name from item where name like ? ";
+        String fam = famInput.getSelectedItem().toString();
+        String defaultStart = "select name from equipment where name like ? ";
         myDbHelper.openDataBase();
-        if (!cat.equals("Any") && !sub.equals("Any") && !spec.equals("Any")) {
+        if (!cat.equals("Any") && !sub.equals("Any") && !fam.equals("Any")) {
             populateList( myDbHelper.performRawQuery(
-                    defaultStart + "and subcategory = ? and category = ? and special_ability = ? order by name asc",
-                    new String[]{"%" + name + "%", sub, cat, spec}));
+                    defaultStart + "and subcategory = ? and category = ? and family = ? order by name asc",
+                    new String[]{"%" + name + "%", sub, cat, fam}));
         }
-        else if (!cat.equals("Any") && !sub.equals("Any") && spec.equals("Any")) {
+        else if (!cat.equals("Any") && !sub.equals("Any") && fam.equals("Any")) {
             populateList( myDbHelper.performRawQuery(
                     defaultStart + "and subcategory = ? and category = ? order by name asc",
                     new String[]{"%" + name + "%", sub, cat}));
         }
-        else if (!cat.equals("Any") && sub.equals("Any") && !spec.equals("Any")) {
+        else if (!cat.equals("Any") && sub.equals("Any") && !fam.equals("Any")) {
             populateList( myDbHelper.performRawQuery(
-                    defaultStart + "and special_ability = ? and category = ? order by name asc",
-                    new String[]{"%" + name + "%", spec, cat}));
+                    defaultStart + "and family = ? and category = ? order by name asc",
+                    new String[]{"%" + name + "%", fam, cat}));
         }
-        else if (cat.equals("Any") && !sub.equals("Any") && !spec.equals("Any")) {
+        else if (cat.equals("Any") && !sub.equals("Any") && !fam.equals("Any")) {
             populateList( myDbHelper.performRawQuery(
-                            defaultStart + "and special_ability = ? and subcategory = ? order by name asc",
-                            new String[]{"%" + name + "%", spec, sub}));
+                    defaultStart + "and family = ? and subcategory = ? order by name asc",
+                    new String[]{"%" + name + "%", fam, sub}));
         }
-        else if (!cat.equals("Any") && sub.equals("Any") && spec.equals("Any")) {
+        else if (!cat.equals("Any") && sub.equals("Any") && fam.equals("Any")) {
             populateList(
                     myDbHelper.performRawQuery(defaultStart + "and category = ? order by name asc",
                             new String[]{"%" + name + "%", cat}));
         }
-        else if (cat.equals("Any") && !sub.equals("Any") && spec.equals("Any")) {
+        else if (cat.equals("Any") && !sub.equals("Any") && fam.equals("Any")) {
             populateList(
                     myDbHelper.performRawQuery(defaultStart + "and subcategory = ? order by name asc",
                             new String[]{"%" + name + "%", sub}));
         }
-        else if (cat.equals("Any") && sub.equals("Any") && !spec.equals("Any")) {
+        else if (cat.equals("Any") && sub.equals("Any") && !fam.equals("Any")) {
             populateList(
-                    myDbHelper.performRawQuery(defaultStart + "and special_ability = ? order by name asc",
-                            new String[]{"%" + name + "%", spec}));
+                    myDbHelper.performRawQuery(defaultStart + "and family = ? order by name asc",
+                            new String[]{"%" + name + "%", fam}));
         }
         else {
             populateList(
@@ -170,21 +173,21 @@ public class ActivitySearchItems extends Activity {
 
     private void populateList(Cursor query) {
         if (query.getCount() <= 0) { // If no results, clear the list
-            listUsers.clear();
+            listItems.clear();
             Toast.makeText(getApplicationContext(), "No results found.", Toast.LENGTH_LONG).show();
             searchResults.requestFocus();
             return;
         }
         else { // Otherwise, populate the list with the results
-            listUsers.clear();
+            listItems.clear();
             Toast.makeText(getApplicationContext(), query.getCount() + " results found.", Toast.LENGTH_LONG).show();
             query.moveToFirst();
-            do { listUsers.add(query.getString(0)); }
+            do { listItems.add(query.getString(0)); }
             while (query.moveToNext());
             query.close();
             adapter = new ArrayAdapter<>(getApplicationContext(),
                     R.layout.list_layout, R.id.list_text,
-                    listUsers);
+                    listItems);
             searchResults.setAdapter(adapter);
         }
     }

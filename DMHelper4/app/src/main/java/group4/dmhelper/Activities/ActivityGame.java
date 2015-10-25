@@ -7,10 +7,13 @@ import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 
+import java.io.IOException;
+
+import group4.dmhelper.Database.DataBaseHelper;
 import group4.dmhelper.Fragments.FragmentAdapter;
 import group4.dmhelper.R;
 
-public class ActivityMain extends AppCompatActivity  {
+public class ActivityGame extends AppCompatActivity  {
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -18,13 +21,20 @@ public class ActivityMain extends AppCompatActivity  {
 
         ViewPager viewPager = (ViewPager) findViewById(R.id.viewpager);
         viewPager.setAdapter(new FragmentAdapter(getSupportFragmentManager(),
-                ActivityMain.this));
+                ActivityGame.this));
 
         TabLayout tabLayout = (TabLayout) findViewById(R.id.sliding_tabs);
         tabLayout.setupWithViewPager(viewPager);
 
         viewPager.setCurrentItem(1);
         viewPager.setOffscreenPageLimit(3);
+
+        DataBaseHelper myDbHelper = new DataBaseHelper(this);
+        try {
+            myDbHelper.createDataBase();
+        } catch (IOException ioe) {
+            throw new Error("Unable to create database");
+        }
     }
 
     @Override
@@ -32,8 +42,8 @@ public class ActivityMain extends AppCompatActivity  {
         new AlertDialog.Builder(this, R.style.AlertStyle)
                 .setIcon(android.R.drawable.ic_dialog_alert)
                 .setIconAttribute(android.R.attr.alertDialogIcon)
-                .setTitle("Leaving game")
-                .setMessage("Are you sure you want to leave the game?")
+                .setTitle("Leaving Adventure")
+                .setMessage("Are you sure you want to leave this adventure?")
                 .setPositiveButton("Yes", new DialogInterface.OnClickListener()
                 {
                     @Override
