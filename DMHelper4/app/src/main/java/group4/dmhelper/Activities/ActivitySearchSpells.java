@@ -2,6 +2,7 @@ package group4.dmhelper.Activities;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.SQLException;
 import android.os.Bundle;
@@ -32,6 +33,7 @@ public class ActivitySearchSpells extends Activity {
     ListView searchResults;
     ListAdapter adapter;
     List<String> listUsers = new ArrayList<>();
+    List<String> feed = new ArrayList<>();
     private String[] arraySchool, arraySub;
 
     @Override
@@ -40,6 +42,7 @@ public class ActivitySearchSpells extends Activity {
         setContentView(R.layout.activity_search_spell);
         myDbHelper = new DataBaseHelper(this);
         initializeWidgets();
+        feed.add("In spell search");
     }
 
     @Override
@@ -60,6 +63,14 @@ public class ActivitySearchSpells extends Activity {
         }catch(SQLException sqle){
             throw sqle;
         }
+    }
+
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent();
+        intent.putExtra("feedData", feed.toArray(new String[feed.size()]));
+        setResult(RESULT_OK, intent);
+        finish();
     }
 
     @Override

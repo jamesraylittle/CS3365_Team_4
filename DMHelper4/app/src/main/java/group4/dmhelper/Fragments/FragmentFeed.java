@@ -41,6 +41,13 @@ public class FragmentFeed extends Fragment {
         updateFeed();
     }
 
+    public void addFeed(String[] log) {
+        for (int i = 0; i < log.length; i++) {
+            feedItems.add(log[i]);
+        }
+        updateFeed();
+    }
+
     public void updateFeed() {
         adapter = new ArrayAdapter<>(getContext().getApplicationContext(),
                 R.layout.list_layout, R.id.list_text,

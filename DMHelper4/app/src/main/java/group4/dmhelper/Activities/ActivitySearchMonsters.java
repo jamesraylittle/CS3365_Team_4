@@ -2,9 +2,13 @@ package group4.dmhelper.Activities;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.SQLException;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
+import android.util.Log;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.ArrayAdapter;
@@ -32,6 +36,7 @@ public class ActivitySearchMonsters extends Activity {
     ListView searchResults;
     ListAdapter adapter;
     List<String> listUsers = new ArrayList<>();
+    List<String> feed = new ArrayList<>();
     private String[] arraySize, arrayType;
 
     @Override
@@ -40,6 +45,7 @@ public class ActivitySearchMonsters extends Activity {
         setContentView(R.layout.activity_seach_monster);
         myDbHelper = new DataBaseHelper(this);
         initializeWidgets();
+        feed.add("In monster search");
     }
 
     @Override
@@ -70,6 +76,14 @@ public class ActivitySearchMonsters extends Activity {
         }catch(SQLException sqle){
             throw sqle;
         }
+    }
+
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent();
+        intent.putExtra("feedData", feed.toArray(new String[feed.size()]));
+        setResult(RESULT_OK, intent);
+        finish();
     }
 
     private void initializeWidgets() {

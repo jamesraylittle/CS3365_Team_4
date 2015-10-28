@@ -1,19 +1,24 @@
 package group4.dmhelper.Activities;
 
+import android.content.Intent;
 import android.support.design.widget.TabLayout;
 import android.support.v7.app.AlertDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 
 import java.io.IOException;
 
 import group4.dmhelper.Database.DataBaseHelper;
 import group4.dmhelper.Fragments.FragmentAdapter;
+import group4.dmhelper.Fragments.FragmentFeed;
 import group4.dmhelper.R;
 
 public class ActivityGame extends AppCompatActivity  {
+
+    private final String tagName = "android:switcher:" + R.id.viewpager + ":" + 0;
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,6 +39,22 @@ public class ActivityGame extends AppCompatActivity  {
             myDbHelper.createDataBase();
         } catch (IOException ioe) {
             throw new Error("Unable to create database");
+        }
+    }
+
+    @Override protected void onResume() {
+        super.onResume();
+    }
+
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode == RESULT_OK) {
+            if (data.getStringArrayExtra("feedData").equals(null)) return;
+            try {
+                FragmentFeed feed = (FragmentFeed)getSupportFragmentManager().findFragmentByTag(tagName);
+                feed.addFeed(data.getStringArrayExtra("feedData"));
+            }
+            catch (Exception e) {}
         }
     }
 

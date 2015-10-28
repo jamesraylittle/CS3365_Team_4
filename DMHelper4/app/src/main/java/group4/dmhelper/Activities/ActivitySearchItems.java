@@ -33,6 +33,7 @@ public class ActivitySearchItems extends Activity {
     ListView searchResults;
     ListAdapter adapter;
     List<String> listUsers = new ArrayList<>();
+    List<String> feed = new ArrayList<>();
     private String[] arrayCat, arraySub, arraySpecial;
 
     @Override
@@ -41,6 +42,7 @@ public class ActivitySearchItems extends Activity {
         setContentView(R.layout.activity_seach_item);
         myDbHelper = new DataBaseHelper(this);
         initializeWidgets();
+        feed.add("In item search");
     }
 
     @Override
@@ -71,6 +73,14 @@ public class ActivitySearchItems extends Activity {
         }catch(SQLException sqle){
             throw sqle;
         }
+    }
+
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent();
+        intent.putExtra("feedData", feed.toArray(new String[feed.size()]));
+        setResult(RESULT_OK, intent);
+        finish();
     }
 
     private void initializeWidgets() {
