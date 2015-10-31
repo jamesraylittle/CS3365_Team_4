@@ -20,6 +20,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import group4.dmhelper.Database.DataBaseHelper;
+import group4.dmhelper.Fragments.FragmentFeed;
 import group4.dmhelper.R;
 
 /**
@@ -33,7 +34,6 @@ public class ActivitySearchEquipment extends Activity {
     ListView searchResults;
     ListAdapter adapter;
     List<String> listItems = new ArrayList<>();
-    List<String> feed = new ArrayList<>();
     private String[] arrayCat, arraySub, arrayFam;
 
     @Override
@@ -42,7 +42,7 @@ public class ActivitySearchEquipment extends Activity {
         setContentView(R.layout.activity_search_equipment);
         myDbHelper = new DataBaseHelper(this);
         initializeWidgets();
-        feed.add("In equipment search");
+        FragmentFeed.feedItems.add("testEquipment");
     }
 
     @Override
@@ -73,14 +73,6 @@ public class ActivitySearchEquipment extends Activity {
         }catch(SQLException sqle){
             throw sqle;
         }
-    }
-
-    @Override
-    public void onBackPressed() {
-        Intent intent = new Intent();
-        intent.putExtra("feedData", feed.toArray(new String[feed.size()]));
-        setResult(RESULT_OK, intent);
-        finish();
     }
 
     private void initializeWidgets() {

@@ -19,7 +19,7 @@ import group4.dmhelper.R;
  */
 public class FragmentFeed extends Fragment {
 
-    List<String> feedItems = new ArrayList<>();
+    public static List<String> feedItems = new ArrayList<>();
     ListView feed;
     ListAdapter adapter;
 

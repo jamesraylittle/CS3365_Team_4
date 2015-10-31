@@ -20,6 +20,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import group4.dmhelper.Database.DataBaseHelper;
+import group4.dmhelper.Fragments.FragmentFeed;
 import group4.dmhelper.R;
 
 /**
@@ -33,7 +34,6 @@ public class ActivitySearchSpells extends Activity {
     ListView searchResults;
     ListAdapter adapter;
     List<String> listUsers = new ArrayList<>();
-    List<String> feed = new ArrayList<>();
     private String[] arraySchool, arraySub;
 
     @Override
@@ -42,7 +42,7 @@ public class ActivitySearchSpells extends Activity {
         setContentView(R.layout.activity_search_spell);
         myDbHelper = new DataBaseHelper(this);
         initializeWidgets();
-        feed.add("In spell search");
+        FragmentFeed.feedItems.add("testSpells");
     }
 
     @Override
@@ -63,14 +63,6 @@ public class ActivitySearchSpells extends Activity {
         }catch(SQLException sqle){
             throw sqle;
         }
-    }
-
-    @Override
-    public void onBackPressed() {
-        Intent intent = new Intent();
-        intent.putExtra("feedData", feed.toArray(new String[feed.size()]));
-        setResult(RESULT_OK, intent);
-        finish();
     }
 
     @Override

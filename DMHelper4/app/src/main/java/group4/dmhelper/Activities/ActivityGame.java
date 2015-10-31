@@ -44,18 +44,11 @@ public class ActivityGame extends AppCompatActivity  {
 
     @Override protected void onResume() {
         super.onResume();
-    }
-
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if (resultCode == RESULT_OK) {
-            if (data.getStringArrayExtra("feedData").equals(null)) return;
-            try {
-                FragmentFeed feed = (FragmentFeed)getSupportFragmentManager().findFragmentByTag(tagName);
-                feed.addFeed(data.getStringArrayExtra("feedData"));
-            }
-            catch (Exception e) {}
+        try {
+            FragmentFeed feed = (FragmentFeed) getSupportFragmentManager().findFragmentByTag(tagName);
+            feed.updateFeed();
         }
+        catch (Exception e) {}
     }
 
     @Override
