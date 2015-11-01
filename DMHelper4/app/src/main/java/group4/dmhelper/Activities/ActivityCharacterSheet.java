@@ -8,7 +8,9 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ProgressBar;
 import android.widget.Spinner;
+import android.widget.TextView;
 
 import group4.dmhelper.Activities.Popups.PopupEditExperience;
 import group4.dmhelper.Activities.Popups.PopupEditHealth;
@@ -21,40 +23,39 @@ public class ActivityCharacterSheet extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_character_sheet);
+
+        Bundle extras = getIntent().getExtras();
+        String PlayerIdentifier = extras.getString("Identifier");
         populateSpinners();
-        setupButtons();
-
+        setupButtons(PlayerIdentifier);
+        editProgressBars(PlayerIdentifier);
 
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_activity_character_sheet, menu);
-        return true;
+    private void editProgressBars(String playerIdentifier) {
+        ProgressBar healthbar = (ProgressBar) findViewById(R.id.progressBar_health);
+        healthbar.setMax(100);  //TODO GET FROM DATABASE
+        healthbar.setProgress(45);  //TODO GET FROM DATABASE
+        TextView health = (TextView) findViewById(R.id.txt_health_ratio);
+        health.setText(healthbar.getProgress() + "/" + healthbar.getMax());
+
+        ProgressBar xpbar = (ProgressBar) findViewById(R.id.progressBar_experience);
+        xpbar.setMax(100); //TODO GET FROM DATABASE
+        xpbar.setProgress(10);  //TODO GET FROM DATABASE
+        TextView xp = (TextView) findViewById(R.id.txt_experience_ratio);
+        xp.setText(xpbar.getProgress() + "/" + xpbar.getMax());
+
     }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
-    private void setupButtons(){
+    private void setupButtons(final String ID){
         // Button for opening skills
         Button skills = (Button) findViewById(R.id.btn_skills);
         skills.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(ActivityCharacterSheet.this, ActivityCharacterSkills.class));
+                Intent intent = new Intent(ActivityCharacterSheet.this, ActivityCharacterSkills.class);
+                intent.putExtra("Identifier", ID);
+                startActivity(intent);
             }
         });
 
@@ -63,7 +64,9 @@ public class ActivityCharacterSheet extends AppCompatActivity {
         racialclass.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(ActivityCharacterSheet.this, ActivityCharacterRacialClass.class));
+                Intent intent = new Intent(ActivityCharacterSheet.this, ActivityCharacterRacialClass.class);
+                intent.putExtra("Identifier", ID);
+                startActivity(intent);
             }
         });
         // Button for Magic
@@ -71,7 +74,9 @@ public class ActivityCharacterSheet extends AppCompatActivity {
         magic.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(ActivityCharacterSheet.this, ActivityCharacterMagic.class));
+                Intent intent = new Intent(ActivityCharacterSheet.this, ActivityCharacterMagic.class);
+                intent.putExtra("Identifier", ID);
+                startActivity(intent);
             }
         });
 
@@ -80,7 +85,9 @@ public class ActivityCharacterSheet extends AppCompatActivity {
         feats.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(ActivityCharacterSheet.this, ActivityCharacterFeats.class));
+                Intent intent = new Intent(ActivityCharacterSheet.this, ActivityCharacterFeats.class);
+                intent.putExtra("Identifier", ID);
+                startActivity(intent);
             }
         });
         // Button for inventory
@@ -88,7 +95,9 @@ public class ActivityCharacterSheet extends AppCompatActivity {
         inventory.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(ActivityCharacterSheet.this, ActivityCharacterInventory.class));
+                Intent intent = new Intent(ActivityCharacterSheet.this, ActivityCharacterInventory.class);
+                intent.putExtra("Identifier", ID);
+                startActivity(intent);
             }
         });
 
@@ -97,7 +106,9 @@ public class ActivityCharacterSheet extends AppCompatActivity {
         health.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity( new Intent(ActivityCharacterSheet.this, PopupEditHealth.class));
+                Intent intent = new Intent(ActivityCharacterSheet.this, PopupEditHealth.class);
+                intent.putExtra("Identifier", ID);
+                startActivity(intent);
             }
         });
 
@@ -106,7 +117,9 @@ public class ActivityCharacterSheet extends AppCompatActivity {
         xp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity( new Intent(ActivityCharacterSheet.this, PopupEditExperience.class));
+                Intent intent = new Intent(ActivityCharacterSheet.this, PopupEditExperience.class);
+                intent.putExtra("Identifier", ID);
+                startActivity(intent);
             }
         });
 
