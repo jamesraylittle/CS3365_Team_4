@@ -58,7 +58,8 @@
         <activity
             android:name=".Activities.ActivityCharacterSheet"
             android:label="@string/title_activity_activity_character_sheet"
-            android:windowSoftInputMode="adjustPan">
+            android:windowSoftInputMode="adjustPan"
+            android:screenOrientation="portrait">
         </activity>
         <activity
             android:name=".Activities.Popups.PopupEditExperience"
