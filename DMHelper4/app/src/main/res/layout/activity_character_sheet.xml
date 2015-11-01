@@ -10,275 +10,404 @@
 
     <LinearLayout
         android:orientation="horizontal"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_weight="3">
 
-        <ProgressBar
-            style="?android:attr/progressBarStyleHorizontal"
-            android:progressDrawable="@android:drawable/progress_horizontal"
-            android:layout_width="150dp"
-            android:layout_height="wrap_content"
-            android:id="@+id/progressBar_health"
-            android:layout_marginTop="10dp" />
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight=".75">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="Health"
-            android:id="@+id/textView" />
+            <ProgressBar
+                style="?android:attr/progressBarStyleHorizontal"
+                android:progressDrawable="@android:drawable/progress_horizontal"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/progressBar_health"
+                android:layout_marginTop="10dp"
+                android:paddingRight="5dp" />
+        </RelativeLayout>
 
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Health"
-            android:id="@+id/btn_change_health" />
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="1">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="Health"
+                android:id="@+id/textView"
+                android:layout_centerVertical="true"
+                android:layout_alignParentStart="true"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:paddingBottom="3dp"
+            android:paddingTop="3dp">
+
+            <Button
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:text="Health"
+                android:id="@+id/btn_change_health"
+                android:background="@color/colorButton"
+                android:scaleType="fitXY"
+                android:layout_alignParentStart="true"
+                android:layout_centerInParent="true" />
+        </RelativeLayout>
 
     </LinearLayout>
     <LinearLayout
         android:orientation="horizontal"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_weight="3">
 
-        <ProgressBar
-            style="?android:attr/progressBarStyleHorizontal"
-            android:progressDrawable="@android:drawable/progress_horizontal"
-            android:layout_width="150dp"
-            android:layout_height="wrap_content"
-            android:id="@+id/progressBar_experience"
-            android:layout_marginTop="10dp" />
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight=".75">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="100/1000"
-            android:editable="false"
-            android:id="@+id/txt_display" />
+            <ProgressBar
+                style="?android:attr/progressBarStyleHorizontal"
+                android:progressDrawable="@android:drawable/progress_horizontal"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/progressBar_experience"
+                android:layout_marginTop="10dp"
+                android:paddingRight="5dp" />
+        </RelativeLayout>
 
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="XP"
-            android:id="@+id/btn_change_experience" />
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="1">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="100/1000 XP"
+                android:editable="false"
+                android:id="@+id/txt_display"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                android:layout_centerVertical="true"
+                android:layout_alignParentStart="true" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:paddingTop="3dp"
+            android:paddingBottom="3dp">
+
+            <Button
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:text="XP"
+                android:id="@+id/btn_change_experience"
+                android:background="@color/colorButton"
+                android:scaleType="fitXY"
+                android:layout_alignParentStart="true"
+                android:layout_centerInParent="true"/>
+        </RelativeLayout>
 
     </LinearLayout>
 
     <LinearLayout
         android:orientation="horizontal"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_weight="3">
 
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="15dp"
-            android:text="Skills"
-            android:background="@color/colorButton"
-            android:id="@+id/btn_skills" />
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:paddingBottom="3dp"
+            android:paddingRight="4dp">
 
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="25dp"
-            android:layout_marginBottom="15dp"
-            android:background="@color/colorButton"
-            android:text="Racial &amp; Class"
-            android:id="@+id/btn_racialclass" />
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="25dp"
-            android:layout_marginBottom="15dp"
-            android:background="@color/colorButton"
-            android:text="Magic"
-            android:id="@+id/btn_magic" />
+            <Button
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:text="Skills"
+                android:background="@color/colorButton"
+                android:id="@+id/btn_skills"
+                android:scaleType="fitXY"
+                android:layout_alignParentStart="true"
+                android:layout_centerInParent="true"/>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:paddingBottom="3dp"
+            android:paddingRight="2dp"
+            android:paddingLeft="2dp">
+
+            <Button
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:background="@color/colorButton"
+                android:text="Race &amp; Class"
+                android:id="@+id/btn_racialclass"
+                android:scaleType="fitXY"
+                android:layout_alignParentStart="true"
+                android:layout_centerInParent="true"/>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:paddingBottom="3dp"
+            android:paddingLeft="4dp">
+
+            <Button
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:background="@color/colorButton"
+                android:text="Magic"
+                android:id="@+id/btn_magic"
+                android:scaleType="fitXY"
+                android:layout_alignParentStart="true"
+                android:layout_centerInParent="true"/>
+        </RelativeLayout>
     </LinearLayout>
 
     <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_weight="3"
+        android:orientation="horizontal">
 
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="15dp"
-            android:background="@color/colorButton"
-            android:text="Feats"
-            android:id="@+id/btn_feats" />
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:paddingRight="4dp"
+            android:paddingTop="3dp">
 
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="30dp"
-            android:layout_marginBottom="15dp"
-            android:background="@color/colorButton"
-            android:text="Spells"
-            android:id="@+id/btn_spells" />
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="35dp"
-            android:layout_marginBottom="15dp"
-            android:background="@color/colorButton"
-            android:text="Inventory"
-            android:id="@+id/btn_inventory" />
+            <Button
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:background="@color/colorButton"
+                android:text="Feats"
+                android:id="@+id/btn_feats"
+                android:scaleType="fitXY"
+                android:layout_alignParentStart="true"
+                android:layout_centerInParent="true" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:paddingRight="2dp"
+            android:paddingLeft="2dp"
+            android:paddingTop="3dp">
+
+            <Button
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:background="@color/colorButton"
+                android:text="Spells"
+                android:scaleType="fitXY"
+                android:id="@+id/btn_spells"
+                android:layout_centerVertical="true"
+                android:layout_centerHorizontal="true" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:paddingLeft="4dp"
+            android:paddingTop="3dp">
+
+            <Button
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:background="@color/colorButton"
+                android:text="Inventory"
+                android:scaleType="fitXY"
+                android:id="@+id/btn_inventory"
+                android:layout_centerVertical="true"
+                android:layout_centerHorizontal="true" />
+        </RelativeLayout>
     </LinearLayout>
 
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/scrollView">
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_weight="1">
 
-        <LinearLayout
-            android:orientation="vertical"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+        <ScrollView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/scrollView"
+            android:layout_weight="10">
 
-            <android.support.design.widget.TextInputLayout
-                android:id="@+id/text_input_layout_character_name"
+            <LinearLayout
+                android:orientation="vertical"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <EditText
-                    android:id="@+id/editText_character_name"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="Character Name"
-                    android:inputType="textPersonName"/>
-            </android.support.design.widget.TextInputLayout>
-
-            <android.support.design.widget.TextInputLayout
-                android:id="@+id/text_input_layout_player_name"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <EditText
-                    android:id="@+id/editText_player_name"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="Player Name"
-                    android:inputType="textPersonName"/>
-            </android.support.design.widget.TextInputLayout>
-
-            <LinearLayout
-                android:orientation="horizontal"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="left"
-                    android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:text="Class"
-                    android:id="@+id/txt_class" />
-                <View
-                    android:layout_width="0dp"
-                    android:layout_height="0dp"
-                    android:layout_weight="1"
-                    />
-                <Spinner
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="right"
-                    android:id="@+id/spinner_search_class" />
-            </LinearLayout>
-            <LinearLayout
-                android:orientation="horizontal"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="left"
-                    android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:text="Race"
-                    android:id="@+id/txt_race" />
-                <View
-                    android:layout_width="0dp"
-                    android:layout_height="0dp"
-                    android:layout_weight="1"
-                    />
-                <Spinner
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="right"
-                    android:id="@+id/spinner_search_race" />
-            </LinearLayout>
-            <LinearLayout
-                android:orientation="horizontal"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="left"
-                    android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:text="Allignment"
-                    android:id="@+id/txt_allignment" />
-                <View
-                    android:layout_width="0dp"
-                    android:layout_height="0dp"
-                    android:layout_weight="1"
-                    />
-
-                <Spinner
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="right"
-                    android:id="@+id/spinner_search_allignment" />
-            </LinearLayout>
-
-
-            <android.support.design.widget.TextInputLayout
-                android:id="@+id/text_input_layout_religion"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <EditText
-                    android:id="@+id/editText_religion"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="Religion / Patron Deity"
-                    android:inputType="textPersonName"/>
-            </android.support.design.widget.TextInputLayout>
-            <LinearLayout
-                android:orientation="horizontal"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
+                android:layout_height="match_parent">
 
                 <android.support.design.widget.TextInputLayout
-                    android:id="@+id/text_input_layout_Height"
+                    android:id="@+id/text_input_layout_character_name"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
 
                     <EditText
-                        android:id="@+id/editText_Height"
-                        android:layout_width="100dp"
+                        android:id="@+id/editText_character_name"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="Height"
-                        android:inputType="text"/>
+                        android:hint="Character Name"
+                        android:inputType="textPersonName"/>
                 </android.support.design.widget.TextInputLayout>
+
                 <android.support.design.widget.TextInputLayout
-                    android:id="@+id/text_input_layout_Weight"
+                    android:id="@+id/text_input_layout_player_name"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
 
                     <EditText
-                        android:id="@+id/editText_Weight"
-                        android:layout_width="100dp"
+                        android:id="@+id/editText_player_name"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="Weight"
-                        android:inputType="text"/>
+                        android:hint="Player Name"
+                        android:inputType="textPersonName"/>
                 </android.support.design.widget.TextInputLayout>
 
-             </LinearLayout>
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
 
-        </LinearLayout>
-    </ScrollView>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="left"
+                        android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:text="Class"
+                        android:id="@+id/txt_class" />
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        />
+                    <Spinner
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="right"
+                        android:id="@+id/spinner_search_class" />
+                </LinearLayout>
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="left"
+                        android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:text="Race"
+                        android:id="@+id/txt_race" />
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        />
+                    <Spinner
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="right"
+                        android:id="@+id/spinner_search_race" />
+                </LinearLayout>
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="left"
+                        android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:text="Allignment"
+                        android:id="@+id/txt_allignment" />
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        />
+
+                    <Spinner
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="right"
+                        android:id="@+id/spinner_search_allignment" />
+                </LinearLayout>
+
+
+                <android.support.design.widget.TextInputLayout
+                    android:id="@+id/text_input_layout_religion"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <EditText
+                        android:id="@+id/editText_religion"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Religion / Patron Deity"
+                        android:inputType="textPersonName"/>
+                </android.support.design.widget.TextInputLayout>
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <android.support.design.widget.TextInputLayout
+                        android:id="@+id/text_input_layout_Height"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <EditText
+                            android:id="@+id/editText_Height"
+                            android:layout_width="100dp"
+                            android:layout_height="wrap_content"
+                            android:hint="Height"
+                            android:inputType="text"/>
+                    </android.support.design.widget.TextInputLayout>
+                    <android.support.design.widget.TextInputLayout
+                        android:id="@+id/text_input_layout_Weight"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <EditText
+                            android:id="@+id/editText_Weight"
+                            android:layout_width="100dp"
+                            android:layout_height="wrap_content"
+                            android:hint="Weight"
+                            android:inputType="text"/>
+                    </android.support.design.widget.TextInputLayout>
+
+                 </LinearLayout>
+
+            </LinearLayout>
+        </ScrollView>
+    </RelativeLayout>
 
 </LinearLayout>

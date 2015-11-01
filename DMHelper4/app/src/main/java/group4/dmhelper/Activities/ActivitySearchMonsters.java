@@ -1,15 +1,11 @@
 package group4.dmhelper.Activities;
 
 import android.app.Activity;
-import android.app.ListActivity;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.SQLException;
 import android.os.Bundle;
-import android.support.v7.app.AlertDialog;
-import android.util.Log;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
@@ -20,13 +16,11 @@ import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 import group4.dmhelper.Database.DataBaseHelper;
-import group4.dmhelper.Fragments.FragmentFeed;
-import group4.dmhelper.Popups.PopupMonsterInfo;
+import group4.dmhelper.Activities.Popups.PopupMonsterInfo;
 import group4.dmhelper.R;
 
 /**
