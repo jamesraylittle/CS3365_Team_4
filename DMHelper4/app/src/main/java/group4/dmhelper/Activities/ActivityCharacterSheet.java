@@ -114,21 +114,18 @@ public class ActivityCharacterSheet extends AppCompatActivity {
     private void populateSpinners(){
         //Populate Class Tables
         Spinner Class_spinner = (Spinner) findViewById(R.id.spinner_search_class);
-
         ArrayAdapter<CharSequence> ClassAdapter = ArrayAdapter
                 .createFromResource(this, R.array.Classes,
                         android.R.layout.simple_spinner_item);
-
-        ClassAdapter
-                .setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        ClassAdapter.setDropDownViewResource(R.layout.spinner_layout_dropdown);
         Class_spinner.setAdapter(ClassAdapter);
+
         //Populate Race Spinner
         Spinner Race_spinner = (Spinner) findViewById(R.id.spinner_search_race);
         ArrayAdapter<CharSequence> RaceAdapter = ArrayAdapter
                 .createFromResource(this, R.array.Races,
                         android.R.layout.simple_spinner_item);
-        RaceAdapter
-                .setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        RaceAdapter.setDropDownViewResource(R.layout.spinner_layout_dropdown);
         Race_spinner.setAdapter(RaceAdapter);
 
         //Populate Race Spinner
@@ -136,8 +133,7 @@ public class ActivityCharacterSheet extends AppCompatActivity {
         ArrayAdapter<CharSequence> AllignmentAdapter = ArrayAdapter
                 .createFromResource(this, R.array.Allignments,
                         android.R.layout.simple_spinner_item);
-        AllignmentAdapter
-                .setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        AllignmentAdapter.setDropDownViewResource(R.layout.spinner_layout_dropdown);
         Allignment_spinner.setAdapter(AllignmentAdapter);
     }
 }
