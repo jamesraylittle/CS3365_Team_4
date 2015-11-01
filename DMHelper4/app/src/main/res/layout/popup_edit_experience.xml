@@ -32,15 +32,15 @@
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="Change Experience:"
                 android:editable="false"
-                android:id="@+id/txt" />
+                android:id="@+id/txt_change_experience" />
 
             <EditText
                 android:layout_width="157dp"
                 android:layout_height="wrap_content"
                 android:inputType="numberSigned"
                 android:ems="10"
-                android:id="@+id/healthchange" />
-        </LinearLayout>
+                android:id="@+id/change_experience" />
+    </LinearLayout>
 
         <Button
             android:layout_width="179dp"
