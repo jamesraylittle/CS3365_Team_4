@@ -20,7 +20,7 @@
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Search Feats"
+            android:text="Add Feat"
             android:id="@+id/btn_search_feats_CS"
             android:layout_gravity="bottom|right" />
 

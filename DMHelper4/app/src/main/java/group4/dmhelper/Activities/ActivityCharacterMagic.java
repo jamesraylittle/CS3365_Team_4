@@ -24,7 +24,7 @@ public class ActivityCharacterMagic extends AppCompatActivity {
         //TODO POPULATE LISTVIEW
 
         // Button for opening item info
-        final Button searchFeats = (Button) findViewById(R.id.btn_search_inventory_CS);
+        final Button searchFeats = (Button) findViewById(R.id.btn_search_Magic_CS);
         searchFeats.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

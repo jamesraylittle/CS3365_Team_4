@@ -19,7 +19,7 @@
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Search Magic"
+            android:text="Add Spell"
             android:id="@+id/btn_search_Magic_CS"
             android:layout_gravity="bottom|right" />
     </LinearLayout>
