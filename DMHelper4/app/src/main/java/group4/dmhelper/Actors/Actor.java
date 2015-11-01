@@ -14,6 +14,11 @@ import java.util.ArrayList;
 
 public class Actor extends Model{
 
+
+    public Actor() {
+
+    }
+
     //Various Identifiers
 
     boolean monster;    //this class will cover both monsters and humans
@@ -22,8 +27,8 @@ public class Actor extends Model{
     //Various Player Attributes
     //$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#
 
-    String name;
-    String gender;
+    private String name;
+    private String gender;
     int size;
     String alignment;
     int weight;
@@ -47,6 +52,7 @@ public class Actor extends Model{
     int raceId;
 
     ArrayList<Integer> spellIds = new ArrayList<Integer>();
+
 
     //$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#
     //"get" functions - look through database to find the following items

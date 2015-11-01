@@ -14,9 +14,12 @@ import java.io.IOException;
 import group4.dmhelper.Database.DataBaseHelper;
 import group4.dmhelper.Fragments.FragmentAdapter;
 import group4.dmhelper.Fragments.FragmentFeed;
+import group4.dmhelper.GameManager;
 import group4.dmhelper.R;
 
 public class ActivityGame extends AppCompatActivity  {
+
+    GameManager gm = new GameManager();
 
     private final String tagName = "android:switcher:" + R.id.viewpager + ":" + 0;
 

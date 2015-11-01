@@ -18,6 +18,8 @@ public class GameManager {
     ArrayList<Actor> monsterList = new ArrayList<Actor>();
     ArrayList<Actor> monsterBacklog = new ArrayList<Actor>();   //This is for the DMs who want to create monsters before the game
 
+    ArrayList<Actor> itemBackLog = new ArrayList<Actor>();   //This is for the DMs who want to create monsters before the game
+
     ArrayList<Actor> initiativeRoll = new ArrayList<Actor>();   //this should be replaced with a circular linked list
 
     //ArrayList<DATABASE OBJECT> dataBases = new ArrayList<DATABASE OBJECT>();
