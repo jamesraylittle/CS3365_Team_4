@@ -1,24 +1,24 @@
 package group4.dmhelper.Activities;
 
-import android.content.Intent;
 import android.support.design.widget.TabLayout;
 import android.support.v7.app.AlertDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 
 import java.io.IOException;
 
 import group4.dmhelper.Database.DataBaseHelper;
 import group4.dmhelper.Fragments.FragmentAdapter;
 import group4.dmhelper.Fragments.FragmentFeed;
+import group4.dmhelper.Fragments.FragmentGame;
 import group4.dmhelper.R;
 
 public class ActivityGame extends AppCompatActivity  {
 
-    private final String tagName = "android:switcher:" + R.id.viewpager + ":" + 0;
+    private final String tagNameFeed = "android:switcher:" + R.id.viewpager + ":" + 0;
+    private final String tagNameGame = "android:switcher:" + R.id.viewpager + ":" + 1;
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,12 +40,16 @@ public class ActivityGame extends AppCompatActivity  {
         } catch (IOException ioe) {
             throw new Error("Unable to create database");
         }
+
+        //get the intent extras here, then send them to the fragment with setters
+        FragmentGame game = (FragmentGame) getSupportFragmentManager().findFragmentByTag(tagNameGame);
+        //game.setNumPlayers(); <- add this setter to FragmentGame class
     }
 
     @Override protected void onResume() {
         super.onResume();
         try {
-            FragmentFeed feed = (FragmentFeed) getSupportFragmentManager().findFragmentByTag(tagName);
+            FragmentFeed feed = (FragmentFeed) getSupportFragmentManager().findFragmentByTag(tagNameFeed);
             feed.updateFeed();
         }
         catch (Exception e) {}
