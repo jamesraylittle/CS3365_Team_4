@@ -20,4 +20,12 @@ public class ActivityStart extends AppCompatActivity {
         Intent intent = new Intent(this, ActivityGame.class);
         startActivity(intent);
     }
+
+    public void loadAdventure(View view)
+    {
+        //STEALING THIS BUTTON TO TEST
+        //TODO FIX THIS
+        Intent intent = new Intent(this, ActivityCharacterSheet.class);
+        startActivity(intent);
+    }
 }

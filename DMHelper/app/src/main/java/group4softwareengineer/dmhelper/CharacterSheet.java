@@ -27,6 +27,7 @@ public class CharacterSheet extends AppCompatActivity {
         ClassAdapter
                 .setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         Class_spinner.setAdapter(ClassAdapter);
+
         //Populate Race Spinner
         Spinner Race_spinner = (Spinner) findViewById(R.id.Race_Spinner);
         ArrayAdapter<CharSequence> RaceAdapter = ArrayAdapter
