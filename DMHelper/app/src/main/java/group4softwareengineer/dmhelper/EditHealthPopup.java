@@ -24,10 +24,11 @@ public class EditHealthPopup extends Activity {
         int width = dm.widthPixels;
         int height = dm.heightPixels;
         getWindow().setLayout((int)(width*0.7),(int) (height*0.4));
-        Button submit = (Button) findViewById(R.id.healthChangeSubmitButton);
+        Button submit = (Button) findViewById(R.id.btn_submit_health_change);
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //TODO edit the health of the player
                 finish();
             }
         });

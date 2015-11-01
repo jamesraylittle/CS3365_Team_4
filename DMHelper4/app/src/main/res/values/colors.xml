@@ -5,6 +5,7 @@
     <color name="colorAccent">#aa4839</color>
     <color name="background_material_light">#d4a06a</color>
     <color name="colorBackground">#d4a06a</color>
+    <color name="colorButton">#AA7239</color>
     <color name="black">#552b00</color>
     <color name="tab_line">#000000</color>
 </resources>

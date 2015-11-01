@@ -82,7 +82,7 @@
                         android:layout_height="fill_parent"
                         android:scaleType="fitXY"
                         android:id="@+id/btnLoadGame"
-                        android:onClick="newAdventure"
+                        android:onClick="loadAdventure"
                         android:layout_centerVertical="true"
                         android:layout_centerHorizontal="true"
                         android:text="Load Game"
