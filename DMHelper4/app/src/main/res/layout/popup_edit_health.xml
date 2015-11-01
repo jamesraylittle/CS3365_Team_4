@@ -4,8 +4,7 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingBottom="@dimen/activity_vertical_margin"
-    tools:context="group4softwareengineer.dmhelper.EditXpPopup">
-
+    tools:context="group4.dmhelper.Activities.Popups.PopupEditHealth">
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
@@ -17,9 +16,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="Edit Experience"
+            android:text="Edit Health"
             android:editable="false"
-            android:id="@+id/healthTag"
+            android:id="@+id/txt_health"
             android:layout_gravity="center_horizontal" />
 
         <LinearLayout
@@ -31,23 +30,23 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="Change Experience:"
+                android:text="Change Health:"
                 android:editable="false"
-                android:id="@+id/changeexperienceTag" />
+                android:id="@+id/txt_change_health" />
 
             <EditText
                 android:layout_width="157dp"
                 android:layout_height="wrap_content"
                 android:inputType="numberSigned"
                 android:ems="10"
-                android:id="@+id/experiencechange" />
+                android:id="@+id/text_input_health" />
         </LinearLayout>
 
         <Button
             android:layout_width="179dp"
             android:layout_height="wrap_content"
             android:text="Submit"
-            android:id="@+id/btn_submit_experience_change"
+            android:id="@+id/btn_submit_health"
             android:layout_gravity="center_horizontal"
             android:layout_weight="0.09" />
 

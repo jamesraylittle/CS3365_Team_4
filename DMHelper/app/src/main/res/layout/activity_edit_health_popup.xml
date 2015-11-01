@@ -47,7 +47,7 @@
             android:layout_width="179dp"
             android:layout_height="wrap_content"
             android:text="Submit"
-            android:id="@+id/healthChangeSubmitButton"
+            android:id="@+id/btn_submit_health_change"
             android:layout_gravity="center_horizontal"
             android:layout_weight="0.09" />
 
