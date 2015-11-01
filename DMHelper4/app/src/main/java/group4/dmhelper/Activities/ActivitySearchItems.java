@@ -42,7 +42,6 @@ public class ActivitySearchItems extends Activity {
         setContentView(R.layout.activity_seach_item);
         myDbHelper = new DataBaseHelper(this);
         initializeWidgets();
-        FragmentFeed.feedItems.add("testItems");
     }
 
     @Override

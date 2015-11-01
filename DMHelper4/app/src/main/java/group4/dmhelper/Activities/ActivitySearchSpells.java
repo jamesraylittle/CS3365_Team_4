@@ -42,7 +42,6 @@ public class ActivitySearchSpells extends Activity {
         setContentView(R.layout.activity_search_spell);
         myDbHelper = new DataBaseHelper(this);
         initializeWidgets();
-        FragmentFeed.feedItems.add("testSpells");
     }
 
     @Override

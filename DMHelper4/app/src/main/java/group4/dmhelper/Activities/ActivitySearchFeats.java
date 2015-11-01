@@ -43,7 +43,6 @@ public class ActivitySearchFeats extends Activity {
         setContentView(R.layout.activity_search_feat);
         myDbHelper = new DataBaseHelper(this);
         initializeWidgets();
-        FragmentFeed.feedItems.add("testFeats");
     }
 
     @Override

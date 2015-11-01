@@ -47,32 +47,28 @@ public class FragmentSearch extends Fragment implements View.OnClickListener {
     @Override
     public void onClick(View v) {
         Intent intent;
-        FragmentFeed feed = (FragmentFeed)getActivity().getSupportFragmentManager().findFragmentByTag(tagName);
+        //FragmentFeed feed = (FragmentFeed)getActivity().getSupportFragmentManager().findFragmentByTag(tagName);
+        //feed.addFeed("Search monsters clicked");
         switch (v.getId()) {
             case R.id.btnSearchMonster:
                 intent = new Intent(getContext(), ActivitySearchMonsters.class);
                 startActivity(intent);
-                feed.addFeed("Search monsters clicked");
                 break;
             case R.id.btnSearchItems:
                 intent = new Intent(getContext(), ActivitySearchItems.class);
                 startActivity(intent);
-                feed.addFeed("Search items clicked");
                 break;
             case R.id.btnSearchEquipment:
                 intent = new Intent(getContext(), ActivitySearchEquipment.class);
                 startActivity(intent);
-                feed.addFeed("Search equipment clicked");
                 break;
             case R.id.btnSearchSpells:
                 intent = new Intent(getContext(), ActivitySearchSpells.class);
                 startActivity(intent);
-                feed.addFeed("Search spells clicked");
                 break;
             case R.id.btnSearchFeats:
                 intent = new Intent(getContext(), ActivitySearchFeats.class);
                 startActivity(intent);
-                feed.addFeed("Search feats clicked");
                 break;
         }
     }
