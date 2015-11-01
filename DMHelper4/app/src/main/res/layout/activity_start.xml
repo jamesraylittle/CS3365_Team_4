@@ -59,7 +59,7 @@
                         android:scaleType="fitXY"
                         android:layout_centerVertical="true"
                         android:layout_centerHorizontal="true"
-                        android:text="New Game"
+                        android:text="New Adventure"
                         android:background="#AA7239" />
 
                 </RelativeLayout>
@@ -85,7 +85,7 @@
                         android:onClick="loadAdventure"
                         android:layout_centerVertical="true"
                         android:layout_centerHorizontal="true"
-                        android:text="Load Game"
+                        android:text="Load Adventure"
                         android:background="#AA7239" />
                 </RelativeLayout>
 

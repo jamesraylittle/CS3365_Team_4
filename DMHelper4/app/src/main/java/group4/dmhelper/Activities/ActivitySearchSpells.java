@@ -2,6 +2,7 @@ package group4.dmhelper.Activities;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.SQLException;
 import android.os.Bundle;
@@ -19,6 +20,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import group4.dmhelper.Database.DataBaseHelper;
+import group4.dmhelper.Fragments.FragmentFeed;
 import group4.dmhelper.R;
 
 /**

@@ -4,13 +4,16 @@
     android:layout_height="match_parent"
     android:background="#D4A06A">
 
-    <TextView
+    <ListView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Game Feed"
-        android:id="@+id/tempText2"
+        android:id="@+id/listView_gamefeed"
         android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:stackFromBottom="true"
+        android:layout_alignParentBottom="true"
+        android:focusable="false"
+        android:focusableInTouchMode="false"
+        android:listSelector="@android:color/transparent"/>
 
 </RelativeLayout>

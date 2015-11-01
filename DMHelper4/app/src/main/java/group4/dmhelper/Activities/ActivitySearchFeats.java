@@ -2,6 +2,7 @@ package group4.dmhelper.Activities;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.SQLException;
 import android.os.Bundle;
@@ -19,6 +20,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import group4.dmhelper.Database.DataBaseHelper;
+import group4.dmhelper.Fragments.FragmentFeed;
 import group4.dmhelper.R;
 
 /**
@@ -33,6 +35,7 @@ public class ActivitySearchFeats extends Activity {
     ListAdapter adapter;
     List<String> listUsers = new ArrayList<>();
     private String[] arraySize;
+    //private final String tagName = "android:switcher:" + R.id.viewpager + ":" + 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

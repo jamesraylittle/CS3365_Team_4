@@ -94,6 +94,14 @@
             android:name=".Activities.ActivityCharacterInventory"
             android:label="@string/title_activity_activity_character_inventory" >
         </activity>
+        <activity
+            android:name=".Popups.PopupMonsterInfo"
+            android:label="Main Activity"
+            android:theme="@style/AppTheme.PopupTheme"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan"
+            android:noHistory="true">
+        </activity>
     </application>
 
 </manifest>

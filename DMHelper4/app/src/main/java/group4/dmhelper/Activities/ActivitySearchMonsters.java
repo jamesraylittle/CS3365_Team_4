@@ -1,12 +1,18 @@
 package group4.dmhelper.Activities;
 
 import android.app.Activity;
+import android.app.ListActivity;
 import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.SQLException;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
+import android.util.Log;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListAdapter;
@@ -19,6 +25,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import group4.dmhelper.Database.DataBaseHelper;
+import group4.dmhelper.Fragments.FragmentFeed;
+import group4.dmhelper.Popups.PopupMonsterInfo;
 import group4.dmhelper.R;
 
 /**
@@ -32,6 +40,7 @@ public class ActivitySearchMonsters extends Activity {
     ListView searchResults;
     ListAdapter adapter;
     List<String> listUsers = new ArrayList<>();
+    List<String> monsterValues = new ArrayList<>();
     private String[] arraySize, arrayType;
 
     @Override
@@ -100,6 +109,40 @@ public class ActivitySearchMonsters extends Activity {
 
         //ListView
         searchResults = (ListView)findViewById(R.id.listView_search_monster);
+        searchResults.setOnItemClickListener(
+            new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> arg0, View view, int position, long id) {
+                    String[] mv = getMonsterInfo(searchResults.getItemAtPosition(position).toString());
+                    if (mv.equals(null)) {
+                        Toast.makeText(getApplicationContext(), "There was an error loading this monster's details.",
+                                Toast.LENGTH_LONG).show();
+                        return;
+                    }
+                    Intent intent = new Intent(ActivitySearchMonsters.this, PopupMonsterInfo.class);
+                    intent.putExtra("monster_values", mv);
+                    startActivity(intent);
+                }
+            }
+        );
+    }
+
+    private String[] getMonsterInfo(String monsterName) {
+        List<String> mi = new ArrayList<>();
+        myDbHelper.openDataBase();
+        Cursor query = myDbHelper.performRawQuery("select * from monster where name = ?", new String[]{monsterName});
+        if (query.getCount() != 1) { // if it is not just 1 result, that's an error
+            return null;
+        }
+        else { // Otherwise, populate string array with information
+            query.moveToFirst();
+            for (int i = 1; i < 33; i++) {
+                mi.add(query.getString(i));
+            }
+            query.close();
+        }
+        myDbHelper.close();
+        return mi.toArray(new String[mi.size()]);
     }
 
     public void doSearchMonsters(View view) {

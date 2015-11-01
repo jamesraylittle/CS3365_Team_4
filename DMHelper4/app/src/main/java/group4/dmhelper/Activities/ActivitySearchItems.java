@@ -20,6 +20,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import group4.dmhelper.Database.DataBaseHelper;
+import group4.dmhelper.Fragments.FragmentFeed;
 import group4.dmhelper.R;
 
 /**

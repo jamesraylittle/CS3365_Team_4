@@ -11,7 +11,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.Toast;
 
 import group4.dmhelper.Activities.ActivitySearchEquipment;
 import group4.dmhelper.Activities.ActivitySearchFeats;
@@ -22,6 +21,7 @@ import group4.dmhelper.R;
 
 
 public class FragmentSearch extends Fragment implements View.OnClickListener {
+    private final String tagName = "android:switcher:" + R.id.viewpager + ":" + 0;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -47,6 +47,8 @@ public class FragmentSearch extends Fragment implements View.OnClickListener {
     @Override
     public void onClick(View v) {
         Intent intent;
+        //FragmentFeed feed = (FragmentFeed)getActivity().getSupportFragmentManager().findFragmentByTag(tagName);
+        //feed.addFeed("Search monsters clicked");
         switch (v.getId()) {
             case R.id.btnSearchMonster:
                 intent = new Intent(getContext(), ActivitySearchMonsters.class);
