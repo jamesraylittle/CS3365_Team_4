@@ -29,7 +29,7 @@ public class Actor extends Model{
     private String gender;
     private int size;
     private String alignment;
-    private int weight;
+    private float weight;
     private String religion;
 
     private ArrayList<Integer> playerAbilities = new ArrayList<Integer>();
@@ -50,7 +50,52 @@ public class Actor extends Model{
     //Sets and Gets
     //$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#
 
+    public String getName()         {return name;}
+    public String getGender()       {return gender;}
+    public int getSize()            {return size;}
+    public String getAlignment()    {return alignment;}
+    public float getWeight()        {return weight;}
+    public String getReligion()     {return religion;}
 
+    public int getAbility(int i)    {if(i>0 && i<playerAbilities.size()) return playerAbilities.get(i);else return 0;}
+
+    public int getSpeed()           {return speed;}
+    public int getInitiativeMod()   {return initiativeMod;}
+    public int getGrappleMod()      {return grappleMod;}
+
+    public int getReflexSave()      {return reflexSave;}
+    public int getWillSave()        {return willSave;}
+    public int getFortSave()        {return fortSave;}
+
+    public int getReflexMod()       {return reflexMod;}
+    public int getWillMod()         {return willMod;}
+    public int getFortMod()         {return fortMod;}
+
+    public int getAC()              {return AC;}
+
+
+    public void setName(String value)       {name = value;}
+    public void setGender(String value)     {gender = value;}
+    public void setSize(int value)          {size = value;}
+    public void setAlignment(String value)  {alignment = value;}
+    public void setWeight(int value)        {weight = value;}
+    public void setReligion(String value)   {religion = value;}
+
+    public void setAbility(int i, int value)    {if(i>0 && i<playerAbilities.size()) playerAbilities.set(i, value);}
+
+    public void setSpeed(int value)         {speed = value;}
+    public void setInitiativeMod(int value) {initiativeMod = value;}
+    public void setGrappleMod(int value)    {grappleMod = value;}
+
+    public void setReflexSave(int value)    {reflexSave = value;}
+    public void setWillSave(int value)      {willSave = value;}
+    public void setFortSave(int value)      {fortSave = value;}
+
+    public void setReflexMod(int value)     {reflexMod = value;}
+    public void setWillMod(int value)       {willMod = value;}
+    public void setFortMod(int value)       {fortMod = value;}
+
+    public void setAC(int value)            {AC = value;}
 
     //$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#
     //Player IDs - We may not need objects for any of these
