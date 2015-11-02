@@ -12,4 +12,5 @@
     </string>
     <string name="title_activity_activity_character_feats">ActivityCharacterFeats</string>
     <string name="title_activity_activity_character_inventory">ActivityCharacterInventory</string>
+    <string name="title_activity_num_player">NumPlayer</string>
 </resources>

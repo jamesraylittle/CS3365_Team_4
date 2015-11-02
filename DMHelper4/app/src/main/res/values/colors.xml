@@ -10,4 +10,5 @@
     <color name="tab_line">#000000</color>
     <color name="health">#F70A0A</color>
     <color name="experience">#21E00B</color>
+    <color name="highlight">#D4B56A</color>
 </resources>
