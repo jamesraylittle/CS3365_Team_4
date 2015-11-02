@@ -1,4 +1,4 @@
-package group4.dmhelper.Activities;
+package group4.dmhelper.Activities.Popups;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.DisplayMetrics;
 import android.view.View;
 
+import group4.dmhelper.Activities.ActivityGame;
 import group4.dmhelper.R;
 
 public class NumPlayer extends AppCompatActivity {
