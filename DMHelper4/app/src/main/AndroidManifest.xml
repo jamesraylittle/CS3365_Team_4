@@ -103,6 +103,11 @@
             android:theme="@style/AppTheme.PopupTheme"
             android:windowSoftInputMode="adjustPan" >
         </activity>
+        <activity
+            android:name=".Activities.Popups.NumPlayer"
+            android:label="@string/title_activity_num_player"
+            android:theme="@style/AppTheme.popup">
+        </activity>
 
     </application>
 
