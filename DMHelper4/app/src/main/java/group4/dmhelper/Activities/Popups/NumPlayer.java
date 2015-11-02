@@ -29,29 +29,34 @@ public class NumPlayer extends AppCompatActivity {
         Intent intent = new Intent(this, ActivityGame.class);
         intent.putExtra("numplayers", 1);
         startActivity(intent);
+        finish();
     }
     public void two(View view)
     {
         Intent intent = new Intent(this, ActivityGame.class);
         intent.putExtra("numplayers", 2);
         startActivity(intent);
+        finish();
     }
     public void three(View view)
     {
         Intent intent = new Intent(this, ActivityGame.class);
         intent.putExtra("numplayers", 3);
         startActivity(intent);
+        finish();
     }
     public void four(View view)
     {
         Intent intent = new Intent(this, ActivityGame.class);
         intent.putExtra("numplayers", 4);
         startActivity(intent);
+        finish();
     }
     public void five(View view)
     {
         Intent intent = new Intent(this, ActivityGame.class);
         intent.putExtra("numplayers", 5);
         startActivity(intent);
+        finish();
     }
 }

@@ -12,6 +12,7 @@ import java.io.IOException;
 import group4.dmhelper.Database.DataBaseHelper;
 import group4.dmhelper.Fragments.FragmentAdapter;
 import group4.dmhelper.Fragments.FragmentFeed;
+import group4.dmhelper.Fragments.FragmentGame;
 import group4.dmhelper.R;
 
 public class ActivityGame extends AppCompatActivity  {
@@ -53,7 +54,10 @@ public class ActivityGame extends AppCompatActivity  {
         super.onResume();
         try {
             FragmentFeed feed = (FragmentFeed) getSupportFragmentManager().findFragmentByTag(tagNameFeed);
+            FragmentGame game = (FragmentGame) getSupportFragmentManager().findFragmentByTag(tagNameGame);
             feed.updateFeed();
+
+            game.updateMonsters();
         }
         catch (Exception e) {}
     }
