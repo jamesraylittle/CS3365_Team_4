@@ -101,6 +101,18 @@ public class ActivityCharacterSheet extends AppCompatActivity {
             }
         });
 
+        // Button for abilities
+        Button abilities = (Button) findViewById(R.id.btn_abilities);
+        abilities.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ActivityCharacterSheet.this, ActivityCharacterAbilities.class);
+                intent.putExtra("Identifier", ID);
+                startActivity(intent);
+            }
+        });
+
+
         //Button for Editing health
         Button health = (Button) findViewById(R.id.btn_change_health);
         health.setOnClickListener(new View.OnClickListener() {
