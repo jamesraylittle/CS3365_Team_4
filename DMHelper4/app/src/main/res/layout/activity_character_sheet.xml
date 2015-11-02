@@ -224,9 +224,9 @@ tools:context="group4.dmhelper.Activities.ActivityCharacterSheet">
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
             android:background="@color/colorButton"
-            android:text="Spells"
+            android:text="Abilities"
             android:scaleType="fitXY"
-            android:id="@+id/btn_spells"
+            android:id="@+id/btn_abilities"
             android:layout_centerVertical="true"
             android:layout_centerHorizontal="true" />
     </RelativeLayout>

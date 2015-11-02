@@ -58,18 +58,18 @@
         <activity
             android:name=".Activities.ActivityCharacterSheet"
             android:label="@string/title_activity_activity_character_sheet"
-            android:windowSoftInputMode="adjustPan"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" >
         </activity>
         <activity
             android:name=".Activities.Popups.PopupEditExperience"
-            android:theme="@style/AppTheme.popup"
-            android:label="@string/title_activity_popup_edit_experiance" >
+            android:label="@string/title_activity_popup_edit_experience"
+            android:theme="@style/AppTheme.popup" >
         </activity>
         <activity
             android:name=".Activities.Popups.PopupEditHealth"
-            android:theme="@style/AppTheme.popup"
-            android:label="@string/title_activity_popup_edit_health" >
+            android:label="@string/title_activity_popup_edit_health"
+            android:theme="@style/AppTheme.popup" >
         </activity>
         <activity
             android:name=".Activities.ActivityCharacterSkills"
@@ -92,13 +92,18 @@
             android:label="@string/title_activity_activity_character_inventory" >
         </activity>
         <activity
+            android:name=".Activities.ActivityCharacterAbilities"
+            android:label="@string/title_activity_activity_character_abilities" >
+        </activity>
+        <activity
             android:name=".Activities.Popups.PopupMonsterInfo"
             android:label="Main Activity"
-            android:theme="@style/AppTheme.PopupTheme"
+            android:noHistory="true"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustPan"
-            android:noHistory="true">
+            android:theme="@style/AppTheme.PopupTheme"
+            android:windowSoftInputMode="adjustPan" >
         </activity>
+
     </application>
 
 </manifest>
