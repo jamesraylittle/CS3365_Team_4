@@ -1,4 +1,4 @@
-package group4.dmhelper.Popups;
+package group4.dmhelper.Activities.Popups;
 
 import android.app.Activity;
 import android.os.Bundle;

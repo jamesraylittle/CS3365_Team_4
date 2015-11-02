@@ -43,6 +43,7 @@ public class ActivityStart extends AppCompatActivity {
         //STEALING THIS BUTTON TO TEST
         //TODO FIX THIS
         Intent intent = new Intent(this, ActivityCharacterSheet.class);
+        intent.putExtra("Identifier","1");
         startActivity(intent);
     }
 }

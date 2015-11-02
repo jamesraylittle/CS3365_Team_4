@@ -25,11 +25,13 @@ public class FragmentFeed extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view =  inflater.inflate(R.layout.fragment_feed, container, false);
-        feed = (ListView)view.findViewById(R.id.listView_gamefeed);
+        View view = inflater.inflate(R.layout.fragment_feed, container, false);
+        feed = (ListView) view.findViewById(R.id.listView_gamefeed);
+        if (!feedItems.equals(null)) feedItems.clear();
         addFeed("Adventure started");
         return view;
     }
+
 
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
