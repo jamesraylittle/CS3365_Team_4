@@ -3,23 +3,15 @@ package group4.dmhelper.Actors;
 import java.util.ArrayList;
 
 /**
- * It seems the attributes have IDs inside the database itself.  We may take out the classes that are just generic, such as skill, race, etc...
- *
- * On the other hand, we could have the actor create all of these classes and the classes themselves could be delegated the parsing code.
- *
- * Either way, it shouldn't be necessary for each individual class to have its own table.
  *
  * Created by Daniel on 10/19/2015.
+ * Edited 11/2/2015
  */
 
 public class Actor extends Model{
 
 
-    public Actor(int i) {id = i;}
-
-    //Various Identifiers
-
-    boolean monster;    //this class will cover both monsters and humans
+    public Actor(int i) {id = i;}   //TODO - still needs to populate private variables from database
 
     //$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#
     //Various Player Attributes
@@ -42,7 +34,8 @@ public class Actor extends Model{
     private int willSave;   private int willMod;
     private int fortSave;   private int fortMod;
 
-    private int AC;
+    //private int AC;
+    //private int flatFootedAC;
 
     private ArrayList<Integer> localSkills = new ArrayList<Integer>();
 
@@ -71,9 +64,6 @@ public class Actor extends Model{
     public int getWillMod()         {return willMod;}
     public int getFortMod()         {return fortMod;}
 
-    public int getAC()              {return AC;}
-
-
     public void setName(String value)       {name = value;}
     public void setGender(String value)     {gender = value;}
     public void setSize(int value)          {size = value;}
@@ -95,7 +85,12 @@ public class Actor extends Model{
     public void setWillMod(int value)       {willMod = value;}
     public void setFortMod(int value)       {fortMod = value;}
 
-    public void setAC(int value)            {AC = value;}
+    //$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#
+    //Saving and loading from database
+    //$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#
+
+    public void pullVariables()         {/*takes variables from database*/} // TODO: 11/2/2015
+    public void pushVariables()         {/*writes over current variables in database*/} // TODO: 11/2/2015
 
     //$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#
     //Player IDs - We may not need objects for any of these
@@ -176,6 +171,9 @@ public class Actor extends Model{
     //"calculate" functions
     //$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#
 
-    public int rollToHit(){return 0;}   //TODO
-    public int calculateDamageEquippedItem(){return 0;}     //TODO
+    public int calculateAC() {return 0;}            // TODO: 11/2/2015
+    public int calculateTouchAC() {return 0;}       // TODO: 11/2/2015
+    public int calculateFlatFootedAC() {return 0;}  // TODO: 11/2/2015
+    public int rollToHit(){return 0;}               //TODO
+    public int calculateDamage(){return 0;}         //TODO
 }
