@@ -33,15 +33,20 @@ public class ActivityCharacterSheet extends AppCompatActivity {
     }
 
     private void editProgressBars(String playerIdentifier) {
+        //Actor player = new Actor(playerIdentifer);
         ProgressBar healthbar = (ProgressBar) findViewById(R.id.progressBar_health);
         healthbar.setMax(100);  //TODO GET FROM DATABASE
+                                // healthbar.setMax(player.calcMaxHealth());
         healthbar.setProgress(45);  //TODO GET FROM DATABASE
+                                // healthbar.setProgress(player.getHealth());
         TextView health = (TextView) findViewById(R.id.txt_health_ratio);
         health.setText(healthbar.getProgress() + "/" + healthbar.getMax());
 
         ProgressBar xpbar = (ProgressBar) findViewById(R.id.progressBar_experience);
         xpbar.setMax(100); //TODO GET FROM DATABASE
+                            // xpbar.setMax(player.calcMaxXp());
         xpbar.setProgress(10);  //TODO GET FROM DATABASE
+                            //xpbar.setProgress(
         TextView xp = (TextView) findViewById(R.id.txt_experience_ratio);
         xp.setText(xpbar.getProgress() + "/" + xpbar.getMax());
 
