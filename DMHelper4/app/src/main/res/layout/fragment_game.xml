@@ -1,17 +1,139 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal" android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
     android:background="#D4A06A"
     android:id="@+id/tempTest5">
 
-    <TextView
+
+    <TableLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Game Screen"
-        android:id="@+id/tempText"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_gravity="top">
 
-</RelativeLayout>
+        <TableRow
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp">
+
+            <Button
+                android:layout_width="75dp"
+                android:layout_height="75dp"
+                android:text="Player One"
+                android:id="@+id/playerOne"
+                android:layout_alignParentStart="true"
+                android:layout_marginTop="27dp"
+                android:onClick="showCharacterSheet"
+                android:background="#D4B56A"
+                android:visibility="invisible"/>
+        </TableRow>
+
+        <TableRow
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp">
+
+            <Button
+                android:background="#AA7239"
+                android:layout_width="75dp"
+                android:layout_height="75dp"
+                android:text="Player Two"
+                android:id="@+id/playerTwo"
+                android:layout_below="@+id/playerOne"
+                android:layout_alignParentStart="true"
+                android:onClick="showCharacterSheet"
+                android:visibility="invisible"/>
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp">
+
+            <Button
+                android:background="#AA7239"
+                android:layout_width="75dp"
+                android:layout_height="75dp"
+                android:text="Player Three"
+                android:id="@+id/playerThree"
+                android:layout_below="@+id/playerTwo"
+                android:layout_alignParentStart="true"
+                android:onClick="showCharacterSheet"
+                android:visibility="invisible"/>
+        </TableRow>
+
+        <TableRow
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp">
+
+            <Button
+                android:background="#AA7239"
+                android:layout_width="75dp"
+                android:layout_height="75dp"
+                android:text="Player Four"
+                android:id="@+id/playerFour"
+                android:layout_below="@+id/playerThree"
+                android:layout_alignParentStart="true"
+                android:onClick="showCharacterSheet"
+                android:visibility="invisible"/>
+        </TableRow>
+
+        <TableRow
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp">
+
+            <Button
+                android:background="#AA7239"
+                android:layout_width="75dp"
+                android:layout_height="75dp"
+                android:text="Player Five"
+                android:id="@+id/playerFive"
+                android:layout_below="@+id/playerFour"
+                android:layout_alignParentStart="true"
+                android:onClick="showCharacterSheet"
+                android:visibility="invisible"/>
+        </TableRow>
+
+        <TableRow
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Next Turn"
+                android:id="@+id/nextTurn"
+
+                android:layout_alignStart="@+id/monsterTwo"
+                android:layout_alignTop="@+id/playerFive" />
+
+        </TableRow>
+    </TableLayout>
+    <View android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_weight = "1"
+        />
+    <TableLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top">
+
+        <TableRow
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Add Monster"
+                android:id="@+id/add_monster_button"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentEnd="true" />
+        </TableRow>
+    </TableLayout>
+
+</LinearLayout>
+
