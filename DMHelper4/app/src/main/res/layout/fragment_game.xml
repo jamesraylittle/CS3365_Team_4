@@ -119,19 +119,13 @@
     <TableLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="top">
+        android:layout_gravity="top"
+        android:id="@+id/tableLayout">
 
         <TableRow
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
 
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Add Monster"
-                android:id="@+id/add_monster_button"
-                android:layout_alignParentBottom="true"
-                android:layout_alignParentEnd="true" />
         </TableRow>
     </TableLayout>
 
