@@ -28,41 +28,38 @@
         <activity
             android:name=".Activities.ActivitySearchMonsters"
             android:label="Main Activity"
-            android:noHistory="true"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustPan" >
         </activity>
         <activity
             android:name=".Activities.ActivitySearchItems"
             android:label="Main Activity"
-            android:noHistory="true"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustPan" >
         </activity>
         <activity
             android:name=".Activities.ActivitySearchFeats"
             android:label="Main Activity"
-            android:noHistory="true"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustPan" >
         </activity>
         <activity
             android:name=".Activities.ActivitySearchSpells"
             android:label="Main Activity"
-            android:noHistory="true"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustPan" >
         </activity>
         <activity
             android:name=".Activities.ActivitySearchEquipment"
             android:label="Main Activity"
-            android:noHistory="true"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustPan" >
         </activity>
         <activity
             android:name=".Activities.ActivityCharacterSheet"
-            android:label="@string/title_activity_activity_character_sheet" >
+            android:label="@string/title_activity_activity_character_sheet"
+            android:windowSoftInputMode="adjustPan"
+            android:screenOrientation="portrait">
         </activity>
         <activity
             android:name=".Activities.Popups.PopupEditExperience"
@@ -95,7 +92,7 @@
             android:label="@string/title_activity_activity_character_inventory" >
         </activity>
         <activity
-            android:name=".Popups.PopupMonsterInfo"
+            android:name=".Activities.Popups.PopupMonsterInfo"
             android:label="Main Activity"
             android:theme="@style/AppTheme.PopupTheme"
             android:screenOrientation="portrait"
