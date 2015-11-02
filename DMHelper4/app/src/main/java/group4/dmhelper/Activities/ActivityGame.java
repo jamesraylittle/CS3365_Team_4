@@ -42,8 +42,13 @@ public class ActivityGame extends AppCompatActivity  {
         }
 
         //get the intent extras here, then send them to the fragment with setters
+        Bundle b = getIntent().getExtras();
+        int numPlayers = (int) b.get("numplayers");
         FragmentGame game = (FragmentGame) getSupportFragmentManager().findFragmentByTag(tagNameGame);
-        //game.setNumPlayers(); <- add this setter to FragmentGame class
+        if(numPlayers>0 && numPlayers<6)
+        {
+            game.setNumPlayers(numPlayers); //<- add this setter to FragmentGame class
+        }
     }
 
     @Override protected void onResume() {
