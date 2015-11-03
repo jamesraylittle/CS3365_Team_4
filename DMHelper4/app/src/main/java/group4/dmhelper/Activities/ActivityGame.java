@@ -10,7 +10,12 @@ import android.support.v7.app.AppCompatActivity;
 
 import java.io.IOException;
 
+import group4.dmhelper.Actors.Ability;
+import group4.dmhelper.Actors.Item;
+import group4.dmhelper.Actors.Player;
 import group4.dmhelper.Database.DataBaseHelper;
+import group4.dmhelper.Database.Abilities;
+import group4.dmhelper.Database.Players;
 import group4.dmhelper.Fragments.FragmentAdapter;
 import group4.dmhelper.Fragments.FragmentFeed;
 import group4.dmhelper.Fragments.FragmentGame;
@@ -36,6 +41,15 @@ public class ActivityGame extends AppCompatActivity  {
         viewPager.setOffscreenPageLimit(3);
 
         DataBaseHelper myDbHelper = new DataBaseHelper(this);
+        try {
+            Player p = new Player();
+            p.setName("jameS");
+
+            new Players(this).create(p);
+
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
         try {
             myDbHelper.createDataBase();
         } catch (IOException ioe) {
