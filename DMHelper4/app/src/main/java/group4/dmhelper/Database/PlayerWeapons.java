@@ -17,13 +17,9 @@ public class PlayerWeapons extends Database implements DAO<PlayerWeapon> {
         createTable();
     }
 
-    public int create(PlayerWeapon p) {
-        return (int)database.insert(TABLE, null, createContentValues(p));
-    }
+    public int create(PlayerWeapon p) { return super.create(TABLE, values(p)); }
 
-    public void update(PlayerWeapon p) {
-        database.update(TABLE, createContentValues(p), "id = ?", new String[] { p.id()+""});
-    }
+    public void update(PlayerWeapon p) { super.update(TABLE, p, values(p)); }
 
     public PlayerWeapon retrieve(int id) {
         String args[] = new String[] { id+"" };
@@ -51,7 +47,7 @@ public class PlayerWeapons extends Database implements DAO<PlayerWeapon> {
 
     public int count() { return super.count(TABLE); }
 
-    private ContentValues createContentValues(PlayerWeapon p) {
+    private ContentValues values(PlayerWeapon p) {
         ContentValues values = new ContentValues();
         if(p.id() > 0) values.put("id", p.id());
         values.put("playerId", p.playerId());
