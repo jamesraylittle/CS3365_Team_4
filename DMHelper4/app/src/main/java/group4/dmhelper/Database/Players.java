@@ -34,7 +34,7 @@ public class Players extends Database implements DAO<Player> {
                 from.setAlignment(c.getString(3));
                 from.setWeight(c.getInt(4));
                 from.setReligion(c.getString(5));
-                from.setPlayerAbilitiyId(c.getInt(6));
+                from.setPlayerAbilityId(c.getInt(6));
                 from.setEquippedItemsId(c.getInt(7));
                 from.setSkillsId(c.getInt(8));
                 from.setPlayerWeaponsId(c.getInt(9));
@@ -59,7 +59,7 @@ public class Players extends Database implements DAO<Player> {
         values.put("alignment", p.alignment());
         values.put("weight", p.weight());
         values.put("religion", p.religion());
-        values.put("playerAbilityId", p.playerAbilitiyId());
+        values.put("playerAbilityId", p.playerAbilityId());
         values.put("equippedItemsId", p.equippedItemsId());
         values.put("skillsId", p.skillsId());
         values.put("playerWeaponsId", p.playerWeaponsId());
