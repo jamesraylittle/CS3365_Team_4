@@ -43,8 +43,8 @@ public class PopupEditHealth extends AppCompatActivity {
                     //TODO EDIT ACTOR HEALTH
 
                     //player.setHealth(player.getHealth() + health)
-                    FragmentFeed.feedItems.add(PlayerIdentifier + "edited health by: " + health); //TODO ADD PLAYER NAME
-                    Toast.makeText(getApplicationContext(),PlayerIdentifier + "edited health by: " + health, Toast.LENGTH_LONG).show();
+                    FragmentFeed.feedItems.add(PlayerIdentifier + " edited health by: " + health); //TODO ADD PLAYER NAME
+                    Toast.makeText(getApplicationContext(),PlayerIdentifier + " edited health by: " + health, Toast.LENGTH_LONG).show();
                     finish();
                 }
                 else {

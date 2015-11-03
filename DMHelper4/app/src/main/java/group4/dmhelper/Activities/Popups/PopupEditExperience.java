@@ -41,8 +41,8 @@ public class PopupEditExperience extends AppCompatActivity {
                     int xp = Integer.parseInt(text);
                     //TODO EDIT ACTOR XP
                     //player.setXP(player.getxp() + xp)
-                    FragmentFeed.feedItems.add(PlayerIdentifier + "edited experience by: " + xp); //TODO ADD PLAYER NAME
-                    Toast.makeText(getApplicationContext(),PlayerIdentifier + "edited experience by: " + xp, Toast.LENGTH_LONG).show();
+                    FragmentFeed.feedItems.add(PlayerIdentifier + " edited experience by: " + xp); //TODO ADD PLAYER NAME
+                    Toast.makeText(getApplicationContext(),PlayerIdentifier + " edited experience by: " + xp, Toast.LENGTH_LONG).show();
                     finish();
                 }
                 else {

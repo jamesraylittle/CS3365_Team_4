@@ -348,8 +348,8 @@ tools:context="group4.dmhelper.Activities.ActivityCharacterSheet">
                     android:layout_height="wrap_content"
                     android:layout_gravity="left"
                     android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:text="Allignment"
-                    android:id="@+id/txt_allignment" />
+                    android:text="Alignment"
+                    android:id="@+id/txt_alignment" />
                 <View
                     android:layout_width="0dp"
                     android:layout_height="0dp"
@@ -360,7 +360,7 @@ tools:context="group4.dmhelper.Activities.ActivityCharacterSheet">
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="right"
-                    android:id="@+id/spinner_search_allignment" />
+                    android:id="@+id/spinner_search_alignment" />
             </LinearLayout>
 
 
@@ -407,6 +407,16 @@ tools:context="group4.dmhelper.Activities.ActivityCharacterSheet">
                 </android.support.design.widget.TextInputLayout>
 
             </LinearLayout>
+
+            <Button
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:background="@color/colorButton"
+                android:text="Submit"
+                android:scaleType="fitXY"
+                android:id="@+id/btn_submit_character_sheet"
+                android:layout_centerVertical="true"
+                android:layout_centerHorizontal="true" />
 
         </LinearLayout>
     </ScrollView>

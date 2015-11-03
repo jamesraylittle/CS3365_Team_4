@@ -8,12 +8,14 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.TextView;
 
 import group4.dmhelper.Activities.Popups.PopupEditExperience;
 import group4.dmhelper.Activities.Popups.PopupEditHealth;
+import group4.dmhelper.Fragments.FragmentFeed;
 import group4.dmhelper.R;
 
 public class ActivityCharacterSheet extends AppCompatActivity {
@@ -25,10 +27,70 @@ public class ActivityCharacterSheet extends AppCompatActivity {
         setContentView(R.layout.activity_character_sheet);
 
         Bundle extras = getIntent().getExtras();
-        String PlayerIdentifier = extras.getString("Identifier");
+        final String PlayerIdentifier = extras.getString("Identifier");
         populateSpinners();
         setupButtons(PlayerIdentifier);
         editProgressBars(PlayerIdentifier);
+
+        // Button for Submit
+        Button Submit = (Button) findViewById(R.id.btn_submit_character_sheet);
+        Submit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                EditText characterName = (EditText) findViewById(R.id.editText_character_name);
+                if(!characterName.getText().toString().equals("")) //TODO CHECK IF DIFFERENT FROM CURRENT
+                {
+                    FragmentFeed.feedItems.add(PlayerIdentifier + "Changed character name to " + characterName.getText());
+                }
+
+                EditText playerName = (EditText) findViewById(R.id.editText_player_name);
+                if(!playerName.getText().toString().equals("")) //TODO CHECK IF DIFFERENT FROM CURRENT
+                {
+                    final String s = playerName.getText().toString();
+                    FragmentFeed.feedItems.add(PlayerIdentifier + "Changed player name to " + playerName.getText());
+                }
+
+                EditText height = (EditText) findViewById(R.id.editText_Height);
+                if(!height.getText().toString().equals("")) //TODO CHECK IF DIFFERENT FROM CURRENT
+                {
+                    FragmentFeed.feedItems.add(PlayerIdentifier + "Changed height to " + height.getText());
+                }
+
+                EditText weight = (EditText) findViewById(R.id.editText_Weight);
+                if(!weight.getText().toString().equals("")) //TODO CHECK IF DIFFERENT FROM CURRENT
+                {
+                    FragmentFeed.feedItems.add(PlayerIdentifier + "Changed weight to " + weight.getText());
+                }
+
+                EditText religion = (EditText) findViewById(R.id.editText_religion);
+                if(!religion.getText().toString().equals("")) //TODO CHECK IF DIFFERENT FROM CURRENT
+                {
+                    FragmentFeed.feedItems.add(PlayerIdentifier + "Changed religion to " + religion.getText());
+                }
+
+                Spinner characterClass = (Spinner) findViewById(R.id.spinner_search_class);
+                if(!characterClass.getSelectedItem().toString().equals("")) //TODO CHECK IF DIFFERENT FROM CURRENT
+                {
+                    FragmentFeed.feedItems.add(PlayerIdentifier + "Changed class to " + characterClass.getSelectedItem().toString());
+                }
+
+                Spinner race = (Spinner) findViewById(R.id.spinner_search_race);
+                if(!race.getSelectedItem().toString().equals("")) //TODO CHECK IF DIFFERENT FROM CURRENT
+                {
+                    FragmentFeed.feedItems.add(PlayerIdentifier + "Changed race to " + race.getSelectedItem().toString());
+                }
+
+                Spinner alignment = (Spinner) findViewById(R.id.spinner_search_alignment);
+                if(!alignment.getSelectedItem().toString().equals("")) //TODO CHECK IF DIFFERENT FROM current
+                {
+                    FragmentFeed.feedItems.add(PlayerIdentifier + "Changed alignment to " + alignment.getSelectedItem().toString());
+                }
+
+                finish();
+            }
+        });
+
 
     }
 
@@ -159,12 +221,12 @@ public class ActivityCharacterSheet extends AppCompatActivity {
         Race_spinner.setAdapter(RaceAdapter);
 
         //Populate Race Spinner
-        Spinner Allignment_spinner = (Spinner) findViewById(R.id.spinner_search_allignment);
-        ArrayAdapter<CharSequence> AllignmentAdapter = ArrayAdapter
-                .createFromResource(this, R.array.Allignments,
+        Spinner Alignment_spinner = (Spinner) findViewById(R.id.spinner_search_alignment);
+        ArrayAdapter<CharSequence> AlignmentAdapter = ArrayAdapter
+                .createFromResource(this, R.array.Alignments,
                         android.R.layout.simple_spinner_item);
-        AllignmentAdapter.setDropDownViewResource(R.layout.spinner_layout_dropdown);
-        Allignment_spinner.setAdapter(AllignmentAdapter);
+        AlignmentAdapter.setDropDownViewResource(R.layout.spinner_layout_dropdown);
+        Alignment_spinner.setAdapter(AlignmentAdapter);
     }
 }
 
