@@ -17,12 +17,9 @@ public class Abilities extends Database implements DAO<Ability> {
         createTable();
     }
 
-    public int create(Ability a) {
-        return (int)database.insert(TABLE, null, createContentValues(a));
-    }
+    public int create(Ability a) { return super.create(TABLE, values(a)); }
 
-    public void update(Ability a) {
-        database.update(TABLE, createContentValues(a), "id = ?", new String[]{a.id()+""});
+    public void update(Ability a) { super.update(TABLE, a, values(a));
     }
 
     public Ability retrieve(int id) {
@@ -43,12 +40,12 @@ public class Abilities extends Database implements DAO<Ability> {
     }
 
     public void delete(int id) {
-        database.delete(TABLE, "id = ?", new String[] {id + ""});
+        super.delete(id, TABLE);
     }
 
     public int count() { return super.count(TABLE); }
 
-    private ContentValues createContentValues(Ability a) {
+    private ContentValues values(Ability a) {
         ContentValues values = new ContentValues();
         if(a.id() > 0) values.put("id", a.id());
 
