@@ -41,15 +41,7 @@ public class ActivityGame extends AppCompatActivity  {
         viewPager.setOffscreenPageLimit(3);
 
         DataBaseHelper myDbHelper = new DataBaseHelper(this);
-        try {
-            Player p = new Player();
-            p.setName("jameS");
 
-            new Players(this).create(p);
-
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-        }
         try {
             myDbHelper.createDataBase();
         } catch (IOException ioe) {
