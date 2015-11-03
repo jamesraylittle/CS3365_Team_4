@@ -31,10 +31,6 @@ public class ActivityStart extends AppCompatActivity {
 
     public void loadAdventure(View view)
     {
-        //STEALING THIS BUTTON TO TEST
-        //TODO FIX THIS
-        Intent intent = new Intent(this, ActivityCharacterSheet.class);
-        intent.putExtra("Identifier","1");
-        startActivity(intent);
+
     }
 }
