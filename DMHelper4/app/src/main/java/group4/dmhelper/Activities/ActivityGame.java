@@ -1,5 +1,6 @@
 package group4.dmhelper.Activities;
 
+import android.app.Activity;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
@@ -73,6 +74,7 @@ public class ActivityGame extends AppCompatActivity  {
                 {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
+                        ActivityStart.start.finish();
                         finish();
                     }
                 })
