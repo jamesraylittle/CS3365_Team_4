@@ -25,6 +25,8 @@ import group4.dmhelper.R;
  */
 public class FragmentGame extends Fragment implements View.OnClickListener{
 
+    private final String tagName = "android:switcher:" + R.id.viewpager + ":" + 0;
+
     public int numPlayers;
     public TableLayout tableLayout;
     public int whoseTurn;
@@ -117,8 +119,6 @@ public class FragmentGame extends Fragment implements View.OnClickListener{
     @Override
     public void onClick(View v) {
         Intent intent;
-        //FragmentFeed feed = (FragmentFeed)getActivity().getSupportFragmentManager().findFragmentByTag(tagName);
-        //feed.addFeed("Search monsters clicked");
         switch (v.getId()) {
             case R.id.nextTurn:
                 nextTurn(v);
@@ -195,7 +195,7 @@ public class FragmentGame extends Fragment implements View.OnClickListener{
         {
             whoseTurn++;
         }
-
+        FragmentFeed feed = (FragmentFeed)getActivity().getSupportFragmentManager().findFragmentByTag(tagName);
         switch (whoseTurn)
         {
             case 1:
@@ -215,27 +215,27 @@ public class FragmentGame extends Fragment implements View.OnClickListener{
                         break;
                 }
                 playerOne.setBackgroundColor(getContext().getResources().getColor(R.color.highlight));
-                FragmentFeed.feedItems.add("PlayerOne's Turn");
+                feed.addFeed("PlayerOne's Turn");
                 break;
             case 2:
                 playerOne.setBackgroundColor(getContext().getResources().getColor(R.color.colorButton));
                 playerTwo.setBackgroundColor(getContext().getResources().getColor(R.color.highlight));
-                FragmentFeed.feedItems.add("PlayerTwo's Turn");
+                feed.addFeed("PlayerTwo's Turn");
                 break;
             case 3:
                 playerTwo.setBackgroundColor(getContext().getResources().getColor(R.color.colorButton));
                 playerThree.setBackgroundColor(getContext().getResources().getColor(R.color.highlight));
-                FragmentFeed.feedItems.add("PlayerThree's Turn");
+                feed.addFeed("PlayerThree's Turn");
                 break;
             case 4:
                 playerThree.setBackgroundColor(getContext().getResources().getColor(R.color.colorButton));
                 playerFour.setBackgroundColor(getContext().getResources().getColor(R.color.highlight));
-                FragmentFeed.feedItems.add("PlayerFour's Turn");
+                feed.addFeed("PlayerFour's Turn");
                 break;
             case 5:
                 playerFour.setBackgroundColor(getContext().getResources().getColor(R.color.colorButton));
                 playerFive.setBackgroundColor(getContext().getResources().getColor(R.color.highlight));
-                FragmentFeed.feedItems.add("PlayerFive's Turn");
+                feed.addFeed("PlayerFive's Turn");
                 break;
         }
     }
