@@ -1,5 +1,6 @@
 package group4.dmhelper.Activities;
 
+import android.app.Activity;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
@@ -9,9 +10,15 @@ import android.support.v7.app.AppCompatActivity;
 
 import java.io.IOException;
 
+import group4.dmhelper.Actors.Ability;
+import group4.dmhelper.Actors.Item;
+import group4.dmhelper.Actors.Player;
 import group4.dmhelper.Database.DataBaseHelper;
+import group4.dmhelper.Database.Abilities;
+import group4.dmhelper.Database.Players;
 import group4.dmhelper.Fragments.FragmentAdapter;
 import group4.dmhelper.Fragments.FragmentFeed;
+import group4.dmhelper.Fragments.FragmentGame;
 import group4.dmhelper.R;
 
 public class ActivityGame extends AppCompatActivity  {
@@ -34,6 +41,7 @@ public class ActivityGame extends AppCompatActivity  {
         viewPager.setOffscreenPageLimit(3);
 
         DataBaseHelper myDbHelper = new DataBaseHelper(this);
+
         try {
             myDbHelper.createDataBase();
         } catch (IOException ioe) {
@@ -53,7 +61,10 @@ public class ActivityGame extends AppCompatActivity  {
         super.onResume();
         try {
             FragmentFeed feed = (FragmentFeed) getSupportFragmentManager().findFragmentByTag(tagNameFeed);
+            FragmentGame game = (FragmentGame) getSupportFragmentManager().findFragmentByTag(tagNameGame);
             feed.updateFeed();
+
+            game.updateMonsters();
         }
         catch (Exception e) {}
     }
@@ -69,6 +80,7 @@ public class ActivityGame extends AppCompatActivity  {
                 {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
+                        ActivityStart.start.finish();
                         finish();
                     }
                 })

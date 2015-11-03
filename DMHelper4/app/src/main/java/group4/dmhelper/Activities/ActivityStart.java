@@ -1,5 +1,6 @@
 package group4.dmhelper.Activities;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -14,6 +15,8 @@ public class ActivityStart extends AppCompatActivity {
 
     private Button btnNewGame;
     private RelativeLayout relativeLayout;
+    public static Activity start;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,14 +30,12 @@ public class ActivityStart extends AppCompatActivity {
                 startActivity(new Intent(ActivityStart.this, NumPlayer.class));
             }
         });
+
+        start = this;
     }
 
     public void loadAdventure(View view)
     {
-        //STEALING THIS BUTTON TO TEST
-        //TODO FIX THIS
-        Intent intent = new Intent(this, ActivityCharacterSheet.class);
-        intent.putExtra("Identifier","1");
-        startActivity(intent);
+
     }
 }

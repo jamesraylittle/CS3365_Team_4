@@ -4,7 +4,7 @@
     <string name="title_activity_activity_character_sheet">ActivityCharacterSheet</string>
 
     <string name="hello_world">Hello world!</string>
-    <string name="title_activity_popup_edit_experiance">PopupEditExperiance</string>
+    <string name="title_activity_popup_edit_experience">PopupEditExperience</string>
     <string name="title_activity_popup_edit_health">PopupEditHealth</string>
     <string name="title_activity_activity_character_skills">ActivityCharacterSkills</string>
     <string name="title_activity_activity_character_magic">ActivityCharacterMagic</string>
@@ -12,5 +12,6 @@
     </string>
     <string name="title_activity_activity_character_feats">ActivityCharacterFeats</string>
     <string name="title_activity_activity_character_inventory">ActivityCharacterInventory</string>
+    <string name="title_activity_activity_character_abilities">ActivityCharacterAbilities</string>
     <string name="title_activity_num_player">NumPlayer</string>
 </resources>
