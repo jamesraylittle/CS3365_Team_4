@@ -18,30 +18,27 @@ public class Items extends Database implements DAO<Item> {
         createTable();
     }
 
-    public int create(Item item) {
-        return (int)database.insert(TABLE, null, createContentValues(item));
-    }
+    public int create(Item item) { return super.create(TABLE, values(item)); }
 
-    public void update(Item item) {
-        String[] args = new String[] { item.id()+""};
-        ContentValues values = createContentValues(item);
-        database.update(TABLE, values, "id = ?", args);
-    }
+    public void update(Item item) { super.update(TABLE, item, values(item)); }
 
 
     public Item retrieve(int id) {
         String[] args = new String[] { id+"" };
         Cursor c = database.query(TABLE, null, "id = ?", args, null, null, null);
+        Item from = new Item();
 
-        Item from = null;
-
-        if (c.getCount() > 0) {
-            if (c.moveToFirst()) {
-                do {
-                    from = new Item(c.getInt(0), c.getString(1), c.getString(2), c.getString(3), c.getString(4), c.getString(5), c.getString(6));
-                } while (c.moveToNext());
-            }
-        } else from = new Item();
+        if (c.moveToFirst()) {
+            do {
+                from.setId(c.getInt(0));
+                from.setName(c.getString(1));
+                from.setCategory(c.getString(2));
+                from.setSubCategory(c.getString(3));
+                from.setSpecialAbility(c.getString(4));
+                from.setAura(c.getString(5));
+                from.setAlignment(c.getString(6));
+            } while (c.moveToNext());
+        }
 
         return from;
     }
@@ -51,7 +48,7 @@ public class Items extends Database implements DAO<Item> {
 
     public int count() { return super.count(TABLE); }
 
-    private ContentValues createContentValues(Item item) {
+    private ContentValues values(Item item) {
         ContentValues values = new ContentValues();
         if(item.id() > 0) values.put("id", item.id());
 
