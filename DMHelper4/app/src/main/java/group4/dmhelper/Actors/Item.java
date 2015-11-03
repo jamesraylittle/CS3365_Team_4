@@ -11,9 +11,7 @@ public class Item extends Model {
     String aura;
     String alignment;
 
-    public Item() {
-        this(0, "", "", "", "", "", "");
-    }
+
     public Item(int id, String name, String category, String subCategory, String specialAbility, String aura, String alignment) {
         this.id = id;
         this.name = name;
@@ -24,13 +22,10 @@ public class Item extends Model {
         this.alignment = alignment;
     }
     public Item(String name, String category, String subCategory, String specialAbility, String aura, String alignment) {
-        this.id = 0;
-        this.name = name;
-        this.category = category;
-        this.subCategory = subCategory;
-        this.specialAbility = specialAbility;
-        this.aura = aura;
-        this.alignment = alignment;
+        this(0, name, category, subCategory, specialAbility, aura, alignment);
+    }
+    public Item() {
+        this(0, "", "", "", "", "", "");
     }
 
 
