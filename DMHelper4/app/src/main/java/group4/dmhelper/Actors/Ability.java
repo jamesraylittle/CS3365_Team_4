@@ -13,23 +13,14 @@ public class Ability extends Model {
     String name;
     //ArrayList<Integer> miscBonus = new ArrayList<Integer>();
 
-    public Ability(int id, int baseScore, int miscBonus, String name) {
-        this.id = id;
-        this.baseScore = baseScore;
-        this.miscBonus = miscBonus;
-        this.name = name;
+    public Ability(int playerId) {
+        this.id = playerId;
+        /*This should take all of the information from the database and fill the local variables*/
     }
 
-    public Ability(int baseScore, int miscBonus, String name) {
-        this(0, baseScore, miscBonus, name);
-    }
-    public Ability() {
-        this(0, 0, 0, "");
-    }
-
-    public int baseScore() { return this.baseScore; }
-    public int miscBonus() { return this.miscBonus; }
-    public String name() { return this.name; }
+    public int getBaseScore() { return this.baseScore; }
+    public int getMiscBonus() { return this.miscBonus; }
+    public String getName() { return this.name; }
 
     public void setBaseScore(int b) { this.baseScore = b; }
     public void setMiscBonus(int m) { this.miscBonus = m; }

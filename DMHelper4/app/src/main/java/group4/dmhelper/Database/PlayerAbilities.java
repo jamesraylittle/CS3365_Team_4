@@ -46,15 +46,15 @@ public class PlayerAbilities extends Database implements DAO<PlayerAbility> {
 
     private ContentValues values(PlayerAbility p) {
         ContentValues values = new ContentValues();
-        if(p.id() > 0) values.put("id", p.id());
+        if(p.getId() > 0) values.put("id", p.getId());
 
-        values.put("playerId", p.playerId());
-        values.put("strengthAbilityId", p.strengthAbilityId());
-        values.put("dexAbilityId", p.dexAbilityId());
-        values.put("constAbilityId", p.constAbilityId());
-        values.put("intelAbilityId", p.intelAbilityId());
-        values.put("wisdomAbilityId", p.wisdomAbilityId());
-        values.put("crismaAbilityId", p.crismaAbilityId());
+        values.put("playerId", p.getPlayerId());
+        values.put("strengthAbilityId", p.getStrengthAbilityId());
+        values.put("dexAbilityId", p.getDexAbilityId());
+        values.put("constAbilityId", p.getConstAbilityId());
+        values.put("intelAbilityId", p.getIntelAbilityId());
+        values.put("wisdomAbilityId", p.getWisdomAbilityId());
+        values.put("crismaAbilityId", p.getCrismaAbilityId());
 
         return values;
     }

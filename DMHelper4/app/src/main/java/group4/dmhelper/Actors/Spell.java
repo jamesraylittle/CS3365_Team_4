@@ -3,12 +3,12 @@ package group4.dmhelper.Actors;
 /**
  * Created by Daniel on 10/19/2015.
  */
-public class Item extends Model {
+public class Spell extends Model {
     private int playerId;
-    private int itemId;
+    private int spellId;
 
-    public Item(int playerId) {
-        this.id = playerId;
+    public Spell(int id) {
+        this.id = id;
         /*This should take all of the information from the database*/
     }
 
@@ -20,11 +20,11 @@ public class Item extends Model {
         this.playerId = playerId;
     }
 
-    public int getItemId() {
-        return itemId;
+    public int getSpellId() {
+        return spellId;
     }
 
-    public void setItemId(int itemId) {
-        this.itemId = itemId;
+    public void setSpellId(int spellId) {
+        this.spellId = spellId;
     }
 }
