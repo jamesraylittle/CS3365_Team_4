@@ -1,0 +1,70 @@
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#000000"
+    android:orientation="vertical"
+    tools:context="group4.dmhelper.Activities.Popups.PopupNumPlayer"
+    android:padding="2dp">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:background="@color/background_material_light"
+        android:padding="6dp">
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="Choose Number of Players"
+            android:id="@+id/textView"
+            android:layout_gravity="center_horizontal"
+            android:textColor="#000000"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textAlignment="center" />
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <Button
+                android:layout_width="30dp"
+                android:layout_height="wrap_content"
+                android:text="1"
+                android:id="@+id/one"
+                android:onClick="one"/>
+
+            <Button
+                android:layout_width="30dp"
+                android:layout_height="wrap_content"
+                android:text="2"
+                android:id="@+id/two"
+                android:onClick="two"/>
+
+            <Button
+                android:layout_width="30dp"
+                android:layout_height="wrap_content"
+                android:text="3"
+                android:id="@+id/three"
+                android:onClick="three"/>
+
+            <Button
+                android:layout_width="30dp"
+                android:layout_height="wrap_content"
+                android:text="4"
+                android:id="@+id/four"
+                android:onClick="four"/>
+
+            <Button
+                android:layout_width="30dp"
+                android:layout_height="wrap_content"
+                android:text="5"
+                android:id="@+id/five"
+                android:onClick="five" />
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>

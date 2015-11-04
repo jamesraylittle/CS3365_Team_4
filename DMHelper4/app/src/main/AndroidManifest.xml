@@ -25,31 +25,31 @@
             android:windowSoftInputMode="adjustPan" >
         </activity>
         <activity
-            android:name=".Activities.ActivitySearchMonsters"
+            android:name=".Activities.Search.ActivitySearchMonsters"
             android:label="Main Activity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustPan" >
         </activity>
         <activity
-            android:name=".Activities.ActivitySearchItems"
+            android:name=".Activities.Search.ActivitySearchItems"
             android:label="Main Activity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustPan" >
         </activity>
         <activity
-            android:name=".Activities.ActivitySearchFeats"
+            android:name=".Activities.Search.ActivitySearchFeats"
             android:label="Main Activity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustPan" >
         </activity>
         <activity
-            android:name=".Activities.ActivitySearchSpells"
+            android:name=".Activities.Search.ActivitySearchSpells"
             android:label="Main Activity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustPan" >
         </activity>
         <activity
-            android:name=".Activities.ActivitySearchEquipment"
+            android:name=".Activities.Search.ActivitySearchEquipment"
             android:label="Main Activity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustPan" >
@@ -96,14 +96,46 @@
         </activity>
         <activity
             android:name=".Activities.Popups.PopupMonsterInfo"
-            android:label="Main Activity"
+            android:label="Monster Info Popup"
             android:noHistory="true"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.PopupTheme"
             android:windowSoftInputMode="adjustPan" >
         </activity>
         <activity
-            android:name=".Activities.Popups.NumPlayer"
+            android:name=".Activities.Popups.PopupItemInfo"
+            android:label="Item Info Popup"
+            android:noHistory="true"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.PopupTheme"
+            android:windowSoftInputMode="adjustPan" >
+        </activity>
+        <activity
+            android:name=".Activities.Popups.PopupEquipmentInfo"
+            android:label="Equipment Info Popup"
+            android:noHistory="true"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.PopupTheme"
+            android:windowSoftInputMode="adjustPan" >
+        </activity>
+        <activity
+            android:name=".Activities.Popups.PopupFeatInfo"
+            android:label="Feat Info Popup"
+            android:noHistory="true"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.PopupTheme"
+            android:windowSoftInputMode="adjustPan" >
+        </activity>
+        <activity
+            android:name=".Activities.Popups.PopupSpellInfo"
+            android:label="Feat Info Popup"
+            android:noHistory="true"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.PopupTheme"
+            android:windowSoftInputMode="adjustPan" >
+        </activity>
+        <activity
+            android:name=".Activities.Popups.PopupNumPlayer"
             android:label="@string/title_activity_num_player"
             android:theme="@style/AppTheme.popup">
         </activity>
