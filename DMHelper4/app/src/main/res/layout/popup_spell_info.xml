@@ -23,8 +23,8 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="info_monster_name"
-                android:id="@+id/info_monster_name"
+                android:text="info_spell_name"
+                android:id="@+id/info_spell_name"
                 android:layout_gravity="center_vertical"
                 android:layout_alignParentTop="true"
                 android:layout_centerHorizontal="true"
@@ -39,7 +39,7 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/scrollView"
                 android:layout_weight="1"
-                android:layout_below="@+id/info_monster_name">
+                android:layout_below="@+id/info_spell_name">
 
                 <RelativeLayout
                     android:orientation="horizontal"
@@ -50,14 +50,14 @@
                     android:paddingRight="7dp"
                     android:paddingLeft="7dp"
                     android:paddingBottom="7dp"
-                    android:layout_below="@+id/info_monster_name"
+                    android:layout_below="@+id/info_spell_name"
                     android:layout_alignParentStart="true">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Family: "
-                        android:id="@+id/lbl_info_monster_family"
+                        android:text="Alternate Name: "
+                        android:id="@+id/lbl_info_spell_altname"
                         android:layout_alignParentTop="true"
                         android:layout_alignParentStart="true"
                         android:textSize="14sp"
@@ -68,18 +68,18 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="info_monster_family"
-                        android:id="@+id/info_monster_family"
-                        android:layout_alignTop="@+id/lbl_info_monster_family"
-                        android:layout_toEndOf="@+id/lbl_info_monster_family"
+                        android:text="info_spell_altname"
+                        android:id="@+id/info_spell_altname"
+                        android:layout_alignTop="@+id/lbl_info_spell_altname"
+                        android:layout_toEndOf="@+id/lbl_info_spell_altname"
                         android:textSize="14sp" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Size: "
-                        android:id="@+id/lbl_info_monster_size"
-                        android:layout_below="@+id/info_monster_family"
+                        android:text="School: "
+                        android:id="@+id/lbl_info_spell_school"
+                        android:layout_below="@+id/info_spell_altname"
                         android:layout_alignParentStart="true"
                         android:paddingBottom="5dp"
                         android:textSize="14sp"
@@ -89,18 +89,18 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="info_monster_size"
-                        android:id="@+id/info_monster_size"
-                        android:layout_alignTop="@+id/lbl_info_monster_size"
-                        android:layout_toEndOf="@+id/lbl_info_monster_size"
+                        android:text="info_spell_school"
+                        android:id="@+id/info_spell_school"
+                        android:layout_alignTop="@+id/lbl_info_spell_school"
+                        android:layout_toEndOf="@+id/lbl_info_spell_school"
                         android:textSize="14sp" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Type: "
-                        android:id="@+id/lbl_info_monster_type"
-                        android:layout_below="@+id/info_monster_size"
+                        android:text="Subschool: "
+                        android:id="@+id/lbl_info_spell_sub_school"
+                        android:layout_below="@+id/info_spell_school"
                         android:layout_alignParentStart="true"
                         android:paddingBottom="5dp"
                         android:textSize="14sp"
@@ -110,39 +110,18 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="info_monster_type"
-                        android:id="@+id/info_monster_type"
-                        android:layout_alignTop="@+id/lbl_info_monster_type"
-                        android:layout_toEndOf="@+id/lbl_info_monster_type"
-                        android:textSize="14sp" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Environment: "
-                        android:id="@+id/lbl_info_monster_environment"
-                        android:layout_below="@+id/info_monster_type"
-                        android:layout_alignParentStart="true"
-                        android:paddingBottom="5dp"
-                        android:textSize="14sp"
-                        android:paddingRight="5dp"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="info_monster_environment"
-                        android:id="@+id/info_monster_environment"
-                        android:layout_alignTop="@+id/lbl_info_monster_environment"
-                        android:layout_toEndOf="@+id/lbl_info_monster_environment"
+                        android:text="info_spell_sub_school"
+                        android:id="@+id/info_spell_sub_school"
+                        android:layout_alignTop="@+id/lbl_info_spell_sub_school"
+                        android:layout_toEndOf="@+id/lbl_info_spell_sub_school"
                         android:textSize="14sp" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Descriptor: "
-                        android:id="@+id/lbl_info_monster_descriptor"
-                        android:layout_below="@+id/info_monster_environment"
+                        android:id="@+id/lbl_info_spell_descriptor"
+                        android:layout_below="@+id/info_spell_sub_school"
                         android:layout_alignParentStart="true"
                         android:paddingBottom="5dp"
                         android:textSize="14sp"
@@ -152,18 +131,18 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="info_monster_descriptor"
-                        android:id="@+id/info_monster_descriptor"
-                        android:layout_alignTop="@+id/lbl_info_monster_descriptor"
-                        android:layout_toEndOf="@+id/lbl_info_monster_descriptor"
+                        android:text="info_spell_descriptor"
+                        android:id="@+id/info_spell_descriptor"
+                        android:layout_alignTop="@+id/lbl_info_spell_descriptor"
+                        android:layout_toEndOf="@+id/lbl_info_spell_descriptor"
                         android:textSize="14sp" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Alignment: "
-                        android:id="@+id/lbl_info_monster_alignment"
-                        android:layout_below="@+id/info_monster_descriptor"
+                        android:text="Description: "
+                        android:id="@+id/lbl_info_spell_short_description"
+                        android:layout_below="@+id/info_spell_descriptor"
                         android:layout_alignParentStart="true"
                         android:paddingBottom="5dp"
                         android:textSize="14sp"
@@ -173,18 +152,18 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="info_monster_alignment"
-                        android:id="@+id/info_monster_alignment"
-                        android:layout_alignTop="@+id/lbl_info_monster_alignment"
-                        android:layout_toEndOf="@+id/lbl_info_monster_alignment"
+                        android:text="info_spell_short_description"
+                        android:id="@+id/info_spell_short_description"
+                        android:layout_alignTop="@+id/lbl_info_spell_short_description"
+                        android:layout_toEndOf="@+id/lbl_info_spell_short_description"
                         android:textSize="14sp" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Challenge Rating: "
-                        android:id="@+id/lbl_info_monster_challenge_rating"
-                        android:layout_below="@+id/info_monster_alignment"
+                        android:text="Level: "
+                        android:id="@+id/lbl_info_spell_level"
+                        android:layout_below="@+id/info_spell_short_description"
                         android:layout_alignParentStart="true"
                         android:paddingBottom="5dp"
                         android:textSize="14sp"
@@ -194,18 +173,18 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="info_monster_challenge_rating"
-                        android:id="@+id/info_monster_challenge_rating"
-                        android:layout_alignTop="@+id/lbl_info_monster_challenge_rating"
-                        android:layout_toEndOf="@+id/lbl_info_monster_challenge_rating"
+                        android:text="info_spell_level"
+                        android:id="@+id/info_spell_level"
+                        android:layout_alignTop="@+id/lbl_info_spell_level"
+                        android:layout_toEndOf="@+id/lbl_info_spell_level"
                         android:textSize="14sp" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Treasure: "
-                        android:id="@+id/lbl_info_monster_treasure"
-                        android:layout_below="@+id/info_monster_challenge_rating"
+                        android:text="XP Cost: "
+                        android:id="@+id/lbl_info_spell_xp_cost"
+                        android:layout_below="@+id/info_spell_level"
                         android:layout_alignParentStart="true"
                         android:paddingBottom="5dp"
                         android:textSize="14sp"
@@ -215,18 +194,18 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="info_monster_treasure"
-                        android:id="@+id/info_monster_treasure"
-                        android:layout_alignTop="@+id/lbl_info_monster_treasure"
-                        android:layout_toEndOf="@+id/lbl_info_monster_treasure"
+                        android:text="info_spell_xp_cost"
+                        android:id="@+id/info_spell_xp_cost"
+                        android:layout_alignTop="@+id/lbl_info_spell_xp_cost"
+                        android:layout_toEndOf="@+id/lbl_info_spell_xp_cost"
                         android:textSize="14sp" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Organization: "
-                        android:id="@+id/lbl_info_monster_organization"
-                        android:layout_below="@+id/info_monster_treasure"
+                        android:text="Components: "
+                        android:id="@+id/lbl_info_spell_components"
+                        android:layout_below="@+id/info_spell_xp_cost"
                         android:layout_alignParentStart="true"
                         android:paddingBottom="5dp"
                         android:textSize="14sp"
@@ -236,18 +215,18 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="info_monster_organization"
-                        android:id="@+id/info_monster_organization"
-                        android:layout_alignTop="@+id/lbl_info_monster_organization"
-                        android:layout_toEndOf="@+id/lbl_info_monster_organization"
+                        android:text="info_spell_components"
+                        android:id="@+id/info_spell_components"
+                        android:layout_alignTop="@+id/lbl_info_spell_components"
+                        android:layout_toEndOf="@+id/lbl_info_spell_components"
                         android:textSize="14sp" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Space: "
-                        android:id="@+id/lbl_info_monster_space"
-                        android:layout_below="@+id/info_monster_organization"
+                        android:text="Casting Time: "
+                        android:id="@+id/lbl_info_spell_casting_time"
+                        android:layout_below="@+id/info_spell_components"
                         android:layout_alignParentStart="true"
                         android:paddingBottom="5dp"
                         android:textSize="14sp"
@@ -257,18 +236,18 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="info_monster_space"
-                        android:id="@+id/info_monster_space"
-                        android:layout_alignTop="@+id/lbl_info_monster_space"
-                        android:layout_toEndOf="@+id/lbl_info_monster_space"
+                        android:text="info_spell_casting_time"
+                        android:id="@+id/info_spell_casting_time"
+                        android:layout_alignTop="@+id/lbl_info_spell_casting_time"
+                        android:layout_toEndOf="@+id/lbl_info_spell_casting_time"
                         android:textSize="14sp" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Reach: "
-                        android:id="@+id/lbl_info_monster_reach"
-                        android:layout_below="@+id/info_monster_space"
+                        android:text="Range: "
+                        android:id="@+id/lbl_info_spell_range"
+                        android:layout_below="@+id/info_spell_casting_time"
                         android:layout_alignParentStart="true"
                         android:paddingBottom="5dp"
                         android:textSize="14sp"
@@ -278,18 +257,18 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="info_monster_reach"
-                        android:id="@+id/info_monster_reach"
-                        android:layout_alignTop="@+id/lbl_info_monster_reach"
-                        android:layout_toEndOf="@+id/lbl_info_monster_reach"
+                        android:text="info_spell_range"
+                        android:id="@+id/info_spell_range"
+                        android:layout_alignTop="@+id/lbl_info_spell_range"
+                        android:layout_toEndOf="@+id/lbl_info_spell_range"
                         android:textSize="14sp" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Speed: "
-                        android:id="@+id/lbl_info_monster_speed"
-                        android:layout_below="@+id/info_monster_reach"
+                        android:text="Target: "
+                        android:id="@+id/lbl_info_spell_target"
+                        android:layout_below="@+id/info_spell_range"
                         android:layout_alignParentStart="true"
                         android:paddingBottom="5dp"
                         android:textSize="14sp"
@@ -299,18 +278,18 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="info_monster_speed"
-                        android:id="@+id/info_monster_speed"
-                        android:layout_alignTop="@+id/lbl_info_monster_speed"
-                        android:layout_toEndOf="@+id/lbl_info_monster_speed"
+                        android:text="info_spell_target"
+                        android:id="@+id/info_spell_target"
+                        android:layout_alignTop="@+id/lbl_info_spell_target"
+                        android:layout_toEndOf="@+id/lbl_info_spell_target"
                         android:textSize="14sp" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Initiative: "
-                        android:id="@+id/lbl_info_monster_initiative"
-                        android:layout_below="@+id/info_monster_speed"
+                        android:text="Area: "
+                        android:id="@+id/lbl_info_spell_area"
+                        android:layout_below="@+id/info_spell_target"
                         android:layout_alignParentStart="true"
                         android:paddingBottom="5dp"
                         android:textSize="14sp"
@@ -320,18 +299,18 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="info_monster_initiative"
-                        android:id="@+id/info_monster_initiative"
-                        android:layout_alignTop="@+id/lbl_info_monster_initiative"
-                        android:layout_toEndOf="@+id/lbl_info_monster_initiative"
+                        android:text="info_spell_area"
+                        android:id="@+id/info_spell_area"
+                        android:layout_alignTop="@+id/lbl_info_spell_area"
+                        android:layout_toEndOf="@+id/lbl_info_spell_area"
                         android:textSize="14sp" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Hit Dice: "
-                        android:id="@+id/lbl_info_monster_hit_dice"
-                        android:layout_below="@+id/info_monster_initiative"
+                        android:text="Effect: "
+                        android:id="@+id/lbl_info_spell_effect"
+                        android:layout_below="@+id/info_spell_area"
                         android:layout_alignParentStart="true"
                         android:paddingBottom="5dp"
                         android:textSize="14sp"
@@ -341,18 +320,18 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="info_monster_hit_dice"
-                        android:id="@+id/info_monster_hit_dice"
-                        android:layout_alignTop="@+id/lbl_info_monster_hit_dice"
-                        android:layout_toEndOf="@+id/lbl_info_monster_hit_dice"
+                        android:text="info_spell_effect"
+                        android:id="@+id/info_spell_effect"
+                        android:layout_alignTop="@+id/lbl_info_spell_effect"
+                        android:layout_toEndOf="@+id/lbl_info_spell_effect"
                         android:textSize="14sp" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Armor Class: "
-                        android:id="@+id/lbl_info_monster_armor_class"
-                        android:layout_below="@+id/info_monster_hit_dice"
+                        android:text="Duration: "
+                        android:id="@+id/lbl_info_spell_duration"
+                        android:layout_below="@+id/info_spell_effect"
                         android:layout_alignParentStart="true"
                         android:paddingBottom="5dp"
                         android:textSize="14sp"
@@ -362,18 +341,18 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="info_monster_armor_class"
-                        android:id="@+id/info_monster_armor_class"
-                        android:layout_alignTop="@+id/lbl_info_monster_armor_class"
-                        android:layout_toEndOf="@+id/lbl_info_monster_armor_class"
+                        android:text="info_spell_duration"
+                        android:id="@+id/info_spell_duration"
+                        android:layout_alignTop="@+id/lbl_info_spell_duration"
+                        android:layout_toEndOf="@+id/lbl_info_spell_duration"
                         android:textSize="14sp" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Grapple: "
-                        android:id="@+id/lbl_info_monster_grapple"
-                        android:layout_below="@+id/info_monster_armor_class"
+                        android:text="Spellcraft DC: "
+                        android:id="@+id/lbl_info_spell_spellcraft_dc"
+                        android:layout_below="@+id/info_spell_duration"
                         android:layout_alignParentStart="true"
                         android:paddingBottom="5dp"
                         android:textSize="14sp"
@@ -383,18 +362,18 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="info_monster_grapple"
-                        android:id="@+id/info_monster_grapple"
-                        android:layout_alignTop="@+id/lbl_info_monster_grapple"
-                        android:layout_toEndOf="@+id/lbl_info_monster_grapple"
+                        android:text="info_spell_spellcraft_dc"
+                        android:id="@+id/info_spell_spellcraft_dc"
+                        android:layout_alignTop="@+id/lbl_info_spell_spellcraft_dc"
+                        android:layout_toEndOf="@+id/lbl_info_spell_spellcraft_dc"
                         android:textSize="14sp" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Base Attack: "
-                        android:id="@+id/lbl_info_monster_base_attack"
-                        android:layout_below="@+id/info_monster_grapple"
+                        android:text="Saving Throw: "
+                        android:id="@+id/lbl_info_spell_saving_throw"
+                        android:layout_below="@+id/info_spell_spellcraft_dc"
                         android:layout_alignParentStart="true"
                         android:paddingBottom="5dp"
                         android:textSize="14sp"
@@ -404,18 +383,18 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="info_monster_base_attack"
-                        android:id="@+id/info_monster_base_attack"
-                        android:layout_alignTop="@+id/lbl_info_monster_base_attack"
-                        android:layout_toEndOf="@+id/lbl_info_monster_base_attack"
+                        android:text="info_spell_saving_throw"
+                        android:id="@+id/info_spell_saving_throw"
+                        android:layout_alignTop="@+id/lbl_info_spell_saving_throw"
+                        android:layout_toEndOf="@+id/lbl_info_spell_saving_throw"
                         android:textSize="14sp" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Attack: "
-                        android:id="@+id/lbl_info_monster_attack"
-                        android:layout_below="@+id/info_monster_base_attack"
+                        android:text="Spell Resistance: "
+                        android:id="@+id/lbl_info_spell_spell_resistance"
+                        android:layout_below="@+id/info_spell_saving_throw"
                         android:layout_alignParentStart="true"
                         android:paddingBottom="5dp"
                         android:textSize="14sp"
@@ -425,18 +404,18 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="info_monster_attack"
-                        android:id="@+id/info_monster_attack"
-                        android:layout_alignTop="@+id/lbl_info_monster_attack"
-                        android:layout_toEndOf="@+id/lbl_info_monster_attack"
+                        android:text="info_spell_spell_resistance"
+                        android:id="@+id/info_spell_spell_resistance"
+                        android:layout_alignTop="@+id/lbl_info_spell_spell_resistance"
+                        android:layout_toEndOf="@+id/lbl_info_spell_spell_resistance"
                         android:textSize="14sp" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Full Attack: "
-                        android:id="@+id/lbl_info_monster_full_attack"
-                        android:layout_below="@+id/info_monster_attack"
+                        android:text="To Develop: "
+                        android:id="@+id/lbl_info_to_develop"
+                        android:layout_below="@+id/info_spell_spell_resistance"
                         android:layout_alignParentStart="true"
                         android:paddingBottom="5dp"
                         android:textSize="14sp"
@@ -446,18 +425,18 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="info_monster_full_attack"
-                        android:id="@+id/info_monster_full_attack"
-                        android:layout_alignTop="@+id/lbl_info_monster_full_attack"
-                        android:layout_toEndOf="@+id/lbl_info_monster_full_attack"
+                        android:text="info_spell_to_develop"
+                        android:id="@+id/info_spell_to_develop"
+                        android:layout_alignTop="@+id/lbl_info_to_develop"
+                        android:layout_toEndOf="@+id/lbl_info_to_develop"
                         android:textSize="14sp" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Special Attack: "
-                        android:id="@+id/lbl_info_monster_special_attack"
-                        android:layout_below="@+id/info_monster_full_attack"
+                        android:text="Material Components: "
+                        android:id="@+id/lbl_info_spell_material_components"
+                        android:layout_below="@+id/info_spell_to_develop"
                         android:layout_alignParentStart="true"
                         android:paddingBottom="5dp"
                         android:textSize="14sp"
@@ -467,18 +446,18 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="info_monster_special_attack"
-                        android:id="@+id/info_monster_special_attack"
-                        android:layout_alignTop="@+id/lbl_info_monster_special_attack"
-                        android:layout_toEndOf="@+id/lbl_info_monster_special_attack"
+                        android:text="info_spell_material_components"
+                        android:id="@+id/info_spell_material_components"
+                        android:layout_alignTop="@+id/lbl_info_spell_material_components"
+                        android:layout_toEndOf="@+id/lbl_info_spell_material_components"
                         android:textSize="14sp" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Abilities: "
-                        android:id="@+id/lbl_info_monster_abilities"
-                        android:layout_below="@+id/info_monster_special_attack"
+                        android:text="Arcane Material Components: "
+                        android:id="@+id/lbl_info_spell_arcane_material_components"
+                        android:layout_below="@+id/info_spell_material_components"
                         android:layout_alignParentStart="true"
                         android:paddingBottom="5dp"
                         android:textSize="14sp"
@@ -488,18 +467,18 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="info_monster_abilities"
-                        android:id="@+id/info_monster_abilities"
-                        android:layout_alignTop="@+id/lbl_info_monster_abilities"
-                        android:layout_toEndOf="@+id/lbl_info_monster_abilities"
+                        android:text="info_spell_arcane_material_components"
+                        android:id="@+id/info_spell_arcane_material_components"
+                        android:layout_alignTop="@+id/lbl_info_spell_arcane_material_components"
+                        android:layout_toEndOf="@+id/lbl_info_spell_arcane_material_components"
                         android:textSize="14sp" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Skills: "
-                        android:id="@+id/lbl_info_monster_skills"
-                        android:layout_below="@+id/info_monster_abilities"
+                        android:text="Focus: "
+                        android:id="@+id/lbl_info_spell_focus"
+                        android:layout_below="@+id/info_spell_arcane_material_components"
                         android:layout_alignParentStart="true"
                         android:paddingBottom="5dp"
                         android:textSize="14sp"
@@ -509,18 +488,18 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="info_monster_skills"
-                        android:id="@+id/info_monster_skills"
-                        android:layout_alignTop="@+id/lbl_info_monster_skills"
-                        android:layout_toEndOf="@+id/lbl_info_monster_skills"
+                        android:text="info_spell_focus"
+                        android:id="@+id/info_spell_focus"
+                        android:layout_alignTop="@+id/lbl_info_spell_focus"
+                        android:layout_toEndOf="@+id/lbl_info_spell_focus"
                         android:textSize="14sp" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Saves: "
-                        android:id="@+id/lbl_info_monster_saves"
-                        android:layout_below="@+id/info_monster_skills"
+                        android:text="Arcane Focus: "
+                        android:id="@+id/lbl_info_spell_arcane_focus"
+                        android:layout_below="@+id/info_spell_focus"
                         android:layout_alignParentStart="true"
                         android:paddingBottom="5dp"
                         android:textSize="14sp"
@@ -530,18 +509,18 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="info_monster_saves"
-                        android:id="@+id/info_monster_saves"
-                        android:layout_alignTop="@+id/lbl_info_monster_saves"
-                        android:layout_toEndOf="@+id/lbl_info_monster_saves"
+                        android:text="info_spell_arcane_focus"
+                        android:id="@+id/info_spell_arcane_focus"
+                        android:layout_alignTop="@+id/lbl_info_spell_arcane_focus"
+                        android:layout_toEndOf="@+id/lbl_info_spell_arcane_focus"
                         android:textSize="14sp" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Bonus Feats: "
-                        android:id="@+id/lbl_info_monster_bonus_feats"
-                        android:layout_below="@+id/info_monster_saves"
+                        android:text="Wizard Focus: "
+                        android:id="@+id/lbl_info_spell_wizard_focus"
+                        android:layout_below="@+id/info_spell_arcane_focus"
                         android:layout_alignParentStart="true"
                         android:paddingBottom="5dp"
                         android:textSize="14sp"
@@ -551,18 +530,18 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="info_monster_bonus_feats"
-                        android:id="@+id/info_monster_bonus_feats"
-                        android:layout_alignTop="@+id/lbl_info_monster_bonus_feats"
-                        android:layout_toEndOf="@+id/lbl_info_monster_bonus_feats"
+                        android:text="info_spell_wizard_focus"
+                        android:id="@+id/info_spell_wizard_focus"
+                        android:layout_alignTop="@+id/lbl_info_spell_wizard_focus"
+                        android:layout_toEndOf="@+id/lbl_info_spell_wizard_focus"
                         android:textSize="14sp" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Feats: "
-                        android:id="@+id/lbl_info_monster_feats"
-                        android:layout_below="@+id/info_monster_bonus_feats"
+                        android:text="Sorcerer Focus: "
+                        android:id="@+id/lbl_info_spell_sorcerer_focus"
+                        android:layout_below="@+id/info_spell_wizard_focus"
                         android:layout_alignParentStart="true"
                         android:paddingBottom="5dp"
                         android:textSize="14sp"
@@ -572,18 +551,18 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="info_monster_feats"
-                        android:id="@+id/info_monster_feats"
-                        android:layout_alignTop="@+id/lbl_info_monster_feats"
-                        android:layout_toEndOf="@+id/lbl_info_monster_feats"
+                        android:text="info_spell_sorcerer_focus"
+                        android:id="@+id/info_spell_sorcerer_focus"
+                        android:layout_alignTop="@+id/lbl_info_spell_sorcerer_focus"
+                        android:layout_toEndOf="@+id/lbl_info_spell_sorcerer_focus"
                         android:textSize="14sp" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Epic Feats: "
-                        android:id="@+id/lbl_info_monster_epic_feats"
-                        android:layout_below="@+id/info_monster_feats"
+                        android:text="Bard Focus: "
+                        android:id="@+id/lbl_info_spell_bard_focus"
+                        android:layout_below="@+id/info_spell_sorcerer_focus"
                         android:layout_alignParentStart="true"
                         android:paddingBottom="5dp"
                         android:textSize="14sp"
@@ -593,18 +572,18 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="info_monster_epic_feats"
-                        android:id="@+id/info_monster_epic_feats"
-                        android:layout_alignTop="@+id/lbl_info_monster_epic_feats"
-                        android:layout_toEndOf="@+id/lbl_info_monster_epic_feats"
+                        android:text="info_spell_bard_focus"
+                        android:id="@+id/info_spell_bard_focus"
+                        android:layout_alignTop="@+id/lbl_info_spell_bard_focus"
+                        android:layout_toEndOf="@+id/lbl_info_spell_bard_focus"
                         android:textSize="14sp" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Advancement: "
-                        android:id="@+id/lbl_info_monster_advancement"
-                        android:layout_below="@+id/info_monster_epic_feats"
+                        android:text="Cleric Focus: "
+                        android:id="@+id/lbl_info_spell_cleric_focus"
+                        android:layout_below="@+id/info_spell_bard_focus"
                         android:layout_alignParentStart="true"
                         android:paddingBottom="5dp"
                         android:textSize="14sp"
@@ -614,18 +593,18 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="info_monster_advancement"
-                        android:id="@+id/info_monster_advancement"
-                        android:layout_alignTop="@+id/lbl_info_monster_advancement"
-                        android:layout_toEndOf="@+id/lbl_info_monster_advancement"
+                        android:text="info_spell_cleric_focus"
+                        android:id="@+id/info_spell_cleric_focus"
+                        android:layout_alignTop="@+id/lbl_info_spell_cleric_focus"
+                        android:layout_toEndOf="@+id/lbl_info_spell_cleric_focus"
                         android:textSize="14sp" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Special Qualities: "
-                        android:id="@+id/lbl_info_monster_special_qualities"
-                        android:layout_below="@+id/info_monster_advancement"
+                        android:text="Druid Focus: "
+                        android:id="@+id/lbl_info_spell_druid_focus"
+                        android:layout_below="@+id/info_spell_cleric_focus"
                         android:layout_alignParentStart="true"
                         android:paddingBottom="5dp"
                         android:textSize="14sp"
@@ -635,18 +614,18 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="info_monster_special_qualities"
-                        android:id="@+id/info_monster_special_qualities"
-                        android:layout_alignTop="@+id/lbl_info_monster_special_qualities"
-                        android:layout_toEndOf="@+id/lbl_info_monster_special_qualities"
+                        android:text="info_spell_druid_focus"
+                        android:id="@+id/info_spell_druid_focus"
+                        android:layout_alignTop="@+id/lbl_info_spell_druid_focus"
+                        android:layout_toEndOf="@+id/lbl_info_spell_druid_focus"
                         android:textSize="14sp" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Special Abilities: "
-                        android:id="@+id/lbl_info_monster_special_abilities"
-                        android:layout_below="@+id/info_monster_special_qualities"
+                        android:text="Verbal Components: "
+                        android:id="@+id/lbl_info_spell_verbal_components"
+                        android:layout_below="@+id/info_spell_druid_focus"
                         android:layout_alignParentStart="true"
                         android:paddingBottom="5dp"
                         android:textSize="14sp"
@@ -656,10 +635,10 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="info_monster_special_abilities"
-                        android:id="@+id/info_monster_special_abilities"
-                        android:layout_alignTop="@+id/lbl_info_monster_special_abilities"
-                        android:layout_toEndOf="@+id/lbl_info_monster_special_abilities"
+                        android:text="info_spell_verbal_components"
+                        android:id="@+id/info_spell_verbal_components"
+                        android:layout_alignTop="@+id/lbl_info_spell_verbal_components"
+                        android:layout_toEndOf="@+id/lbl_info_spell_verbal_components"
                         android:textSize="14sp" />
 
                 </RelativeLayout>
@@ -683,7 +662,7 @@
                     android:layout_height="fill_parent"
                     android:scaleType="fitXY"
                     android:text="Close"
-                    android:onClick="doCloseMonsterInfoPopup"
+                    android:onClick="doCloseSpellInfoPopup"
                     android:id="@+id/popup_monster_close"
                     android:layout_centerVertical="true"
                     android:layout_centerHorizontal="true"
@@ -700,7 +679,7 @@
                     android:layout_height="fill_parent"
                     android:scaleType="fitXY"
                     android:text="Add"
-                    android:onClick="doAddMonster"
+                    android:onClick="doAddSpell"
                     android:id="@+id/popup_monster_select"
                     android:layout_centerVertical="true"
                     android:layout_centerHorizontal="true"

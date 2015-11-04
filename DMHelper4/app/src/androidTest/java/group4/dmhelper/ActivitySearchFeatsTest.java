@@ -6,8 +6,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 
-import group4.dmhelper.Activities.ActivitySearchFeats;
-import group4.dmhelper.Activities.ActivitySearchSpells;
+import group4.dmhelper.Activities.Search.ActivitySearchFeats;
 
 /**
  * Created by Kyle on 11/2/2015.

@@ -8,8 +8,6 @@ import android.widget.EditText;
 import android.widget.Spinner;
 
 import group4.dmhelper.Activities.ActivityCharacterSheet;
-import group4.dmhelper.Activities.ActivityGame;
-import group4.dmhelper.Activities.ActivitySearchSpells;
 
 /**
  * Created by Kyle on 11/2/2015.

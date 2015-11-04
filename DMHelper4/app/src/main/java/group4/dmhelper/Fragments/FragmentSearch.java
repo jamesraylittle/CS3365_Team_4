@@ -12,11 +12,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
-import group4.dmhelper.Activities.ActivitySearchEquipment;
-import group4.dmhelper.Activities.ActivitySearchFeats;
-import group4.dmhelper.Activities.ActivitySearchItems;
-import group4.dmhelper.Activities.ActivitySearchMonsters;
-import group4.dmhelper.Activities.ActivitySearchSpells;
+import group4.dmhelper.Activities.Search.ActivitySearchEquipment;
+import group4.dmhelper.Activities.Search.ActivitySearchFeats;
+import group4.dmhelper.Activities.Search.ActivitySearchItems;
+import group4.dmhelper.Activities.Search.ActivitySearchMonsters;
+import group4.dmhelper.Activities.Search.ActivitySearchSpells;
 import group4.dmhelper.R;
 
 
