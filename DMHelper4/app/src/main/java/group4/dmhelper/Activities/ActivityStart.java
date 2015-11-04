@@ -8,7 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.RelativeLayout;
 
-import group4.dmhelper.Activities.Popups.NumPlayer;
+import group4.dmhelper.Activities.Popups.PopupNumPlayer;
 import group4.dmhelper.R;
 
 public class ActivityStart extends AppCompatActivity {
@@ -27,7 +27,7 @@ public class ActivityStart extends AppCompatActivity {
         btnNewGame.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(ActivityStart.this, NumPlayer.class));
+                startActivity(new Intent(ActivityStart.this, PopupNumPlayer.class));
             }
         });
 
