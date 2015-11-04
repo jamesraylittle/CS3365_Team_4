@@ -9,42 +9,39 @@ package group4.dmhelper.Actors;
  * Updated by James.
  */
 public class ClassType extends Model {
-    private String name;
-    private int level;
-    private int attack;
-    //int fort; we may just do functions for this
-    //int ref;
-    //int will;
-    private int special;
     private int playerId;
+    private int classId;
+    private int class_tableId;  //This represents level
 
-    public ClassType(int id, String name, int level, int attack, int special, int playerId) {
-        this.id = id;
-        this.name = name;
-        this.level = level;
-        this.attack = attack;
-        this.special = special;
+
+    public ClassType(int playerId) {
+        this.id = playerId;
+        /*This should take all of the information from the database*/
+    }
+
+    public int getPlayerId() {
+        return playerId;
+    }
+
+    public void setPlayerId(int playerId) {
         this.playerId = playerId;
     }
 
-    public ClassType(String name, int level, int attack, int special, int playerId) {
-        this(0, name, level, attack, special, playerId);
-    }
-    public ClassType() {
-        this(0, "", 0, 0, 0, 0);
+    public int getClassId() {
+        return classId;
     }
 
-    public String name() { return this.name; }
-    public int level() { return this.level; }
-    public int attack() { return this.attack; }
-    public int special() { return this.special; }
-    public int playerId() { return this.playerId; }
+    public void setClassId(int classId) {
+        this.classId = classId;
+    }
 
-    public void setName(String n) { name = n; }
-    public void setLevel(int l) { level = l; }
-    public void setAttack(int a) { attack = a; }
-    public void setSpecial(int s) { special = s; }
-    public void setPlayerId(int id) { playerId = id; }
+    public int getClass_tableId() {
+        return class_tableId;
+    }
+
+    public void setClass_tableId(int class_tableId) {
+        this.class_tableId = class_tableId;
+    }
 
     //$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#
     //Managing Levels

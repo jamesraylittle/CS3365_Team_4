@@ -24,16 +24,14 @@ public class ClassTypes extends Database implements DAO<ClassType> {
     public ClassType retrieve(int id) {
         String[] args = new String[] { id+"" };
         Cursor c = database.query(TABLE, null, "id = ?", args, null, null, null);
-        ClassType ct = new ClassType();
+        ClassType ct = new ClassType(id);
 
         if (c.moveToFirst()) {
             do {
                 ct.setId(c.getInt(0));
-                ct.setName(c.getString(1));
-                ct.setLevel(c.getInt(2));
-                ct.setAttack(c.getInt(3));
-                ct.setSpecial(c.getInt(4));
-                ct.setPlayerId(c.getInt(5));
+                ct.setClassId(c.getInt(1));
+                ct.setClass_tableId(c.getInt(2));
+                ct.setPlayerId(c.getInt(3));
             } while (c.moveToNext());
         }
 
@@ -47,24 +45,20 @@ public class ClassTypes extends Database implements DAO<ClassType> {
     private void createTable() {
         String q = "CREATE TABLE IF NOT EXISTS "+TABLE+" (" +
                 "id integer primary key AUTOINCREMENT," +
-                "name TEXT," +
-                "level INTEGER," +
-                "attack INTEGER," +
-                "special INTEGER," +
-                "playerId INTEGER" +
+                "class INTEGER," +
+                "class_table INTEGER," +
+                "player INTEGER," +
                 ")";
         database.execSQL(q);
     }
 
     private ContentValues values(ClassType c) {
         ContentValues v = new ContentValues();
-        if(c.id() > 0) v.put("id", c.id());
+        if(c.getId() > 0) v.put("id", c.getId());
 
-        v.put("name", c.name());
-        v.put("level", c.level());
-        v.put("attack", c.attack());
-        v.put("special", c.special());
-        v.put("playerId", c.playerId());
+        v.put("class", c.getClassId());
+        v.put("class_table", c.getClass_tableId());
+        v.put("player", c.getPlayerId());
         return v;
     }
 

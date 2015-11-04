@@ -1,8 +1,12 @@
 package group4.dmhelper.Actors;
 
+// TODO: 11/4/2015  
+
 /**
  * Created by Daniel on 10/19/2015.
  * Updated by James.
+ *
+ * DOES NOT HAVE DATABASE
  */
 public class Race extends Model {
     private String name;
@@ -18,7 +22,7 @@ public class Race extends Model {
         this(0, "");
     }
 
-    public String name() { return name; }
+    public String getName() { return name; }
 
     public void setName(String name) { this.name = name; }
 }

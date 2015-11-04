@@ -24,7 +24,7 @@ public class Players extends Database implements DAO<Player> {
     public Player retrieve(int id) {
         String [] args = new String[] { id+"" };
         Cursor c = database.query(TABLE, null, "id = ?", args, null, null, null);
-        Player from = new Player();
+        Player from = new Player(id);
 
         if (c.moveToFirst()) {
             do {
@@ -34,11 +34,12 @@ public class Players extends Database implements DAO<Player> {
                 from.setAlignment(c.getString(3));
                 from.setWeight(c.getInt(4));
                 from.setReligion(c.getString(5));
-                from.setPlayerAbilityId(c.getInt(6));
-                from.setEquippedItemsId(c.getInt(7));
-                from.setSkillsId(c.getInt(8));
-                from.setPlayerWeaponsId(c.getInt(9));
-                from.setRaceId(c.getInt(10));
+                //from.setPlayerAbilityId(c.getInt(6)); This is more than one I believe.
+                //from.setEquippedItemsId(c.getInt(7));
+                //from.setSkillsId(c.getInt(8));
+                //from.setPlayerWeaponsId(c.getInt(9));
+                //from.setRaceId(c.getString(10));
+                from.setRace(c.getString(10));  //Temporary
                 from.setName(c.getString(11));
             } while (c.moveToNext());
         }
@@ -52,19 +53,20 @@ public class Players extends Database implements DAO<Player> {
 
     private ContentValues values(Player p) {
         ContentValues values = new ContentValues();
-        if(p.id() > 0) values.put("id", p.id());
+        if(p.getId() > 0) values.put("id", p.getId());
 
-        values.put("gender", p.gender());
-        values.put("size", p.size());
-        values.put("alignment", p.alignment());
-        values.put("weight", p.weight());
-        values.put("religion", p.religion());
-        values.put("playerAbilityId", p.playerAbilityId());
-        values.put("equippedItemsId", p.equippedItemsId());
-        values.put("skillsId", p.skillsId());
-        values.put("playerWeaponsId", p.playerWeaponsId());
-        values.put("raceId", p.raceId());
-        values.put("name", p.name());
+        values.put("gender", p.getGender());
+        values.put("size", p.getSize());
+        values.put("alignment", p.getAlignment());
+        values.put("weight", p.getWeight());
+        values.put("religion", p.getReligion());
+        //values.put("playerAbilityId", p.getPlayerAbilityId());
+        //values.put("equippedItemsId", p.getEquippedItemsId());
+        //values.put("skillsId", p.getSkillsId());
+        //values.put("playerWeaponsId", p.getPlayerWeaponsId());
+        //values.put("raceId", p.getRaceId());
+        values.put("raceId", p.getRace());  //Temporary
+        values.put("name", p.getName());
         return values;
     }
 
@@ -76,11 +78,12 @@ public class Players extends Database implements DAO<Player> {
                 "alignment TEXT," +
                 "weight integer," +
                 "religion TEXT," +
-                "playerAbilityId integer," +
-                "equippedItemsId integer," +
-                "skillsId integer," +
-                "playerWeaponsId integer," +
-                "raceId integer," +
+                //"playerAbilityId integer," +
+                //"equippedItemsId integer," +
+                //"skillsId integer," +
+                //"playerWeaponsId integer," +
+                //"raceId integer," +
+                "raceId TEXT," +
                 "name TEXT" +
                 ")";
         database.execSQL(q);

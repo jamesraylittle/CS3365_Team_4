@@ -9,6 +9,7 @@ import group4.dmhelper.Actors.Race;
 
 /**
  * Created by james.
+ * Edited by Daniel 11/4/2015
  */
 public class Races extends Database implements DAO<Race> {
     private String TABLE = "races";
@@ -43,8 +44,8 @@ public class Races extends Database implements DAO<Race> {
 
     private ContentValues values(Race r) {
         ContentValues values = new ContentValues();
-        if(r.id() > 0) values.put("id", r.id());
-        values.put("name", r.name());
+        if(r.getId() > 0) values.put("id", r.getId());
+        values.put("name", r.getName());
         return values;
     }
 

@@ -4,28 +4,31 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 
-import group4.dmhelper.Actors.Ability;
+import group4.dmhelper.Actors.Skill;
 
 /**
  * Created by james
+ *
+ * This class needs to get the skill ids somehow
  */
-public class Abilities extends Database implements DAO<Ability> {
+public class Skills extends Database implements DAO<Skill> {
     private String TABLE = "abilities";
+    private int skillId;
 
-    public Abilities(Context context) {
+    public Skills(Context context) {
         super(context, "abilities");
         createTable();
     }
 
-    public int create(Ability a) { return super.create(TABLE, values(a)); }
+    public int create(Skill a) { return super.create(TABLE, values(a)); }
 
-    public void update(Ability a) { super.update(TABLE, a, values(a));
+    public void update(Skill a) { super.update(TABLE, a, values(a));
     }
 
-    public Ability retrieve(int id) {
+    public Skill retrieve(int id) { //if this is the playerid, then it will return all of the skills in the list.
         String[] args = new String[] {id+""};
         Cursor c = database.query(TABLE, null, "id = ?", args, null, null, null);
-        Ability a = new Ability();
+        Skill a = new Skill(id, skillId);
 
         if (c.moveToFirst()) {
             do {
@@ -45,13 +48,14 @@ public class Abilities extends Database implements DAO<Ability> {
 
     public int count() { return super.count(TABLE); }
 
-    private ContentValues values(Ability a) {
+    private ContentValues values(Skill a) {
         ContentValues values = new ContentValues();
-        if(a.id() > 0) values.put("id", a.id());
+        if(a.getId() > 0) values.put("id", a.getId());
 
-        values.put("baseScore", a.baseScore());
-        values.put("miscBonus", a.miscBonus());
-        values.put("name", a.name());
+        values.put("baseScore", a.getBaseScore());
+        values.put("miscBonus", a.getMiscBonus());
+        values.put("name", a.getName());
+        values.put("skillId", a.getSkillId());
         return values;
     }
 
@@ -61,6 +65,7 @@ public class Abilities extends Database implements DAO<Ability> {
                 "baseScore INTEGER," +
                 "miscBonus INTEGER," +
                 "name TEXT" +
+                "skillId INTEGER," +
                 ")";
         database.execSQL(q);
     }

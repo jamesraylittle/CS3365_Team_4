@@ -30,19 +30,59 @@ public class PlayerAbility extends Model {
         this(0, 0, 0, 0, 0, 0, 0, 0);
     }
 
-    public int playerId() { return this.playerId(); }
-    public int strengthAbilityId() { return this.strengthAbilityId; }
-    public int dexAbilityId() { return this.dexAbilityId; }
-    public int constAbilityId() { return this.constAbilityId; }
-    public int intelAbilityId() { return this.intelAbilityId; }
-    public int wisdomAbilityId() { return this.wisdomAbilityId; }
-    public int crismaAbilityId() { return this.crismaAbilityId; }
+    public int getPlayerId() {
+        return playerId;
+    }
 
-    public void setPlayerId(int id) { this.playerId = id; }
-    public void setStrengthAbilityId(int id) { this.strengthAbilityId = id; }
-    public void setDexAbilityId(int id) { this.dexAbilityId = id; }
-    public void setConstAbilityId(int id) { this.constAbilityId = id; }
-    public void setIntelAbilityId(int id) { this.intelAbilityId = id; }
-    public void setWisdomAbilityId(int id) { this.wisdomAbilityId = id; }
-    public void setCrismaAbilityId(int id) { this.constAbilityId = id; }
+    public void setPlayerId(int playerId) {
+        this.playerId = playerId;
+    }
+
+    public int getStrengthAbilityId() {
+        return strengthAbilityId;
+    }
+
+    public void setStrengthAbilityId(int strengthAbilityId) {
+        this.strengthAbilityId = strengthAbilityId;
+    }
+
+    public int getDexAbilityId() {
+        return dexAbilityId;
+    }
+
+    public void setDexAbilityId(int dexAbilityId) {
+        this.dexAbilityId = dexAbilityId;
+    }
+
+    public int getConstAbilityId() {
+        return constAbilityId;
+    }
+
+    public void setConstAbilityId(int constAbilityId) {
+        this.constAbilityId = constAbilityId;
+    }
+
+    public int getIntelAbilityId() {
+        return intelAbilityId;
+    }
+
+    public void setIntelAbilityId(int intelAbilityId) {
+        this.intelAbilityId = intelAbilityId;
+    }
+
+    public int getWisdomAbilityId() {
+        return wisdomAbilityId;
+    }
+
+    public void setWisdomAbilityId(int wisdomAbilityId) {
+        this.wisdomAbilityId = wisdomAbilityId;
+    }
+
+    public int getCrismaAbilityId() {
+        return crismaAbilityId;
+    }
+
+    public void setCrismaAbilityId(int crismaAbilityId) {
+        this.crismaAbilityId = crismaAbilityId;
+    }
 }

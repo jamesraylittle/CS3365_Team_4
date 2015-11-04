@@ -26,17 +26,13 @@ public class Items extends Database implements DAO<Item> {
     public Item retrieve(int id) {
         String[] args = new String[] { id+"" };
         Cursor c = database.query(TABLE, null, "id = ?", args, null, null, null);
-        Item from = new Item();
+        Item from = new Item(id);
 
         if (c.moveToFirst()) {
             do {
                 from.setId(c.getInt(0));
-                from.setName(c.getString(1));
-                from.setCategory(c.getString(2));
-                from.setSubCategory(c.getString(3));
-                from.setSpecialAbility(c.getString(4));
-                from.setAura(c.getString(5));
-                from.setAlignment(c.getString(6));
+                from.setPlayerId(c.getInt(1));
+                from.setItemId(c.getInt(2));
             } while (c.moveToNext());
         }
 
@@ -50,26 +46,18 @@ public class Items extends Database implements DAO<Item> {
 
     private ContentValues values(Item item) {
         ContentValues values = new ContentValues();
-        if(item.id() > 0) values.put("id", item.id());
+        if(item.getId() > 0) values.put("id", item.getId());
 
-        values.put("name", item.name());
-        values.put("category", item.category());
-        values.put("subCategory", item.subCategory());
-        values.put("specialAbility", item.specialAbility());
-        values.put("aura", item.aura());
-        values.put("alignment", item.alignment());
+        values.put("Player Id", item.getPlayerId());
+        values.put("Item Id", item.getItemId());
         return values;
     }
 
     private void createTable() {
         String q = "CREATE TABLE IF NOT EXISTS "+TABLE+" (" +
                 "id integer primary key AUTOINCREMENT," +
-                "name TEXT," +
-                "category TEXT," +
-                "subCategory TEXT," +
-                "specialAbility TEXT," +
-                "aura TEXT," +
-                "alignment TEXT" +
+                "Player Id INTEGER," +
+                "Item Id INTEGER," +
                 ")";
         database.execSQL(q);
     }

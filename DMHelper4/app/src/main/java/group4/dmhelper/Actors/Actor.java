@@ -11,7 +11,7 @@ import java.util.ArrayList;
 public class Actor extends Model{
 
 
-    public Actor(int i) {id = i;}   //TODO - still needs to populate private variables from database
+    public Actor(int playerId) {this.id = playerId;}   //TODO - still needs to populate private variables from database
 
     //$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#
     //Various Player Attributes
@@ -24,8 +24,6 @@ public class Actor extends Model{
     private float weight;
     private String religion;
 
-    private ArrayList<Integer> playerAbilities = new ArrayList<Integer>();
-
     private int speed;
     private int initiativeMod; //this is the modifier plus the roll
     private int grappleMod;
@@ -34,56 +32,102 @@ public class Actor extends Model{
     private int willSave;   private int willMod;
     private int fortSave;   private int fortMod;
 
-    //private int AC;
-    //private int flatFootedAC;
-
-    private ArrayList<Integer> localSkills = new ArrayList<Integer>();
 
     //$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#
     //Sets and Gets
     //$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#
 
-    public String getName()         {return name;}
-    public String getGender()       {return gender;}
-    public int getSize()            {return size;}
-    public String getAlignment()    {return alignment;}
-    public float getWeight()        {return weight;}
-    public String getReligion()     {return religion;}
+    public String getName() {
+        return name;
+    }
+    public void setName(String name) {
+        this.name = name;
+    }
+    public String getGender() {
+        return gender;
+    }
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
+    public int getSize() {
+        return size;
+    }
+    public void setSize(int size) {
+        this.size = size;
+    }
+    public String getAlignment() {
+        return alignment;
+    }
+    public void setAlignment(String alignment) {
+        this.alignment = alignment;
+    }
+    public float getWeight() {
+        return weight;
+    }
+    public void setWeight(float weight) {
+        this.weight = weight;
+    }
+    public String getReligion() {
+        return religion;
+    }
+    public void setReligion(String religion) {
+        this.religion = religion;
+    }
 
-    public int getAbility(int i)    {if(i>0 && i<playerAbilities.size()) return playerAbilities.get(i);else return 0;}
-
-    public int getSpeed()           {return speed;}
-    public int getInitiativeMod()   {return initiativeMod;}
-    public int getGrappleMod()      {return grappleMod;}
-
-    public int getReflexSave()      {return reflexSave;}
-    public int getWillSave()        {return willSave;}
-    public int getFortSave()        {return fortSave;}
-
-    public int getReflexMod()       {return reflexMod;}
-    public int getWillMod()         {return willMod;}
-    public int getFortMod()         {return fortMod;}
-
-    public void setName(String value)       {name = value;}
-    public void setGender(String value)     {gender = value;}
-    public void setSize(int value)          {size = value;}
-    public void setAlignment(String value)  {alignment = value;}
-    public void setWeight(int value)        {weight = value;}
-    public void setReligion(String value)   {religion = value;}
-
-    public void setAbility(int i, int value)    {if(i>0 && i<playerAbilities.size()) playerAbilities.set(i, value);}
-
-    public void setSpeed(int value)         {speed = value;}
-    public void setInitiativeMod(int value) {initiativeMod = value;}
-    public void setGrappleMod(int value)    {grappleMod = value;}
-
-    public void setReflexSave(int value)    {reflexSave = value;}
-    public void setWillSave(int value)      {willSave = value;}
-    public void setFortSave(int value)      {fortSave = value;}
-
-    public void setReflexMod(int value)     {reflexMod = value;}
-    public void setWillMod(int value)       {willMod = value;}
-    public void setFortMod(int value)       {fortMod = value;}
+    public int getSpeed() {
+        return speed;
+    }
+    public void setSpeed(int speed) {
+        this.speed = speed;
+    }
+    public int getInitiativeMod() {
+        return initiativeMod;
+    }
+    public void setInitiativeMod(int initiativeMod) {
+        this.initiativeMod = initiativeMod;
+    }
+    public int getGrappleMod() {
+        return grappleMod;
+    }
+    public void setGrappleMod(int grappleMod) {
+        this.grappleMod = grappleMod;
+    }
+    public int getReflexSave() {
+        return reflexSave;
+    }
+    public void setReflexSave(int reflexSave) {
+        this.reflexSave = reflexSave;
+    }
+    public int getReflexMod() {
+        return reflexMod;
+    }
+    public void setReflexMod(int reflexMod) {
+        this.reflexMod = reflexMod;
+    }
+    public int getWillSave() {
+        return willSave;
+    }
+    public void setWillSave(int willSave) {
+        this.willSave = willSave;
+    }
+    public int getWillMod() {
+        return willMod;
+    }
+    public void setWillMod(int willMod) {
+        this.willMod = willMod;
+    }
+    public int getFortSave() {
+        return fortSave;
+    }
+    public void setFortSave(int fortSave) {
+        this.fortSave = fortSave;
+    }
+    public int getFortMod() {
+        return fortMod;
+    }
+    public void setFortMod(int fortMod) {
+        this.fortMod = fortMod;
+    }
 
     //$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#
     //Saving and loading from database
@@ -96,8 +140,11 @@ public class Actor extends Model{
     //Player IDs - We may not need objects for any of these
     //$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#
 
-    private ArrayList<Integer> equippedItemIds = new ArrayList<Integer>();
+    private ArrayList<Integer> playerAbilityIds = new ArrayList<Integer>();// TODO: 11/4/2015 Create "sets" and "adds"
     private ArrayList<Integer> playerWeaponIds = new ArrayList<Integer>();
+    private ArrayList<Integer> itemIds = new ArrayList<Integer>();// // TODO: 11/4/2015 Create "sets" and "adds"
+    private ArrayList<Integer> equippedItemIds = new ArrayList<Integer>();
+    private ArrayList<Integer> localSkillIds = new ArrayList<Integer>();// TODO: 11/4/2015 Create "sets" and "adds"
     private ArrayList<Integer> spellIds = new ArrayList<Integer>();
     private ArrayList<Integer> featIds = new ArrayList<Integer>();
 
@@ -134,6 +181,7 @@ public class Actor extends Model{
     //"add" and "remove" functions
     //$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#
 
+    public boolean populateAbilities()      {return true;/*query database - populate ArrayList*/}   //TODO
     public boolean populateSkills()         {return true;/*query database - populate ArrayList*/}   //TODO
     public boolean populateEquippedItems()  {return true;/*query database - populate ArrayList*/}   //TODO
     public boolean populateWeapons()        {return true;/*query database - populate ArrayList*/}   //TODO
