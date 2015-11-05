@@ -8,8 +8,19 @@ public class Weapon extends Model {
     private int playerId;
     private int weaponId;
 
-    public Weapon(int id){
+    public Weapon(int id, int playerId, int weaponId) {
         this.id = id;
+        this.playerId = playerId;
+        this.weaponId = weaponId;
+    }
+
+    public Weapon(int playerId, int weaponId) {
+        this.playerId = playerId;
+        this.weaponId = weaponId;
+    }
+
+    public Weapon() {
+        this(0,0,0);
     }
 
     public int getPlayerId() {

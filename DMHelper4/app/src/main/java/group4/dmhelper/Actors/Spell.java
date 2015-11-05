@@ -7,9 +7,19 @@ public class Spell extends Model {
     private int playerId;
     private int spellId;
 
-    public Spell(int id) {
+    public Spell(int id, int playerId, int spellId) {
         this.id = id;
-        /*This should take all of the information from the database*/
+        this.playerId = playerId;
+        this.spellId = spellId;
+    }
+
+    public Spell(int playerId, int spellId) {
+        this.playerId = playerId;
+        this.spellId = spellId;
+    }
+
+    public Spell() {
+        this(0, 0, 0);
     }
 
     public int getPlayerId() {

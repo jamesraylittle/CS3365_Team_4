@@ -7,9 +7,19 @@ public class Item extends Model {
     private int playerId;
     private int itemId;
 
-    public Item(int playerId) {
-        this.id = playerId;
-        /*This should take all of the information from the database*/
+    public Item(int id, int playerId, int itemId) {
+        this.id = id;
+        this.playerId = playerId;
+        this.itemId = itemId;
+    }
+
+    public Item(int playerId, int itemId) {
+        this.playerId = playerId;
+        this.itemId = itemId;
+    }
+
+    public Item() {
+        this(0,0,0);
     }
 
     public int getPlayerId() {

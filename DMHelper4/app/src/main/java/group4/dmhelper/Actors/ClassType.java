@@ -13,10 +13,21 @@ public class ClassType extends Model {
     private int classId;
     private int class_tableId;  //This represents level
 
+    public ClassType(int id, int playerId, int classId, int class_tableId) {
+        this.id = id;
+        this.playerId = playerId;
+        this.classId = classId;
+        this.class_tableId = class_tableId;
+    }
 
-    public ClassType(int playerId) {
-        this.id = playerId;
-        /*This should take all of the information from the database*/
+    public ClassType(int playerId, int classId, int class_tableId) {
+        this.playerId = playerId;
+        this.classId = classId;
+        this.class_tableId = class_tableId;
+    }
+
+    public ClassType() {
+        this(0,0,0,0);
     }
 
     public int getPlayerId() {

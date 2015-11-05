@@ -5,10 +5,9 @@ package group4.dmhelper.Actors;
  */
 public class Monster extends Actor {
 
-    public Monster(int actorId) {
-        super(actorId);
-        this.id = actorId;
+    public Monster(int playerId) {
+        super(playerId);
     }
 
-    public void spillXP() {}// TODO: 11/2/2015  
+    public void spillXP() {}// TODO: 11/2/2015
 }
