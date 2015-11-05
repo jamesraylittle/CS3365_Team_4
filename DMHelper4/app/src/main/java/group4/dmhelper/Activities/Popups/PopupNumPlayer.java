@@ -1,64 +1,59 @@
 package group4.dmhelper.Activities.Popups;
 
 import android.content.Intent;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.DisplayMetrics;
+import android.util.Log;
+import android.util.TypedValue;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
+import android.widget.Toast;
 
 import group4.dmhelper.Activities.ActivityGame;
 import group4.dmhelper.R;
 
 public class PopupNumPlayer extends AppCompatActivity {
 
+    private static RadioGroup g;
+    private static RadioButton rb;
+    private static EditText e;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.popup_num_player);
+        g = (RadioGroup)findViewById(R.id.radio_select_num);
+        e = (EditText)findViewById(R.id.editText_start_adventure_name);
 
-        DisplayMetrics dm = new DisplayMetrics();
-        getWindowManager().getDefaultDisplay().getMetrics(dm);
         WindowManager.LayoutParams windowManager = getWindow().getAttributes();
         windowManager.dimAmount = 0.5f;
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_DIM_BEHIND);
-        int width = dm.widthPixels;
-        int height = dm.heightPixels;
-        getWindow().setLayout((int) (width * 0.7), (int) (height * 0.4));
+        Resources r = getResources();
+        int pxW = (int)TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 280, r.getDisplayMetrics());
+        int pxH = (int)TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 200, r.getDisplayMetrics());
+        getWindow().setLayout(pxW, pxH); //pxW = 280dp in pixels, pxH = 200dp in pixels for screen
     }
 
-    public void one(View view)
+    public void startNewAdventure(View view)
     {
+        int selected_id = g.getCheckedRadioButtonId();
+        if (selected_id == -1) {
+            Toast.makeText(getApplicationContext(), "Please select number of players", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        rb = (RadioButton)findViewById(selected_id);
+        if (e.getText().toString().equals("")) {
+            Toast.makeText(getApplicationContext(), "Please enter an adventure name", Toast.LENGTH_SHORT).show();
+            return;
+        }
         Intent intent = new Intent(this, ActivityGame.class);
-        intent.putExtra("numplayers", 1);
-        startActivity(intent);
-        finish();
-    }
-    public void two(View view)
-    {
-        Intent intent = new Intent(this, ActivityGame.class);
-        intent.putExtra("numplayers", 2);
-        startActivity(intent);
-        finish();
-    }
-    public void three(View view)
-    {
-        Intent intent = new Intent(this, ActivityGame.class);
-        intent.putExtra("numplayers", 3);
-        startActivity(intent);
-        finish();
-    }
-    public void four(View view)
-    {
-        Intent intent = new Intent(this, ActivityGame.class);
-        intent.putExtra("numplayers", 4);
-        startActivity(intent);
-        finish();
-    }
-    public void five(View view)
-    {
-        Intent intent = new Intent(this, ActivityGame.class);
-        intent.putExtra("numplayers", 5);
+        intent.putExtra("numplayers", Integer.parseInt(rb.getText().toString()));
         startActivity(intent);
         finish();
     }

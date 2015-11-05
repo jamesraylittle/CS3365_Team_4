@@ -113,7 +113,6 @@ public class FragmentGame extends Fragment implements View.OnClickListener{
                 playerFive.setOnClickListener(this);
                 break;
         }
-        Toast.makeText(getContext().getApplicationContext(), "Number of players: "+numPlayers, Toast.LENGTH_LONG).show();
     }
 
     @Override
