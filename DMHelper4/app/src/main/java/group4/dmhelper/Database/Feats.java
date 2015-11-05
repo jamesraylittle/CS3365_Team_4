@@ -5,35 +5,34 @@ import android.content.Context;
 import android.database.Cursor;
 
 import group4.dmhelper.Actors.Feat;
-import group4.dmhelper.Actors.Item;
 
 /**
  * Created by james
  */
-public class Items extends Database implements DAO<Item> {
+public class Feats extends Database implements DAO<Feat> {
 
-    private String TABLE = "items";
+    private String TABLE = "feat";
 
-    public Items(Context context) {
-        super(context, "items");
+    public Feats(Context context) {
+        super(context, "feat");
         createTable();
     }
 
-    public int create(Item item) { return super.create(TABLE, values(item)); }
+    public int create(Feat f) { return super.create(TABLE, values(f)); }
 
-    public void update(Item item) { super.update(TABLE, item, values(item)); }
+    public void update(Feat f) { super.update(TABLE, f, values(f)); }
 
 
-    public Item retrieve(int id) {
+    public Feat retrieve(int id) {
         String[] args = new String[] { id+"" };
         Cursor c = database.query(TABLE, null, "id = ?", args, null, null, null);
-        Item from = new Item();
+        Feat from = new Feat();
 
         if (c.moveToFirst()) {
             do {
                 from.setId(c.getInt(0));
                 from.setPlayerId(c.getInt(1));
-                from.setItemId(c.getInt(2));
+                from.setFeatId(c.getInt(2));
             } while (c.moveToNext());
         }
 
@@ -45,12 +44,12 @@ public class Items extends Database implements DAO<Item> {
 
     public int count() { return super.count(TABLE); }
 
-    private ContentValues values(Item item) {
+    private ContentValues values(Feat feat) {
         ContentValues values = new ContentValues();
-        if(item.getId() > 0) values.put("id", item.getId());
+        if(feat.getId() > 0) values.put("id", feat.getId());
 
-        values.put("Player Id", item.getPlayerId());
-        values.put("Item Id", item.getItemId());
+        values.put("Player Id", feat.getPlayerId());
+        values.put("Item Id", feat.getFeatId());
         return values;
     }
 

@@ -1,6 +1,24 @@
 package group4.dmhelper.Actors;
 
+import android.content.Context;
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
+
+import group4.dmhelper.Database.Actors;
+import group4.dmhelper.Database.ClassTypes;
+import group4.dmhelper.Database.Equipments;
+import group4.dmhelper.Database.Feats;
+import group4.dmhelper.Database.Items;
+import group4.dmhelper.Database.PlayerAbilities;
+import group4.dmhelper.Database.Races;
+import group4.dmhelper.Database.Skills;
+import group4.dmhelper.Database.Spells;
 
 /**
  *
@@ -10,8 +28,73 @@ import java.util.ArrayList;
 
 public class Actor extends Model{
 
+    Context context;
 
-    public Actor(int playerId) {this.id = playerId;}   //TODO - still needs to populate private variables from database
+    public Actor(int id, String name, String gender, int size, String alignment, float weight, String religion, int speed, int initiativeMod, int grappleMod, int reflexSave, int reflexMod, int willSave, int willMod, int fortSave, int fortMod, Context context) {
+        this.id = id;
+        this.name = name;
+        this.gender = gender;
+        this.size = size;
+        this.alignment = alignment;
+        this.weight = weight;
+        this.religion = religion;
+        this.speed = speed;
+        this.initiativeMod = initiativeMod;
+        this.grappleMod = grappleMod;
+        this.reflexSave = reflexSave;
+        this.reflexMod = reflexMod;
+        this.willSave = willSave;
+        this.willMod = willMod;
+        this.fortSave = fortSave;
+        this.fortMod = fortMod;
+        this.context = context;
+    }
+
+    public Actor(String name, String gender, int size, String alignment, float weight, String religion, int speed, int initiativeMod, int grappleMod, int reflexSave, int reflexMod, int willSave, int willMod, int fortSave, int fortMod, Context context) {
+        this.name = name;
+        this.gender = gender;
+        this.size = size;
+        this.alignment = alignment;
+        this.weight = weight;
+        this.religion = religion;
+        this.speed = speed;
+        this.initiativeMod = initiativeMod;
+        this.grappleMod = grappleMod;
+        this.reflexSave = reflexSave;
+        this.reflexMod = reflexMod;
+        this.willSave = willSave;
+        this.willMod = willMod;
+        this.fortSave = fortSave;
+        this.fortMod = fortMod;
+        this.context = context;
+    }
+
+    public Actor(int id) {
+        this.id = id;
+    }
+
+    public Actor(int id, Context context) { //Saving/Loading
+        this.id = id;
+        this.context = context;
+
+        dClass = new ClassTypes(context);
+        dEquipments = new Equipments(context);
+        dItems = new Items(context);
+        dFeats = new Feats(context);
+        dPlayerAbilities = new PlayerAbilities(context);
+        dRaces = new Races(context);
+        dSkills = new Skills(context);
+        dSpells = new Spells(context);
+
+        classTypeId = dClass.retrieve(id);
+        /*for(all ids)*/equippedItemIds.add(dEquipments.retrieve(id));
+        /*for(all ids)*/itemIds.add(dItems.retrieve(id));
+        featIds.add(dFeats.retrieve(id));
+        playerAbilityIds = dPlayerAbilities.retrieve(id);
+        raceId = dRaces.retrieve(id);
+        for(int i=0;i<40;i++)skillIds.add(dSkills.retrieve(id));
+        spellIds.add(dSpells.retrieve(id));
+    }
 
     //$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#
     //Various Player Attributes
@@ -137,19 +220,30 @@ public class Actor extends Model{
     public void pushVariables()         {/*writes over current variables in database*/} // TODO: 11/2/2015
 
     //$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#
+    //DAOs
+    //$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#
+
+    private ClassTypes dClass;
+    private Equipments dEquipments;
+    private Items dItems;
+    private Feats dFeats;
+    private PlayerAbilities dPlayerAbilities;
+    private Races dRaces;
+    private Skills dSkills;
+    private Spells dSpells;
+
+    //$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#
     //Player IDs - We may not need objects for any of these
     //$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#
 
-    private ArrayList<Integer> playerAbilityIds = new ArrayList<Integer>();// TODO: 11/4/2015 Create "sets" and "adds"
-    private ArrayList<Integer> playerWeaponIds = new ArrayList<Integer>();
-    private ArrayList<Integer> itemIds = new ArrayList<Integer>();// // TODO: 11/4/2015 Create "sets" and "adds"
-    private ArrayList<Integer> equippedItemIds = new ArrayList<Integer>();
-    private ArrayList<Integer> localSkillIds = new ArrayList<Integer>();// TODO: 11/4/2015 Create "sets" and "adds"
-    private ArrayList<Integer> spellIds = new ArrayList<Integer>();
-    private ArrayList<Integer> featIds = new ArrayList<Integer>();
-
-    private int classTypeId;
-    private int raceId;
+    private ClassType classTypeId = new ClassType();
+    private ArrayList<Equipment> equippedItemIds = new ArrayList<Equipment>();
+    private ArrayList<Item> itemIds = new ArrayList<Item>();
+    private ArrayList<Feat> featIds = new ArrayList<Feat>();
+    private PlayerAbility playerAbilityIds = new PlayerAbility();
+    private Race raceId = new Race();
+    private ArrayList<Skill> skillIds = new ArrayList<Skill>();    //Make 40 of these
+    private ArrayList<Spell> spellIds = new ArrayList<Spell>();
 
     //$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#
     //"get" and "set" functions - look through database to find the following items
@@ -184,20 +278,16 @@ public class Actor extends Model{
     public boolean populateAbilities()      {return true;/*query database - populate ArrayList*/}   //TODO
     public boolean populateSkills()         {return true;/*query database - populate ArrayList*/}   //TODO
     public boolean populateEquippedItems()  {return true;/*query database - populate ArrayList*/}   //TODO
-    public boolean populateWeapons()        {return true;/*query database - populate ArrayList*/}   //TODO
     public boolean populateSpells()         {return true;/*query database - populate ArrayList*/}   //TODO
     public boolean populateFeats()          {return true;/*query database - populate ArrayList*/}   //TODO
 
-    public void getSkills()                     {/*query database - populate ArrayList*/}           //TODO
-    public int getSkills(String S)              {return 0;/*search by string - query database*/}    //TODO
-    public void setSkills(int i, int value)     {/*query database - populate ArrayList*/}           //TODO
-    public void setSkills(String S, int value)  {/*search by string - query database*/}             //TODO
+    public int getSkill(int i)                  {if(i>=0&&i<40)return dSkills.retrieve(skillIds.get(i).getSkillId()).getBaseScore(); else return -1;}
+    public void setSkill(int i, int value)      {if(i>=0&&i<40){skillIds.get(i).setBaseScore(value); dSkills.update(skillIds.get(i));}}
+    public int getSkillMod(int i)               {if(i>=0&&i<40)return dSkills.retrieve(skillIds.get(i).getSkillId()).getMiscBonus(); else return -1;}
+    public void setSkillMod(int i, int value)   {if(i>=0&&i<40){skillIds.get(i).setMiscBonus(value); dSkills.update(skillIds.get(i));}}
 
     public void getEquippedItem()           {if(populateEquippedItems())/*query database - populate ArrayList*/;}   //TODO
     public int getEquippedItem(String S)    {if(populateEquippedItems())return 0; else return 0;/*search by string - query database*/}  //TODO
-
-    public void getWeapons()                {if(populateWeapons())/*query database - populate ArrayList*/;} //TODO
-    public int getWeapons(String S)         {if(populateWeapons())return 0; else return 0;/*search by string - query database*/}    //TODO
 
     public void getSpells()                 {if(populateSpells())/*query database - populate ArrayList*/;}  //TODO
     public int getSpells(String S)          {if(populateSpells())return 0; else return 0;/*search by string - query database*/} //TODO
@@ -206,12 +296,10 @@ public class Actor extends Model{
     public int getFeats(String S)           {if(populateFeats())return 0; else return 0;/*search by string - query database*/}  //TODO
 
     public void addEquippedItems(int ID)    {/*add id to database*/}    //TODO
-    public void addWeapons(int ID)          {/*add id to database*/}    //TODO
     public void addSpells(int ID)           {/*add id to database*/}    //TODO
     public void addFeats(int ID)            {/*add id to database*/}    //TODO
 
     public void removeEquippedItems(int ID) {if(populateEquippedItems())/*add id to database*/;}    //TODO
-    public void removeWeapons(int ID)       {if(populateWeapons())/*add id to database*/;}  //TODO
     public void removeSpells(int ID)        {if(populateSpells())/*add id to database*/;}   //TODO
     public void removeFeats(int ID)         {if(populateFeats())/*add id to database*/;}    //TODO
 
@@ -224,4 +312,5 @@ public class Actor extends Model{
     public int calculateFlatFootedAC() {return 0;}  // TODO: 11/2/2015
     public int rollToHit(){return 0;}               //TODO
     public int calculateDamage(){return 0;}         //TODO
+
 }

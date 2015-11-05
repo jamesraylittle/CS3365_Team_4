@@ -4,28 +4,28 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 
+import group4.dmhelper.Actors.Actor;
 import group4.dmhelper.Actors.Feat;
-import group4.dmhelper.Actors.Player;
 
 /**
  * Created by james
  */
-public class Players extends Database implements DAO<Player> {
-    private String TABLE = "players";
+public class Actors extends Database implements DAO<Actor> {
+    private String TABLE = "actors";
 
-    public Players(Context context) {
-        super(context, "players");
+    public Actors(Context context) {
+        super(context, "actors");
         createTable();
     }
 
-    public int create(Player p) { return super.create(TABLE, values(p)); }
+    public int create(Actor p) { return super.create(TABLE, values(p)); }
 
-    public void update(Player p) { super.update(TABLE, p, values(p)); }
+    public void update(Actor p) { super.update(TABLE, p, values(p)); }
 
-    public Player retrieve(int id) {
+    public Actor retrieve(int id) {
         String [] args = new String[] { id+"" };
         Cursor c = database.query(TABLE, null, "id = ?", args, null, null, null);
-        Player from = new Player(id);
+        Actor from = new Actor(id);
 
         if (c.moveToFirst()) {
             do {
@@ -35,10 +35,10 @@ public class Players extends Database implements DAO<Player> {
                 from.setAlignment(c.getString(3));
                 from.setWeight(c.getInt(4));
                 from.setReligion(c.getString(5));
-                //from.setPlayerAbilityId(c.getInt(6)); This is more than one I believe.
+                //from.setActorAbilityId(c.getInt(6)); This is more than one I believe.
                 //from.setEquippedItemsId(c.getInt(7));
                 //from.setSkillsId(c.getInt(8));
-                //from.setPlayerWeaponsId(c.getInt(9));
+                //from.setActorWeaponsId(c.getInt(9));
                 //from.setRaceId(c.getString(10));
                 from.setRace(c.getString(10));  //Temporary
                 from.setName(c.getString(11));
@@ -52,7 +52,7 @@ public class Players extends Database implements DAO<Player> {
 
     public int count() { return super.count(TABLE);  }
 
-    private ContentValues values(Player p) {
+    private ContentValues values(Actor p) {
         ContentValues values = new ContentValues();
         if(p.getId() > 0) values.put("id", p.getId());
 
@@ -61,10 +61,10 @@ public class Players extends Database implements DAO<Player> {
         values.put("alignment", p.getAlignment());
         values.put("weight", p.getWeight());
         values.put("religion", p.getReligion());
-        //values.put("playerAbilityId", p.getPlayerAbilityId());
+        //values.put("actorAbilityId", p.getActorAbilityId());
         //values.put("equippedItemsId", p.getEquippedItemsId());
         //values.put("skillsId", p.getSkillsId());
-        //values.put("playerWeaponsId", p.getPlayerWeaponsId());
+        //values.put("actorWeaponsId", p.getActorWeaponsId());
         //values.put("raceId", p.getRaceId());
         values.put("race", p.getRace());  //Temporary
         values.put("name", p.getName());
@@ -79,10 +79,10 @@ public class Players extends Database implements DAO<Player> {
                 "alignment TEXT," +
                 "weight integer," +
                 "religion TEXT," +
-                //"playerAbilityId integer," +
+                //"actorAbilityId integer," +
                 //"equippedItemsId integer," +
                 //"skillsId integer," +
-                //"playerWeaponsId integer," +
+                //"actorWeaponsId integer," +
                 //"raceId integer," +
                 "race TEXT," +
                 "name TEXT" +

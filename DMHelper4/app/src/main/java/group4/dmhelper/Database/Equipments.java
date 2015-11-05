@@ -4,34 +4,35 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 
-import group4.dmhelper.Actors.Weapon;
+import group4.dmhelper.Actors.Equipment;
+import group4.dmhelper.Actors.Feat;
 
 /**
  * Created by james.
  */
-public class Weapons extends Database implements DAO<Weapon> {
-    private String TABLE = "Weapons";
+public class Equipments extends Database implements DAO<Equipment> {
+    private String TABLE = "Equipments";
 
-    public Weapons(Context context) {
-        super(context, "Weapons");
+    public Equipments(Context context) {
+        super(context, "Equipments");
         createTable();
     }
 
-    public int create(Weapon p) { return super.create(TABLE, values(p)); }
+    public int create(Equipment p) { return super.create(TABLE, values(p)); }
 
-    public void update(Weapon p) { super.update(TABLE, p, values(p)); }
+    public void update(Equipment p) { super.update(TABLE, p, values(p)); }
 
-    public Weapon retrieve(int id) {    // TODO: 11/4/2015 @james is this a player id?
+    public Equipment retrieve(int id) {    // TODO: 11/4/2015 @james is this a player id?
         String args[] = new String[] { id+"" };
         Cursor c = database.query(TABLE, null, "id = ?", args, null, null, null);
 
-        Weapon p = new Weapon();
+        Equipment p = new Equipment();
 
         if (c.moveToFirst()) {
             do {
                 p.setId(c.getInt(0));
                 p.setPlayerId(c.getInt(1));
-                p.setWeaponId(c.getInt(2));
+                p.setEquipmentId(c.getInt(2));
             } while (c.moveToNext());
         }
 
@@ -42,11 +43,11 @@ public class Weapons extends Database implements DAO<Weapon> {
 
     public int count() { return super.count(TABLE); }
 
-    private ContentValues values(Weapon p) {
+    private ContentValues values(Equipment p) {
         ContentValues values = new ContentValues();
         if(p.getId() > 0) values.put("id", p.getId());
         values.put("playerId", p.getPlayerId());
-        values.put("weaponId", p.getWeaponId());
+        values.put("weaponId", p.getEquipmentId());
         return values;
     }
 

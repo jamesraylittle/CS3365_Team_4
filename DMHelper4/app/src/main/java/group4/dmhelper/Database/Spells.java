@@ -4,36 +4,35 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 
-import group4.dmhelper.Actors.Feat;
-import group4.dmhelper.Actors.Item;
+import group4.dmhelper.Actors.Spell;
 
 /**
  * Created by james
  */
-public class Items extends Database implements DAO<Item> {
+public class Spells extends Database implements DAO<Spell> {
 
-    private String TABLE = "items";
+    private String TABLE = "spells";
 
-    public Items(Context context) {
-        super(context, "items");
+    public Spells(Context context) {
+        super(context, "spells");
         createTable();
     }
 
-    public int create(Item item) { return super.create(TABLE, values(item)); }
+    public int create(Spell spell) { return super.create(TABLE, values(spell)); }
 
-    public void update(Item item) { super.update(TABLE, item, values(item)); }
+    public void update(Spell spell) { super.update(TABLE, spell, values(spell)); }
 
 
-    public Item retrieve(int id) {
+    public Spell retrieve(int id) {
         String[] args = new String[] { id+"" };
         Cursor c = database.query(TABLE, null, "id = ?", args, null, null, null);
-        Item from = new Item();
+        Spell from = new Spell();
 
         if (c.moveToFirst()) {
             do {
                 from.setId(c.getInt(0));
                 from.setPlayerId(c.getInt(1));
-                from.setItemId(c.getInt(2));
+                from.setSpellId(c.getInt(2));
             } while (c.moveToNext());
         }
 
@@ -45,12 +44,12 @@ public class Items extends Database implements DAO<Item> {
 
     public int count() { return super.count(TABLE); }
 
-    private ContentValues values(Item item) {
+    private ContentValues values(Spell spell) {
         ContentValues values = new ContentValues();
-        if(item.getId() > 0) values.put("id", item.getId());
+        if(spell.getId() > 0) values.put("id", spell.getId());
 
-        values.put("Player Id", item.getPlayerId());
-        values.put("Item Id", item.getItemId());
+        values.put("Player Id", spell.getPlayerId());
+        values.put("Spell Id", spell.getSpellId());
         return values;
     }
 
@@ -58,7 +57,7 @@ public class Items extends Database implements DAO<Item> {
         String q = "CREATE TABLE IF NOT EXISTS "+TABLE+" (" +
                 "id integer primary key AUTOINCREMENT," +
                 "Player Id INTEGER," +
-                "Item Id INTEGER," +
+                "Spell Id INTEGER," +
                 ")";
         database.execSQL(q);
     }
