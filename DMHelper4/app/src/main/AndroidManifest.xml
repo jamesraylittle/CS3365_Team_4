@@ -139,6 +139,12 @@
             android:label="@string/title_activity_num_player"
             android:theme="@style/AppTheme.popup">
         </activity>
+        <activity
+            android:name=".Activities.Popups.PopupEditCharPic"
+            android:label="@string/title_activity_num_player"
+            android:theme="@style/AppTheme.popup"
+            android:noHistory="true">
+        </activity>
 
     </application>
 

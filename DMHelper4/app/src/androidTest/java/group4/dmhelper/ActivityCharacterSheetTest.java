@@ -42,10 +42,6 @@ public class ActivityCharacterSheetTest extends ActivityInstrumentationTestCase2
 
     @SmallTest
     public void testbutton() {
-        Button bt = (Button)getActivity().findViewById(R.id.btn_change_health);
-        assertNotNull(bt);
-        Button bt2 = (Button)getActivity().findViewById(R.id.btn_change_experience);
-        assertNotNull(bt2);
         Button bt3 = (Button)getActivity().findViewById(R.id.btn_abilities);
         assertNotNull(bt3);
         Button bt4 = (Button)getActivity().findViewById(R.id.btn_feats);
