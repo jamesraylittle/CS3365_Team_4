@@ -53,7 +53,7 @@ abstract class Database extends SQLiteOpenHelper {
     }
 
     public void update(String table, Model m, ContentValues values) {
-        database.update(table, values, "id = ?", new String[]{m.id() + ""});
+        database.update(table, values, "id = ?", new String[]{m.getId() + ""});
     }
 
 

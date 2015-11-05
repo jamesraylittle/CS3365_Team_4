@@ -8,10 +8,9 @@ package group4.dmhelper.Actors;
 public class Player extends Actor {
 
     // TODO: 11/3/2015 This object needs to have abilities, weapons, etc in order to populate everything for the player
-    public Player(int actorId) {
-        super(actorId);
-        this.id = actorId;
-        //TODO - still needs to populate private variables from database
+
+    public Player(int playerId) {
+        super(playerId);
     }
 
     //$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#

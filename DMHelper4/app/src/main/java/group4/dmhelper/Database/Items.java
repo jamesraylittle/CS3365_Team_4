@@ -26,7 +26,7 @@ public class Items extends Database implements DAO<Item> {
     public Item retrieve(int id) {
         String[] args = new String[] { id+"" };
         Cursor c = database.query(TABLE, null, "id = ?", args, null, null, null);
-        Item from = new Item(id);
+        Item from = new Item();
 
         if (c.moveToFirst()) {
             do {

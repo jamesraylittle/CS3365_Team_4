@@ -1,19 +1,25 @@
 package group4.dmhelper.Actors;
 
-import android.content.Context;
-
-import group4.dmhelper.Database.Items;
-
-
+/**
+ * Created by Daniel on 10/19/2015.
+ */
 public class Item extends Model {
     private int playerId;
     private int itemId;
-    private Items items;
 
-    public Item(int id, int playerId, Context context) {
-        this.playerId = playerId;
+    public Item(int id, int playerId, int itemId) {
         this.id = id;
-        this.items = new Items(context);
+        this.playerId = playerId;
+        this.itemId = itemId;
+    }
+
+    public Item(int playerId, int itemId) {
+        this.playerId = playerId;
+        this.itemId = itemId;
+    }
+
+    public Item() {
+        this(0,0,0);
     }
 
     public int getPlayerId() {
@@ -30,9 +36,5 @@ public class Item extends Model {
 
     public void setItemId(int itemId) {
         this.itemId = itemId;
-    }
-
-    public Item getItem() {
-        return this.items.retrieve(this.id);
     }
 }

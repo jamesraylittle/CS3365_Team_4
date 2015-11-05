@@ -7,10 +7,25 @@ public class Skill extends Ability {
     private int playerId;   //read/write DB
     private int skillId;    //read only DB
 
-    public Skill(int playerId,int skillId) {
-        super(playerId);
+    public Skill(int id, int baseScore, int miscBonus, String name, int playerId, int skillId) {
+        super(id, baseScore, miscBonus, name);
         this.playerId = playerId;
         this.skillId = skillId;
+    }
+
+    public Skill(int baseScore, int miscBonus, String name, int playerId, int skillId) {
+        super(baseScore, miscBonus, name);
+        this.playerId = playerId;
+        this.skillId = skillId;
+    }
+
+    public Skill(int playerId, int skillId) {
+        this.playerId = playerId;
+        this.skillId = skillId;
+    }
+
+    public Skill() {
+        this(0, 0, 0, "", 0, 0);
     }
 
     public int getPlayerId() {

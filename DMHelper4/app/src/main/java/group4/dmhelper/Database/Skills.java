@@ -25,7 +25,7 @@ public class Skills extends Database implements DAO<Skill> {
     public void update(Skill a) { super.update(TABLE, a, values(a));
     }
 
-    public Skill retrieve(int id) { //if this is the playerid, then it will return all of the skills in the list.
+    public Skill retrieve(int id) {
         String[] args = new String[] {id+""};
         Cursor c = database.query(TABLE, null, "id = ?", args, null, null, null);
         Skill a = new Skill(id, skillId);

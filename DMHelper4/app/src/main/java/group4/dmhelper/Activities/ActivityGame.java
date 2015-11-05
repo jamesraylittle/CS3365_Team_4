@@ -10,12 +10,24 @@ import android.support.v7.app.AppCompatActivity;
 
 import java.io.IOException;
 
-import group4.dmhelper.Actors.Ability;
+import group4.dmhelper.Actors.ClassType;
 import group4.dmhelper.Actors.Item;
 import group4.dmhelper.Actors.Player;
+import group4.dmhelper.Actors.PlayerAbility;
+import group4.dmhelper.Actors.Race;
+import group4.dmhelper.Actors.Skill;
+import group4.dmhelper.Actors.Spell;
+import group4.dmhelper.Actors.Weapon;
+
 import group4.dmhelper.Database.DataBaseHelper;
-import group4.dmhelper.Database.Abilities;
+import group4.dmhelper.Database.ClassTypes;
+import group4.dmhelper.Database.Items;
+import group4.dmhelper.Database.PlayerAbilities;
 import group4.dmhelper.Database.Players;
+import group4.dmhelper.Database.Races;
+import group4.dmhelper.Database.Skills;
+import group4.dmhelper.Database.Weapons;
+
 import group4.dmhelper.Fragments.FragmentAdapter;
 import group4.dmhelper.Fragments.FragmentFeed;
 import group4.dmhelper.Fragments.FragmentGame;
