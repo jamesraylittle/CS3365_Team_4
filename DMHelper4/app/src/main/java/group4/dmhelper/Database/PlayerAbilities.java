@@ -4,6 +4,7 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 
+import group4.dmhelper.Actors.Feat;
 import group4.dmhelper.Actors.PlayerAbility;
 
 /**

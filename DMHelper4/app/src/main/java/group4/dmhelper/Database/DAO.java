@@ -1,5 +1,6 @@
 package group4.dmhelper.Database;
 
+import group4.dmhelper.Actors.Feat;
 import group4.dmhelper.Actors.Item;
 import group4.dmhelper.Actors.Model;
 

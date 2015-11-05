@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 
 import group4.dmhelper.Actors.ClassType;
+import group4.dmhelper.Actors.Feat;
 
 /**
  * Created by james.
