@@ -24,7 +24,7 @@ public class ClassTypes extends Database implements DAO<ClassType> {
     public ClassType retrieve(int id) {
         String[] args = new String[] { id+"" };
         Cursor c = database.query(TABLE, null, "id = ?", args, null, null, null);
-        ClassType ct = new ClassType(id);
+        ClassType ct = new ClassType();
 
         if (c.moveToFirst()) {
             do {

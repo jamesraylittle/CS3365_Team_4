@@ -25,7 +25,7 @@ public class Weapons extends Database implements DAO<Weapon> {
         String args[] = new String[] { id+"" };
         Cursor c = database.query(TABLE, null, "id = ?", args, null, null, null);
 
-        Weapon p = new Weapon(id);
+        Weapon p = new Weapon();
 
         if (c.moveToFirst()) {
             do {
