@@ -8,53 +8,145 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageButton;
+import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.Spinner;
+import android.widget.TextView;
 
+import group4.dmhelper.Activities.Popups.PopupEditCharPic;
 import group4.dmhelper.Activities.Popups.PopupEditExperience;
 import group4.dmhelper.Activities.Popups.PopupEditHealth;
+import group4.dmhelper.Fragments.FragmentFeed;
 import group4.dmhelper.R;
 
 public class ActivityCharacterSheet extends AppCompatActivity {
 
+    private String PlayerIdentifier;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_character_sheet);
+
+        Bundle extras = getIntent().getExtras();
+        PlayerIdentifier = extras.getString("Identifier");
         populateSpinners();
-        setupButtons();
+        setupButtons(PlayerIdentifier);
+        editProgressBars(PlayerIdentifier);
+
+        LinearLayout health=(LinearLayout) findViewById(R.id.healthBarLayout);
+        health.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ActivityCharacterSheet.this, PopupEditHealth.class);
+                intent.putExtra("Identifier", PlayerIdentifier);
+                startActivity(intent);
+            }
+        });
+
+        LinearLayout xp=(LinearLayout) findViewById(R.id.xpBarLayout);
+        xp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ActivityCharacterSheet.this, PopupEditExperience.class);
+                intent.putExtra("Identifier", PlayerIdentifier);
+                startActivity(intent);
+            }
+        });
+
+        // Button for Submit
+        Button Submit = (Button) findViewById(R.id.btn_submit_character_sheet);
+        Submit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                EditText characterName = (EditText) findViewById(R.id.editText_character_name);
+                if (!characterName.getText().toString().equals("")) //TODO CHECK IF DIFFERENT FROM CURRENT
+                {
+                    FragmentFeed.feedItems.add(PlayerIdentifier + "Changed character name to " + characterName.getText());
+                }
+
+                EditText playerName = (EditText) findViewById(R.id.editText_player_name);
+                if (!playerName.getText().toString().equals("")) //TODO CHECK IF DIFFERENT FROM CURRENT
+                {
+                    final String s = playerName.getText().toString();
+                    FragmentFeed.feedItems.add(PlayerIdentifier + "Changed player name to " + playerName.getText());
+                }
+
+                EditText height = (EditText) findViewById(R.id.editText_Height);
+                if (!height.getText().toString().equals("")) //TODO CHECK IF DIFFERENT FROM CURRENT
+                {
+                    FragmentFeed.feedItems.add(PlayerIdentifier + "Changed height to " + height.getText());
+                }
+
+                EditText weight = (EditText) findViewById(R.id.editText_Weight);
+                if (!weight.getText().toString().equals("")) //TODO CHECK IF DIFFERENT FROM CURRENT
+                {
+                    FragmentFeed.feedItems.add(PlayerIdentifier + "Changed weight to " + weight.getText());
+                }
+
+                EditText religion = (EditText) findViewById(R.id.editText_religion);
+                if (!religion.getText().toString().equals("")) //TODO CHECK IF DIFFERENT FROM CURRENT
+                {
+                    FragmentFeed.feedItems.add(PlayerIdentifier + "Changed religion to " + religion.getText());
+                }
+
+                Spinner characterClass = (Spinner) findViewById(R.id.spinner_search_class);
+                if (!characterClass.getSelectedItem().toString().equals("")) //TODO CHECK IF DIFFERENT FROM CURRENT
+                {
+                    FragmentFeed.feedItems.add(PlayerIdentifier + "Changed class to " + characterClass.getSelectedItem().toString());
+                }
+
+                Spinner race = (Spinner) findViewById(R.id.spinner_search_race);
+                if (!race.getSelectedItem().toString().equals("")) //TODO CHECK IF DIFFERENT FROM CURRENT
+                {
+                    FragmentFeed.feedItems.add(PlayerIdentifier + "Changed race to " + race.getSelectedItem().toString());
+                }
+
+                Spinner alignment = (Spinner) findViewById(R.id.spinner_search_alignment);
+                if (!alignment.getSelectedItem().toString().equals("")) //TODO CHECK IF DIFFERENT FROM current
+                {
+                    FragmentFeed.feedItems.add(PlayerIdentifier + "Changed alignment to " + alignment.getSelectedItem().toString());
+                }
+
+                finish();
+            }
+        });
 
 
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_activity_character_sheet, menu);
-        return true;
+    private void editProgressBars(String playerIdentifier) {
+        //Actor player = new Actor(playerIdentifer);
+        ProgressBar healthbar = (ProgressBar) findViewById(R.id.progressBar_health);
+        healthbar.setMax(100);  //TODO GET FROM DATABASE
+                                // healthbar.setMax(player.calcMaxHealth());
+        healthbar.setProgress(45);  //TODO GET FROM DATABASE
+                                // healthbar.setProgress(player.getHealth());
+        TextView health = (TextView) findViewById(R.id.txt_health_ratio);
+        health.setText(healthbar.getProgress() + "/" + healthbar.getMax());
+
+        ProgressBar xpbar = (ProgressBar) findViewById(R.id.progressBar_experience);
+        xpbar.setMax(100); //TODO GET FROM DATABASE
+                            // xpbar.setMax(player.calcMaxXp());
+        xpbar.setProgress(10);  //TODO GET FROM DATABASE
+                            //xpbar.setProgress(
+        TextView xp = (TextView) findViewById(R.id.txt_experience_ratio);
+        xp.setText(xpbar.getProgress() + "/" + xpbar.getMax());
+
     }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
-    private void setupButtons(){
+    private void setupButtons(final String ID){
         // Button for opening skills
         Button skills = (Button) findViewById(R.id.btn_skills);
         skills.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(ActivityCharacterSheet.this, ActivityCharacterSkills.class));
+                Intent intent = new Intent(ActivityCharacterSheet.this, ActivityCharacterSkills.class);
+                intent.putExtra("Identifier", ID);
+                startActivity(intent);
             }
         });
 
@@ -63,7 +155,9 @@ public class ActivityCharacterSheet extends AppCompatActivity {
         racialclass.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(ActivityCharacterSheet.this, ActivityCharacterRacialClass.class));
+                Intent intent = new Intent(ActivityCharacterSheet.this, ActivityCharacterRacialClass.class);
+                intent.putExtra("Identifier", ID);
+                startActivity(intent);
             }
         });
         // Button for Magic
@@ -71,7 +165,9 @@ public class ActivityCharacterSheet extends AppCompatActivity {
         magic.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(ActivityCharacterSheet.this, ActivityCharacterMagic.class));
+                Intent intent = new Intent(ActivityCharacterSheet.this, ActivityCharacterMagic.class);
+                intent.putExtra("Identifier", ID);
+                startActivity(intent);
             }
         });
 
@@ -80,7 +176,9 @@ public class ActivityCharacterSheet extends AppCompatActivity {
         feats.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(ActivityCharacterSheet.this, ActivityCharacterFeats.class));
+                Intent intent = new Intent(ActivityCharacterSheet.this, ActivityCharacterFeats.class);
+                intent.putExtra("Identifier", ID);
+                startActivity(intent);
             }
         });
         // Button for inventory
@@ -88,29 +186,35 @@ public class ActivityCharacterSheet extends AppCompatActivity {
         inventory.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(ActivityCharacterSheet.this, ActivityCharacterInventory.class));
+                Intent intent = new Intent(ActivityCharacterSheet.this, ActivityCharacterInventory.class);
+                intent.putExtra("Identifier", ID);
+                startActivity(intent);
             }
         });
 
-        //Button for Editing health
-        Button health = (Button) findViewById(R.id.btn_change_health);
-        health.setOnClickListener(new View.OnClickListener() {
+        // Button for abilities
+        Button abilities = (Button) findViewById(R.id.btn_abilities);
+        abilities.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity( new Intent(ActivityCharacterSheet.this, PopupEditHealth.class));
+                Intent intent = new Intent(ActivityCharacterSheet.this, ActivityCharacterAbilities.class);
+                intent.putExtra("Identifier", ID);
+                startActivity(intent);
             }
         });
 
-        //Button for Editing xp
-        Button xp = (Button) findViewById(R.id.btn_change_experience);
-        xp.setOnClickListener(new View.OnClickListener() {
+        // Button for charPicture
+        ImageButton charPic = (ImageButton) findViewById(R.id.charPictureButton);
+        charPic.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity( new Intent(ActivityCharacterSheet.this, PopupEditExperience.class));
+                Intent intent = new Intent(ActivityCharacterSheet.this, PopupEditCharPic.class);
+                //intent.putExtra("Identifier", ID);
+                startActivity(intent);
             }
         });
-
     }
+
     private void populateSpinners(){
         //Populate Class Tables
         Spinner Class_spinner = (Spinner) findViewById(R.id.spinner_search_class);
@@ -129,12 +233,12 @@ public class ActivityCharacterSheet extends AppCompatActivity {
         Race_spinner.setAdapter(RaceAdapter);
 
         //Populate Race Spinner
-        Spinner Allignment_spinner = (Spinner) findViewById(R.id.spinner_search_allignment);
-        ArrayAdapter<CharSequence> AllignmentAdapter = ArrayAdapter
-                .createFromResource(this, R.array.Allignments,
+        Spinner Alignment_spinner = (Spinner) findViewById(R.id.spinner_search_alignment);
+        ArrayAdapter<CharSequence> AlignmentAdapter = ArrayAdapter
+                .createFromResource(this, R.array.Alignments,
                         android.R.layout.simple_spinner_item);
-        AllignmentAdapter.setDropDownViewResource(R.layout.spinner_layout_dropdown);
-        Allignment_spinner.setAdapter(AllignmentAdapter);
+        AlignmentAdapter.setDropDownViewResource(R.layout.spinner_layout_dropdown);
+        Alignment_spinner.setAdapter(AlignmentAdapter);
     }
 }
 

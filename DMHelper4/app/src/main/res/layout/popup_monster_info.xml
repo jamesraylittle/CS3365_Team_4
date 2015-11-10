@@ -3,11 +3,9 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingLeft="6dp"
-    android:paddingRight="6dp"
-    android:paddingTop="6dp"
-    android:paddingBottom="16dp"
-    android:clipToPadding="false">
+    android:clipToPadding="false"
+    android:background="#000000"
+    android:padding="2dp">
 
 
     <LinearLayout

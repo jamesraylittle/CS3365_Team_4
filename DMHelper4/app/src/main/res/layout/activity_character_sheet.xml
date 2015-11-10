@@ -1,413 +1,432 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
-    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:background="@color/colorBackground"
-    android:orientation="vertical"
-    tools:context="group4.dmhelper.Activities.ActivityCharacterSheet">
+xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+android:paddingRight="@dimen/activity_horizontal_margin"
+android:paddingTop="@dimen/activity_vertical_margin"
+android:paddingBottom="@dimen/activity_vertical_margin"
+android:background="@color/colorBackground"
+android:orientation="vertical"
+tools:context="group4.dmhelper.Activities.ActivityCharacterSheet">
 
     <LinearLayout
-        android:orientation="horizontal"
+        android:orientation="vertical"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:layout_weight="3">
+        android:layout_weight="2.7">
 
-        <RelativeLayout
+        <LinearLayout
+            android:orientation="horizontal"
             android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:layout_weight=".75">
+            android:layout_height="fill_parent">
 
-            <ProgressBar
-                style="?android:attr/progressBarStyleHorizontal"
-                android:progressDrawable="@android:drawable/progress_horizontal"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/progressBar_health"
-                android:layout_marginTop="10dp"
-                android:paddingRight="5dp" />
-        </RelativeLayout>
-
-        <RelativeLayout
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:layout_weight="1">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="Health"
-                android:id="@+id/textView"
-                android:layout_centerVertical="true"
-                android:layout_alignParentStart="true"
-                android:textSize="12sp"
-                android:textStyle="bold" />
-        </RelativeLayout>
-
-        <RelativeLayout
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:layout_weight="1"
-            android:paddingBottom="3dp"
-            android:paddingTop="3dp">
-
-            <Button
+            <LinearLayout
+                android:orientation="vertical"
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
-                android:text="Health"
-                android:id="@+id/btn_change_health"
-                android:background="@color/colorButton"
-                android:scaleType="fitXY"
-                android:layout_alignParentStart="true"
-                android:layout_centerInParent="true" />
-        </RelativeLayout>
+                android:layout_weight=".33">
 
-    </LinearLayout>
-    <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:layout_weight="3">
-
-        <RelativeLayout
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:layout_weight=".75">
-
-            <ProgressBar
-                style="?android:attr/progressBarStyleHorizontal"
-                android:progressDrawable="@android:drawable/progress_horizontal"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/progressBar_experience"
-                android:layout_marginTop="10dp"
-                android:paddingRight="5dp" />
-        </RelativeLayout>
-
-        <RelativeLayout
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:layout_weight="1">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="100/1000 XP"
-                android:editable="false"
-                android:id="@+id/txt_display"
-                android:textSize="12sp"
-                android:textStyle="bold"
-                android:layout_centerVertical="true"
-                android:layout_alignParentStart="true" />
-        </RelativeLayout>
-
-        <RelativeLayout
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:layout_weight="1"
-            android:paddingTop="3dp"
-            android:paddingBottom="3dp">
-
-            <Button
+                <LinearLayout
+                android:orientation="horizontal"
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
-                android:text="XP"
-                android:id="@+id/btn_change_experience"
-                android:background="@color/colorButton"
-                android:scaleType="fitXY"
-                android:layout_alignParentStart="true"
-                android:layout_centerInParent="true"/>
-        </RelativeLayout>
+                android:layout_weight="3"
+                    android:id="@+id/healthBarLayout">
 
-    </LinearLayout>
+                <RelativeLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_weight=".5">
 
-    <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:layout_weight="3">
+                    <ProgressBar
+                        style="?android:attr/progressBarStyleHorizontal"
+                        android:progressDrawable="@android:drawable/progress_horizontal"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/progressBar_health"
+                        android:progressTint="@color/health"
+                        android:layout_marginTop="10dp"
+                        android:paddingRight="5dp" />
+                </RelativeLayout>
 
-        <RelativeLayout
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:layout_weight="1"
-            android:paddingBottom="3dp"
-            android:paddingRight="4dp">
+                <RelativeLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="1">
 
-            <Button
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:text="Health"
+                        android:id="@+id/txt_health_ratio"
+                        android:layout_centerVertical="true"
+                        android:layout_alignParentStart="true"
+                        android:textSize="12sp"
+                        android:textStyle="bold" />
+                </RelativeLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                android:orientation="horizontal"
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
-                android:text="Skills"
-                android:background="@color/colorButton"
-                android:id="@+id/btn_skills"
-                android:scaleType="fitXY"
-                android:layout_alignParentStart="true"
-                android:layout_centerInParent="true"/>
-        </RelativeLayout>
+                android:layout_weight="3"
+                    android:id="@+id/xpBarLayout">
 
-        <RelativeLayout
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:layout_weight="1"
-            android:paddingBottom="3dp"
-            android:paddingRight="2dp"
-            android:paddingLeft="2dp">
+                <RelativeLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_weight=".5">
 
-            <Button
+                    <ProgressBar
+                        style="?android:attr/progressBarStyleHorizontal"
+                        android:progressDrawable="@android:drawable/progress_horizontal"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/progressBar_experience"
+                        android:progressTint="@color/experience"
+                        android:layout_marginTop="10dp"
+                        android:paddingRight="5dp" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="1">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:text="XP"
+                        android:editable="false"
+                        android:id="@+id/txt_experience_ratio"
+                        android:textSize="12sp"
+                        android:textStyle="bold"
+                        android:layout_centerVertical="true"
+                        android:layout_alignParentStart="true" />
+                </RelativeLayout>
+
+                </LinearLayout>
+            </LinearLayout>
+
+            <RelativeLayout
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
-                android:background="@color/colorButton"
-                android:text="Race &amp; Class"
-                android:id="@+id/btn_racialclass"
-                android:scaleType="fitXY"
-                android:layout_alignParentStart="true"
-                android:layout_centerInParent="true"/>
-        </RelativeLayout>
+                android:layout_weight=".67"
+                android:padding="3dp">
 
-        <RelativeLayout
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:layout_weight="1"
-            android:paddingBottom="3dp"
-            android:paddingLeft="4dp">
-
-            <Button
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
-                android:background="@color/colorButton"
-                android:text="Magic"
-                android:id="@+id/btn_magic"
-                android:scaleType="fitXY"
-                android:layout_alignParentStart="true"
-                android:layout_centerInParent="true"/>
-        </RelativeLayout>
+                <ImageButton
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:text="Picture"
+                    android:id="@+id/charPictureButton"
+                    android:scaleType="centerInside"
+                    android:background="@null"
+                    android:src="@drawable/player1"
+                    android:layout_centerVertical="true"
+                    android:layout_centerHorizontal="true"
+                    android:singleLine="false"
+                    android:onClick="openEditPicture" />
+            </RelativeLayout>
+        </LinearLayout>
     </LinearLayout>
 
     <LinearLayout
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:layout_weight="3"
-        android:orientation="horizontal">
-
-        <RelativeLayout
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:layout_weight="1"
-            android:paddingRight="4dp"
-            android:paddingTop="3dp">
-
-            <Button
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
-                android:background="@color/colorButton"
-                android:text="Feats"
-                android:id="@+id/btn_feats"
-                android:scaleType="fitXY"
-                android:layout_alignParentStart="true"
-                android:layout_centerInParent="true" />
-        </RelativeLayout>
-
-        <RelativeLayout
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:layout_weight="1"
-            android:paddingRight="2dp"
-            android:paddingLeft="2dp"
-            android:paddingTop="3dp">
-
-            <Button
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
-                android:background="@color/colorButton"
-                android:text="Spells"
-                android:scaleType="fitXY"
-                android:id="@+id/btn_spells"
-                android:layout_centerVertical="true"
-                android:layout_centerHorizontal="true" />
-        </RelativeLayout>
-
-        <RelativeLayout
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:layout_weight="1"
-            android:paddingLeft="4dp"
-            android:paddingTop="3dp">
-
-            <Button
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
-                android:background="@color/colorButton"
-                android:text="Inventory"
-                android:scaleType="fitXY"
-                android:id="@+id/btn_inventory"
-                android:layout_centerVertical="true"
-                android:layout_centerHorizontal="true" />
-        </RelativeLayout>
-    </LinearLayout>
+    android:orientation="horizontal"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:layout_weight="3">
 
     <RelativeLayout
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:layout_weight="1">
+        android:layout_weight="1"
+        android:paddingBottom="3dp"
+        android:paddingRight="4dp">
 
-        <ScrollView
+        <Button
             android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/scrollView"
-            android:layout_weight="10">
+            android:layout_height="fill_parent"
+            android:text="Skills"
+            android:background="@color/colorButton"
+            android:id="@+id/btn_skills"
+            android:scaleType="fitXY"
+            android:layout_alignParentStart="true"
+            android:layout_centerInParent="true"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_weight="1"
+        android:paddingBottom="3dp"
+        android:paddingRight="2dp"
+        android:paddingLeft="2dp">
+
+        <Button
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:background="@color/colorButton"
+            android:text="Race &amp; Class"
+            android:id="@+id/btn_racialclass"
+            android:scaleType="fitXY"
+            android:layout_alignParentStart="true"
+            android:layout_centerInParent="true"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_weight="1"
+        android:paddingBottom="3dp"
+        android:paddingLeft="4dp">
+
+        <Button
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:background="@color/colorButton"
+            android:text="Magic"
+            android:id="@+id/btn_magic"
+            android:scaleType="fitXY"
+            android:layout_alignParentStart="true"
+            android:layout_centerInParent="true"/>
+    </RelativeLayout>
+</LinearLayout>
+
+<LinearLayout
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:layout_weight="3"
+    android:orientation="horizontal">
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_weight="1"
+        android:paddingRight="4dp"
+        android:paddingTop="3dp">
+
+        <Button
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:background="@color/colorButton"
+            android:text="Feats"
+            android:id="@+id/btn_feats"
+            android:scaleType="fitXY"
+            android:layout_alignParentStart="true"
+            android:layout_centerInParent="true" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_weight="1"
+        android:paddingRight="2dp"
+        android:paddingLeft="2dp"
+        android:paddingTop="3dp">
+
+        <Button
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:background="@color/colorButton"
+            android:text="Abilities"
+            android:scaleType="fitXY"
+            android:id="@+id/btn_abilities"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_weight="1"
+        android:paddingLeft="4dp"
+        android:paddingTop="3dp">
+
+        <Button
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:background="@color/colorButton"
+            android:text="Inventory"
+            android:scaleType="fitXY"
+            android:id="@+id/btn_inventory"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true" />
+    </RelativeLayout>
+</LinearLayout>
+
+<RelativeLayout
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:layout_weight="1">
+
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/scrollView"
+        android:layout_weight="10">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/text_input_layout_character_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <EditText
+                    android:id="@+id/editText_character_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Character Name"
+                    android:inputType="textPersonName"/>
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/text_input_layout_player_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <EditText
+                    android:id="@+id/editText_player_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Player Name"
+                    android:inputType="textPersonName"/>
+            </android.support.design.widget.TextInputLayout>
 
             <LinearLayout
-                android:orientation="vertical"
+                android:orientation="horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="left"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:text="Class"
+                    android:id="@+id/txt_class" />
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    />
+                <Spinner
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="right"
+                    android:id="@+id/spinner_search_class" />
+            </LinearLayout>
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="left"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:text="Race"
+                    android:id="@+id/txt_race" />
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    />
+                <Spinner
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="right"
+                    android:id="@+id/spinner_search_race" />
+            </LinearLayout>
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="left"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:text="Alignment"
+                    android:id="@+id/txt_alignment" />
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    />
+
+                <Spinner
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="right"
+                    android:id="@+id/spinner_search_alignment" />
+            </LinearLayout>
+
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/text_input_layout_religion"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="wrap_content">
+
+                <EditText
+                    android:id="@+id/editText_religion"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Religion / Patron Deity"
+                    android:inputType="textPersonName"/>
+            </android.support.design.widget.TextInputLayout>
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
 
                 <android.support.design.widget.TextInputLayout
-                    android:id="@+id/text_input_layout_character_name"
+                    android:id="@+id/text_input_layout_Height"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
 
                     <EditText
-                        android:id="@+id/editText_character_name"
-                        android:layout_width="match_parent"
+                        android:id="@+id/editText_Height"
+                        android:layout_width="100dp"
                         android:layout_height="wrap_content"
-                        android:hint="Character Name"
-                        android:inputType="textPersonName"/>
+                        android:hint="Height"
+                        android:inputType="text"/>
                 </android.support.design.widget.TextInputLayout>
-
                 <android.support.design.widget.TextInputLayout
-                    android:id="@+id/text_input_layout_player_name"
+                    android:id="@+id/text_input_layout_Weight"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
 
                     <EditText
-                        android:id="@+id/editText_player_name"
-                        android:layout_width="match_parent"
+                        android:id="@+id/editText_Weight"
+                        android:layout_width="100dp"
                         android:layout_height="wrap_content"
-                        android:hint="Player Name"
-                        android:inputType="textPersonName"/>
+                        android:hint="Weight"
+                        android:inputType="text"/>
                 </android.support.design.widget.TextInputLayout>
-
-                <LinearLayout
-                    android:orientation="horizontal"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="left"
-                        android:textAppearance="?android:attr/textAppearanceLarge"
-                        android:text="Class"
-                        android:id="@+id/txt_class" />
-                    <View
-                        android:layout_width="0dp"
-                        android:layout_height="0dp"
-                        android:layout_weight="1"
-                        />
-                    <Spinner
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="right"
-                        android:id="@+id/spinner_search_class" />
-                </LinearLayout>
-                <LinearLayout
-                    android:orientation="horizontal"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="left"
-                        android:textAppearance="?android:attr/textAppearanceLarge"
-                        android:text="Race"
-                        android:id="@+id/txt_race" />
-                    <View
-                        android:layout_width="0dp"
-                        android:layout_height="0dp"
-                        android:layout_weight="1"
-                        />
-                    <Spinner
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="right"
-                        android:id="@+id/spinner_search_race" />
-                </LinearLayout>
-                <LinearLayout
-                    android:orientation="horizontal"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="left"
-                        android:textAppearance="?android:attr/textAppearanceLarge"
-                        android:text="Allignment"
-                        android:id="@+id/txt_allignment" />
-                    <View
-                        android:layout_width="0dp"
-                        android:layout_height="0dp"
-                        android:layout_weight="1"
-                        />
-
-                    <Spinner
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="right"
-                        android:id="@+id/spinner_search_allignment" />
-                </LinearLayout>
-
-
-                <android.support.design.widget.TextInputLayout
-                    android:id="@+id/text_input_layout_religion"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-
-                    <EditText
-                        android:id="@+id/editText_religion"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:hint="Religion / Patron Deity"
-                        android:inputType="textPersonName"/>
-                </android.support.design.widget.TextInputLayout>
-                <LinearLayout
-                    android:orientation="horizontal"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
-
-                    <android.support.design.widget.TextInputLayout
-                        android:id="@+id/text_input_layout_Height"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
-
-                        <EditText
-                            android:id="@+id/editText_Height"
-                            android:layout_width="100dp"
-                            android:layout_height="wrap_content"
-                            android:hint="Height"
-                            android:inputType="text"/>
-                    </android.support.design.widget.TextInputLayout>
-                    <android.support.design.widget.TextInputLayout
-                        android:id="@+id/text_input_layout_Weight"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
-
-                        <EditText
-                            android:id="@+id/editText_Weight"
-                            android:layout_width="100dp"
-                            android:layout_height="wrap_content"
-                            android:hint="Weight"
-                            android:inputType="text"/>
-                    </android.support.design.widget.TextInputLayout>
-
-                 </LinearLayout>
 
             </LinearLayout>
-        </ScrollView>
-    </RelativeLayout>
+
+            <Button
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:background="@color/colorButton"
+                android:text="Submit"
+                android:scaleType="fitXY"
+                android:id="@+id/btn_submit_character_sheet"
+                android:layout_centerVertical="true"
+                android:layout_centerHorizontal="true" />
+
+        </LinearLayout>
+    </ScrollView>
+</RelativeLayout>
 
 </LinearLayout>

@@ -28,7 +28,7 @@
         <item>Halfling</item>
         <item>Human</item>
     </string-array>
-    <string-array name="Allignments">
+    <string-array name="Alignments">
         <item>               </item>
         <item>Lawful Good</item>
         <item>Lawful Neutral</item>

@@ -1,4 +1,4 @@
-package group4.dmhelper.Activities;
+package group4.dmhelper.Activities.Search;
 
 import android.app.Activity;
 import android.content.Context;
@@ -8,6 +8,7 @@ import android.database.SQLException;
 import android.os.Bundle;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListAdapter;
@@ -15,12 +16,11 @@ import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import group4.dmhelper.Activities.Popups.PopupEquipmentInfo;
 import group4.dmhelper.Database.DataBaseHelper;
-import group4.dmhelper.Fragments.FragmentFeed;
 import group4.dmhelper.R;
 
 /**
@@ -115,6 +115,40 @@ public class ActivitySearchEquipment extends Activity {
 
         //ListView
         searchResults = (ListView)findViewById(R.id.listView_search_equipment);
+        searchResults.setOnItemClickListener(
+                new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> arg0, View view, int position, long id) {
+                        String[] ev = getEquipmentInfo(listItems.get(position));
+                        if (ev.equals(null)) {
+                            Toast.makeText(getApplicationContext(), "There was an error loading the item details.",
+                                    Toast.LENGTH_LONG).show();
+                            return;
+                        }
+                        Intent intent = new Intent(ActivitySearchEquipment.this, PopupEquipmentInfo.class);
+                        intent.putExtra("equipment_values", ev);
+                        startActivity(intent);
+                    }
+                }
+        );
+    }
+
+    private String[] getEquipmentInfo(String equipmentName) {
+        List<String> ei = new ArrayList<>();
+        myDbHelper.openDataBase();
+        Cursor query = myDbHelper.performRawQuery("select * from equipment where name = ?", new String[]{equipmentName});
+        if (query.getCount() != 1) { // if it is not just 1 result, that's an error
+            return null;
+        }
+        else { // Otherwise, populate string array with information
+            query.moveToFirst();
+            for (int i = 1; i < 18; i++) {
+                ei.add(query.getString(i));
+            }
+            query.close();
+        }
+        myDbHelper.close();
+        return ei.toArray(new String[ei.size()]);
     }
 
     public void doSearchEquipment(View view) {

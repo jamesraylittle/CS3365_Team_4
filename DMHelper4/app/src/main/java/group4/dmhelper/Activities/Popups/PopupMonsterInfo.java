@@ -4,10 +4,12 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import group4.dmhelper.Fragments.FragmentFeed;
+import group4.dmhelper.Fragments.FragmentGame;
 import group4.dmhelper.R;
 
 /**
@@ -131,6 +133,9 @@ public class PopupMonsterInfo extends Activity {
     private void setPopupDimensions() {
         DisplayMetrics dm = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(dm);
+        WindowManager.LayoutParams windowManager = getWindow().getAttributes();
+        windowManager.dimAmount = 0.5f;
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_DIM_BEHIND);
         int width = dm.widthPixels;
         int height = dm.heightPixels;
         getWindow().setLayout((int) (width * .9), (int) (height * .73));
@@ -141,8 +146,9 @@ public class PopupMonsterInfo extends Activity {
     }
 
     public void doAddMonster(View view) {
-        FragmentFeed.feedItems.add(monsterInfo[1]+" was added to the game");
+        FragmentFeed.feedItems.add(monsterInfo[1] + " was added to the game");
         Toast.makeText(getApplicationContext(), monsterInfo[1]+" Added to Game", Toast.LENGTH_LONG).show();
+        FragmentGame.monsters.add(monsterInfo);
         PopupMonsterInfo.this.finish();
     }
 }
