@@ -35,14 +35,22 @@ public class ActivitySearchItems extends Activity {
     ListAdapter adapter;
     List<String> listUsers = new ArrayList<>();
     List<Integer> listIds = new ArrayList<>();
+    String playerId, playerName;
     private String[] arrayCat, arraySub, arraySpecial;
+    public static Activity itemSearchActivity;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_seach_item);
+        itemSearchActivity = this;
         myDbHelper = new DataBaseHelper(this);
         initializeWidgets();
+        try {
+            playerId = getIntent().getExtras().getString("Identifier");
+            playerName = getIntent().getExtras().getString("playerName");
+        }
+        catch (Exception e) {}
     }
 
     @Override
@@ -124,6 +132,8 @@ public class ActivitySearchItems extends Activity {
                         }
                         Intent intent = new Intent(ActivitySearchItems.this, PopupItemInfo.class);
                         intent.putExtra("item_values", iv);
+                        intent.putExtra("playerID",playerId);
+                        intent.putExtra("playerName",playerName);
                         startActivity(intent);
                     }
                 }
@@ -142,6 +152,7 @@ public class ActivitySearchItems extends Activity {
             for (int i = 1; i < 12; i++) {
                 ii.add(query.getString(i));
             }
+            ii.add(""+query.getInt(0));
             query.close();
         }
         myDbHelper.close();
