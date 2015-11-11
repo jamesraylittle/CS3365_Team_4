@@ -62,14 +62,25 @@ public class GameManager {
 
     public void createPlayer() {
         //this function should put a new actor in the playerList
+        Player p = new Player();
+        dActors.create(p);
+        //Activity editing all data goes here.
+        p.pushToDatabase();
+        playerList.add(p);
     }
 
     public void deletePlayer(int actorId) {//THIS IS NOT THE FUNCTION YOU USE TO KILL THE PLAYERS
         //this function should delete an actor in the playerList
+        dActors.delete(actorId);
+        Player p = getPlayer(actorId);
+        monsterList.remove(p);
+        p = null;
+        if(getPlayer(actorId) == null);//success note;
     }
 
     public void updatePlayer() {
-        //in case they get poisoned, etc.
+        //in case they get poisoned.
+        // TODO: 11/11/2015 ...? 
     }
 
     public Monster getMonster(int monsterId) {
@@ -80,19 +91,29 @@ public class GameManager {
 
     public void quickCreateMonster() {
         //this function should be able to generate new monsters quickly
+        // TODO: 11/11/2015 ...? 
     }
 
     public void createMonster() {
         Monster m = new Monster();
-        monsterList.add();
+        dActors.create(m);
+        //Activity editing all data goes here.
+        m.pushToDatabase();
+        monsterList.add(m);
     }
 
-    public void deleteMonster(int actorId) {//THIS IS NOT THE FUNCTION YOU USE TO KILL THE MONSTER S
+    public void deleteMonster(int actorId) {//THIS IS NOT THE FUNCTION YOU USE TO KILL THE MONSTERS
         //this function should delete an actor in the monsterList
+        dActors.delete(actorId);
+        Monster m = getMonster(actorId);
+        monsterList.remove(m);
+        m = null;
+        if(getMonster(actorId) == null);//success note;
     }
 
     public void updateMonster() {
         //in case they get poisoned, etc.
+        // TODO: 11/11/2015 Activity...? 
     }
 
     //$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#
@@ -118,17 +139,6 @@ public class GameManager {
         }
     }
 
-    private void attack(int actorId1, int actorId2) {
-    }
-
-    public void killMonster(int actorId) {
-        //This is the function that should be used when a monster is killed
-    }
-
-    public void killPlayer(int actorId) {
-        //This is the function that should be used when a player is killed
-    }
-
     private void actorTurn(Actor actor) {
         // TODO: 11/10/2015 An activity/window needs to be tied to this.
         //1 moveaction
@@ -137,6 +147,25 @@ public class GameManager {
         //list weapons
         //inf quick actions
         //list spells
+    }
+
+    private void attack(int actorId1, int actorId2) {
+    }
+
+    public void killMonster(int actorId) {
+        //This is the function that should be used when a monster is killed
+        
+        // TODO: 11/11/2015 Remove Items
+        // TODO: 11/11/2015 Activity to "spill" items
+        deleteMonster(actorId);
+    }
+
+    public void killPlayer(int actorId) {
+        //This is the function that should be used when a player is killed
+
+        // TODO: 11/11/2015 Remove Items
+        // TODO: 11/11/2015 Activity to "spill" items
+        deletePlayer(actorId);
     }
 
     private void sortActors() {

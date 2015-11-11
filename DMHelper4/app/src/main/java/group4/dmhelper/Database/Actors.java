@@ -65,15 +65,15 @@ public class Actors extends Database implements DAO<Actor> {
         values.put("alignment", p.getAlignment());
         values.put("weight", p.getWeight());
         values.put("religion", p.getReligion());
+        values.put("race", p.getRace());
+        values.put("name", p.getName());
+        values.put("isMonster", p.getName());
+        values.put("name", p.getName());
         //values.put("actorAbilityId", p.getActorAbilityId());
         //values.put("equippedItemsId", p.getEquippedItemsId());
         //values.put("skillsId", p.getSkillsId());
         //values.put("actorWeaponsId", p.getActorWeaponsId());
         //values.put("raceId", p.getRaceId());
-        values.put("race", p.getRace());  //Temporary
-        values.put("name", p.getName());
-        values.put("isMonster", p.getName());
-        values.put("name", p.getName());
         return values;
     }
 

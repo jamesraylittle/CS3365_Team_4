@@ -98,6 +98,8 @@ public class Actor extends Model implements Comparable<Actor>{
         //*/
     }
 
+    public Actor() {}
+
     @Override
     public int compareTo(Actor actor) {
         if (this.initiative > actor.getInitiative()) return 1;
@@ -115,6 +117,7 @@ public class Actor extends Model implements Comparable<Actor>{
     private String alignment;
     private float weight;
     private String religion;
+    private String race;
 
     private int speed;
     private int initiativeMod; //this is the modifier plus the roll
@@ -174,6 +177,12 @@ public class Actor extends Model implements Comparable<Actor>{
     }
     public void setReligion(String religion) {
         this.religion = religion;
+    }
+    public String getRace() {
+        return race;
+    }
+    public void setRace(String race) {
+        this.race = race;
     }
 
     public int getSpeed() {
@@ -251,8 +260,8 @@ public class Actor extends Model implements Comparable<Actor>{
     //Saving and loading from database
     //$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#
 
-    public void pullVariables()         {/*takes variables from database*/} // TODO: 11/2/2015
-    public void pushVariables()         {/*writes over current variables in database*/} // TODO: 11/2/2015
+    public void pullFromDatabase(){/*takes variables from database*/} // TODO: 11/2/2015
+    public void pushToDatabase(){/*writes over current variables in database*/} // TODO: 11/2/2015
 
     //$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#
     //DAOs
@@ -293,8 +302,8 @@ public class Actor extends Model implements Comparable<Actor>{
     public int getWis()         {return 0;/*query database*/}   //TODO
     public int getCha()         {return 0;/*query database*/}   //TODO
 
-    public int getClassType()   {return 0;/*query database*/}   //TODO
-    public int getRace()        {return 0;/*query database*/}   //TODO
+    public ClassType getClassType()     {return classTypeId;}
+    //public Race getRace()               {return race;}
 
     public void setStr()    {/*query database*/}    //TODO
     public void setDex()    {/*query database*/}    //TODO
@@ -304,7 +313,8 @@ public class Actor extends Model implements Comparable<Actor>{
     public void setCha()    {/*query database*/}    //TODO
 
     public void setClassType(String value)  {/*add id to database*/}    //TODO
-    public void setRace(String value)       {/*add id to database*/}    //TODO
+
+    //public void setRace(String value)       {/*add id to database*/}    //TODO
 
     //$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#
     //"add" and "remove" functions
@@ -316,37 +326,32 @@ public class Actor extends Model implements Comparable<Actor>{
     public boolean populateSpells()         {return true;/*query database - populate ArrayList*/}   //TODO
     public boolean populateFeats()          {return true;/*query database - populate ArrayList*/}   //TODO
 
-    public int getSkill(int i)                  {if(i>=0&&i<40)return dSkills.retrieve(skillIds.get(i).getSkillId()).getBaseScore(); else return -1;}
+    public int getSkill(int i)                  {if(i>=0&&i<40)return dSkills.retrieve(skillIds.get(i).getSkillId()).getBaseScore(); else return -1000;}
     public void setSkill(int i, int value)      {if(i>=0&&i<40){skillIds.get(i).setBaseScore(value); dSkills.update(skillIds.get(i));}}
-    public int getSkillMod(int i)               {if(i>=0&&i<40)return dSkills.retrieve(skillIds.get(i).getSkillId()).getMiscBonus(); else return -1;}
+    public int getSkillMod(int i)               {if(i>=0&&i<40)return dSkills.retrieve(skillIds.get(i).getSkillId()).getMiscBonus(); else return -1000;}
     public void setSkillMod(int i, int value)   {if(i>=0&&i<40){skillIds.get(i).setMiscBonus(value); dSkills.update(skillIds.get(i));}}
 
-    public void getEquippedItem()           {if(populateEquippedItems())/*query database - populate ArrayList*/;}   //TODO
-    public int getEquippedItem(String S)    {if(populateEquippedItems())return 0; else return 0;/*search by string - query database*/}  //TODO
+    public Equipment getEquippedItem(int ID)    {return dEquipments.retrieve(ID);}
+    public Spell getSpell(int ID)               {return dSpells.retrieve(ID);}
+    public Feat getFeat(int ID)                 {return dFeats.retrieve(ID);}
 
-    public void getSpells()                 {if(populateSpells())/*query database - populate ArrayList*/;}  //TODO
-    public int getSpells(String S)          {if(populateSpells())return 0; else return 0;/*search by string - query database*/} //TODO
+    public void addEquippedItems(int ID)    {Equipment e = new Equipment(this.id,ID); dEquipments.create(e);}
+    public void addSpells(int ID)           {Spell s = new Spell(this.id,ID); dSpells.create(s);}
+    public void addFeats(int ID)            {Feat f = new Feat(this.id,ID); dFeats.create(f);}
 
-    public void getFeats()                  {if(populateFeats())/*query database - populate ArrayList*/;}   //TODO
-    public int getFeats(String S)           {if(populateFeats())return 0; else return 0;/*search by string - query database*/}  //TODO
-
-    public void addEquippedItems(int ID)    {/*add id to database*/}    //TODO
-    public void addSpells(int ID)           {/*add id to database*/}    //TODO
-    public void addFeats(int ID)            {/*add id to database*/}    //TODO
-
-    public void removeEquippedItems(int ID) {if(populateEquippedItems())/*add id to database*/;}    //TODO
-    public void removeSpells(int ID)        {if(populateSpells())/*add id to database*/;}   //TODO
-    public void removeFeats(int ID)         {if(populateFeats())/*add id to database*/;}    //TODO
+    public void removeEquippedItems(int ID) {dEquipments.delete(ID);}
+    public void removeSpells(int ID)        {dSpells.delete(ID);}
+    public void removeFeats(int ID)         {dSpells.delete(ID);}
 
     //$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#
     //"calculate" functions
     //$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#
 
     public void rollInitiative() {initiative = initiativeMod + 10/*replace 10 with activity*/;}            // TODO: 11/10/2015 An activity needs to be connected to this
-    public int calculateAC() {return 0;}            // TODO: 11/2/2015
-    public int calculateTouchAC() {return 0;}       // TODO: 11/2/2015
-    public int calculateFlatFootedAC() {return 0;}  // TODO: 11/2/2015
-    public int rollToHit(){return 0;}               //TODO
-    public int calculateDamage(){return 0;}         //TODO
+    public int calculateAC() {return 0;}// TODO: 11/11/2015  Need to figure out calculation for this.
+    public int calculateTouchAC() {return 0;}// TODO: 11/11/2015 Need to figure out calculation for this.
+    public int calculateFlatFootedAC() {return 0;}// TODO: 11/11/2015 Need to figure out calculation for this.
+    public int rollToHit(){return 0;}// TODO: 11/11/2015 NEEDS OWN ACTIVITY 
+    public int calculateDamage(){return 0;}// TODO: 11/11/2015 Need to figure out a good convention for this. 
 
 }
