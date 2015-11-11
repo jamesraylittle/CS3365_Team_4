@@ -30,12 +30,12 @@ public class PlayerAbilities extends Database implements DAO<PlayerAbility> {
         if (c.moveToFirst()) {
             do {
                 p.setId(c.getInt(0));
-                p.setStrengthAbilityId(c.getInt(1));
-                p.setDexAbilityId(c.getInt(2));
-                p.setConstAbilityId(c.getInt(3));
-                p.setIntelAbilityId(c.getInt(4));
-                p.setWisdomAbilityId(c.getInt(5));
-                p.setCrismaAbilityId(c.getInt(6));
+                p.setStrengthAbility(c.getInt(1));
+                p.setDexAbility(c.getInt(2));
+                p.setConstAbility(c.getInt(3));
+                p.setIntelAbility(c.getInt(4));
+                p.setWisdomAbility(c.getInt(5));
+                p.setCrismaAbility(c.getInt(6));
             } while (c.moveToNext());
         }
         return p;
@@ -50,12 +50,12 @@ public class PlayerAbilities extends Database implements DAO<PlayerAbility> {
         if(p.getId() > 0) values.put("id", p.getId());
 
         values.put("playerId", p.getPlayerId());
-        values.put("strengthAbilityId", p.getStrengthAbilityId());
-        values.put("dexAbilityId", p.getDexAbilityId());
-        values.put("constAbilityId", p.getConstAbilityId());
-        values.put("intelAbilityId", p.getIntelAbilityId());
-        values.put("wisdomAbilityId", p.getWisdomAbilityId());
-        values.put("crismaAbilityId", p.getCrismaAbilityId());
+        values.put("strengthAbility", p.getStrengthAbility());
+        values.put("dexAbility", p.getDexAbility());
+        values.put("constAbility", p.getConstAbility());
+        values.put("intelAbility", p.getIntelAbility());
+        values.put("wisdomAbility", p.getWisdomAbility());
+        values.put("crismaAbility", p.getCrismaAbility());
 
         return values;
     }
@@ -63,12 +63,12 @@ public class PlayerAbilities extends Database implements DAO<PlayerAbility> {
     private void createTable() {
         String q = "CREATE TABLE IF NOT EXISTS "+TABLE+" (" +
                 "id integer primary key AUTOINCREMENT," +
-                "strengthAbilityId INTEGER," +
-                "dexAbilityId INTEGER," +
-                "constAbilityId INTEGER," +
-                "intelAbilityId INTEGER," +
-                "wisdomAbilityId INTEGER," +
-                "crismaAbilityId INTEGER" +
+                "strengthAbility INTEGER," +
+                "dexAbility INTEGER," +
+                "constAbility INTEGER," +
+                "intelAbility INTEGER," +
+                "wisdomAbility INTEGER," +
+                "crismaAbility INTEGER" +
                 ")";
         database.execSQL(q);
     }
