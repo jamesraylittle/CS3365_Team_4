@@ -1,8 +1,15 @@
 package group4.dmhelper;
 
+import android.content.Context;
+
 import java.util.ArrayList;
+import java.util.Collections;
 
 import group4.dmhelper.Actors.Actor;
+import group4.dmhelper.Actors.Item;
+import group4.dmhelper.Actors.Monster;
+import group4.dmhelper.Actors.Player;
+import group4.dmhelper.Database.Actors;
 
 /**
  * I figured that this class would help keep track of actors and objects.  This class should be
@@ -14,12 +21,31 @@ import group4.dmhelper.Actors.Actor;
  */
 public class GameManager {
 
-    ArrayList<Actor> playerList = new ArrayList<Actor>();
-    ArrayList<Actor> monsterList = new ArrayList<Actor>();
+    private GameManager() {}
+
+    private static GameManager instance;    //Singleton structure
+
+    public static GameManager getInstance() {   //only one instance
+        if (instance != null) return instance;
+        else return new GameManager();
+    }
+
+    private Context context;
+
+    public void setContext(Context context) {
+        this.context = context;
+    }
+
+    public Context getContext() {
+        return context;
+    }
+
+    Actors dActors = new Actors(context);
+
+    ArrayList<Player> playerList = new ArrayList<Player>();
+    ArrayList<Monster> monsterList = new ArrayList<Monster>();
     ArrayList<Actor> monsterBacklog = new ArrayList<Actor>();   //This is for the DMs who want to create monsters before the game
-
-    ArrayList<Actor> itemBackLog = new ArrayList<Actor>();   //This is for the DMs who want to create monsters before the game
-
+    ArrayList<Item> itemBackLog = new ArrayList<Item>();   //This is for the DMs who want to create items before the game
     ArrayList<Actor> initiativeRoll = new ArrayList<Actor>();   //this should be replaced with a circular linked list
 
     //ArrayList<DATABASE OBJECT> dataBases = new ArrayList<DATABASE OBJECT>();
@@ -28,26 +54,44 @@ public class GameManager {
     //Managing monsters and players
     //$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#
 
-    public void createPlayer(){
+    public Player getPlayer(int playerId) {
+        for(int i = 0; i < playerList.size(); i++)
+            if(playerList.get(i).getId() == playerId) return playerList.get(i);
+        return null;
+    }
+
+    public void createPlayer() {
         //this function should put a new actor in the playerList
     }
-    public void deletePlayer(int actorId){//THIS IS NOT THE FUNCTION YOU USE TO KILL THE PLAYERS
+
+    public void deletePlayer(int actorId) {//THIS IS NOT THE FUNCTION YOU USE TO KILL THE PLAYERS
         //this function should delete an actor in the playerList
     }
-    public void updatePlayer(){
+
+    public void updatePlayer() {
         //in case they get poisoned, etc.
     }
 
-    public void quickCreateMonster(){
+    public Monster getMonster(int monsterId) {
+        for(int i = 0; i < monsterList.size(); i++)
+            if(monsterList.get(i).getId() == monsterId) return monsterList.get(i);
+        return null;
+    }
+
+    public void quickCreateMonster() {
         //this function should be able to generate new monsters quickly
     }
-    public void createMonster(){
-        //this function should put a new actor in the monsterList
+
+    public void createMonster() {
+        Monster m = new Monster();
+        monsterList.add();
     }
-    public void deleteMonster(int actorId){//THIS IS NOT THE FUNCTION YOU USE TO KILL THE MONSTER S
+
+    public void deleteMonster(int actorId) {//THIS IS NOT THE FUNCTION YOU USE TO KILL THE MONSTER S
         //this function should delete an actor in the monsterList
     }
-    public void updateMonster(){
+
+    public void updateMonster() {
         //in case they get poisoned, etc.
     }
 
@@ -55,7 +99,7 @@ public class GameManager {
     //Managing Turns
     //$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#
 
-    public void battleSequence(){
+    public void battleSequence() {
         /*This function will do a few things
          *
          * it will have a while loop that will keep track of all of all of the active monsters
@@ -64,17 +108,50 @@ public class GameManager {
          * It will be able to be ended.
          *
          */
+
+        sortActors();
+
+        while (numEnemies() > 0) {
+            for (int i = 0; i < initiativeRoll.size(); i++) {
+                actorTurn(initiativeRoll.get(i));
+            }
+        }
     }
-    public void sortActors(){
-        //this should populate the initiativeRoll list based on the actors' initiative
+
+    private void attack(int actorId1, int actorId2) {
     }
-    public void attack(int actorId1, int actorId2){
-        // This should be the function that initiates the rollToHit, etc.
-    }
-    public void killMonster(int actorId){
+
+    public void killMonster(int actorId) {
         //This is the function that should be used when a monster is killed
     }
-    public void killPlayer(int actorId){
+
+    public void killPlayer(int actorId) {
         //This is the function that should be used when a player is killed
+    }
+
+    private void actorTurn(Actor actor) {
+        // TODO: 11/10/2015 An activity/window needs to be tied to this.
+        //1 moveaction
+        //1 standardaction
+        //list spells
+        //list weapons
+        //inf quick actions
+        //list spells
+    }
+
+    private void sortActors() {
+        //this should populate the initiativeRoll list based on the actors' initiative
+        if (initiativeRoll.isEmpty()) initiativeRoll.clear();
+        initiativeRoll.addAll(playerList);
+        initiativeRoll.addAll(monsterList);
+        Collections.sort(initiativeRoll);
+    }
+
+    public int numEnemies() {
+        //checks to see if there are enemies left
+        int iReturn = 0;
+        for (int i = 0; i < monsterList.size(); i++)
+            if (initiativeRoll.contains(monsterList.get(i))) iReturn++;
+        return iReturn;
     }
 }

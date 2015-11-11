@@ -5,8 +5,8 @@ package group4.dmhelper.Actors;
  */
 public class Monster extends Actor {
 
-    public Monster(int playerId) {
-        super(playerId);
+    public Monster(int id) {
+        super(id);
     }
 
     public void spillXP() {}// TODO: 11/2/2015

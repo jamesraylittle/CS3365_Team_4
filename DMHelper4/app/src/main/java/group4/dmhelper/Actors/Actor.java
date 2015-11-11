@@ -26,7 +26,7 @@ import group4.dmhelper.Database.Spells;
  * Edited 11/2/2015
  */
 
-public class Actor extends Model{
+public class Actor extends Model implements Comparable<Actor>{
 
     Context context;
 
@@ -86,14 +86,23 @@ public class Actor extends Model{
         dSkills = new Skills(context);
         dSpells = new Spells(context);
 
+        /*
         classTypeId = dClass.retrieve(id);
-        /*for(all ids)*/equippedItemIds.add(dEquipments.retrieve(id));
-        /*for(all ids)*/itemIds.add(dItems.retrieve(id));
+        equippedItemIds.add(dEquipments.retrieve(id));//for(all ids)
+        itemIds.add(dItems.retrieve(id));//for(all ids)
         featIds.add(dFeats.retrieve(id));
         playerAbilityIds = dPlayerAbilities.retrieve(id);
         raceId = dRaces.retrieve(id);
         for(int i=0;i<40;i++)skillIds.add(dSkills.retrieve(id));
         spellIds.add(dSpells.retrieve(id));
+        //*/
+    }
+
+    @Override
+    public int compareTo(Actor actor) {
+        if (this.initiative > actor.getInitiative()) return 1;
+        else if (this.initiative < actor.getInitiative()) return -1;
+        else return 0;
     }
 
     //$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#
@@ -109,17 +118,27 @@ public class Actor extends Model{
 
     private int speed;
     private int initiativeMod; //this is the modifier plus the roll
+
+    private int initiative; //this is the modifier plus the roll
     private int grappleMod;
 
     private int reflexSave; private int reflexMod;
     private int willSave;   private int willMod;
     private int fortSave;   private int fortMod;
 
+    private int isMonster;
+    private int inGame;
 
     //$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#
     //Sets and Gets
     //$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#
 
+    public int getInitiative() {
+        return initiative;
+    }
+    public void setInitiative(int initiative) {
+        this.initiative = initiative;
+    }
     public String getName() {
         return name;
     }
@@ -210,6 +229,22 @@ public class Actor extends Model{
     }
     public void setFortMod(int fortMod) {
         this.fortMod = fortMod;
+    }
+
+    public int getInGame() {
+        return inGame;
+    }
+
+    public void setInGame(int inGame) {
+        this.inGame = inGame;
+    }
+
+    public int getIsMonster() {
+        return isMonster;
+    }
+
+    public void setIsMonster(int isMonster) {
+        this.isMonster = isMonster;
     }
 
     //$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#
@@ -307,6 +342,7 @@ public class Actor extends Model{
     //"calculate" functions
     //$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#
 
+    public void rollInitiative() {initiative = initiativeMod + 10/*replace 10 with activity*/;}            // TODO: 11/10/2015 An activity needs to be connected to this
     public int calculateAC() {return 0;}            // TODO: 11/2/2015
     public int calculateTouchAC() {return 0;}       // TODO: 11/2/2015
     public int calculateFlatFootedAC() {return 0;}  // TODO: 11/2/2015
