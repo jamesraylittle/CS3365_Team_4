@@ -425,7 +425,7 @@
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
                     android:scaleType="fitXY"
-                    android:text="Add"
+                    android:text="Give"
                     android:onClick="doAddEquipment"
                     android:id="@+id/popup_monster_select"
                     android:layout_centerVertical="true"

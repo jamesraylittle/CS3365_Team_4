@@ -1,13 +1,18 @@
 package group4.dmhelper.Activities.Popups;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import group4.dmhelper.Activities.Search.ActivitySearchItems;
+import group4.dmhelper.Actors.Item;
+import group4.dmhelper.Database.Items;
 import group4.dmhelper.Fragments.FragmentFeed;
 import group4.dmhelper.Fragments.FragmentGame;
 import group4.dmhelper.R;
@@ -17,6 +22,8 @@ import group4.dmhelper.R;
  */
 public class PopupItemInfo extends Activity {
 
+    int playerId;
+    String playerName;
     String[] itemInfo;
     TextView name, category, subcategory, special_ability, aura, caster_level, price,
              manifest_level, prereq, cost, weight;
@@ -34,6 +41,7 @@ public class PopupItemInfo extends Activity {
     itemInfo[9] = cost
     itemInfo[10] = weight
     itemInfo[11] = reference
+    itemInfo[12] = id
     ============================================*/
 
     private void setTextViews() {
@@ -68,6 +76,10 @@ public class PopupItemInfo extends Activity {
         setContentView(R.layout.popup_item_info);
         setPopupDimensions();
         setTextViews();
+        if (getIntent().getExtras().getString("playerID") != null) {
+            playerId = 1;
+        }
+        playerName = getIntent().getExtras().getString("playerName");
     }
 
     private void setPopupDimensions() {
@@ -86,8 +98,22 @@ public class PopupItemInfo extends Activity {
     }
 
     public void doAddItem(View view) {
-        FragmentFeed.feedItems.add(itemInfo[0] + " was added to the game");
-        Toast.makeText(getApplicationContext(), itemInfo[0]+" Added to Game", Toast.LENGTH_LONG).show();
-        PopupItemInfo.this.finish();
+        int itemId = Integer.parseInt(itemInfo[11]);
+        if (playerId == 0) {
+            Intent intent = new Intent(PopupItemInfo.this, PopupSelectPlayer.class);
+            intent.putExtra("item_equipment_name", itemInfo[0]);
+            intent.putExtra("item_equipment_id", itemId);
+            startActivity(intent);
+            return;
+        }
+        else {
+            FragmentFeed.feedItems.add(itemInfo[0] + " was given to " + playerName);
+            Toast.makeText(getApplicationContext(), itemInfo[0] + " was given to " + playerName, Toast.LENGTH_SHORT).show();
+           // Item myItem = new Item(playerId, itemId);
+           // Items i = new Items(this.getApplicationContext());
+           // i.create(myItem);
+            PopupItemInfo.this.finish();
+            ActivitySearchItems.itemSearchActivity.finish();
+        }
     }
 }
