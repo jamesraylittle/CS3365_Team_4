@@ -6,25 +6,25 @@ package group4.dmhelper.Actors;
  */
 public class PlayerAbility extends Model {
     private int playerId;
-    private int strengthAbilityId;
-    private int dexAbilityId;
-    private int constAbilityId;
-    private int intelAbilityId;
-    private int wisdomAbilityId;
-    private int crismaAbilityId;
+    private int strengthAbility;
+    private int dexAbility;
+    private int constAbility;
+    private int intelAbility;
+    private int wisdomAbility;
+    private int crismaAbility;
 
-    public PlayerAbility(int id, int playerId, int strengthAbilityId, int dexAbilityId, int constAbilityId, int intelAbilityId, int wisdomAbilityId, int crismaAbilityId) {
+    public PlayerAbility(int id, int playerId, int strengthAbility, int dexAbility, int constAbility, int intelAbility, int wisdomAbility, int crismaAbility) {
         this.id = id;
         this.playerId = playerId;
-        this.strengthAbilityId = strengthAbilityId;
-        this.dexAbilityId = dexAbilityId;
-        this.constAbilityId = constAbilityId;
-        this.intelAbilityId = intelAbilityId;
-        this.wisdomAbilityId = wisdomAbilityId;
-        this.crismaAbilityId = crismaAbilityId;
+        this.strengthAbility = strengthAbility;
+        this.dexAbility = dexAbility;
+        this.constAbility = constAbility;
+        this.intelAbility = intelAbility;
+        this.wisdomAbility = wisdomAbility;
+        this.crismaAbility = crismaAbility;
     }
-    public PlayerAbility(int playerId, int strengthAbilityId, int dexAbilityId, int constAbilityId, int intelAbilityId, int wisdomAbilityId, int crismaAbilityId) {
-        this(0, playerId, strengthAbilityId, dexAbilityId, constAbilityId, intelAbilityId, wisdomAbilityId, crismaAbilityId);
+    public PlayerAbility(int playerId, int strengthAbility, int dexAbility, int constAbility, int intelAbility, int wisdomAbility, int crismaAbility) {
+        this(0, playerId, strengthAbility, dexAbility, constAbility, intelAbility, wisdomAbility, crismaAbility);
     }
     public PlayerAbility() {
         this(0, 0, 0, 0, 0, 0, 0, 0);
@@ -38,51 +38,51 @@ public class PlayerAbility extends Model {
         this.playerId = playerId;
     }
 
-    public int getStrengthAbilityId() {
-        return strengthAbilityId;
+    public int getStrengthAbility() {
+        return strengthAbility;
     }
 
-    public void setStrengthAbilityId(int strengthAbilityId) {
-        this.strengthAbilityId = strengthAbilityId;
+    public void setStrengthAbility(int strengthAbility) {
+        this.strengthAbility = strengthAbility;
     }
 
-    public int getDexAbilityId() {
-        return dexAbilityId;
+    public int getDexAbility() {
+        return dexAbility;
     }
 
-    public void setDexAbilityId(int dexAbilityId) {
-        this.dexAbilityId = dexAbilityId;
+    public void setDexAbility(int dexAbility) {
+        this.dexAbility = dexAbility;
     }
 
-    public int getConstAbilityId() {
-        return constAbilityId;
+    public int getConstAbility() {
+        return constAbility;
     }
 
-    public void setConstAbilityId(int constAbilityId) {
-        this.constAbilityId = constAbilityId;
+    public void setConstAbility(int constAbility) {
+        this.constAbility = constAbility;
     }
 
-    public int getIntelAbilityId() {
-        return intelAbilityId;
+    public int getIntelAbility() {
+        return intelAbility;
     }
 
-    public void setIntelAbilityId(int intelAbilityId) {
-        this.intelAbilityId = intelAbilityId;
+    public void setIntelAbility(int intelAbility) {
+        this.intelAbility = intelAbility;
     }
 
-    public int getWisdomAbilityId() {
-        return wisdomAbilityId;
+    public int getWisdomAbility() {
+        return wisdomAbility;
     }
 
-    public void setWisdomAbilityId(int wisdomAbilityId) {
-        this.wisdomAbilityId = wisdomAbilityId;
+    public void setWisdomAbility(int wisdomAbility) {
+        this.wisdomAbility = wisdomAbility;
     }
 
-    public int getCrismaAbilityId() {
-        return crismaAbilityId;
+    public int getCrismaAbility() {
+        return crismaAbility;
     }
 
-    public void setCrismaAbilityId(int crismaAbilityId) {
-        this.crismaAbilityId = crismaAbilityId;
+    public void setCrismaAbility(int crismaAbility) {
+        this.crismaAbility = crismaAbility;
     }
 }

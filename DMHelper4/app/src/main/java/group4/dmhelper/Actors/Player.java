@@ -7,11 +7,11 @@ package group4.dmhelper.Actors;
  */
 public class Player extends Actor {
 
-    // TODO: 11/3/2015 This object needs to have abilities, weapons, etc in order to populate everything for the player
-
     public Player(int playerId) {
-        super(playerId);
+        super(playerId); setIsMonster(0);
     }
+
+    public Player() {setIsMonster(0);}
 
     //$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#
     //Leveling Up
