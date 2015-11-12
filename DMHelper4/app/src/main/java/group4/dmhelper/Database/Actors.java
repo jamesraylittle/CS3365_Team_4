@@ -98,7 +98,7 @@ public class Actors extends Database implements DAO<Actor> {
         database.execSQL(q);
     }
 
-    public ArrayList<Actor> retrieveAll() {
+    public ArrayList<Actor> retrieveAll(int id) {
         ArrayList<Actor> oFrom = new ArrayList<Actor>();
         String [] args = new String[] { "" };
         //Cursor c = database.query(TABLE, null, "id = ?", args, null, null, null);
