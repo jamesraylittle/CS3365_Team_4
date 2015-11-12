@@ -34,7 +34,7 @@ public class Equipments extends Database implements DAO<Equipment> {
             do {
                 p.setId(c.getInt(0));
                 p.setPlayerId(c.getInt(1));
-                p.setEquipmentId(c.getInt(2));
+                p.setWeaponId(c.getInt(2));
             } while (c.moveToNext());
         }
 
@@ -42,10 +42,10 @@ public class Equipments extends Database implements DAO<Equipment> {
     }
 
     public ArrayList<Equipment> getAllByPlayerId(int playerId) {
-        String args[] = new String[] { id+"" };
+        String args[] = new String[] { playerId+"" };
         Cursor c = database.query(TABLE, null, "playerId = ?", args, null, null, null);
 
-        ArrayList<Euipment> list = new ArrayList<Equipment>();
+        ArrayList<Equipment> list = new ArrayList<Equipment>();
 
         if(c.moveToFirst()) {
             do {
@@ -65,7 +65,7 @@ public class Equipments extends Database implements DAO<Equipment> {
         ContentValues values = new ContentValues();
         if(p.getId() > 0) values.put("id", p.getId());
         values.put("playerId", p.getPlayerId());
-        values.put("weaponId", p.getEquipmentId());
+        values.put("weaponId", p.getWeaponId());
         return values;
     }
 
