@@ -6,17 +6,17 @@ package group4.dmhelper.Actors;
  */
 public class Equipment extends Model {
     private int playerId;
-    private int equipmentId;
+    private int weaponId;
 
     public Equipment(int id, int playerId, int equipmentId) {
         this.id = id;
         this.playerId = playerId;
-        this.equipmentId = equipmentId;
+        this.weaponId = weaponId;
     }
 
     public Equipment(int playerId, int equipmentId) {
         this.playerId = playerId;
-        this.equipmentId = equipmentId;
+        this.weaponId = weaponId;
     }
 
     public Equipment() {
@@ -31,11 +31,11 @@ public class Equipment extends Model {
         this.playerId = playerId;
     }
 
-    public int getEquipmentId() {
-        return equipmentId;
+    public int getWeaponId() {
+        return weaponId;
     }
 
-    public void setEquipmentId(int equipmentId) {
-        this.equipmentId = equipmentId;
+    public void setWeaponId(int weaponId) {
+        this.weaponId = weaponId;
     }
 }

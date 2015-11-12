@@ -7,6 +7,8 @@ import android.database.Cursor;
 import group4.dmhelper.Actors.Equipment;
 import group4.dmhelper.Actors.Feat;
 
+import java.util.*;
+
 /**
  * Created by james.
  */
@@ -37,6 +39,22 @@ public class Equipments extends Database implements DAO<Equipment> {
         }
 
         return p;
+    }
+
+    public ArrayList<Equipment> getAllByPlayerId(int playerId) {
+        String args[] = new String[] { id+"" };
+        Cursor c = database.query(TABLE, null, "playerId = ?", args, null, null, null);
+
+        ArrayList<Euipment> list = new ArrayList<Equipment>();
+
+        if(c.moveToFirst()) {
+            do {
+                Equipment e = new Equipment(c.getInt(0), c.getInt(1), c.getInt(2));
+                list.add(e);
+            } while (c.moveToNext());
+        }
+
+        return list;
     }
 
     public void delete(int id) { super.delete(id, TABLE); }
