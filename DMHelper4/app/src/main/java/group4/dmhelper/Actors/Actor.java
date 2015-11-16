@@ -359,7 +359,7 @@ public class Actor extends Model implements Comparable<Actor>{
 
     //public int getAbility(int i)        {if(i!=NULL)return 0; else return 0;}
     public int getStr() {return playerAbilityIds.getStrengthAbility();}
-    public int getDex()         {return playerAbilityIds.getDexAbility();}
+    public int getDex() {return playerAbilityIds.getDexAbility();}
     public int getCon()         {return playerAbilityIds.getConstAbility();}
     public int getInt()         {return playerAbilityIds.getIntelAbility();}
     public int getWis() {return playerAbilityIds.getWisdomAbility();}
@@ -383,6 +383,14 @@ public class Actor extends Model implements Comparable<Actor>{
     //$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#
     //"add" and "remove" functions
     //$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#
+
+
+    public ArrayList<Skill> getSkillIds() {
+        return skillIds;
+    }
+    public void setSkillIds(ArrayList<Skill> skillIds) {
+        this.skillIds = skillIds;
+    }
 
     public int getSkill(int i)                  {if(i>=0&&i<40)return dSkills.retrieve(skillIds.get(i).getSkillId()).getBaseScore(); else return -1000;}
     public void setSkill(int i, int value)      {if(i>=0&&i<40){skillIds.get(i).setBaseScore(value); dSkills.update(skillIds.get(i));}}
