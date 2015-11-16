@@ -7,6 +7,7 @@ import android.database.Cursor;
 import group4.dmhelper.Actors.Feat;
 import group4.dmhelper.Actors.Item;
 
+import java.util.ArrayList;
 /**
  * Created by james
  */
@@ -44,7 +45,7 @@ public class Items extends Database implements DAO<Item> {
         String args[] = new String[] { playerId + "" };
         Cursor c = database.query(TABLE, null, "playerId = ?", args, null, null, null);
 
-        ArrayList<Item> list = new ArrayLIte<Item>;
+        ArrayList<Item> list = new ArrayList<Item>();
 
         if(c.moveToFirst()) {
             do {
