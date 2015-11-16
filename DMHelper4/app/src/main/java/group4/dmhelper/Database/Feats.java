@@ -4,6 +4,8 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 
+import java.util.ArrayList;
+
 import group4.dmhelper.Actors.Feat;
 
 /**
@@ -37,6 +39,20 @@ public class Feats extends Database implements DAO<Feat> {
         }
 
         return from;
+    }
+
+    public ArrayList<Feat> getAllByPlayerId(int playerId) {
+        String args[] = new String[] { playerId + ""};
+        Cursor c = database.query(TABLE, null, "playerId = ?", args, null, null, null);
+
+        ArrayList<Feat> list = new ArrayList<Feat>();
+        if(c.moveToFirst()) {
+            do {
+                Feat s = new Feat(c.getInt(0), c.getInt(1));
+                list.add(s);
+            } while(c.moveToNext());
+        }
+        return list;
     }
 
 
