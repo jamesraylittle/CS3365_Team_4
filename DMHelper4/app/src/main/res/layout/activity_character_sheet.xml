@@ -8,125 +8,132 @@ android:background="@color/colorBackground"
 android:orientation="vertical"
 tools:context="group4.dmhelper.Activities.ActivityCharacterSheet">
 
-<LinearLayout
-    android:orientation="horizontal"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    android:layout_weight="3">
-
-    <RelativeLayout
+    <LinearLayout
+        android:orientation="vertical"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:layout_weight=".75">
+        android:layout_weight="2.7">
 
-        <ProgressBar
-            style="?android:attr/progressBarStyleHorizontal"
-            android:progressDrawable="@android:drawable/progress_horizontal"
+        <LinearLayout
+            android:orientation="horizontal"
             android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/progressBar_health"
-            android:progressTint="@color/health"
-            android:layout_marginTop="10dp"
-            android:paddingRight="5dp" />
-    </RelativeLayout>
+            android:layout_height="fill_parent">
 
-    <RelativeLayout
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:layout_weight="1">
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_weight=".33">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="Health"
-            android:id="@+id/txt_health_ratio"
-            android:layout_centerVertical="true"
-            android:layout_alignParentStart="true"
-            android:textSize="12sp"
-            android:textStyle="bold" />
-    </RelativeLayout>
+                <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_weight="3"
+                    android:id="@+id/healthBarLayout">
 
-    <RelativeLayout
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:layout_weight="1"
-        android:paddingBottom="3dp"
-        android:paddingTop="3dp">
+                <RelativeLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_weight=".5">
 
-        <Button
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:text="Health"
-            android:id="@+id/btn_change_health"
-            android:background="@color/colorButton"
-            android:scaleType="fitXY"
-            android:layout_alignParentStart="true"
-            android:layout_centerInParent="true" />
-    </RelativeLayout>
+                    <ProgressBar
+                        style="?android:attr/progressBarStyleHorizontal"
+                        android:progressDrawable="@android:drawable/progress_horizontal"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/progressBar_health"
+                        android:progressTint="@color/health"
+                        android:layout_marginTop="10dp"
+                        android:paddingRight="5dp" />
+                </RelativeLayout>
 
-</LinearLayout>
-<LinearLayout
-    android:orientation="horizontal"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    android:layout_weight="3">
+                <RelativeLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="1">
 
-    <RelativeLayout
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:layout_weight=".75">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:text="Health"
+                        android:id="@+id/txt_health_ratio"
+                        android:layout_centerVertical="true"
+                        android:layout_alignParentStart="true"
+                        android:textSize="12sp"
+                        android:textStyle="bold" />
+                </RelativeLayout>
 
-        <ProgressBar
-            style="?android:attr/progressBarStyleHorizontal"
-            android:progressDrawable="@android:drawable/progress_horizontal"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/progressBar_experience"
-            android:progressTint="@color/experience"
-            android:layout_marginTop="10dp"
-            android:paddingRight="5dp" />
-    </RelativeLayout>
+                </LinearLayout>
 
-    <RelativeLayout
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:layout_weight="1">
+                <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_weight="3"
+                    android:id="@+id/xpBarLayout">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="XP"
-            android:editable="false"
-            android:id="@+id/txt_experience_ratio"
-            android:textSize="12sp"
-            android:textStyle="bold"
-            android:layout_centerVertical="true"
-            android:layout_alignParentStart="true" />
-    </RelativeLayout>
+                <RelativeLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_weight=".5">
 
-    <RelativeLayout
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:layout_weight="1"
-        android:paddingTop="3dp"
-        android:paddingBottom="3dp">
+                    <ProgressBar
+                        style="?android:attr/progressBarStyleHorizontal"
+                        android:progressDrawable="@android:drawable/progress_horizontal"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/progressBar_experience"
+                        android:progressTint="@color/experience"
+                        android:layout_marginTop="10dp"
+                        android:paddingRight="5dp" />
+                </RelativeLayout>
 
-        <Button
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:text="XP"
-            android:id="@+id/btn_change_experience"
-            android:background="@color/colorButton"
-            android:scaleType="fitXY"
-            android:layout_alignParentStart="true"
-            android:layout_centerInParent="true"/>
-    </RelativeLayout>
+                <RelativeLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="1">
 
-</LinearLayout>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:text="XP"
+                        android:editable="false"
+                        android:id="@+id/txt_experience_ratio"
+                        android:textSize="12sp"
+                        android:textStyle="bold"
+                        android:layout_centerVertical="true"
+                        android:layout_alignParentStart="true" />
+                </RelativeLayout>
 
-<LinearLayout
+                </LinearLayout>
+            </LinearLayout>
+
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_weight=".67"
+                android:padding="3dp">
+
+                <ImageButton
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:text="Picture"
+                    android:id="@+id/charPictureButton"
+                    android:scaleType="centerInside"
+                    android:background="@null"
+                    android:src="@drawable/player1"
+                    android:layout_centerVertical="true"
+                    android:layout_centerHorizontal="true"
+                    android:singleLine="false"
+                    android:onClick="openEditPicture" />
+            </RelativeLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
     android:orientation="horizontal"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
@@ -224,9 +231,9 @@ tools:context="group4.dmhelper.Activities.ActivityCharacterSheet">
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
             android:background="@color/colorButton"
-            android:text="Spells"
+            android:text="Abilities"
             android:scaleType="fitXY"
-            android:id="@+id/btn_spells"
+            android:id="@+id/btn_abilities"
             android:layout_centerVertical="true"
             android:layout_centerHorizontal="true" />
     </RelativeLayout>
@@ -348,8 +355,8 @@ tools:context="group4.dmhelper.Activities.ActivityCharacterSheet">
                     android:layout_height="wrap_content"
                     android:layout_gravity="left"
                     android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:text="Allignment"
-                    android:id="@+id/txt_allignment" />
+                    android:text="Alignment"
+                    android:id="@+id/txt_alignment" />
                 <View
                     android:layout_width="0dp"
                     android:layout_height="0dp"
@@ -360,7 +367,7 @@ tools:context="group4.dmhelper.Activities.ActivityCharacterSheet">
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="right"
-                    android:id="@+id/spinner_search_allignment" />
+                    android:id="@+id/spinner_search_alignment" />
             </LinearLayout>
 
 
@@ -407,6 +414,16 @@ tools:context="group4.dmhelper.Activities.ActivityCharacterSheet">
                 </android.support.design.widget.TextInputLayout>
 
             </LinearLayout>
+
+            <Button
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:background="@color/colorButton"
+                android:text="Submit"
+                android:scaleType="fitXY"
+                android:id="@+id/btn_submit_character_sheet"
+                android:layout_centerVertical="true"
+                android:layout_centerHorizontal="true" />
 
         </LinearLayout>
     </ScrollView>

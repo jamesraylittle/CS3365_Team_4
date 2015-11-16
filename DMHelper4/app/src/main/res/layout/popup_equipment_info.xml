@@ -1,0 +1,437 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:clipToPadding="false"
+    android:background="#000000"
+    android:padding="2dp">
+
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:background="@color/background_material_light">
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="1">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="info_equipment_name"
+                android:id="@+id/info_equipment_name"
+                android:layout_gravity="center_vertical"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:textColor="#000000"
+                android:textAlignment="center"
+                android:paddingBottom="5dp" />
+
+            <ScrollView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/scrollView"
+                android:layout_weight="1"
+                android:layout_below="@+id/info_equipment_name">
+
+                <RelativeLayout
+                    android:orientation="horizontal"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_weight="1"
+                    android:paddingRight="7dp"
+                    android:paddingLeft="7dp"
+                    android:paddingBottom="7dp"
+                    android:layout_below="@+id/info_equipment_name"
+                    android:layout_alignParentStart="true">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Family: "
+                        android:id="@+id/lbl_info_equipment_family"
+                        android:layout_alignParentTop="true"
+                        android:layout_alignParentStart="true"
+                        android:textSize="14sp"
+                        android:paddingRight="5dp"
+                        android:paddingBottom="5dp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="info_equipment_family"
+                        android:id="@+id/info_equipment_family"
+                        android:layout_alignTop="@+id/lbl_info_equipment_family"
+                        android:layout_toEndOf="@+id/lbl_info_equipment_family"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Category: "
+                        android:id="@+id/lbl_info_equipment_category"
+                        android:layout_below="@+id/info_equipment_family"
+                        android:layout_alignParentStart="true"
+                        android:paddingBottom="5dp"
+                        android:textSize="14sp"
+                        android:paddingRight="5dp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="info_equipment_category"
+                        android:id="@+id/info_equipment_category"
+                        android:layout_alignTop="@+id/lbl_info_equipment_category"
+                        android:layout_toEndOf="@+id/lbl_info_equipment_category"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Subcategory: "
+                        android:id="@+id/lbl_info_equipment_subcategory"
+                        android:layout_below="@+id/info_equipment_category"
+                        android:layout_alignParentStart="true"
+                        android:paddingBottom="5dp"
+                        android:textSize="14sp"
+                        android:paddingRight="5dp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="info_equipment_subcategory"
+                        android:id="@+id/info_equipment_subcategory"
+                        android:layout_alignTop="@+id/lbl_info_equipment_subcategory"
+                        android:layout_toEndOf="@+id/lbl_info_equipment_subcategory"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Cost: "
+                        android:id="@+id/lbl_info_equipment_cost"
+                        android:layout_below="@+id/info_equipment_subcategory"
+                        android:layout_alignParentStart="true"
+                        android:paddingBottom="5dp"
+                        android:textSize="14sp"
+                        android:paddingRight="5dp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="info_equipment_cost"
+                        android:id="@+id/info_equipment_cost"
+                        android:layout_alignTop="@+id/lbl_info_equipment_cost"
+                        android:layout_toEndOf="@+id/lbl_info_equipment_cost"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Weight: "
+                        android:id="@+id/lbl_info_equipment_weight"
+                        android:layout_below="@+id/info_equipment_cost"
+                        android:layout_alignParentStart="true"
+                        android:paddingBottom="5dp"
+                        android:textSize="14sp"
+                        android:paddingRight="5dp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="info_equipment_weight"
+                        android:id="@+id/info_equipment_weight"
+                        android:layout_alignTop="@+id/lbl_info_equipment_weight"
+                        android:layout_toEndOf="@+id/lbl_info_equipment_weight"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Damage S: "
+                        android:id="@+id/lbl_info_equipment_damage_s"
+                        android:layout_below="@+id/info_equipment_weight"
+                        android:layout_alignParentStart="true"
+                        android:paddingBottom="5dp"
+                        android:textSize="14sp"
+                        android:paddingRight="5dp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="info_equipment_damage_s"
+                        android:id="@+id/info_equipment_damage_s"
+                        android:layout_alignTop="@+id/lbl_info_equipment_damage_s"
+                        android:layout_toEndOf="@+id/lbl_info_equipment_damage_s"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Damage M: "
+                        android:id="@+id/lbl_info_equipment_damage_m"
+                        android:layout_below="@+id/info_equipment_damage_s"
+                        android:layout_alignParentStart="true"
+                        android:paddingBottom="5dp"
+                        android:textSize="14sp"
+                        android:paddingRight="5dp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="info_equipment_damage_m"
+                        android:id="@+id/info_equipment_damage_m"
+                        android:layout_alignTop="@+id/lbl_info_equipment_damage_m"
+                        android:layout_toEndOf="@+id/lbl_info_equipment_damage_m"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Critical: "
+                        android:id="@+id/lbl_info_equipment_critical"
+                        android:layout_below="@+id/info_equipment_damage_m"
+                        android:layout_alignParentStart="true"
+                        android:paddingBottom="5dp"
+                        android:textSize="14sp"
+                        android:paddingRight="5dp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="info_equipment_critical"
+                        android:id="@+id/info_equipment_critical"
+                        android:layout_alignTop="@+id/lbl_info_equipment_critical"
+                        android:layout_toEndOf="@+id/lbl_info_equipment_critical"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Range Increment: "
+                        android:id="@+id/lbl_info_equipment_range_increment"
+                        android:layout_below="@+id/info_equipment_critical"
+                        android:layout_alignParentStart="true"
+                        android:paddingBottom="5dp"
+                        android:textSize="14sp"
+                        android:paddingRight="5dp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="info_equipment_range_increment"
+                        android:id="@+id/info_equipment_range_increment"
+                        android:layout_alignTop="@+id/lbl_info_equipment_range_increment"
+                        android:layout_toEndOf="@+id/lbl_info_equipment_range_increment"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Type: "
+                        android:id="@+id/lbl_info_equipment_type"
+                        android:layout_below="@+id/info_equipment_range_increment"
+                        android:layout_alignParentStart="true"
+                        android:paddingBottom="5dp"
+                        android:textSize="14sp"
+                        android:paddingRight="5dp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="info_equipment_type"
+                        android:id="@+id/info_equipment_type"
+                        android:layout_alignTop="@+id/lbl_info_equipment_type"
+                        android:layout_toEndOf="@+id/lbl_info_equipment_type"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Speed 30: "
+                        android:id="@+id/lbl_info_equipment_speed_30"
+                        android:layout_below="@+id/info_equipment_type"
+                        android:layout_alignParentStart="true"
+                        android:paddingBottom="5dp"
+                        android:textSize="14sp"
+                        android:paddingRight="5dp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="info_equipment_speed_30"
+                        android:id="@+id/info_equipment_speed_30"
+                        android:layout_alignTop="@+id/lbl_info_equipment_speed_30"
+                        android:layout_toEndOf="@+id/lbl_info_equipment_speed_30"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Speed 20: "
+                        android:id="@+id/lbl_info_equipment_speed_20"
+                        android:layout_below="@+id/info_equipment_speed_30"
+                        android:layout_alignParentStart="true"
+                        android:paddingBottom="5dp"
+                        android:textSize="14sp"
+                        android:paddingRight="5dp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="info_equipment_speed_20"
+                        android:id="@+id/info_equipment_speed_20"
+                        android:layout_alignTop="@+id/lbl_info_equipment_speed_20"
+                        android:layout_toEndOf="@+id/lbl_info_equipment_speed_20"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Armor Shield Bonus: "
+                        android:id="@+id/lbl_info_equipment_armor_shield_bonus"
+                        android:layout_below="@+id/info_equipment_speed_20"
+                        android:layout_alignParentStart="true"
+                        android:paddingBottom="5dp"
+                        android:textSize="14sp"
+                        android:paddingRight="5dp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="info_equipment_armor_shield_bonus"
+                        android:id="@+id/info_equipment_armor_shield_bonus"
+                        android:layout_alignTop="@+id/lbl_info_equipment_armor_shield_bonus"
+                        android:layout_toEndOf="@+id/lbl_info_equipment_armor_shield_bonus"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Maximum Dex Bonus: "
+                        android:id="@+id/lbl_info_maximum_dex_bonus"
+                        android:layout_below="@+id/info_equipment_armor_shield_bonus"
+                        android:layout_alignParentStart="true"
+                        android:paddingBottom="5dp"
+                        android:textSize="14sp"
+                        android:paddingRight="5dp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="info_equipment_maximum_dex_bonus"
+                        android:id="@+id/info_equipment_maximum_dex_bonus"
+                        android:layout_alignTop="@+id/lbl_info_maximum_dex_bonus"
+                        android:layout_toEndOf="@+id/lbl_info_maximum_dex_bonus"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Armor Check Penalty: "
+                        android:id="@+id/lbl_info_equipment_armor_check_penalty"
+                        android:layout_below="@+id/info_equipment_maximum_dex_bonus"
+                        android:layout_alignParentStart="true"
+                        android:paddingBottom="5dp"
+                        android:textSize="14sp"
+                        android:paddingRight="5dp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="info_equipment_armor_check_penalty"
+                        android:id="@+id/info_equipment_armor_check_penalty"
+                        android:layout_alignTop="@+id/lbl_info_equipment_armor_check_penalty"
+                        android:layout_toEndOf="@+id/lbl_info_equipment_armor_check_penalty"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Arcane Spell Failure Chance: "
+                        android:id="@+id/lbl_info_equipment_arcane_spell_failure_chance"
+                        android:layout_below="@+id/info_equipment_armor_check_penalty"
+                        android:layout_alignParentStart="true"
+                        android:paddingBottom="5dp"
+                        android:textSize="14sp"
+                        android:paddingRight="5dp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="info_equipment_arcane_spell_failure_chance"
+                        android:id="@+id/info_equipment_arcane_spell_failure_chance"
+                        android:layout_alignTop="@+id/lbl_info_equipment_arcane_spell_failure_chance"
+                        android:layout_toEndOf="@+id/lbl_info_equipment_arcane_spell_failure_chance"
+                        android:textSize="14sp" />
+
+                </RelativeLayout>
+            </ScrollView>
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="7">
+
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_weight="1">
+
+                <Button
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:scaleType="fitXY"
+                    android:text="Close"
+                    android:onClick="doCloseEquipmentInfoPopup"
+                    android:id="@+id/popup_monster_close"
+                    android:layout_centerVertical="true"
+                    android:layout_centerHorizontal="true"
+                    android:background="@color/background_material_light"/>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_weight="1">
+
+                <Button
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:scaleType="fitXY"
+                    android:text="Give"
+                    android:onClick="doAddEquipment"
+                    android:id="@+id/popup_monster_select"
+                    android:layout_centerVertical="true"
+                    android:layout_centerHorizontal="true"
+                    android:background="@color/background_material_light"/>
+            </RelativeLayout>
+        </LinearLayout>
+    </LinearLayout>
+</RelativeLayout>

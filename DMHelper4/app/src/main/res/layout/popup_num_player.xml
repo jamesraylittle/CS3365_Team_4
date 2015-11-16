@@ -1,0 +1,115 @@
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#000000"
+    android:orientation="vertical"
+    android:focusableInTouchMode="true"
+    tools:context="group4.dmhelper.Activities.Popups.PopupNumPlayer"
+    android:padding="2dp">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:background="@color/background_material_light"
+        android:padding="6dp">
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="New Adventure"
+            android:id="@+id/textView"
+            android:layout_gravity="center_horizontal"
+            android:textColor="#000000"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textAlignment="center" />
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:weightSum="1">
+
+            <RadioGroup
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:orientation="horizontal"
+                android:id="@+id/radio_select_num">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Players:"
+                    android:id="@+id/textView2"
+                    android:textColor="#000000"
+                    android:textSize="13sp"
+                    android:textStyle="bold" />
+
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="1"
+                    android:id="@+id/radioButton"
+                    android:textSize="13sp"
+                    android:textColor="#000000" />
+
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="2"
+                    android:id="@+id/radioButton2"
+                    android:textSize="13sp"
+                    android:textColor="#000000"/>
+
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="3"
+                    android:id="@+id/radioButton3" />
+
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="4"
+                    android:id="@+id/radioButton4"
+                    android:textSize="13sp"
+                    android:textColor="#000000" />
+
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="5"
+                    android:id="@+id/radioButton5"
+                    android:textSize="13sp"
+                    android:textColor="#000000"/>
+
+            </RadioGroup>
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/text_input_layout_player_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/editText_start_adventure_name"
+                    android:hint="Adventure Name"
+                    android:layout_gravity="center_horizontal" />
+            </android.support.design.widget.TextInputLayout>
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Start"
+                android:id="@+id/startButton"
+                android:layout_gravity="center_horizontal"
+                android:background="@color/colorButton"
+                android:onClick="startNewAdventure" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

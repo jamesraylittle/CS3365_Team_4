@@ -6,16 +6,53 @@ package group4.dmhelper.Actors;
  * Notes - on second thought, nevermind.  It will be better to keep this as a seperate class
  *
  * Created by Daniel on 10/19/2015.
+ * Updated by James.
  */
-public class ClassType {
-    String name;
-    int level;
-    int attack;
-    //int fort; we may just do functions for this
-    //int ref;
-    //int will;
-    int special;
-    int playerId;
+public class ClassType extends Model {
+    private int playerId;
+    private int classId;
+    private int class_tableId;  //This represents level
+
+    public ClassType(int id, int playerId, int classId, int class_tableId) {
+        this.id = id;
+        this.playerId = playerId;
+        this.classId = classId;
+        this.class_tableId = class_tableId;
+    }
+
+    public ClassType(int playerId, int classId, int class_tableId) {
+        this.playerId = playerId;
+        this.classId = classId;
+        this.class_tableId = class_tableId;
+    }
+
+    public ClassType() {
+        this(0,0,0,0);
+    }
+
+    public int getPlayerId() {
+        return playerId;
+    }
+
+    public void setPlayerId(int playerId) {
+        this.playerId = playerId;
+    }
+
+    public int getClassId() {
+        return classId;
+    }
+
+    public void setClassId(int classId) {
+        this.classId = classId;
+    }
+
+    public int getClass_tableId() {
+        return class_tableId;
+    }
+
+    public void setClass_tableId(int class_tableId) {
+        this.class_tableId = class_tableId;
+    }
 
     //$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#
     //Managing Levels

@@ -1,4 +1,4 @@
-package group4.dmhelper.Activities;
+package group4.dmhelper.Activities.Search;
 
 import android.app.Activity;
 import android.content.Context;
@@ -8,6 +8,7 @@ import android.database.SQLException;
 import android.os.Bundle;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListAdapter;
@@ -19,6 +20,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import group4.dmhelper.Activities.Popups.PopupMonsterInfo;
+import group4.dmhelper.Activities.Popups.PopupSpellInfo;
 import group4.dmhelper.Database.DataBaseHelper;
 import group4.dmhelper.Fragments.FragmentFeed;
 import group4.dmhelper.R;
@@ -103,6 +106,40 @@ public class ActivitySearchSpells extends Activity {
 
         //ListView
         searchResults = (ListView)findViewById(R.id.listView_search_spell);
+        searchResults.setOnItemClickListener(
+                new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> arg0, View view, int position, long id) {
+                        String[] mv = getSpellInfo(listUsers.get(position));
+                        if (mv.equals(null)) {
+                            Toast.makeText(getApplicationContext(), "There was an error loading the spell details.",
+                                    Toast.LENGTH_LONG).show();
+                            return;
+                        }
+                        Intent intent = new Intent(ActivitySearchSpells.this, PopupSpellInfo.class);
+                        intent.putExtra("spell_values", mv);
+                        startActivity(intent);
+                    }
+                }
+        );
+    }
+
+    private String[] getSpellInfo(String spellName) {
+        List<String> si = new ArrayList<>();
+        myDbHelper.openDataBase();
+        Cursor query = myDbHelper.performRawQuery("select * from spell where name = ?", new String[]{spellName});
+        if (query.getCount() != 1) { // if it is not just 1 result, that's an error
+            return null;
+        }
+        else { // Otherwise, populate string array with information
+            query.moveToFirst();
+            for (int i = 1; i < 32; i++) {
+                si.add(query.getString(i));
+            }
+            query.close();
+        }
+        myDbHelper.close();
+        return si.toArray(new String[si.size()]);
     }
 
     public void doSearchSpells(View view) {

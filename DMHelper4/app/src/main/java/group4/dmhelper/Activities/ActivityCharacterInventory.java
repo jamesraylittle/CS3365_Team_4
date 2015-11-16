@@ -3,11 +3,10 @@ package group4.dmhelper.Activities;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
+import group4.dmhelper.Activities.Search.ActivitySearchItems;
 import group4.dmhelper.R;
 
 public class ActivityCharacterInventory extends AppCompatActivity {
@@ -30,6 +29,7 @@ public class ActivityCharacterInventory extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(ActivityCharacterInventory.this, ActivitySearchItems.class);
                 intent.putExtra("Identifier", PlayerIdentifier);
+                intent.putExtra("playerName", PlayerIdentifier);
                 startActivity(intent);
             }
         });

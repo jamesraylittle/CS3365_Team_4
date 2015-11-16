@@ -1,4 +1,4 @@
-package group4.dmhelper.Activities;
+package group4.dmhelper.Activities.Search;
 
 import android.app.Activity;
 import android.content.Context;
@@ -8,6 +8,7 @@ import android.database.SQLException;
 import android.os.Bundle;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListAdapter;
@@ -15,12 +16,11 @@ import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import group4.dmhelper.Activities.Popups.PopupItemInfo;
 import group4.dmhelper.Database.DataBaseHelper;
-import group4.dmhelper.Fragments.FragmentFeed;
 import group4.dmhelper.R;
 
 /**
@@ -34,14 +34,23 @@ public class ActivitySearchItems extends Activity {
     ListView searchResults;
     ListAdapter adapter;
     List<String> listUsers = new ArrayList<>();
+    List<Integer> listIds = new ArrayList<>();
+    String playerId, playerName;
     private String[] arrayCat, arraySub, arraySpecial;
+    public static Activity itemSearchActivity;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_seach_item);
+        itemSearchActivity = this;
         myDbHelper = new DataBaseHelper(this);
         initializeWidgets();
+        try {
+            playerId = getIntent().getExtras().getString("Identifier");
+            playerName = getIntent().getExtras().getString("playerName");
+        }
+        catch (Exception e) {}
     }
 
     @Override
@@ -111,6 +120,43 @@ public class ActivitySearchItems extends Activity {
 
         //ListView
         searchResults = (ListView)findViewById(R.id.listView_search_item);
+        searchResults.setOnItemClickListener(
+                new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> arg0, View view, int position, long id) {
+                        String[] iv = getItemInfo(listIds.get(position));
+                        if (iv.equals(null)) {
+                            Toast.makeText(getApplicationContext(), "There was an error loading the item details.",
+                                    Toast.LENGTH_LONG).show();
+                            return;
+                        }
+                        Intent intent = new Intent(ActivitySearchItems.this, PopupItemInfo.class);
+                        intent.putExtra("item_values", iv);
+                        intent.putExtra("playerID",playerId);
+                        intent.putExtra("playerName",playerName);
+                        startActivity(intent);
+                    }
+                }
+        );
+    }
+
+    private String[] getItemInfo(int itemId) {
+        List<String> ii = new ArrayList<>();
+        myDbHelper.openDataBase();
+        Cursor query = myDbHelper.performRawQuery("select * from item where _id = "+itemId, new String[]{});
+        if (query.getCount() != 1) { // if it is not just 1 result, that's an error
+            return null;
+        }
+        else { // Otherwise, populate string array with information
+            query.moveToFirst();
+            for (int i = 1; i < 12; i++) {
+                ii.add(query.getString(i));
+            }
+            ii.add(""+query.getInt(0));
+            query.close();
+        }
+        myDbHelper.close();
+        return ii.toArray(new String[ii.size()]);
     }
 
     public void doSearchItems(View view) {
@@ -124,7 +170,7 @@ public class ActivitySearchItems extends Activity {
         String cat = catInput.getSelectedItem().toString();
         String sub = subInput.getSelectedItem().toString();
         String spec = specialInput.getSelectedItem().toString();
-        String defaultStart = "select name from item where name like ? ";
+        String defaultStart = "select _id, name from item where name like ? ";
         myDbHelper.openDataBase();
         if (!cat.equals("Any") && !sub.equals("Any") && !spec.equals("Any")) {
             populateList( myDbHelper.performRawQuery(
@@ -172,6 +218,7 @@ public class ActivitySearchItems extends Activity {
     private void populateList(Cursor query) {
         if (query.getCount() <= 0) { // If no results, clear the list
             listUsers.clear();
+            listIds.clear();
             Toast.makeText(getApplicationContext(), "No results found.", Toast.LENGTH_LONG).show();
             searchResults.requestFocus();
             return;
@@ -180,12 +227,14 @@ public class ActivitySearchItems extends Activity {
             listUsers.clear();
             Toast.makeText(getApplicationContext(), query.getCount() + " results found.", Toast.LENGTH_LONG).show();
             query.moveToFirst();
-            do { listUsers.add(query.getString(0)); }
+            do {
+                listUsers.add(query.getString(1));
+                listIds.add(query.getInt(0));
+            }
             while (query.moveToNext());
             query.close();
             adapter = new ArrayAdapter<>(getApplicationContext(),
-                    R.layout.list_layout, R.id.list_text,
-                    listUsers);
+                    R.layout.list_layout, R.id.list_text, listUsers);
             searchResults.setAdapter(adapter);
         }
     }

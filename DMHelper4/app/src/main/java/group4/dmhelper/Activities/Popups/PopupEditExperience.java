@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.util.DisplayMetrics;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -26,10 +27,12 @@ public class PopupEditExperience extends AppCompatActivity {
         Bundle extras = getIntent().getExtras();
         final String PlayerIdentifier = extras.getString("Identifier");
         //Actor player = new Actor(PlayerIdentifier);
-
+        WindowManager.LayoutParams windowManager = getWindow().getAttributes();
+        windowManager.dimAmount = 0.5f;
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_DIM_BEHIND);
         int width = dm.widthPixels;
         int height = dm.heightPixels;
-        getWindow().setLayout((int) (width * 0.7), (int) (height * 0.4));
+        getWindow().setLayout((int) (width * 0.7), (int) (height * 0.3));
         Button submit = (Button) findViewById(R.id.btn_submit_experience);
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -41,8 +44,8 @@ public class PopupEditExperience extends AppCompatActivity {
                     int xp = Integer.parseInt(text);
                     //TODO EDIT ACTOR XP
                     //player.setXP(player.getxp() + xp)
-                    FragmentFeed.feedItems.add("Player "+  PlayerIdentifier + "edited experience by: " + xp); //TODO ADD PLAYER NAME
-                    Toast.makeText(getApplicationContext(), "Player " + PlayerIdentifier + "edited experience by: " + xp, Toast.LENGTH_LONG).show();
+                    FragmentFeed.feedItems.add(PlayerIdentifier + " edited experience by: " + xp); //TODO ADD PLAYER NAME
+                    Toast.makeText(getApplicationContext(),PlayerIdentifier + " edited experience by: " + xp, Toast.LENGTH_LONG).show();
                     finish();
                 }
                 else {

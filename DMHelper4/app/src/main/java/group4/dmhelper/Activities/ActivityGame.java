@@ -1,5 +1,6 @@
 package group4.dmhelper.Activities;
 
+import android.app.Activity;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
@@ -9,7 +10,24 @@ import android.support.v7.app.AppCompatActivity;
 
 import java.io.IOException;
 
+import group4.dmhelper.Actors.ClassType;
+import group4.dmhelper.Actors.Item;
+import group4.dmhelper.Actors.Player;
+import group4.dmhelper.Actors.PlayerAbility;
+import group4.dmhelper.Actors.Race;
+import group4.dmhelper.Actors.Skill;
+import group4.dmhelper.Actors.Spell;
+import group4.dmhelper.Actors.Equipment;
+
 import group4.dmhelper.Database.DataBaseHelper;
+import group4.dmhelper.Database.ClassTypes;
+import group4.dmhelper.Database.Items;
+import group4.dmhelper.Database.PlayerAbilities;
+import group4.dmhelper.Database.Players;
+import group4.dmhelper.Database.Races;
+import group4.dmhelper.Database.Skills;
+import group4.dmhelper.Database.Equipments;
+
 import group4.dmhelper.Fragments.FragmentAdapter;
 import group4.dmhelper.Fragments.FragmentFeed;
 import group4.dmhelper.Fragments.FragmentGame;
@@ -35,6 +53,7 @@ public class ActivityGame extends AppCompatActivity  {
         viewPager.setOffscreenPageLimit(3);
 
         DataBaseHelper myDbHelper = new DataBaseHelper(this);
+
         try {
             myDbHelper.createDataBase();
         } catch (IOException ioe) {
@@ -73,6 +92,7 @@ public class ActivityGame extends AppCompatActivity  {
                 {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
+                        ActivityStart.start.finish();
                         finish();
                     }
                 })

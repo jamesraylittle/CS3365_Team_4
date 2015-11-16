@@ -1,0 +1,690 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:clipToPadding="false"
+    android:background="#000000"
+    android:padding="2dp">
+
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:elevation="10dp"
+        android:background="@color/background_material_light">
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="1">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="info_spell_name"
+                android:id="@+id/info_spell_name"
+                android:layout_gravity="center_vertical"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:textColor="#000000"
+                android:textAlignment="center"
+                android:paddingBottom="5dp" />
+
+            <ScrollView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/scrollView"
+                android:layout_weight="1"
+                android:layout_below="@+id/info_spell_name">
+
+                <RelativeLayout
+                    android:orientation="horizontal"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_weight="1"
+                    android:paddingRight="7dp"
+                    android:paddingLeft="7dp"
+                    android:paddingBottom="7dp"
+                    android:layout_below="@+id/info_spell_name"
+                    android:layout_alignParentStart="true">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Alternate Name: "
+                        android:id="@+id/lbl_info_spell_altname"
+                        android:layout_alignParentTop="true"
+                        android:layout_alignParentStart="true"
+                        android:textSize="14sp"
+                        android:paddingRight="5dp"
+                        android:paddingBottom="5dp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="info_spell_altname"
+                        android:id="@+id/info_spell_altname"
+                        android:layout_alignTop="@+id/lbl_info_spell_altname"
+                        android:layout_toEndOf="@+id/lbl_info_spell_altname"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="School: "
+                        android:id="@+id/lbl_info_spell_school"
+                        android:layout_below="@+id/info_spell_altname"
+                        android:layout_alignParentStart="true"
+                        android:paddingBottom="5dp"
+                        android:textSize="14sp"
+                        android:paddingRight="5dp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="info_spell_school"
+                        android:id="@+id/info_spell_school"
+                        android:layout_alignTop="@+id/lbl_info_spell_school"
+                        android:layout_toEndOf="@+id/lbl_info_spell_school"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Subschool: "
+                        android:id="@+id/lbl_info_spell_sub_school"
+                        android:layout_below="@+id/info_spell_school"
+                        android:layout_alignParentStart="true"
+                        android:paddingBottom="5dp"
+                        android:textSize="14sp"
+                        android:paddingRight="5dp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="info_spell_sub_school"
+                        android:id="@+id/info_spell_sub_school"
+                        android:layout_alignTop="@+id/lbl_info_spell_sub_school"
+                        android:layout_toEndOf="@+id/lbl_info_spell_sub_school"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Descriptor: "
+                        android:id="@+id/lbl_info_spell_descriptor"
+                        android:layout_below="@+id/info_spell_sub_school"
+                        android:layout_alignParentStart="true"
+                        android:paddingBottom="5dp"
+                        android:textSize="14sp"
+                        android:paddingRight="5dp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="info_spell_descriptor"
+                        android:id="@+id/info_spell_descriptor"
+                        android:layout_alignTop="@+id/lbl_info_spell_descriptor"
+                        android:layout_toEndOf="@+id/lbl_info_spell_descriptor"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Description: "
+                        android:id="@+id/lbl_info_spell_short_description"
+                        android:layout_below="@+id/info_spell_descriptor"
+                        android:layout_alignParentStart="true"
+                        android:paddingBottom="5dp"
+                        android:textSize="14sp"
+                        android:paddingRight="5dp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="info_spell_short_description"
+                        android:id="@+id/info_spell_short_description"
+                        android:layout_alignTop="@+id/lbl_info_spell_short_description"
+                        android:layout_toEndOf="@+id/lbl_info_spell_short_description"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Level: "
+                        android:id="@+id/lbl_info_spell_level"
+                        android:layout_below="@+id/info_spell_short_description"
+                        android:layout_alignParentStart="true"
+                        android:paddingBottom="5dp"
+                        android:textSize="14sp"
+                        android:paddingRight="5dp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="info_spell_level"
+                        android:id="@+id/info_spell_level"
+                        android:layout_alignTop="@+id/lbl_info_spell_level"
+                        android:layout_toEndOf="@+id/lbl_info_spell_level"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="XP Cost: "
+                        android:id="@+id/lbl_info_spell_xp_cost"
+                        android:layout_below="@+id/info_spell_level"
+                        android:layout_alignParentStart="true"
+                        android:paddingBottom="5dp"
+                        android:textSize="14sp"
+                        android:paddingRight="5dp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="info_spell_xp_cost"
+                        android:id="@+id/info_spell_xp_cost"
+                        android:layout_alignTop="@+id/lbl_info_spell_xp_cost"
+                        android:layout_toEndOf="@+id/lbl_info_spell_xp_cost"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Components: "
+                        android:id="@+id/lbl_info_spell_components"
+                        android:layout_below="@+id/info_spell_xp_cost"
+                        android:layout_alignParentStart="true"
+                        android:paddingBottom="5dp"
+                        android:textSize="14sp"
+                        android:paddingRight="5dp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="info_spell_components"
+                        android:id="@+id/info_spell_components"
+                        android:layout_alignTop="@+id/lbl_info_spell_components"
+                        android:layout_toEndOf="@+id/lbl_info_spell_components"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Casting Time: "
+                        android:id="@+id/lbl_info_spell_casting_time"
+                        android:layout_below="@+id/info_spell_components"
+                        android:layout_alignParentStart="true"
+                        android:paddingBottom="5dp"
+                        android:textSize="14sp"
+                        android:paddingRight="5dp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="info_spell_casting_time"
+                        android:id="@+id/info_spell_casting_time"
+                        android:layout_alignTop="@+id/lbl_info_spell_casting_time"
+                        android:layout_toEndOf="@+id/lbl_info_spell_casting_time"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Range: "
+                        android:id="@+id/lbl_info_spell_range"
+                        android:layout_below="@+id/info_spell_casting_time"
+                        android:layout_alignParentStart="true"
+                        android:paddingBottom="5dp"
+                        android:textSize="14sp"
+                        android:paddingRight="5dp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="info_spell_range"
+                        android:id="@+id/info_spell_range"
+                        android:layout_alignTop="@+id/lbl_info_spell_range"
+                        android:layout_toEndOf="@+id/lbl_info_spell_range"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Target: "
+                        android:id="@+id/lbl_info_spell_target"
+                        android:layout_below="@+id/info_spell_range"
+                        android:layout_alignParentStart="true"
+                        android:paddingBottom="5dp"
+                        android:textSize="14sp"
+                        android:paddingRight="5dp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="info_spell_target"
+                        android:id="@+id/info_spell_target"
+                        android:layout_alignTop="@+id/lbl_info_spell_target"
+                        android:layout_toEndOf="@+id/lbl_info_spell_target"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Area: "
+                        android:id="@+id/lbl_info_spell_area"
+                        android:layout_below="@+id/info_spell_target"
+                        android:layout_alignParentStart="true"
+                        android:paddingBottom="5dp"
+                        android:textSize="14sp"
+                        android:paddingRight="5dp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="info_spell_area"
+                        android:id="@+id/info_spell_area"
+                        android:layout_alignTop="@+id/lbl_info_spell_area"
+                        android:layout_toEndOf="@+id/lbl_info_spell_area"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Effect: "
+                        android:id="@+id/lbl_info_spell_effect"
+                        android:layout_below="@+id/info_spell_area"
+                        android:layout_alignParentStart="true"
+                        android:paddingBottom="5dp"
+                        android:textSize="14sp"
+                        android:paddingRight="5dp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="info_spell_effect"
+                        android:id="@+id/info_spell_effect"
+                        android:layout_alignTop="@+id/lbl_info_spell_effect"
+                        android:layout_toEndOf="@+id/lbl_info_spell_effect"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Duration: "
+                        android:id="@+id/lbl_info_spell_duration"
+                        android:layout_below="@+id/info_spell_effect"
+                        android:layout_alignParentStart="true"
+                        android:paddingBottom="5dp"
+                        android:textSize="14sp"
+                        android:paddingRight="5dp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="info_spell_duration"
+                        android:id="@+id/info_spell_duration"
+                        android:layout_alignTop="@+id/lbl_info_spell_duration"
+                        android:layout_toEndOf="@+id/lbl_info_spell_duration"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Spellcraft DC: "
+                        android:id="@+id/lbl_info_spell_spellcraft_dc"
+                        android:layout_below="@+id/info_spell_duration"
+                        android:layout_alignParentStart="true"
+                        android:paddingBottom="5dp"
+                        android:textSize="14sp"
+                        android:paddingRight="5dp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="info_spell_spellcraft_dc"
+                        android:id="@+id/info_spell_spellcraft_dc"
+                        android:layout_alignTop="@+id/lbl_info_spell_spellcraft_dc"
+                        android:layout_toEndOf="@+id/lbl_info_spell_spellcraft_dc"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Saving Throw: "
+                        android:id="@+id/lbl_info_spell_saving_throw"
+                        android:layout_below="@+id/info_spell_spellcraft_dc"
+                        android:layout_alignParentStart="true"
+                        android:paddingBottom="5dp"
+                        android:textSize="14sp"
+                        android:paddingRight="5dp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="info_spell_saving_throw"
+                        android:id="@+id/info_spell_saving_throw"
+                        android:layout_alignTop="@+id/lbl_info_spell_saving_throw"
+                        android:layout_toEndOf="@+id/lbl_info_spell_saving_throw"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Spell Resistance: "
+                        android:id="@+id/lbl_info_spell_spell_resistance"
+                        android:layout_below="@+id/info_spell_saving_throw"
+                        android:layout_alignParentStart="true"
+                        android:paddingBottom="5dp"
+                        android:textSize="14sp"
+                        android:paddingRight="5dp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="info_spell_spell_resistance"
+                        android:id="@+id/info_spell_spell_resistance"
+                        android:layout_alignTop="@+id/lbl_info_spell_spell_resistance"
+                        android:layout_toEndOf="@+id/lbl_info_spell_spell_resistance"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="To Develop: "
+                        android:id="@+id/lbl_info_to_develop"
+                        android:layout_below="@+id/info_spell_spell_resistance"
+                        android:layout_alignParentStart="true"
+                        android:paddingBottom="5dp"
+                        android:textSize="14sp"
+                        android:paddingRight="5dp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="info_spell_to_develop"
+                        android:id="@+id/info_spell_to_develop"
+                        android:layout_alignTop="@+id/lbl_info_to_develop"
+                        android:layout_toEndOf="@+id/lbl_info_to_develop"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Material Components: "
+                        android:id="@+id/lbl_info_spell_material_components"
+                        android:layout_below="@+id/info_spell_to_develop"
+                        android:layout_alignParentStart="true"
+                        android:paddingBottom="5dp"
+                        android:textSize="14sp"
+                        android:paddingRight="5dp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="info_spell_material_components"
+                        android:id="@+id/info_spell_material_components"
+                        android:layout_alignTop="@+id/lbl_info_spell_material_components"
+                        android:layout_toEndOf="@+id/lbl_info_spell_material_components"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Arcane Material Components: "
+                        android:id="@+id/lbl_info_spell_arcane_material_components"
+                        android:layout_below="@+id/info_spell_material_components"
+                        android:layout_alignParentStart="true"
+                        android:paddingBottom="5dp"
+                        android:textSize="14sp"
+                        android:paddingRight="5dp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="info_spell_arcane_material_components"
+                        android:id="@+id/info_spell_arcane_material_components"
+                        android:layout_alignTop="@+id/lbl_info_spell_arcane_material_components"
+                        android:layout_toEndOf="@+id/lbl_info_spell_arcane_material_components"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Focus: "
+                        android:id="@+id/lbl_info_spell_focus"
+                        android:layout_below="@+id/info_spell_arcane_material_components"
+                        android:layout_alignParentStart="true"
+                        android:paddingBottom="5dp"
+                        android:textSize="14sp"
+                        android:paddingRight="5dp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="info_spell_focus"
+                        android:id="@+id/info_spell_focus"
+                        android:layout_alignTop="@+id/lbl_info_spell_focus"
+                        android:layout_toEndOf="@+id/lbl_info_spell_focus"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Arcane Focus: "
+                        android:id="@+id/lbl_info_spell_arcane_focus"
+                        android:layout_below="@+id/info_spell_focus"
+                        android:layout_alignParentStart="true"
+                        android:paddingBottom="5dp"
+                        android:textSize="14sp"
+                        android:paddingRight="5dp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="info_spell_arcane_focus"
+                        android:id="@+id/info_spell_arcane_focus"
+                        android:layout_alignTop="@+id/lbl_info_spell_arcane_focus"
+                        android:layout_toEndOf="@+id/lbl_info_spell_arcane_focus"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Wizard Focus: "
+                        android:id="@+id/lbl_info_spell_wizard_focus"
+                        android:layout_below="@+id/info_spell_arcane_focus"
+                        android:layout_alignParentStart="true"
+                        android:paddingBottom="5dp"
+                        android:textSize="14sp"
+                        android:paddingRight="5dp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="info_spell_wizard_focus"
+                        android:id="@+id/info_spell_wizard_focus"
+                        android:layout_alignTop="@+id/lbl_info_spell_wizard_focus"
+                        android:layout_toEndOf="@+id/lbl_info_spell_wizard_focus"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Sorcerer Focus: "
+                        android:id="@+id/lbl_info_spell_sorcerer_focus"
+                        android:layout_below="@+id/info_spell_wizard_focus"
+                        android:layout_alignParentStart="true"
+                        android:paddingBottom="5dp"
+                        android:textSize="14sp"
+                        android:paddingRight="5dp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="info_spell_sorcerer_focus"
+                        android:id="@+id/info_spell_sorcerer_focus"
+                        android:layout_alignTop="@+id/lbl_info_spell_sorcerer_focus"
+                        android:layout_toEndOf="@+id/lbl_info_spell_sorcerer_focus"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Bard Focus: "
+                        android:id="@+id/lbl_info_spell_bard_focus"
+                        android:layout_below="@+id/info_spell_sorcerer_focus"
+                        android:layout_alignParentStart="true"
+                        android:paddingBottom="5dp"
+                        android:textSize="14sp"
+                        android:paddingRight="5dp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="info_spell_bard_focus"
+                        android:id="@+id/info_spell_bard_focus"
+                        android:layout_alignTop="@+id/lbl_info_spell_bard_focus"
+                        android:layout_toEndOf="@+id/lbl_info_spell_bard_focus"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Cleric Focus: "
+                        android:id="@+id/lbl_info_spell_cleric_focus"
+                        android:layout_below="@+id/info_spell_bard_focus"
+                        android:layout_alignParentStart="true"
+                        android:paddingBottom="5dp"
+                        android:textSize="14sp"
+                        android:paddingRight="5dp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="info_spell_cleric_focus"
+                        android:id="@+id/info_spell_cleric_focus"
+                        android:layout_alignTop="@+id/lbl_info_spell_cleric_focus"
+                        android:layout_toEndOf="@+id/lbl_info_spell_cleric_focus"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Druid Focus: "
+                        android:id="@+id/lbl_info_spell_druid_focus"
+                        android:layout_below="@+id/info_spell_cleric_focus"
+                        android:layout_alignParentStart="true"
+                        android:paddingBottom="5dp"
+                        android:textSize="14sp"
+                        android:paddingRight="5dp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="info_spell_druid_focus"
+                        android:id="@+id/info_spell_druid_focus"
+                        android:layout_alignTop="@+id/lbl_info_spell_druid_focus"
+                        android:layout_toEndOf="@+id/lbl_info_spell_druid_focus"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Verbal Components: "
+                        android:id="@+id/lbl_info_spell_verbal_components"
+                        android:layout_below="@+id/info_spell_druid_focus"
+                        android:layout_alignParentStart="true"
+                        android:paddingBottom="5dp"
+                        android:textSize="14sp"
+                        android:paddingRight="5dp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="info_spell_verbal_components"
+                        android:id="@+id/info_spell_verbal_components"
+                        android:layout_alignTop="@+id/lbl_info_spell_verbal_components"
+                        android:layout_toEndOf="@+id/lbl_info_spell_verbal_components"
+                        android:textSize="14sp" />
+
+                </RelativeLayout>
+            </ScrollView>
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="7">
+
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_weight="1">
+
+                <Button
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:scaleType="fitXY"
+                    android:text="Close"
+                    android:onClick="doCloseSpellInfoPopup"
+                    android:id="@+id/popup_monster_close"
+                    android:layout_centerVertical="true"
+                    android:layout_centerHorizontal="true"
+                    android:background="@color/background_material_light"/>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_weight="1">
+
+                <Button
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:scaleType="fitXY"
+                    android:text="Add"
+                    android:onClick="doAddSpell"
+                    android:id="@+id/popup_monster_select"
+                    android:layout_centerVertical="true"
+                    android:layout_centerHorizontal="true"
+                    android:background="@color/background_material_light"/>
+            </RelativeLayout>
+        </LinearLayout>
+    </LinearLayout>
+</RelativeLayout>

@@ -8,4 +8,8 @@ public class Model {
     public String parseDatabase(int dataId){
         return "ERROR: METHOD NOT OVERLOADED";
     }
+
+    public int getId() { return id; }
+
+    public void setId(int id) { this.id = id; }
 }

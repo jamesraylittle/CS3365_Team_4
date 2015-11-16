@@ -1,0 +1,312 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:clipToPadding="false"
+    android:background="#000000"
+    android:padding="2dp">
+
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:elevation="10dp"
+        android:background="@color/background_material_light">
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="1">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="info_item_name"
+                android:id="@+id/info_item_name"
+                android:layout_gravity="center_vertical"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:textColor="#000000"
+                android:textAlignment="center"
+                android:paddingBottom="5dp" />
+
+            <ScrollView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/scrollView"
+                android:layout_weight="1"
+                android:layout_below="@+id/info_item_name">
+
+                <RelativeLayout
+                    android:orientation="horizontal"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_weight="1"
+                    android:paddingRight="7dp"
+                    android:paddingLeft="7dp"
+                    android:paddingBottom="7dp"
+                    android:layout_below="@+id/info_item_name"
+                    android:layout_alignParentStart="true">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Category: "
+                        android:id="@+id/lbl_info_item_category"
+                        android:layout_alignParentTop="true"
+                        android:layout_alignParentStart="true"
+                        android:textSize="14sp"
+                        android:paddingRight="5dp"
+                        android:paddingBottom="5dp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="info_item_category"
+                        android:id="@+id/info_item_category"
+                        android:layout_alignTop="@+id/lbl_info_item_category"
+                        android:layout_toEndOf="@+id/lbl_info_item_category"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Subcategory: "
+                        android:id="@+id/lbl_info_item_subcategory"
+                        android:layout_below="@+id/info_item_category"
+                        android:layout_alignParentStart="true"
+                        android:paddingBottom="5dp"
+                        android:textSize="14sp"
+                        android:paddingRight="5dp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="info_item_subcategory"
+                        android:id="@+id/info_item_subcategory"
+                        android:layout_alignTop="@+id/lbl_info_item_subcategory"
+                        android:layout_toEndOf="@+id/lbl_info_item_subcategory"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Special Ability: "
+                        android:id="@+id/lbl_info_item_special_ability"
+                        android:layout_below="@+id/info_item_subcategory"
+                        android:layout_alignParentStart="true"
+                        android:paddingBottom="5dp"
+                        android:textSize="14sp"
+                        android:paddingRight="5dp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="info_item_special_ability"
+                        android:id="@+id/info_item_special_ability"
+                        android:layout_alignTop="@+id/lbl_info_item_special_ability"
+                        android:layout_toEndOf="@+id/lbl_info_item_special_ability"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Aura: "
+                        android:id="@+id/lbl_info_item_aura"
+                        android:layout_below="@+id/info_item_special_ability"
+                        android:layout_alignParentStart="true"
+                        android:paddingBottom="5dp"
+                        android:textSize="14sp"
+                        android:paddingRight="5dp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="info_item_aura"
+                        android:id="@+id/info_item_aura"
+                        android:layout_alignTop="@+id/lbl_info_item_aura"
+                        android:layout_toEndOf="@+id/lbl_info_item_aura"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Weight: "
+                        android:id="@+id/lbl_info_item_weight"
+                        android:layout_below="@+id/info_item_aura"
+                        android:layout_alignParentStart="true"
+                        android:paddingBottom="5dp"
+                        android:textSize="14sp"
+                        android:paddingRight="5dp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="info_item_weight"
+                        android:id="@+id/info_item_weight"
+                        android:layout_alignTop="@+id/lbl_info_item_weight"
+                        android:layout_toEndOf="@+id/lbl_info_item_weight"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Cost: "
+                        android:id="@+id/lbl_info_item_cost"
+                        android:layout_below="@+id/info_item_weight"
+                        android:layout_alignParentStart="true"
+                        android:paddingBottom="5dp"
+                        android:textSize="14sp"
+                        android:paddingRight="5dp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="info_item_cost"
+                        android:id="@+id/info_item_cost"
+                        android:layout_alignTop="@+id/lbl_info_item_cost"
+                        android:layout_toEndOf="@+id/lbl_info_item_cost"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Caster level: "
+                        android:id="@+id/lbl_info_item_caster_level"
+                        android:layout_below="@+id/info_item_cost"
+                        android:layout_alignParentStart="true"
+                        android:paddingBottom="5dp"
+                        android:textSize="14sp"
+                        android:paddingRight="5dp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="info_item_caster_level"
+                        android:id="@+id/info_item_caster_level"
+                        android:layout_alignTop="@+id/lbl_info_item_caster_level"
+                        android:layout_toEndOf="@+id/lbl_info_item_caster_level"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Prereq: "
+                        android:id="@+id/lbl_info_item_prereq"
+                        android:layout_below="@+id/info_item_caster_level"
+                        android:layout_alignParentStart="true"
+                        android:paddingBottom="5dp"
+                        android:textSize="14sp"
+                        android:paddingRight="5dp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="info_item_prereq"
+                        android:id="@+id/info_item_prereq"
+                        android:layout_alignTop="@+id/lbl_info_item_prereq"
+                        android:layout_toEndOf="@+id/lbl_info_item_prereq"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Price: "
+                        android:id="@+id/lbl_info_item_price"
+                        android:layout_below="@+id/info_item_prereq"
+                        android:layout_alignParentStart="true"
+                        android:paddingBottom="5dp"
+                        android:textSize="14sp"
+                        android:paddingRight="5dp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="info_item_price"
+                        android:id="@+id/info_item_price"
+                        android:layout_alignTop="@+id/lbl_info_item_price"
+                        android:layout_toEndOf="@+id/lbl_info_item_price"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Manifest Level: "
+                        android:id="@+id/lbl_info_item_manifest_level"
+                        android:layout_below="@+id/info_item_price"
+                        android:layout_alignParentStart="true"
+                        android:paddingBottom="5dp"
+                        android:textSize="14sp"
+                        android:paddingRight="5dp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="info_item_manifest_level"
+                        android:id="@+id/info_item_manifest_level"
+                        android:layout_alignTop="@+id/lbl_info_item_manifest_level"
+                        android:layout_toEndOf="@+id/lbl_info_item_manifest_level"
+                        android:textSize="14sp" />
+
+                </RelativeLayout>
+            </ScrollView>
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="7">
+
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_weight="1">
+
+                <Button
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:scaleType="fitXY"
+                    android:text="Close"
+                    android:onClick="doCloseItemInfoPopup"
+                    android:id="@+id/popup_item_close"
+                    android:layout_centerVertical="true"
+                    android:layout_centerHorizontal="true"
+                    android:background="@color/background_material_light"/>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_weight="1">
+
+                <Button
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:scaleType="fitXY"
+                    android:text="Give"
+                    android:onClick="doAddItem"
+                    android:id="@+id/popup_item_select"
+                    android:layout_centerVertical="true"
+                    android:layout_centerHorizontal="true"
+                    android:background="@color/background_material_light"/>
+            </RelativeLayout>
+        </LinearLayout>
+    </LinearLayout>
+</RelativeLayout>

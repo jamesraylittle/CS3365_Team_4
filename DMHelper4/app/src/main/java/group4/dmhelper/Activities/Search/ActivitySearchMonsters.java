@@ -1,4 +1,4 @@
-package group4.dmhelper.Activities;
+package group4.dmhelper.Activities.Search;
 
 import android.app.Activity;
 import android.content.Context;
