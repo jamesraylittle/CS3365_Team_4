@@ -4,6 +4,8 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 
+import java.util.ArrayList;
+
 import group4.dmhelper.Actors.ClassType;
 import group4.dmhelper.Actors.Feat;
 
@@ -37,6 +39,20 @@ public class ClassTypes extends Database implements DAO<ClassType> {
         }
 
         return ct;
+    }
+
+    public ArrayList<ClassType> getAllByPlayerId(int playerId) {
+        String args[] = new String[] { playerId + ""};
+        Cursor c = database.query(TABLE, null, "playerId = ?", args, null, null, null);
+
+        ArrayList<ClassType> list = new ArrayList<ClassType>();
+        if(c.moveToFirst()) {
+            do {
+                ClassType s = new ClassType(c.getInt(0), c.getInt(1), c.getInt(2), c.getInt(3));
+                list.add(s);
+            } while(c.moveToNext());
+        }
+        return list;
     }
 
     public void delete(int id) { super.delete(id, TABLE); }

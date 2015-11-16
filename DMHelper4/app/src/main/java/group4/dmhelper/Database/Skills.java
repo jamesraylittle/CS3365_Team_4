@@ -4,6 +4,8 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 
+import java.util.ArrayList;
+
 import group4.dmhelper.Actors.Feat;
 import group4.dmhelper.Actors.Skill;
 
@@ -27,7 +29,7 @@ public class Skills extends Database implements DAO<Skill> {
     }
 
     public Skill retrieve(int id) {
-        String[] args = new String[] {id+""};
+        String[] args = new String[]{id + ""};
         Cursor c = database.query(TABLE, null, "id = ?", args, null, null, null);
         Skill a = new Skill(id, skillId);
 
@@ -41,6 +43,20 @@ public class Skills extends Database implements DAO<Skill> {
         }
 
         return a;
+    }
+
+    public ArrayList<Skill> getAllByPlayerId(int playerId) {
+        String args[] = new String[] { playerId + ""};
+        Cursor c = database.query(TABLE, null, "playerId = ?", args, null, null, null);
+
+        ArrayList<Skill> list = new ArrayList<Skill>();
+        if(c.moveToFirst()) {
+            do {
+                Skill s = new Skill(c.getInt(0), c.getInt(1), c.getString(2), c.getInt(3), c.getInt(4));
+                list.add(s);
+            } while(c.moveToNext());
+        }
+        return list;
     }
 
     public void delete(int id) {
