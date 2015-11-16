@@ -1,5 +1,7 @@
 package group4.dmhelper.Actors;
 
+import android.content.Context;
+
 /**
  * Created by Daniel on 10/19/2015.
  * Updated by James.
@@ -7,11 +9,13 @@ package group4.dmhelper.Actors;
  */
 public class Player extends Actor {
 
-    public Player(int playerId) {
-        super(playerId); setIsMonster(0);
+    public Player(int playerId, Context context) {
+        super(playerId, context); setIsMonster(0);
     }
 
-    public Player() {setIsMonster(0);}
+    public Player(Context context) {
+        super(context); setIsMonster(0);
+    }
 
     //$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#
     //Leveling Up
