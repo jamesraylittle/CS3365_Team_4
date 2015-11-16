@@ -40,6 +40,22 @@ public class Items extends Database implements DAO<Item> {
         return from;
     }
 
+    public ArrayList<Item> getAllByPlayerId(int playerId) {
+        String args[] = new String[] { playerId + "" };
+        Cursor c = database.query(TABLE, null, "playerId = ?", args, null, null, null);
+
+        ArrayList<Item> list = new ArrayLIte<Item>;
+
+        if(c.moveToFirst()) {
+            do {
+                Item i = new Item(c.getInt(0), c.getInt(1));
+                list.add(i);
+            } while (c.moveToNext());
+        }
+
+        return list;
+    }
+
 
     public void delete(int id) { super.delete(id, TABLE); }
 
