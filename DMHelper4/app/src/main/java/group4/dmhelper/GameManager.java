@@ -21,6 +21,8 @@ import group4.dmhelper.Database.Actors;
  */
 public class GameManager {
 
+    int gameId;
+
     private GameManager() {}
 
     private static GameManager instance;    //Singleton structure

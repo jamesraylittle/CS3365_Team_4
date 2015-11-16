@@ -74,7 +74,7 @@ public class Spells extends Database implements DAO<Spell> {
         String q = "CREATE TABLE IF NOT EXISTS "+TABLE+" (" +
                 "id integer primary key AUTOINCREMENT," +
                 "Player Id INTEGER," +
-                "Spell Id INTEGER," +
+                "Spell Id INTEGER" +
                 ")";
         database.execSQL(q);
     }

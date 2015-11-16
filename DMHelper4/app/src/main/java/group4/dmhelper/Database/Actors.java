@@ -42,6 +42,7 @@ public class Actors extends Database implements DAO<Actor> {
                 from.setIsMonster(c.getInt(8));
                 from.setInGame(c.getInt(9));
                 from.setImageFile(c.getString(10));
+                from.setGameId(c.getInt(11));
             } while (c.moveToNext());
         }
 
@@ -63,9 +64,10 @@ public class Actors extends Database implements DAO<Actor> {
         values.put("religion", p.getReligion());
         values.put("race", p.getRace());
         values.put("name", p.getName());
-        values.put("isMonster", p.getName());
+        values.put("isMonster", p.getIsMonster());
         values.put("inGame", p.getInGame());
         values.put("imageFile", p.getImageFile());
+        values.put("gameId", p.getGameId());
         return values;
     }
 
@@ -78,10 +80,11 @@ public class Actors extends Database implements DAO<Actor> {
                 "weight integer," +
                 "religion TEXT," +
                 "race TEXT," +
-                "name TEXT" +
-                "isMonster integer" +
-                "inGame integer" +
-                "imageFile integer" +
+                "name TEXT," +
+                "isMonster integer," +
+                "inGame integer," +
+                "imageFile integer," +
+                "gameId integer" +
                 ")";
         database.execSQL(q);
     }

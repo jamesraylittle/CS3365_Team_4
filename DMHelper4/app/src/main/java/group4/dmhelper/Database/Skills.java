@@ -81,8 +81,8 @@ public class Skills extends Database implements DAO<Skill> {
                 "id integer primary key AUTOINCREMENT," +
                 "baseScore INTEGER," +
                 "miscBonus INTEGER," +
-                "name TEXT" +
-                "skillId INTEGER," +
+                "name TEXT," +
+                "skillId INTEGER" +
                 ")";
         database.execSQL(q);
     }

@@ -73,7 +73,7 @@ public class Feats extends Database implements DAO<Feat> {
         String q = "CREATE TABLE IF NOT EXISTS "+TABLE+" (" +
                 "id integer primary key AUTOINCREMENT," +
                 "Player Id INTEGER," +
-                "Item Id INTEGER," +
+                "Item Id INTEGER" +
                 ")";
         database.execSQL(q);
     }
