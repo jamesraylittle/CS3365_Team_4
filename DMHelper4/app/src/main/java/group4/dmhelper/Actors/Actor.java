@@ -263,6 +263,12 @@ public class Actor extends Model implements Comparable<Actor>{
     public void pullFromDatabase(){/*takes variables from database*/} // TODO: 11/2/2015
     public void pushToDatabase(){/*writes over current variables in database*/} // TODO: 11/2/2015
 
+    public boolean populateAbilities()      {return true;/*query database - populate ArrayList*/}   //TODO
+    public boolean populateSkills()         {return true;/*query database - populate ArrayList*/}   //TODO
+    public boolean populateEquippedItems()  {return true;/*query database - populate ArrayList*/}   //TODO
+    public boolean populateSpells()         {return true;/*query database - populate ArrayList*/}   //TODO
+    public boolean populateFeats()          {return true;/*query database - populate ArrayList*/}   //TODO
+
     //$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#
     //DAOs
     //$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#
@@ -320,12 +326,6 @@ public class Actor extends Model implements Comparable<Actor>{
     //"add" and "remove" functions
     //$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#
 
-    public boolean populateAbilities()      {return true;/*query database - populate ArrayList*/}   //TODO
-    public boolean populateSkills()         {return true;/*query database - populate ArrayList*/}   //TODO
-    public boolean populateEquippedItems()  {return true;/*query database - populate ArrayList*/}   //TODO
-    public boolean populateSpells()         {return true;/*query database - populate ArrayList*/}   //TODO
-    public boolean populateFeats()          {return true;/*query database - populate ArrayList*/}   //TODO
-
     public int getSkill(int i)                  {if(i>=0&&i<40)return dSkills.retrieve(skillIds.get(i).getSkillId()).getBaseScore(); else return -1000;}
     public void setSkill(int i, int value)      {if(i>=0&&i<40){skillIds.get(i).setBaseScore(value); dSkills.update(skillIds.get(i));}}
     public int getSkillMod(int i)               {if(i>=0&&i<40)return dSkills.retrieve(skillIds.get(i).getSkillId()).getMiscBonus(); else return -1000;}
@@ -347,11 +347,28 @@ public class Actor extends Model implements Comparable<Actor>{
     //"calculate" functions
     //$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#
 
-    public void rollInitiative() {initiative = initiativeMod + 10/*replace 10 with activity*/;}            // TODO: 11/10/2015 An activity needs to be connected to this
+    public void rollInitiative() {initiative = initiativeMod + roll(20)/*replace 10 with roll activity*/;}            // TODO: 11/10/2015 An activity needs to be connected to this
     public int calculateAC() {return 0;}// TODO: 11/11/2015  Need to figure out calculation for this.
     public int calculateTouchAC() {return 0;}// TODO: 11/11/2015 Need to figure out calculation for this.
     public int calculateFlatFootedAC() {return 0;}// TODO: 11/11/2015 Need to figure out calculation for this.
-    public int rollToHit(){return 0;}// TODO: 11/11/2015 NEEDS OWN ACTIVITY 
-    public int calculateDamage(){return 0;}// TODO: 11/11/2015 Need to figure out a good convention for this. 
+
+    public int rollToHit(){return calculateBAB();}// TODO: 11/15/2015 dx+BAB+STR
+    public int calculateDamage(){return 0;}// TODO: 11/15/2015 1 handed = (1dx + str/2*(number of hands))
+
+    public int rollToHitRanged(){return 0;}// TODO: 11/15/2015 bab+dx+DEX+RANGED MOD
+    public int calculateRangeMod(){return -2;}// TODO: 11/15/2015 -2*(range/range_increment)
+    public int calculateDamageRanged(){return 0;}// TODO: 11/15/2015 1dx
+
+    public int calculateBAB(){return 0;}// TODO: 11/15/2015 returns first value in BAB list
+    public int numOfAttacks(){return (calculateBAB() - 1)/5 + 1;}// TODO: 11/15/2015 Num of attacks - based off of bab
+
+    public int grappleCheck(){return 0;}// TODO: 11/15/2015 Bab + Str
+    
+    public int calculateHealth(){return 0;}// TODO: 11/15/2015 (.5*hit_die+1)*(level-1) + hit_die + const_mod*level 
+    
+    public int calculateSkillPoints(){return 0;}// TODO: 11/15/2015 4*(skill_points+int_mod) @ level 1 and skill_points+int_mod
+
+    public int roll(int i){return 0;}// TODO: 11/15/2015 NEEDS AN ACTIVITY FOR ROLLING DIE 
+    public int getRollNum(String s){return 0;}// TODO: 11/15/2015
 
 }
