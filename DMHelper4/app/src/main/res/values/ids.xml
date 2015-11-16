@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="skillList" type="id" />
+    <item name="useWeapon" type="id" />
+    <item name="player" type="id" />
+    <item name="btn_skillList" type="id" />
+    <item name="btn_useWeapon" type="id" />
+    <item name="btn_player" type="id" />
+    <item name="submit_d20" type="id" />
+    <item name="submit_roll" type="id" />
+</resources>

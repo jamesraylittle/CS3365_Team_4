@@ -10,18 +10,19 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TableLayout;
 import android.widget.TableRow;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 
-import group4.dmhelper.Activities.ActivityCharacterSheet;
 import group4.dmhelper.Activities.ActivityGame;
 import group4.dmhelper.Activities.Popups.PopupMonsterInfo;
+import group4.dmhelper.Actors.Actor;
 import group4.dmhelper.R;
+import group4.dmhelper.popup_dice_roll;
 
 /**
  * Created by Kyle on 10/13/2015.
  * Edited by Emilie on 11/1/2015.
+ * Edited by Emilie on 11/16/2015
  */
 public class FragmentGame extends Fragment implements View.OnClickListener{
 
@@ -37,6 +38,12 @@ public class FragmentGame extends Fragment implements View.OnClickListener{
     public Button playerFour;
     public Button playerFive;
     public Button nextTurn;
+
+    private Actor one;
+    private Actor two;
+    private Actor three;
+    private Actor four;
+    private Actor five;
 
     public static ArrayList<String[]> monsters = new ArrayList<String[]>();
 
@@ -75,12 +82,15 @@ public class FragmentGame extends Fragment implements View.OnClickListener{
             case 1:
                 playerOne.setVisibility(View.VISIBLE);
                 playerOne.setOnClickListener(this);
+//                one = new Actor(1,getContext());
                 break;
             case 2:
                 playerOne.setVisibility(View.VISIBLE);
                 playerOne.setOnClickListener(this);
                 playerTwo.setVisibility(View.VISIBLE);
                 playerTwo.setOnClickListener(this);
+//                one = new Actor(1,getContext());
+//                two = new Actor(2,getContext());
                 break;
             case 3:
                 playerOne.setVisibility(View.VISIBLE);
@@ -89,6 +99,9 @@ public class FragmentGame extends Fragment implements View.OnClickListener{
                 playerTwo.setOnClickListener(this);
                 playerThree.setVisibility(View.VISIBLE);
                 playerThree.setOnClickListener(this);
+//                one = new Actor(1,getContext());
+//                two = new Actor(2,getContext());
+//                three = new Actor(3,getContext());
                 break;
             case 4:
                 playerOne.setVisibility(View.VISIBLE);
@@ -99,6 +112,10 @@ public class FragmentGame extends Fragment implements View.OnClickListener{
                 playerThree.setOnClickListener(this);
                 playerFour.setVisibility(View.VISIBLE);
                 playerFour.setOnClickListener(this);
+//                one = new Actor(1,getContext());
+//                two = new Actor(2,getContext());
+//                three = new Actor(3,getContext());
+//                four = new Actor(4,getContext());
                 break;
             case 5:
                 playerOne.setVisibility(View.VISIBLE);
@@ -111,6 +128,11 @@ public class FragmentGame extends Fragment implements View.OnClickListener{
                 playerFour.setOnClickListener(this);
                 playerFive.setVisibility(View.VISIBLE);
                 playerFive.setOnClickListener(this);
+//                one = new Actor(1,getContext());
+//                two = new Actor(2,getContext());
+//                three = new Actor(3,getContext());
+//                four = new Actor(4,getContext());
+//                five = new Actor(5,getContext());
                 break;
         }
     }
@@ -118,33 +140,44 @@ public class FragmentGame extends Fragment implements View.OnClickListener{
     @Override
     public void onClick(View v) {
         Intent intent;
+        int id;
         switch (v.getId()) {
             case R.id.nextTurn:
                 nextTurn(v);
                 break;
             case R.id.playerOne:
-                intent = new Intent(getContext(), ActivityCharacterSheet.class);
-                intent.putExtra("Identifier","PlayerOne");
+                intent = new Intent(getContext(), popup_dice_roll.class);
+//                id = one.getId();
+                id = 1;
+                intent.putExtra("Identifier",id);
                 startActivity(intent);
                 break;
             case R.id.playerTwo:
-                intent = new Intent(getContext(), ActivityCharacterSheet.class);
-                intent.putExtra("Identifier","PlayerTwo");
+                intent = new Intent(getContext(), popup_dice_roll.class);
+//                id = two.getId();
+                id = 2;
+                intent.putExtra("Identifier",id);
                 startActivity(intent);
                 break;
             case R.id.playerThree:
-                intent = new Intent(getContext(), ActivityCharacterSheet.class);
-                intent.putExtra("Identifier","PlayerThree");
+                intent = new Intent(getContext(), popup_dice_roll.class);
+//                id = three.getId();
+                id = 3;
+                intent.putExtra("Identifier",id);
                 startActivity(intent);
                 break;
             case R.id.playerFour:
-                intent = new Intent(getContext(), ActivityCharacterSheet.class);
-                intent.putExtra("Identifier","PlayerFour");
+                intent = new Intent(getContext(), popup_dice_roll.class);
+//                id = four.getId();
+                id = 4;
+                intent.putExtra("Identifier",id);
                 startActivity(intent);
                 break;
             case R.id.playerFive:
-                intent = new Intent(getContext(), ActivityCharacterSheet.class);
-                intent.putExtra("Identifier", "PlayerFive");
+                intent = new Intent(getContext(), popup_dice_roll.class);
+//                id = five.getId();
+                id = 5;
+                intent.putExtra("Identifier", id);
                 startActivity(intent);
                 break;
             default :

@@ -2,15 +2,8 @@ package group4.dmhelper.Actors;
 
 import android.content.Context;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
 import java.util.ArrayList;
 
-import group4.dmhelper.Database.Actors;
 import group4.dmhelper.Database.ClassTypes;
 import group4.dmhelper.Database.Equipments;
 import group4.dmhelper.Database.Feats;
@@ -29,6 +22,7 @@ import group4.dmhelper.Database.Spells;
 public class Actor extends Model implements Comparable<Actor>{
 
     Context context;
+    public Skill[] getSkills;
 
     public Actor(int id, String name, String gender, int size, String alignment, float weight, String religion, int speed, int initiativeMod, int grappleMod, int reflexSave, int reflexMod, int willSave, int willMod, int fortSave, int fortMod, Context context) {
         this.id = id;
