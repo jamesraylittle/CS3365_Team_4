@@ -65,7 +65,7 @@ public class ClassTypes extends Database implements DAO<ClassType> {
                 "id integer primary key AUTOINCREMENT," +
                 "class INTEGER," +
                 "class_table INTEGER," +
-                "player INTEGER," +
+                "player INTEGER" +
                 ")";
         database.execSQL(q);
     }
