@@ -43,7 +43,7 @@ public class PlayerAbilities extends Database implements DAO<PlayerAbility> {
         }
         return p;
     }
-    
+
     public ArrayList<PlayerAbility> getAllByPlayerId(int playerId) {
         String args[] = new String[] { playerId + ""};
         Cursor c = database.query(TABLE, null, "playerId = ?", args, null, null, null);
