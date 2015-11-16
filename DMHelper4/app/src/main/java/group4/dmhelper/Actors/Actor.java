@@ -69,36 +69,54 @@ public class Actor extends Model implements Comparable<Actor>{
         this.context = context;
     }
 
-    public Actor(int id) {
+    public Actor(int id, Context context) {
         this.id = id;
-    }
 
-    public Actor(int id, Context context) { //Saving/Loading
-        this.id = id;
         this.context = context;
-
         dClass = new ClassTypes(context);
         dEquipments = new Equipments(context);
         dItems = new Items(context);
         dFeats = new Feats(context);
         dPlayerAbilities = new PlayerAbilities(context);
-        dRaces = new Races(context);
+        //dRaces = new Races(context);
         dSkills = new Skills(context);
         dSpells = new Spells(context);
 
-        /*
-        classTypeId = dClass.retrieve(id);
-        equippedItemIds.add(dEquipments.retrieve(id));//for(all ids)
-        itemIds.add(dItems.retrieve(id));//for(all ids)
-        featIds.add(dFeats.retrieve(id));
-        playerAbilityIds = dPlayerAbilities.retrieve(id);
-        raceId = dRaces.retrieve(id);
-        for(int i=0;i<40;i++)skillIds.add(dSkills.retrieve(id));
-        spellIds.add(dSpells.retrieve(id));
-        //*/
+        pullFromDatabase();
     }
 
-    public Actor() {}
+    public Actor(Context context) { //Saving/Loading
+
+        this.id = dActor.create(this);
+
+        this.context = context;
+        dClass = new ClassTypes(context);
+        dEquipments = new Equipments(context);
+        dItems = new Items(context);
+        dFeats = new Feats(context);
+        dPlayerAbilities = new PlayerAbilities(context);
+        //dRaces = new Races(context);
+        dSkills = new Skills(context);
+        dSpells = new Spells(context);
+
+        for(int i=0;i<40;i++)skillIds.add(new Skill());
+
+    }
+
+    public void equalsDatabaseValues(Actor a) {
+        this.gender = a.gender;
+        this.size = a.size;
+        this.alignment = a.alignment;
+        this.weight = a.weight;
+        this.religion = a.religion;
+        this.race = a.race;
+        this.name = a.name;
+        this.isMonster = a.isMonster;
+        this.inGame = a.inGame;
+        this.imageFile = a.imageFile;
+    }
+
+    //public Actor() {}
 
     @Override
     public int compareTo(Actor actor) {
@@ -131,6 +149,8 @@ public class Actor extends Model implements Comparable<Actor>{
 
     private int isMonster;
     private int inGame;
+
+    private String imageFile;
 
     //$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#
     //Sets and Gets
@@ -243,42 +263,78 @@ public class Actor extends Model implements Comparable<Actor>{
     public int getInGame() {
         return inGame;
     }
-
     public void setInGame(int inGame) {
         this.inGame = inGame;
     }
-
     public int getIsMonster() {
         return isMonster;
     }
-
     public void setIsMonster(int isMonster) {
         this.isMonster = isMonster;
+    }
+    public String getImageFile() {
+        return imageFile;
+    }
+    public void setImageFile(String imageFile) {
+        this.imageFile = imageFile;
     }
 
     //$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#
     //Saving and loading from database
     //$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#
 
-    public void pullFromDatabase(){/*takes variables from database*/} // TODO: 11/2/2015
-    public void pushToDatabase(){/*writes over current variables in database*/} // TODO: 11/2/2015
+    public void pullFromDatabase(){//writes over all values in actor object with those in DB
 
-    public boolean populateAbilities()      {return true;/*query database - populate ArrayList*/}   //TODO
-    public boolean populateSkills()         {return true;/*query database - populate ArrayList*/}   //TODO
-    public boolean populateEquippedItems()  {return true;/*query database - populate ArrayList*/}   //TODO
-    public boolean populateSpells()         {return true;/*query database - populate ArrayList*/}   //TODO
-    public boolean populateFeats()          {return true;/*query database - populate ArrayList*/}   //TODO
+        this.equalsDatabaseValues(dActor.retrieve(id));
+
+        populateSkills();
+        populateEquippedItems();
+        populateItems();
+        populateSpells();
+        populateFeats();
+
+        populateClassType();
+        populatePlayerAbility();
+        //populateRace();
+
+    }
+
+    public void pushToDatabase(){
+        dActor.update(this);
+
+        for(int i=0;i<skillIds.size();i++) dSkills.update(skillIds.get(i));
+        for(int i=0;i<equippedItemIds.size();i++) dEquipments.update(equippedItemIds.get(i));
+        for(int i=0;i<itemIds.size();i++) dItems.update(itemIds.get(i));
+        for(int i=0;i<spellIds.size();i++) dSpells.update(spellIds.get(i));
+        for(int i=0;i<featIds.size();i++) dFeats.update(featIds.get(i));
+
+        dClass.update(classTypeId);
+        dPlayerAbilities.update(playerAbilityIds);
+
+    }
+
+    public boolean populateSkills()         {ArrayList o=dSkills.getAllByPlayerId(id);skillIds.equals(o); return o.isEmpty();}// writes over current variables with those from the database
+    public boolean populateEquippedItems()  {ArrayList o=dEquipments.getAllByPlayerId(id);equippedItemIds.equals(o); return o.isEmpty();}// writes over current variables with those from the database
+    public boolean populateItems()          {ArrayList o=dItems.getAllByPlayerId(id);equippedItemIds.equals(o); return o.isEmpty();}// writes over current variables with those from the database
+    public boolean populateSpells()         {ArrayList o=dSpells.getAllByPlayerId(id);spellIds.equals(o); return o.isEmpty();}// writes over current variables with those from the database
+    public boolean populateFeats()          {ArrayList o=dFeats.getAllByPlayerId(id);featIds.equals(o); return o.isEmpty();}// writes over current variables with those from the database
+
+    public boolean populateClassType()      {ArrayList<ClassType> o=dClass.getAllByPlayerId(id);if(!o.isEmpty())classTypeId = o.get(0); return o.isEmpty();}// writes over current variables with those from the database
+    public boolean populatePlayerAbility()  {ArrayList<PlayerAbility> o=dPlayerAbilities.getAllByPlayerId(id);if(!o.isEmpty())playerAbilityIds = o.get(0); return o.isEmpty();}// writes over current variables with those from the database
+    //public boolean populateRace()           {ArrayList<Race> o=dRaces.getAllByPlayerId(id);if(!o.isEmpty())raceId = o.get(0); return o.isEmpty();}// writes over current variables with those from the database
 
     //$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#
     //DAOs
     //$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#
+
+    private Actors dActor;
 
     private ClassTypes dClass;
     private Equipments dEquipments;
     private Items dItems;
     private Feats dFeats;
     private PlayerAbilities dPlayerAbilities;
-    private Races dRaces;
+    //private Races dRaces;
     private Skills dSkills;
     private Spells dSpells;
 
@@ -286,14 +342,15 @@ public class Actor extends Model implements Comparable<Actor>{
     //Player IDs - We may not need objects for any of these
     //$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#
 
-    private ClassType classTypeId = new ClassType();
     private ArrayList<Equipment> equippedItemIds = new ArrayList<Equipment>();
     private ArrayList<Item> itemIds = new ArrayList<Item>();
     private ArrayList<Feat> featIds = new ArrayList<Feat>();
-    private PlayerAbility playerAbilityIds = new PlayerAbility();
-    private Race raceId = new Race();
     private ArrayList<Skill> skillIds = new ArrayList<Skill>();    //Make 40 of these
     private ArrayList<Spell> spellIds = new ArrayList<Spell>();
+
+    private ClassType classTypeId = new ClassType();
+    private PlayerAbility playerAbilityIds = new PlayerAbility();
+    //private Race raceId = new Race();
 
     //$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#
     //"get" and "set" functions - look through database to find the following items
@@ -301,26 +358,27 @@ public class Actor extends Model implements Comparable<Actor>{
     //$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#
 
     //public int getAbility(int i)        {if(i!=NULL)return 0; else return 0;}
-    public int getStr()         {return 0;/*query database*/}   //TODO
-    public int getDex()         {return 0;/*query database*/}   //TODO
-    public int getCon()         {return 0;/*query database*/}   //TODO
-    public int getInt()         {return 0;/*query database*/}   //TODO
-    public int getWis()         {return 0;/*query database*/}   //TODO
-    public int getCha()         {return 0;/*query database*/}   //TODO
+    public int getStr() {return playerAbilityIds.getStrengthAbility();}
+    public int getDex()         {return playerAbilityIds.getDexAbility();}
+    public int getCon()         {return playerAbilityIds.getConstAbility();}
+    public int getInt()         {return playerAbilityIds.getIntelAbility();}
+    public int getWis() {return playerAbilityIds.getWisdomAbility();}
+    public int getCha()         {return playerAbilityIds.getCrismaAbility();}
 
     public ClassType getClassType()     {return classTypeId;}
-    //public Race getRace()               {return race;}
 
-    public void setStr()    {/*query database*/}    //TODO
-    public void setDex()    {/*query database*/}    //TODO
-    public void setCon()    {/*query database*/}    //TODO
-    public void setInt()    {/*query database*/}    //TODO
-    public void setWis()    {/*query database*/}    //TODO
-    public void setCha()    {/*query database*/}    //TODO
+    //public Race getRace()               {return raceId;}
 
-    public void setClassType(String value)  {/*add id to database*/}    //TODO
+    public void setStr(int value)    {playerAbilityIds.setStrengthAbility(value);}
+    public void setDex(int value)    {playerAbilityIds.setDexAbility(value);}
+    public void setCon(int value)    {playerAbilityIds.setConstAbility(value);}
+    public void setWis(int value)    {playerAbilityIds.setWisdomAbility(value);}
+    public void setInt(int value)    {playerAbilityIds.setIntelAbility(value);}
+    public void setCha(int value)    {playerAbilityIds.setCrismaAbility(value);}
 
-    //public void setRace(String value)       {/*add id to database*/}    //TODO
+    public void setClassType(ClassType value)  {classTypeId = value;}
+
+    //public void setRace(String value)       {/*add id to database*/}
 
     //$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#
     //"add" and "remove" functions
@@ -347,7 +405,10 @@ public class Actor extends Model implements Comparable<Actor>{
     //"calculate" functions
     //$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#
 
+    public void calculateSaves(){}
+
     public void rollInitiative() {initiative = initiativeMod + roll(20)/*replace 10 with roll activity*/;}            // TODO: 11/10/2015 An activity needs to be connected to this
+
     public int calculateAC() {return 0;}// TODO: 11/11/2015  Need to figure out calculation for this.
     public int calculateTouchAC() {return 0;}// TODO: 11/11/2015 Need to figure out calculation for this.
     public int calculateFlatFootedAC() {return 0;}// TODO: 11/11/2015 Need to figure out calculation for this.

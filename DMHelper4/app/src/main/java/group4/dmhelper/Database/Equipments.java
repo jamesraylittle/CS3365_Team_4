@@ -4,6 +4,8 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 
+import java.util.ArrayList;
+
 import group4.dmhelper.Actors.Equipment;
 import group4.dmhelper.Actors.Feat;
 
@@ -59,4 +61,21 @@ public class Equipments extends Database implements DAO<Equipment> {
                 ")";
         database.execSQL(q);
     }
+
+    public ArrayList<Equipment> getAllByPlayerId(int playerId) {
+        String args[] = new String[] { playerId + "" };
+        Cursor c = database.query(TABLE, null, "playerId = ?", args, null, null, null);
+
+        ArrayList<Equipment> list = new ArrayList<Equipment>();
+
+        if(c.moveToFirst()) {
+            do {
+                Equipment i = new Equipment(c.getInt(0),c.getInt(2) ,c.getInt(1));
+                list.add(i);
+            } while (c.moveToNext());
+        }
+
+        return list;
+    }
+
 }
