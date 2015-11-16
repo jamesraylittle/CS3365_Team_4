@@ -4,10 +4,10 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 
+import java.util.ArrayList;
+
 import group4.dmhelper.Actors.Equipment;
 import group4.dmhelper.Actors.Feat;
-
-import java.util.*;
 
 /**
  * Created by james.
@@ -34,27 +34,11 @@ public class Equipments extends Database implements DAO<Equipment> {
             do {
                 p.setId(c.getInt(0));
                 p.setPlayerId(c.getInt(1));
-                p.setWeaponId(c.getInt(2));
+                p.setEquipmentId(c.getInt(2));
             } while (c.moveToNext());
         }
 
         return p;
-    }
-
-    public ArrayList<Equipment> getAllByPlayerId(int playerId) {
-        String args[] = new String[] { playerId+"" };
-        Cursor c = database.query(TABLE, null, "playerId = ?", args, null, null, null);
-
-        ArrayList<Equipment> list = new ArrayList<Equipment>();
-
-        if(c.moveToFirst()) {
-            do {
-                Equipment e = new Equipment(c.getInt(0), c.getInt(1), c.getInt(2));
-                list.add(e);
-            } while (c.moveToNext());
-        }
-
-        return list;
     }
 
     public void delete(int id) { super.delete(id, TABLE); }
@@ -65,7 +49,7 @@ public class Equipments extends Database implements DAO<Equipment> {
         ContentValues values = new ContentValues();
         if(p.getId() > 0) values.put("id", p.getId());
         values.put("playerId", p.getPlayerId());
-        values.put("weaponId", p.getWeaponId());
+        values.put("weaponId", p.getEquipmentId());
         return values;
     }
 
@@ -77,4 +61,21 @@ public class Equipments extends Database implements DAO<Equipment> {
                 ")";
         database.execSQL(q);
     }
+
+    public ArrayList<Equipment> getAllByPlayerId(int playerId) {
+        String args[] = new String[] { playerId + "" };
+        Cursor c = database.query(TABLE, null, "playerId = ?", args, null, null, null);
+
+        ArrayList<Equipment> list = new ArrayList<Equipment>();
+
+        if(c.moveToFirst()) {
+            do {
+                Equipment i = new Equipment(c.getInt(0),c.getInt(2) ,c.getInt(1));
+                list.add(i);
+            } while (c.moveToNext());
+        }
+
+        return list;
+    }
+
 }

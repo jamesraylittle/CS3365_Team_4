@@ -66,4 +66,11 @@ abstract class Database extends SQLiteOpenHelper {
         database.delete(table, "id = ?", new String[] { id+"" });
     }
 
+    /**
+     * doesExists checks to see if the database exists or not
+     * this is a protected method.
+     * @return true if it does, false otherwise.
+     */
+
+
 }

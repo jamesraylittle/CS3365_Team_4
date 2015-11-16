@@ -46,10 +46,11 @@ public class ClassTypes extends Database implements DAO<ClassType> {
         Cursor c = database.query(TABLE, null, "playerId = ?", args, null, null, null);
 
         ArrayList<ClassType> list = new ArrayList<ClassType>();
+        ClassType oC = null;
         if(c.moveToFirst()) {
             do {
-                ClassType s = new ClassType(c.getInt(0), c.getInt(1), c.getInt(2), c.getInt(3));
-                list.add(s);
+                oC = new ClassType(c.getInt(0), c.getInt(1), c.getInt(2), c.getInt(3));
+                list.add(oC);
             } while(c.moveToNext());
         }
         return list;
