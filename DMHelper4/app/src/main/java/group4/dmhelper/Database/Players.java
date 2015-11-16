@@ -27,7 +27,7 @@ public class Players extends Database implements DAO<Player> {
     public Player retrieve(int id) {
         String [] args = new String[] { id+"" };
         Cursor c = database.query(TABLE, null, "id = ?", args, null, null, null);
-        Player from = new Player(id);
+        Player from = new Player(id, context);
 
         if (c.moveToFirst()) {
             do {
