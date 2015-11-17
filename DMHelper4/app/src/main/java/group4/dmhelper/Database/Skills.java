@@ -39,6 +39,8 @@ public class Skills extends Database implements DAO<Skill> {
                 a.setBaseScore(c.getInt(1));
                 a.setMiscBonus(c.getInt(2));
                 a.setName(c.getString(3));
+                a.setPlayerId(c.getInt(4));
+                a.setSkillId(c.getInt(5));
             } while (c.moveToNext());
         }
 
@@ -52,7 +54,7 @@ public class Skills extends Database implements DAO<Skill> {
         ArrayList<Skill> list = new ArrayList<Skill>();
         if(c.moveToFirst()) {
             do {
-                Skill s = new Skill(c.getInt(0), c.getInt(1), c.getString(2), c.getInt(3), c.getInt(4));
+                Skill s = new Skill(c.getInt(0), c.getInt(1), c.getInt(2), c.getString(3), c.getInt(4), c.getInt(5));
                 list.add(s);
             } while(c.moveToNext());
         }
@@ -72,6 +74,7 @@ public class Skills extends Database implements DAO<Skill> {
         values.put("baseScore", a.getBaseScore());
         values.put("miscBonus", a.getMiscBonus());
         values.put("name", a.getName());
+        values.put("playerId", a.getSkillId());
         values.put("skillId", a.getSkillId());
         return values;
     }
@@ -82,6 +85,7 @@ public class Skills extends Database implements DAO<Skill> {
                 "baseScore INTEGER," +
                 "miscBonus INTEGER," +
                 "name TEXT," +
+                "playerId INTEGER," +
                 "skillId INTEGER" +
                 ")";
         database.execSQL(q);

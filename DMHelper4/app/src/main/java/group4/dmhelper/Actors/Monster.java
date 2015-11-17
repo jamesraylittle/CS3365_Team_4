@@ -7,6 +7,8 @@ import android.content.Context;
  */
 public class Monster extends Actor {
 
+
+
     public Monster(int id,Context context) {
         super(id, context); setIsMonster(1);
     }

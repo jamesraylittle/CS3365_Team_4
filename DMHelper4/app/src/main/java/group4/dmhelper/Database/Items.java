@@ -49,7 +49,7 @@ public class Items extends Database implements DAO<Item> {
 
         if(c.moveToFirst()) {
             do {
-                Item i = new Item(c.getInt(0), c.getInt(1));
+                Item i = new Item(c.getInt(0), c.getInt(1), c.getInt(2));
                 list.add(i);
             } while (c.moveToNext());
         }

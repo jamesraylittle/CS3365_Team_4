@@ -70,7 +70,7 @@ public class Equipments extends Database implements DAO<Equipment> {
 
         if(c.moveToFirst()) {
             do {
-                Equipment i = new Equipment(c.getInt(0),c.getInt(2) ,c.getInt(1));
+                Equipment i = new Equipment(c.getInt(0),c.getInt(1) ,c.getInt(2));
                 list.add(i);
             } while (c.moveToNext());
         }
