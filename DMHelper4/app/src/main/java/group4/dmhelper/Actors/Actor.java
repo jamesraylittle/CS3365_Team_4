@@ -163,6 +163,8 @@ public class Actor extends Model implements Comparable<Actor>{
     public void setInitiative(int initiative) {
         this.initiative = initiative;
     }
+
+    //In Database
     public String getName() {
         return name;
     }
@@ -205,7 +207,32 @@ public class Actor extends Model implements Comparable<Actor>{
     public void setRace(String race) {
         this.race = race;
     }
+    public int getInGame() {
+        return inGame;
+    }
+    public void setInGame(int inGame) {
+        this.inGame = inGame;
+    }
+    public int getIsMonster() {
+        return isMonster;
+    }
+    public void setIsMonster(int isMonster) {
+        this.isMonster = isMonster;
+    }
+    public String getImageFile() {
+        return imageFile;
+    }
+    public void setImageFile(String imageFile) {
+        this.imageFile = imageFile;
+    }
+    public int getGameId() {
+        return gameId;
+    }
+    public void setGameId(int gameId) {
+        this.gameId = gameId;
+    }
 
+    //Calculated
     public int getSpeed() {
         return speed;
     }
@@ -259,31 +286,6 @@ public class Actor extends Model implements Comparable<Actor>{
     }
     public void setFortMod(int fortMod) {
         this.fortMod = fortMod;
-    }
-
-    public int getInGame() {
-        return inGame;
-    }
-    public void setInGame(int inGame) {
-        this.inGame = inGame;
-    }
-    public int getIsMonster() {
-        return isMonster;
-    }
-    public void setIsMonster(int isMonster) {
-        this.isMonster = isMonster;
-    }
-    public String getImageFile() {
-        return imageFile;
-    }
-    public void setImageFile(String imageFile) {
-        this.imageFile = imageFile;
-    }
-    public int getGameId() {
-        return gameId;
-    }
-    public void setGameId(int gameId) {
-        this.gameId = gameId;
     }
 
     //$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#
@@ -356,6 +358,7 @@ public class Actor extends Model implements Comparable<Actor>{
     private ArrayList<Spell> spellIds = new ArrayList<Spell>();
 
     private ClassType classTypeId = new ClassType();
+    private MonsterType monsterTypeId = new MonsterType();  // TODO: 11/17/2015  
     private PlayerAbility playerAbilityIds = new PlayerAbility();
     //private Race raceId = new Race();
 
@@ -367,10 +370,10 @@ public class Actor extends Model implements Comparable<Actor>{
     //public int getAbility(int i)        {if(i!=NULL)return 0; else return 0;}
     public int getStr() {return playerAbilityIds.getStrengthAbility();}
     public int getDex() {return playerAbilityIds.getDexAbility();}
-    public int getCon()         {return playerAbilityIds.getConstAbility();}
-    public int getInt()         {return playerAbilityIds.getIntelAbility();}
+    public int getCon() {return playerAbilityIds.getConstAbility();}
+    public int getInt() {return playerAbilityIds.getIntelAbility();}
     public int getWis() {return playerAbilityIds.getWisdomAbility();}
-    public int getCha()         {return playerAbilityIds.getCrismaAbility();}
+    public int getCha() {return playerAbilityIds.getCrismaAbility();}
 
     public ClassType getClassType()     {return classTypeId;}
 
@@ -446,5 +449,9 @@ public class Actor extends Model implements Comparable<Actor>{
 
     public int roll(int i){return 0;}// TODO: 11/15/2015 NEEDS AN ACTIVITY FOR ROLLING DIE 
     public int getRollNum(String s){return 0;}// TODO: 11/15/2015
+
+    //$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#
+    //activity functions
+    //$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#
 
 }

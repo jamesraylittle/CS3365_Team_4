@@ -48,7 +48,7 @@ public class Feats extends Database implements DAO<Feat> {
         ArrayList<Feat> list = new ArrayList<Feat>();
         if(c.moveToFirst()) {
             do {
-                Feat s = new Feat(c.getInt(0), c.getInt(1));
+                Feat s = new Feat(c.getInt(0), c.getInt(1), c.getInt(2));
                 list.add(s);
             } while(c.moveToNext());
         }
