@@ -25,12 +25,14 @@ import group4.dmhelper.Actors.Item;
 import group4.dmhelper.Database.Items;
 import group4.dmhelper.Fragments.FragmentFeed;
 import group4.dmhelper.R;
+import group4.dmhelper.globalVariables;
 
 public class PopupSelectPlayer extends Activity {
 
     List<String> playerNames = new ArrayList<>();
     ListView players;
     ListAdapter adapter;
+    globalVariables g = globalVariables.getInstance();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -80,6 +82,8 @@ public class PopupSelectPlayer extends Activity {
         adapter = new ArrayAdapter<>(this.getApplicationContext(),
                 R.layout.list_layout, R.id.list_text, playerNames);
         players.setAdapter(adapter);
+
+        Toast.makeText(getApplicationContext(), "Game id: "+g.getGameId(), Toast.LENGTH_SHORT).show();
     }
 }
 
