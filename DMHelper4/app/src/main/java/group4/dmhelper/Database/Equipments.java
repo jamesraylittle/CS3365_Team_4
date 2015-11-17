@@ -57,7 +57,7 @@ public class Equipments extends Database implements DAO<Equipment> {
         String q = "CREATE TABLE IF NOT EXISTS "+TABLE+" (" +
                 "id integer primary key AUTOINCREMENT," +
                 "playerId INTEGER," +
-                "weaponId INTEGER," +
+                "weaponId INTEGER" +
                 ")";
         database.execSQL(q);
     }

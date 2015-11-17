@@ -90,9 +90,9 @@ public class Players extends Database implements DAO<Player> {
                 //"skillsId integer," +
                 //"actorWeaponsId integer," +
                 //"raceId integer," +
-                "race TEXT," +
-                "name TEXT" +
-                "isMonster integer" +
+                "race TEXT,," +
+                "name TEXT," +
+                "isMonster integer," +
                 "inGame integer" +
                 ")";
         database.execSQL(q);

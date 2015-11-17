@@ -99,7 +99,7 @@ public class Actor extends Model implements Comparable<Actor>{
         dSkills = new Skills(context);
         dSpells = new Spells(context);
 
-        for(int i=0;i<40;i++)skillIds.add(new Skill());
+        for(int i=0;i<40;i++)skillIds.add(new Skill(id, i+1));
 
     }
 
@@ -151,6 +151,7 @@ public class Actor extends Model implements Comparable<Actor>{
     private int inGame;
 
     private String imageFile;
+    private int gameId;
 
     //$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#
     //Sets and Gets
@@ -277,6 +278,12 @@ public class Actor extends Model implements Comparable<Actor>{
     }
     public void setImageFile(String imageFile) {
         this.imageFile = imageFile;
+    }
+    public int getGameId() {
+        return gameId;
+    }
+    public void setGameId(int gameId) {
+        this.gameId = gameId;
     }
 
     //$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#
