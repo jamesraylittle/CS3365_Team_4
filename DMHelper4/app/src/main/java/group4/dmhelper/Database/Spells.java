@@ -79,5 +79,8 @@ public class Spells extends Database implements DAO<Spell> {
         database.execSQL(q);
     }
 
+    public void dropTable(){
+        database.execSQL("DROP TABLE " + TABLE);
+    }
 
 }

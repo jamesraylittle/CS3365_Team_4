@@ -56,4 +56,9 @@ public class Games extends Database implements DAO<Game> {
                 ")";
         database.execSQL(q);
     }
+
+    public void dropTable(){
+        database.execSQL("DROP TABLE " + TABLE);
+    }
+
 }

@@ -78,4 +78,9 @@ public class Feats extends Database implements DAO<Feat> {
         database.execSQL(q);
     }
 
+
+    public void dropTable(){
+        database.execSQL("DROP TABLE " + TABLE);
+    }
+    
 }

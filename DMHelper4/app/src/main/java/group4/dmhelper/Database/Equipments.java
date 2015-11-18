@@ -78,4 +78,8 @@ public class Equipments extends Database implements DAO<Equipment> {
         return list;
     }
 
+    public void dropTable(){
+        database.execSQL("DROP TABLE " + TABLE);
+    }
+
 }

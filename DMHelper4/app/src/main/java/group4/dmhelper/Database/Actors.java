@@ -100,4 +100,8 @@ public class Actors extends Database implements DAO<Actor> {
                 ")";
         database.execSQL(q);
     }
+
+    public void dropTable(){
+        database.execSQL("DROP TABLE " + TABLE);
+    }
 }

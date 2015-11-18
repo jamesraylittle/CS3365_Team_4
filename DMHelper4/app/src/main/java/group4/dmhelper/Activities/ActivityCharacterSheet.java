@@ -18,6 +18,7 @@ import android.widget.TextView;
 import group4.dmhelper.Activities.Popups.PopupEditCharPic;
 import group4.dmhelper.Activities.Popups.PopupEditExperience;
 import group4.dmhelper.Activities.Popups.PopupEditHealth;
+import group4.dmhelper.Actors.Actor;
 import group4.dmhelper.Fragments.FragmentFeed;
 import group4.dmhelper.R;
 
@@ -34,6 +35,15 @@ public class ActivityCharacterSheet extends AppCompatActivity {
         PlayerIdentifier = extras.getString("Identifier");
         populateSpinners();
         setupButtons(PlayerIdentifier);
+
+        Actor bob = new Actor(getApplicationContext());
+
+        bob.setName("not bob");
+
+        bob.pushToDatabase();
+        EditText name = (EditText) findViewById(R.id.editText_character_name);
+        name.setText(bob.getName());
+
         editProgressBars(PlayerIdentifier);
 
         LinearLayout health=(LinearLayout) findViewById(R.id.healthBarLayout);
