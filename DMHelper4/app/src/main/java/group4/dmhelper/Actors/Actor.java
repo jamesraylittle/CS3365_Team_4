@@ -103,6 +103,23 @@ public class Actor extends Model implements Comparable<Actor>{
         this.XP = XP;
         this.health = health;
     }
+    public Actor(int id, String gender, int size, String alignment, int weight, String religion, String race, String name, int isMonster, int inGame, String imageFile, int gameId, String playerName, int xp, int health) {
+        this.id = id;
+        this.name = name;
+        this.gender = gender;
+        this.size = size;
+        this.alignment = alignment;
+        this.weight = weight;
+        this.religion = religion;
+        this.race = race;
+        this.isMonster = isMonster;
+        this.inGame = inGame;
+        this.imageFile = imageFile;
+        this.gameId = gameId;
+        this.playerName = playerName;
+        this.XP = xp;
+        this.health = health;
+    }
 
     public Actor(int id, Context context) {
         this.id = id;
