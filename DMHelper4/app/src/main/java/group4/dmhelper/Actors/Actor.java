@@ -122,8 +122,11 @@ public class Actor extends Model implements Comparable<Actor>{
     }
 
     public Actor(int id, Context context) {
+
         this.id = id;
         this.context = context;
+
+        dActor = new Actors(context);
 
         dClass = new ClassTypes(context);
         dEquipments = new Equipments(context);
@@ -133,7 +136,12 @@ public class Actor extends Model implements Comparable<Actor>{
         dSkills = new Skills(context);
         dSpells = new Spells(context);
 
-        //pullFromDatabase();
+        classTypeId = new ClassType();
+        playerAbilityIds = new PlayerAbility();
+
+        for(int i=0;i<40;i++)skillIds.add(new Skill(id, i+1));
+
+        pullFromDatabase();
     }
 
     public Actor(Context context) { //Saving/Loading
