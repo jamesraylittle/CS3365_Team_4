@@ -407,7 +407,7 @@ public class Actor extends Model implements Comparable<Actor>{
         for(int i=0;i<spellIds.size();i++) dSpells.update(spellIds.get(i));
         for(int i=0;i<featIds.size();i++) dFeats.update(featIds.get(i));
 
-        dClass.update(classTypeId);
+        dClass.update(classTypeId);//
         dPlayerAbilities.update(playerAbilityIds);
 
     }
