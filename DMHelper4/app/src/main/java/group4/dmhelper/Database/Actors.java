@@ -29,25 +29,25 @@ public class Actors extends Database implements DAO<Actor> {
     public Actor retrieve(int id) {
         String [] args = new String[] { id+"" };
         Cursor c = database.query(TABLE, null, "id = ?", args, null, null, null);
-        Actor from = new Actor(id, context);
+        Actor from = null;
         if (c.moveToFirst()) {
             do {
-                from.setId(c.getInt(0));
-                from.setGender(c.getString(1));
-                from.setSize(c.getInt(2));
-                from.setAlignment(c.getString(3));
-                from.setWeight(c.getInt(4));
-                from.setReligion(c.getString(5));
-                from.setRace(c.getString(6));  //Temporary
-                from.setName(c.getString(7));
-                from.setIsMonster(c.getInt(8));
-                from.setInGame(c.getInt(9));
-                from.setImageFile(c.getString(10));
-                from.setGameId(c.getInt(11));
-
-                from.setInGame(c.getInt(12));
-                from.setImageFile(c.getString(13));
-                from.setGameId(c.getInt(14));
+                from = new Actor(
+                        c.getInt(0),
+                        c.getString(1),
+                        c.getInt(2),
+                        c.getString(3),
+                        c.getInt(4),
+                        c.getString(5),
+                        c.getString(6),
+                        c.getString(7),
+                        c.getInt(8), //1
+                        c.getInt(9),
+                        c.getString(10),
+                        c.getInt(11),
+                        c.getString(12),
+                        c.getInt(13),
+                        c.getInt(14));
             } while (c.moveToNext());
         }
 

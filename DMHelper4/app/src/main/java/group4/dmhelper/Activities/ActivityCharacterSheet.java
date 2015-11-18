@@ -24,7 +24,8 @@ import group4.dmhelper.R;
 
 public class ActivityCharacterSheet extends AppCompatActivity {
 
-    private String PlayerIdentifier;
+    private int PlayerIdentifier;
+    private Actor player;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,19 +33,12 @@ public class ActivityCharacterSheet extends AppCompatActivity {
         setContentView(R.layout.activity_character_sheet);
 
         Bundle extras = getIntent().getExtras();
-        PlayerIdentifier = extras.getString("Identifier");
+        PlayerIdentifier = extras.getInt("Identifier");
+        player = new Actor(PlayerIdentifier, getApplicationContext());
         populateSpinners();
         setupButtons(PlayerIdentifier);
-
-        Actor bob = new Actor(getApplicationContext());
-
-        bob.setName("not bob");
-
-        bob.pushToDatabase();
-        EditText name = (EditText) findViewById(R.id.editText_character_name);
-        name.setText(bob.getName());
-
         editProgressBars(PlayerIdentifier);
+        populateFillIn();
 
         LinearLayout health=(LinearLayout) findViewById(R.id.healthBarLayout);
         health.setOnClickListener(new View.OnClickListener() {
@@ -71,11 +65,15 @@ public class ActivityCharacterSheet extends AppCompatActivity {
         Submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 EditText characterName = (EditText) findViewById(R.id.editText_character_name);
                 if (!characterName.getText().toString().equals("")) //TODO CHECK IF DIFFERENT FROM CURRENT
                 {
-                    FragmentFeed.feedItems.add(PlayerIdentifier + "Changed character name to " + characterName.getText());
+                    String database = player.getName();
+                    String inText = characterName.getText().toString();
+                    if( database== null || !database.equals(inText)) {
+                        FragmentFeed.feedItems.add(PlayerIdentifier + "Changed character name to " + inText);
+                        player.setName(database);
+                    }
                 }
 
                 EditText playerName = (EditText) findViewById(R.id.editText_player_name);
@@ -120,7 +118,7 @@ public class ActivityCharacterSheet extends AppCompatActivity {
                 {
                     FragmentFeed.feedItems.add(PlayerIdentifier + "Changed alignment to " + alignment.getSelectedItem().toString());
                 }
-
+                player.pushToDatabase();
                 finish();
             }
         });
@@ -128,7 +126,42 @@ public class ActivityCharacterSheet extends AppCompatActivity {
 
     }
 
-    private void editProgressBars(String playerIdentifier) {
+    private void populateFillIn() {
+        String databaseString;
+        //Sets CharacterName
+        databaseString = player.getName();
+        if(databaseString != null)
+        {
+            EditText characterName = (EditText) findViewById(R.id.editText_character_name);
+            characterName.setText(databaseString);
+        }
+
+        //Sets PlayerName
+        databaseString = player.getPlayerName();
+        if(databaseString != null)
+        {
+            EditText playerName = (EditText) findViewById(R.id.editText_player_name);
+            playerName.setText(databaseString);
+        }
+
+        //Sets religion
+        databaseString = player.getReligion();
+        if(databaseString != null)
+        {
+            EditText religion = (EditText) findViewById(R.id.editText_religion);
+            religion.setText(databaseString);
+        }
+
+//        //Sets Height
+//        float database = player.getWeight();
+//        if(database)
+//        {
+//            EditText religion = (EditText) findViewById(R.id.editText_Weight);
+//            religion.setText(databaseString);
+//        }
+    }
+
+    private void editProgressBars(int playerIdentifier) {
         //Actor player = new Actor(playerIdentifer);
         ProgressBar healthbar = (ProgressBar) findViewById(R.id.progressBar_health);
         healthbar.setMax(100);  //TODO GET FROM DATABASE
@@ -148,7 +181,7 @@ public class ActivityCharacterSheet extends AppCompatActivity {
 
     }
 
-    private void setupButtons(final String ID){
+    private void setupButtons(final int ID){
         // Button for opening skills
         Button skills = (Button) findViewById(R.id.btn_skills);
         skills.setOnClickListener(new View.OnClickListener() {
