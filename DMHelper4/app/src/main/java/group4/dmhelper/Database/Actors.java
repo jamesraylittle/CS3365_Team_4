@@ -96,7 +96,7 @@ public class Actors extends Database implements DAO<Actor> {
 
                 "playerName integer," +
                 "XP integer," +
-                "health integer," +
+                "health integer" +
                 ")";
         database.execSQL(q);
     }

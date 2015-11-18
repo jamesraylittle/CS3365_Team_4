@@ -41,11 +41,6 @@ public class Players extends Database implements DAO<Player> {
                 from.setName(c.getString(7));
                 from.setIsMonster(c.getInt(8));
                 from.setInGame(c.getInt(9));
-                //from.setActorAbilityId(c.getInt(6)); These all already have a connection to the player.
-                //from.setEquippedItemsId(c.getInt(7));
-                //from.setSkillsId(c.getInt(8));
-                //from.setActorWeaponsId(c.getInt(9));
-                //from.setRaceId(c.getString(10));
             } while (c.moveToNext());
         }
 
@@ -90,7 +85,7 @@ public class Players extends Database implements DAO<Player> {
                 //"skillsId integer," +
                 //"actorWeaponsId integer," +
                 //"raceId integer," +
-                "race TEXT,," +
+                "race TEXT," +
                 "name TEXT," +
                 "isMonster integer," +
                 "inGame integer" +
