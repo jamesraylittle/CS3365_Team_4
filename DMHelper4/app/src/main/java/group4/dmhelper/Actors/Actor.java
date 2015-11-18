@@ -49,7 +49,34 @@ public class Actor extends Model implements Comparable<Actor>{
     //Constructors
     //$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#
 
-    public Actor(int id, String name, String gender, int size, String alignment, float weight, String religion, int speed, int initiativeMod, int grappleMod, int reflexSave, int reflexMod, int willSave, int willMod, int fortSave, int fortMod, Context context) {
+    public Actor(String name, String gender, int size, String alignment, float weight, String religion, String race, int speed, int initiativeMod, int initiative, int grappleMod, int reflexSave, int reflexMod, int willSave, int willMod, int fortSave, int fortMod, int isMonster, int inGame, String imageFile, int gameId, String playerName, int XP, int health) {
+        this.name = name;
+        this.gender = gender;
+        this.size = size;
+        this.alignment = alignment;
+        this.weight = weight;
+        this.religion = religion;
+        this.race = race;
+        this.speed = speed;
+        this.initiativeMod = initiativeMod;
+        this.initiative = initiative;
+        this.grappleMod = grappleMod;
+        this.reflexSave = reflexSave;
+        this.reflexMod = reflexMod;
+        this.willSave = willSave;
+        this.willMod = willMod;
+        this.fortSave = fortSave;
+        this.fortMod = fortMod;
+        this.isMonster = isMonster;
+        this.inGame = inGame;
+        this.imageFile = imageFile;
+        this.gameId = gameId;
+        this.playerName = playerName;
+        this.XP = XP;
+        this.health = health;
+    }
+
+    public Actor(int id, String name, String gender, int size, String alignment, float weight, String religion, String race, int speed, int initiativeMod, int initiative, int grappleMod, int reflexSave, int reflexMod, int willSave, int willMod, int fortSave, int fortMod, int isMonster, int inGame, String imageFile, int gameId, String playerName, int XP, int health) {
         this.id = id;
         this.name = name;
         this.gender = gender;
@@ -57,8 +84,10 @@ public class Actor extends Model implements Comparable<Actor>{
         this.alignment = alignment;
         this.weight = weight;
         this.religion = religion;
+        this.race = race;
         this.speed = speed;
         this.initiativeMod = initiativeMod;
+        this.initiative = initiative;
         this.grappleMod = grappleMod;
         this.reflexSave = reflexSave;
         this.reflexMod = reflexMod;
@@ -66,26 +95,13 @@ public class Actor extends Model implements Comparable<Actor>{
         this.willMod = willMod;
         this.fortSave = fortSave;
         this.fortMod = fortMod;
-        this.context = context;
-    }
-
-    public Actor(String name, String gender, int size, String alignment, float weight, String religion, int speed, int initiativeMod, int grappleMod, int reflexSave, int reflexMod, int willSave, int willMod, int fortSave, int fortMod, Context context) {
-        this.name = name;
-        this.gender = gender;
-        this.size = size;
-        this.alignment = alignment;
-        this.weight = weight;
-        this.religion = religion;
-        this.speed = speed;
-        this.initiativeMod = initiativeMod;
-        this.grappleMod = grappleMod;
-        this.reflexSave = reflexSave;
-        this.reflexMod = reflexMod;
-        this.willSave = willSave;
-        this.willMod = willMod;
-        this.fortSave = fortSave;
-        this.fortMod = fortMod;
-        this.context = context;
+        this.isMonster = isMonster;
+        this.inGame = inGame;
+        this.imageFile = imageFile;
+        this.gameId = gameId;
+        this.playerName = playerName;
+        this.XP = XP;
+        this.health = health;
     }
 
     public Actor(int id, Context context) {
@@ -97,11 +113,10 @@ public class Actor extends Model implements Comparable<Actor>{
         dItems = new Items(context);
         dFeats = new Feats(context);
         dPlayerAbilities = new PlayerAbilities(context);
-        //dRaces = new Races(context);
         dSkills = new Skills(context);
         dSpells = new Spells(context);
 
-        pullFromDatabase();
+        //pullFromDatabase();
     }
 
     public Actor(Context context) { //Saving/Loading
@@ -190,6 +205,10 @@ public class Actor extends Model implements Comparable<Actor>{
     private String imageFile;
     private int gameId;
 
+    private String playerName;
+    private int XP;
+    private int health;
+
     //$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#
     //Sets and Gets
     //$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#
@@ -268,6 +287,24 @@ public class Actor extends Model implements Comparable<Actor>{
     public void setGameId(int gameId) {
         this.gameId = gameId;
     }
+    public String getPlayerName() {
+        return playerName;
+    }
+    public void setPlayerName(String playerName) {
+        this.playerName = playerName;
+    }
+    public int getXP() {
+        return XP;
+    }
+    public void setXP(int XP) {
+        this.XP = XP;
+    }
+    public int getHealth() {
+        return health;
+    }
+    public void setHealth(int health) {
+        this.health = health;
+    }
 
     //Calculated
     public int getSpeed() {
@@ -341,7 +378,6 @@ public class Actor extends Model implements Comparable<Actor>{
 
         populateClassType();
         populatePlayerAbility();
-        //populateRace();
 
     }
 
