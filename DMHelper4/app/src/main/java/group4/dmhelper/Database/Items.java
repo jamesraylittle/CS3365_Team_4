@@ -7,6 +7,7 @@ import android.database.Cursor;
 import group4.dmhelper.Actors.Feat;
 import group4.dmhelper.Actors.Item;
 
+import java.util.ArrayList;
 /**
  * Created by james
  */
@@ -40,6 +41,22 @@ public class Items extends Database implements DAO<Item> {
         return from;
     }
 
+    public ArrayList<Item> getAllByPlayerId(int playerId) {
+        String args[] = new String[] { playerId + "" };
+        Cursor c = database.query(TABLE, null, "playerId = ?", args, null, null, null);
+
+        ArrayList<Item> list = new ArrayList<Item>();
+
+        if(c.moveToFirst()) {
+            do {
+                Item i = new Item(c.getInt(0), c.getInt(1), c.getInt(2));
+                list.add(i);
+            } while (c.moveToNext());
+        }
+
+        return list;
+    }
+
 
     public void delete(int id) { super.delete(id, TABLE); }
 
@@ -58,10 +75,13 @@ public class Items extends Database implements DAO<Item> {
         String q = "CREATE TABLE IF NOT EXISTS "+TABLE+" (" +
                 "id integer primary key AUTOINCREMENT," +
                 "Player Id INTEGER," +
-                "Item Id INTEGER," +
+                "Item Id INTEGER" +
                 ")";
         database.execSQL(q);
     }
 
+    public void dropTable(){
+        database.execSQL("DROP TABLE " + TABLE);
+    }
 
 }

@@ -4,6 +4,8 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 
+import java.util.ArrayList;
+
 import group4.dmhelper.Actors.Equipment;
 import group4.dmhelper.Actors.Feat;
 
@@ -55,8 +57,29 @@ public class Equipments extends Database implements DAO<Equipment> {
         String q = "CREATE TABLE IF NOT EXISTS "+TABLE+" (" +
                 "id integer primary key AUTOINCREMENT," +
                 "playerId INTEGER," +
-                "weaponId INTEGER," +
+                "weaponId INTEGER" +
                 ")";
         database.execSQL(q);
     }
+
+    public ArrayList<Equipment> getAllByPlayerId(int playerId) {
+        String args[] = new String[] { playerId + "" };
+        Cursor c = database.query(TABLE, null, "playerId = ?", args, null, null, null);
+
+        ArrayList<Equipment> list = new ArrayList<Equipment>();
+
+        if(c.moveToFirst()) {
+            do {
+                Equipment i = new Equipment(c.getInt(0),c.getInt(1) ,c.getInt(2));
+                list.add(i);
+            } while (c.moveToNext());
+        }
+
+        return list;
+    }
+
+    public void dropTable(){
+        database.execSQL("DROP TABLE " + TABLE);
+    }
+
 }

@@ -4,6 +4,9 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 
+import java.util.ArrayList;
+
+import group4.dmhelper.Actors.Skill;
 import group4.dmhelper.Actors.Spell;
 
 /**
@@ -39,6 +42,20 @@ public class Spells extends Database implements DAO<Spell> {
         return from;
     }
 
+    public ArrayList<Spell> getAllByPlayerId(int playerId) {
+        String args[] = new String[] { playerId + ""};
+        Cursor c = database.query(TABLE, null, "playerId = ?", args, null, null, null);
+
+        ArrayList<Spell> list = new ArrayList<Spell>();
+        if(c.moveToFirst()) {
+            do {
+                Spell s = new Spell(c.getInt(0), c.getInt(1), c.getInt(2));
+                list.add(s);
+            } while(c.moveToNext());
+        }
+        return list;
+    }
+
 
     public void delete(int id) { super.delete(id, TABLE); }
 
@@ -57,10 +74,13 @@ public class Spells extends Database implements DAO<Spell> {
         String q = "CREATE TABLE IF NOT EXISTS "+TABLE+" (" +
                 "id integer primary key AUTOINCREMENT," +
                 "Player Id INTEGER," +
-                "Spell Id INTEGER," +
+                "Spell Id INTEGER" +
                 ")";
         database.execSQL(q);
     }
 
+    public void dropTable(){
+        database.execSQL("DROP TABLE " + TABLE);
+    }
 
 }

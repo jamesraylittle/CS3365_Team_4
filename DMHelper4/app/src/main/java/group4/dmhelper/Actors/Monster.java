@@ -1,13 +1,21 @@
 package group4.dmhelper.Actors;
 
+import android.content.Context;
+
 /**
  * Created by Daniel on 11/02/2015.
  */
 public class Monster extends Actor {
 
-    public Monster(int playerId) {
-        super(playerId);
+
+
+    public Monster(int id,Context context) {
+        super(id, context); setIsMonster(1);
     }
 
-    public void spillXP() {}// TODO: 11/2/2015
+    public Monster(Context context) {
+        super(context); setIsMonster(1);
+    }
+
+    public void spillXP() {}//
 }

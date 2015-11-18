@@ -4,6 +4,8 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 
+import java.util.ArrayList;
+
 import group4.dmhelper.Actors.Feat;
 
 /**
@@ -39,6 +41,20 @@ public class Feats extends Database implements DAO<Feat> {
         return from;
     }
 
+    public ArrayList<Feat> getAllByPlayerId(int playerId) {
+        String args[] = new String[] { playerId + ""};
+        Cursor c = database.query(TABLE, null, "playerId = ?", args, null, null, null);
+
+        ArrayList<Feat> list = new ArrayList<Feat>();
+        if(c.moveToFirst()) {
+            do {
+                Feat s = new Feat(c.getInt(0), c.getInt(1), c.getInt(2));
+                list.add(s);
+            } while(c.moveToNext());
+        }
+        return list;
+    }
+
 
     public void delete(int id) { super.delete(id, TABLE); }
 
@@ -57,10 +73,13 @@ public class Feats extends Database implements DAO<Feat> {
         String q = "CREATE TABLE IF NOT EXISTS "+TABLE+" (" +
                 "id integer primary key AUTOINCREMENT," +
                 "Player Id INTEGER," +
-                "Item Id INTEGER," +
+                "Item Id INTEGER" +
                 ")";
         database.execSQL(q);
     }
 
+    public void dropTable(){
+        database.execSQL("DROP TABLE " + TABLE);
+    }
 
 }

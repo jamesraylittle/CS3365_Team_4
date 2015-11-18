@@ -29,6 +29,7 @@ public class ActivityCharacterInventory extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(ActivityCharacterInventory.this, ActivitySearchItems.class);
                 intent.putExtra("Identifier", PlayerIdentifier);
+                intent.putExtra("playerName", PlayerIdentifier);
                 startActivity(intent);
             }
         });
