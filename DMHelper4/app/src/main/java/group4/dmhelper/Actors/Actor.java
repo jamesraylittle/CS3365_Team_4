@@ -428,7 +428,7 @@ public class Actor extends Model implements Comparable<Actor>{
 
     private ArrayList<Equipment> equippedItemIds = new ArrayList<Equipment>();
     private ArrayList<Item> itemIds = new ArrayList<Item>();
-    private ArrayList<Feat> featIds = new ArrayList<Feat>();
+    private ArrayList<Feat> featIds = new ArrayList<Feat>();//
     private ArrayList<Skill> skillIds = new ArrayList<Skill>();    //Make 40 of these
     private ArrayList<Spell> spellIds = new ArrayList<Spell>();
 
