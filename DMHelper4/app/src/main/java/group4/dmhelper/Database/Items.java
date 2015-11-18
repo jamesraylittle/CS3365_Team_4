@@ -80,5 +80,8 @@ public class Items extends Database implements DAO<Item> {
         database.execSQL(q);
     }
 
+    public void dropTable(){
+        database.execSQL("DROP TABLE " + TABLE);
+    }
 
 }

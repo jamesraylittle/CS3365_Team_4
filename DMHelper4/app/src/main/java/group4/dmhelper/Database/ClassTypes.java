@@ -80,4 +80,8 @@ public class ClassTypes extends Database implements DAO<ClassType> {
         return v;
     }
 
+    public void dropTable(){
+        database.execSQL("DROP TABLE " + TABLE);
+    }
+
 }

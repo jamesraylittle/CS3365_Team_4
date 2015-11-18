@@ -79,4 +79,8 @@ public class MonsterTypes extends Database implements DAO<MonsterType> {
         return v;
     }
 
+    public void dropTable(){
+        database.execSQL("DROP TABLE " + TABLE);
+    }
+
 }

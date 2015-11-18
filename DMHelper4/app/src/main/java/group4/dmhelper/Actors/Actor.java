@@ -28,7 +28,26 @@ import group4.dmhelper.Database.Spells;
 
 public class Actor extends Model implements Comparable<Actor>{
 
+
+    //$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#
+    //DAOs
+    //$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#
+
+    private Actors dActor;
+
+    private ClassTypes dClass;
+    private Equipments dEquipments;
+    private Items dItems;
+    private Feats dFeats;
+    private PlayerAbilities dPlayerAbilities;
+    private Skills dSkills;
+    private Spells dSpells;
+
     Context context;
+
+    //$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#
+    //Constructors
+    //$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#
 
     public Actor(int id, String name, String gender, int size, String alignment, float weight, String religion, int speed, int initiativeMod, int grappleMod, int reflexSave, int reflexMod, int willSave, int willMod, int fortSave, int fortMod, Context context) {
         this.id = id;
@@ -71,8 +90,8 @@ public class Actor extends Model implements Comparable<Actor>{
 
     public Actor(int id, Context context) {
         this.id = id;
-
         this.context = context;
+
         dClass = new ClassTypes(context);
         dEquipments = new Equipments(context);
         dItems = new Items(context);
@@ -87,19 +106,26 @@ public class Actor extends Model implements Comparable<Actor>{
 
     public Actor(Context context) { //Saving/Loading
 
-        this.id = dActor.create(this);
+        dActor = new Actors(context);
 
         this.context = context;
+
         dClass = new ClassTypes(context);
         dEquipments = new Equipments(context);
         dItems = new Items(context);
         dFeats = new Feats(context);
         dPlayerAbilities = new PlayerAbilities(context);
-        //dRaces = new Races(context);
         dSkills = new Skills(context);
         dSpells = new Spells(context);
 
+        this.id = dActor.create(this);
+
+        classTypeId = new ClassType();
+        playerAbilityIds = new PlayerAbility();
+
         for(int i=0;i<40;i++)skillIds.add(new Skill(id, i+1));
+
+        //dropAllTables();
 
     }
 
@@ -117,6 +143,17 @@ public class Actor extends Model implements Comparable<Actor>{
     }
 
     //public Actor() {}
+
+    public void dropAllTables() {
+        dActor.dropTable();
+        dClass.dropTable();
+        dEquipments.dropTable();
+        dItems.dropTable();
+        dFeats.dropTable();
+        dPlayerAbilities.dropTable();
+        dSkills.dropTable();
+        dSpells.dropTable();
+    }
 
     @Override
     public int compareTo(Actor actor) {
@@ -331,21 +368,6 @@ public class Actor extends Model implements Comparable<Actor>{
     public boolean populateClassType()      {ArrayList<ClassType> o=dClass.getAllByPlayerId(id);if(!o.isEmpty())classTypeId = o.get(0); return o.isEmpty();}// writes over current variables with those from the database
     public boolean populatePlayerAbility()  {ArrayList<PlayerAbility> o=dPlayerAbilities.getAllByPlayerId(id);if(!o.isEmpty())playerAbilityIds = o.get(0); return o.isEmpty();}// writes over current variables with those from the database
     //public boolean populateRace()           {ArrayList<Race> o=dRaces.getAllByPlayerId(id);if(!o.isEmpty())raceId = o.get(0); return o.isEmpty();}// writes over current variables with those from the database
-
-    //$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#
-    //DAOs
-    //$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#
-
-    private Actors dActor;
-
-    private ClassTypes dClass;
-    private Equipments dEquipments;
-    private Items dItems;
-    private Feats dFeats;
-    private PlayerAbilities dPlayerAbilities;
-    //private Races dRaces;
-    private Skills dSkills;
-    private Spells dSpells;
 
     //$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#
     //Player IDs - We may not need objects for any of these

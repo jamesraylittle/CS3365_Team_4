@@ -97,4 +97,9 @@ public class Players extends Database implements DAO<Player> {
                 ")";
         database.execSQL(q);
     }
+
+    public void dropTable(){
+        database.execSQL("DROP TABLE " + TABLE);
+    }
+
 }

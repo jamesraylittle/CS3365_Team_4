@@ -91,4 +91,8 @@ public class Skills extends Database implements DAO<Skill> {
         database.execSQL(q);
     }
 
+    public void dropTable(){
+        database.execSQL("DROP TABLE " + TABLE);
+    }
+
 }

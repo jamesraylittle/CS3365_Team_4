@@ -33,12 +33,13 @@ public class PlayerAbilities extends Database implements DAO<PlayerAbility> {
         if (c.moveToFirst()) {
             do {
                 p.setId(c.getInt(0));
-                p.setStrengthAbility(c.getInt(1));
-                p.setDexAbility(c.getInt(2));
-                p.setConstAbility(c.getInt(3));
-                p.setIntelAbility(c.getInt(4));
-                p.setWisdomAbility(c.getInt(5));
-                p.setCrismaAbility(c.getInt(6));
+                p.setPlayerId(c.getInt(1));
+                p.setStrengthAbility(c.getInt(2));
+                p.setDexAbility(c.getInt(3));
+                p.setConstAbility(c.getInt(4));
+                p.setIntelAbility(c.getInt(5));
+                p.setWisdomAbility(c.getInt(6));
+                p.setCrismaAbility(c.getInt(7));
             } while (c.moveToNext());
         }
         return p;
@@ -80,6 +81,7 @@ public class PlayerAbilities extends Database implements DAO<PlayerAbility> {
     private void createTable() {
         String q = "CREATE TABLE IF NOT EXISTS "+TABLE+" (" +
                 "id integer primary key AUTOINCREMENT," +
+                "playerId INTEGER," +
                 "strengthAbility INTEGER," +
                 "dexAbility INTEGER," +
                 "constAbility INTEGER," +
@@ -90,4 +92,7 @@ public class PlayerAbilities extends Database implements DAO<PlayerAbility> {
         database.execSQL(q);
     }
 
+    public void dropTable(){
+        database.execSQL("DROP TABLE " + TABLE);
+    }
 }
