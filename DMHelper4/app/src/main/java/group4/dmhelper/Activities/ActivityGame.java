@@ -38,6 +38,7 @@ public class ActivityGame extends AppCompatActivity  {
     private final String tagNameFeed = "android:switcher:" + R.id.viewpager + ":" + 0;
     private final String tagNameGame = "android:switcher:" + R.id.viewpager + ":" + 1;
     private int players;
+    private int [] playerIds;
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
@@ -67,6 +68,7 @@ public class ActivityGame extends AppCompatActivity  {
         {
             players = numPlayers;
         }
+        playerIds = (int[]) b.get("playerids");
     }
 
     @Override protected void onResume() {
@@ -103,5 +105,9 @@ public class ActivityGame extends AppCompatActivity  {
     public int getNumPlayers()
     {
         return players;
+    }
+    public int getPlayerId(int player)
+    {
+        return playerIds[player];
     }
 }

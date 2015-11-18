@@ -16,6 +16,7 @@ import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import group4.dmhelper.Activities.ActivityGame;
+import group4.dmhelper.Actors.Actor;
 import group4.dmhelper.R;
 
 public class PopupNumPlayer extends AppCompatActivity {
@@ -52,8 +53,17 @@ public class PopupNumPlayer extends AppCompatActivity {
             Toast.makeText(getApplicationContext(), "Please enter an adventure name", Toast.LENGTH_SHORT).show();
             return;
         }
+        int numPlayers = Integer.parseInt(rb.getText().toString());
+        int[] playerIds = new int[numPlayers];
+        for (int i = 0; i < numPlayers; i ++)
+        {
+            Actor player = new Actor(getApplicationContext());
+            playerIds[i] = player.getId();
+        }
         Intent intent = new Intent(this, ActivityGame.class);
-        intent.putExtra("numplayers", Integer.parseInt(rb.getText().toString()));
+        intent.putExtra("numplayers", numPlayers);
+        intent.putExtra("playerids", playerIds);
+
         startActivity(intent);
         finish();
     }
