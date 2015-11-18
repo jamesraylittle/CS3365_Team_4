@@ -8,6 +8,7 @@ import java.util.ArrayList;
 
 import group4.dmhelper.Actors.Actor;
 import group4.dmhelper.Actors.Feat;
+import group4.dmhelper.Actors.Player;
 import group4.dmhelper.GameManager;
 
 /**
@@ -53,6 +54,35 @@ public class Actors extends Database implements DAO<Actor> {
        return from;
     }
 
+    public ArrayList<Actor> getAllActors() {
+        Cursor c = database.query(TABLE, null, null, null, null, null, null);
+
+        ArrayList<Actor> list = new ArrayList<Actor>();
+        if(c.moveToFirst()) {
+            do {
+                Actor a = new Actor(
+                       c.getInt(0),
+                       c.getString(1),
+                       c.getInt(2),
+                       c.getString(3),
+                       c.getInt(4),
+                       c.getString(5),
+                       c.getString(6),
+                       c.getString(7),
+                       c.getInt(8), //1
+                       c.getInt(9),
+                       c.getString(10),
+                       c.getInt(11),
+                       c.getString(12),
+                       c.getInt(13),
+                       c.getInt(14)
+                );
+                list.add(a);
+            } while (c.moveToNext());
+        }
+        return list;
+    }
+
     public void delete(int id) { super.delete(id, TABLE); }
 
     public int count() { return super.count(TABLE);  }
@@ -91,10 +121,9 @@ public class Actors extends Database implements DAO<Actor> {
                 "name TEXT," +
                 "isMonster integer," +
                 "inGame integer," +
-                "imageFile integer," +
+                "imageFile TEXT," +
                 "gameId integer," +
-
-                "playerName integer," +
+                "playerName TEXT," +
                 "XP integer," +
                 "health integer" +
                 ")";
