@@ -78,5 +78,4 @@ public class Feats extends Database implements DAO<Feat> {
         database.execSQL(q);
     }
 
-
 }
