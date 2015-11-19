@@ -56,31 +56,22 @@ public class ActivitySearchItems extends Activity {
     @Override
     protected void onPause() {
         super.onPause();
-        try {
-            myDbHelper.close();
-        }catch(SQLException sqle){
-            throw sqle;
-        }
+        try { myDbHelper.close(); }
+        catch(SQLException sqle){ throw sqle; }
     }
 
     @Override
     protected void onStop() {
         super.onStop();
-        try {
-            myDbHelper.close();
-        }catch(SQLException sqle){
-            throw sqle;
-        }
+        try { myDbHelper.close(); }
+        catch(SQLException sqle){ throw sqle; }
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        try {
-            myDbHelper.openDataBase();
-        }catch(SQLException sqle){
-            throw sqle;
-        }
+        try { myDbHelper.openDataBase(); }
+        catch(SQLException sqle){ throw sqle; }
     }
 
     private void initializeWidgets() {
