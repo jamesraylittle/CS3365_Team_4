@@ -142,11 +142,13 @@ public class Actor extends Model implements Comparable<Actor>{
 
     public Actor(Context context) { //Saving/Loading
 
+        globalVariables gv = globalVariables.getInstance();
+        this.gameId = gv.getGameId();
+
         dActor = new Actors(context);
 
         this.context = context;
 
-        globalVariables gv = globalVariables.getInstance();
         gameId = gv.getGameId();
 
         dClass = new ClassTypes(context);
@@ -496,12 +498,16 @@ public class Actor extends Model implements Comparable<Actor>{
     //$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#
 
 
-    public ArrayList<Skill> getSkillIds() {
-        return skillIds;
-    }
-    public void setSkillIds(ArrayList<Skill> skillIds) {
-        this.skillIds = skillIds;
-    }
+    public ArrayList<Skill> getSkillIds() { return skillIds;}
+    public void setSkillIds(ArrayList<Skill> skillIds) { this.skillIds = skillIds;}
+    public ArrayList<Equipment> getEquippedItemIds() { return equippedItemIds;}
+    public void setEquippedItemIds(ArrayList<Equipment> equippedItemIds) { this.equippedItemIds = equippedItemIds;}
+    public ArrayList<Item> getItemIds() {return itemIds;}
+    public void setItemIds(ArrayList<Item> itemIds) { this.itemIds = itemIds; }
+    public ArrayList<Feat> getFeatIds() { return featIds;}
+    public void setFeatIds(ArrayList<Feat> featIds) { this.featIds = featIds;}
+    public ArrayList<Spell> getSpellIds() { return spellIds;}
+    public void setSpellIds(ArrayList<Spell> spellIds) { this.spellIds = spellIds;}
 
     public int getSkill(int i)                  {if(i>=0&&i<40)return dSkills.retrieve(skillIds.get(i).getSkillId()).getBaseScore(); else return -1000;}
     public void setSkill(int i, int value)      {if(i>=0&&i<40){skillIds.get(i).setBaseScore(value); dSkills.update(skillIds.get(i));}}
