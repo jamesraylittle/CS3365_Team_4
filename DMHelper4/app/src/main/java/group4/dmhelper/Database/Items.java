@@ -66,16 +66,16 @@ public class Items extends Database implements DAO<Item> {
         ContentValues values = new ContentValues();
         if(item.getId() > 0) values.put("id", item.getId());
 
-        values.put("Player Id", item.getPlayerId());
-        values.put("Item Id", item.getItemId());
+        values.put("playerId", item.getPlayerId());
+        values.put("ptemId", item.getItemId());
         return values;
     }
 
     private void createTable() {
         String q = "CREATE TABLE IF NOT EXISTS "+TABLE+" (" +
                 "id integer primary key AUTOINCREMENT," +
-                "Player Id INTEGER," +
-                "Item Id INTEGER" +
+                "playerId INTEGER," +
+                "itemId INTEGER" +
                 ")";
         database.execSQL(q);
     }
