@@ -49,7 +49,7 @@ public class Actor extends Model implements Comparable<Actor>{
     //Constructors
     //$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#
 
-    public Actor(String name, String gender, int size, String alignment, float weight, String religion, String race, int speed, int initiativeMod, int initiative, int grappleMod, int reflexSave, int reflexMod, int willSave, int willMod, int fortSave, int fortMod, int isMonster, int inGame, String imageFile, int gameId, String playerName, int XP, int health) {
+    public Actor(String name, String gender, int size, String alignment, float weight, String religion, String race, int speed, int initiativeMod, int initiative, int reflexMod, int willMod, int fortMod, int isMonster, int inGame, String imageFile, int gameId, String playerName, int XP, int health) {
         this.name = name;
         this.gender = gender;
         this.size = size;
@@ -60,12 +60,8 @@ public class Actor extends Model implements Comparable<Actor>{
         this.speed = speed;
         this.initiativeMod = initiativeMod;
         this.initiative = initiative;
-        this.grappleMod = grappleMod;
-        this.reflexSave = reflexSave;
         this.reflexMod = reflexMod;
-        this.willSave = willSave;
         this.willMod = willMod;
-        this.fortSave = fortSave;
         this.fortMod = fortMod;
         this.isMonster = isMonster;
         this.inGame = inGame;
@@ -76,7 +72,7 @@ public class Actor extends Model implements Comparable<Actor>{
         this.health = health;
     }
 
-    public Actor(int id, String name, String gender, int size, String alignment, float weight, String religion, String race, int speed, int initiativeMod, int initiative, int grappleMod, int reflexSave, int reflexMod, int willSave, int willMod, int fortSave, int fortMod, int isMonster, int inGame, String imageFile, int gameId, String playerName, int XP, int health) {
+    public Actor(int id, String name, String gender, int size, String alignment, float weight, String religion, String race, int speed, int initiativeMod, int initiative, int reflexMod, int willMod, int fortMod, int isMonster, int inGame, String imageFile, int gameId, String playerName, int XP, int health) {
         this.id = id;
         this.name = name;
         this.gender = gender;
@@ -88,12 +84,8 @@ public class Actor extends Model implements Comparable<Actor>{
         this.speed = speed;
         this.initiativeMod = initiativeMod;
         this.initiative = initiative;
-        this.grappleMod = grappleMod;
-        this.reflexSave = reflexSave;
         this.reflexMod = reflexMod;
-        this.willSave = willSave;
         this.willMod = willMod;
-        this.fortSave = fortSave;
         this.fortMod = fortMod;
         this.isMonster = isMonster;
         this.inGame = inGame;
@@ -218,11 +210,14 @@ public class Actor extends Model implements Comparable<Actor>{
     private int initiativeMod; //this is the modifier plus the roll
 
     private int initiative; //this is the modifier plus the roll
-    private int grappleMod;
+    //private int grappleMod; //calc
 
-    private int reflexSave; private int reflexMod;
-    private int willSave;   private int willMod;
-    private int fortSave;   private int fortMod;
+    private int reflexSave; //calc
+    private int reflexMod;
+    private int willSave;   //calc
+    private int willMod;
+    private int fortSave;   //calc
+    private int fortMod;
 
     private int isMonster;
     private int inGame;
@@ -344,12 +339,6 @@ public class Actor extends Model implements Comparable<Actor>{
     public void setInitiativeMod(int initiativeMod) {
         this.initiativeMod = initiativeMod;
     }
-    public int getGrappleMod() {
-        return grappleMod;
-    }
-    public void setGrappleMod(int grappleMod) {
-        this.grappleMod = grappleMod;
-    }
     public int getReflexSave() {
         return reflexSave;
     }
@@ -415,15 +404,19 @@ public class Actor extends Model implements Comparable<Actor>{
         for(int i=0;i<spellIds.size();i++) dSpells.update(spellIds.get(i));
         for(int i=0;i<featIds.size();i++) dFeats.update(featIds.get(i));
 
-        dClass.update(classTypeId);
+        dClass.update(classTypeId);//
         dPlayerAbilities.update(playerAbilityIds);
 
     }
 
     public boolean populateSkills()         {ArrayList o=dSkills.getAllByPlayerId(id);skillIds.equals(o); return o.isEmpty();}// writes over current variables with those from the database
     public boolean populateEquippedItems()  {ArrayList o=dEquipments.getAllByPlayerId(id);equippedItemIds.equals(o); return o.isEmpty();}// writes over current variables with those from the database
-    public boolean populateItems()          {ArrayList o=dItems.getAllByPlayerId(id);equippedItemIds.equals(o); return o.isEmpty();}// writes over current variables with those from the database
-    public boolean populateSpells()         {ArrayList o=dSpells.getAllByPlayerId(id);spellIds.equals(o); return o.isEmpty();}// writes over current variables with those from the database
+    public boolean populateItems()          {ArrayList o=dItems.getAllByPlayerId(id);equippedItemIds.equals(o);return o.isEmpty();}// writes over current variables with those from the database
+    public boolean populateSpells()         {
+        ArrayList o=dSpells.getAllByPlayerId(id);
+        spellIds.equals(o);
+        return o.isEmpty();
+    }// writes over current variables with those from the database
     public boolean populateFeats()          {ArrayList o=dFeats.getAllByPlayerId(id);featIds.equals(o); return o.isEmpty();}// writes over current variables with those from the database
 
     public boolean populateClassType()      {ArrayList<ClassType> o=dClass.getAllByPlayerId(id);if(!o.isEmpty())classTypeId = o.get(0); return o.isEmpty();}// writes over current variables with those from the database
@@ -436,7 +429,7 @@ public class Actor extends Model implements Comparable<Actor>{
 
     private ArrayList<Equipment> equippedItemIds = new ArrayList<Equipment>();
     private ArrayList<Item> itemIds = new ArrayList<Item>();
-    private ArrayList<Feat> featIds = new ArrayList<Feat>();
+    private ArrayList<Feat> featIds = new ArrayList<Feat>();//
     private ArrayList<Skill> skillIds = new ArrayList<Skill>();    //Make 40 of these
     private ArrayList<Spell> spellIds = new ArrayList<Spell>();
 

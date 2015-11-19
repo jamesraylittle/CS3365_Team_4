@@ -35,19 +35,26 @@ public class Actors extends Database implements DAO<Actor> {
                 from = new Actor(
                         c.getInt(0),
                         c.getString(1),
-                        c.getInt(2),
-                        c.getString(3),
-                        c.getInt(4),
-                        c.getString(5),
+                        c.getString(2),
+                        c.getInt(3),
+                        c.getString(4),
+                        c.getInt(5),
                         c.getString(6),
                         c.getString(7),
-                        c.getInt(8), //1
+                        c.getInt(8),
                         c.getInt(9),
-                        c.getString(10),
+                        c.getInt(10),
                         c.getInt(11),
-                        c.getString(12),
+                        c.getInt(12),
                         c.getInt(13),
-                        c.getInt(14));
+                        c.getInt(14),
+                        c.getInt(15),
+                        c.getString(16),
+                        c.getInt(17),
+                        c.getString(18),
+                        c.getInt(19),
+                        c.getInt(20)
+                );
             } while (c.moveToNext());
         }
 
@@ -61,21 +68,29 @@ public class Actors extends Database implements DAO<Actor> {
         if(c.moveToFirst()) {
             do {
                 Actor a = new Actor(
-                       c.getInt(0),
-                       c.getString(1),
-                       c.getInt(2),
-                       c.getString(3),
-                       c.getInt(4),
-                       c.getString(5),
-                       c.getString(6),
-                       c.getString(7),
-                       c.getInt(8), //1
-                       c.getInt(9),
-                       c.getString(10),
-                       c.getInt(11),
-                       c.getString(12),
-                       c.getInt(13),
-                       c.getInt(14)
+                        c.getInt(0),
+                        c.getString(1),
+                        c.getString(2),
+                        c.getInt(3),
+                        c.getString(4),
+                        c.getInt(5),
+                        c.getString(6),
+                        c.getString(7),
+                        c.getInt(8),
+                        c.getInt(9),
+                        c.getInt(10),
+                        c.getInt(11),
+                        c.getInt(12),
+                        c.getInt(13),
+                        c.getInt(14),
+                        c.getInt(15),
+                        c.getString(16),
+                        c.getInt(17),
+                        c.getString(18),
+                        c.getInt(19),
+                        c.getInt(20)
+                       //c.getInt(0),
+                       //c.getString(1),
                 );
                 list.add(a);
             } while (c.moveToNext());
@@ -91,18 +106,23 @@ public class Actors extends Database implements DAO<Actor> {
         ContentValues values = new ContentValues();
         if(p.getId() > 0) values.put("id", p.getId());
 
+        values.put("name", p.getName());
         values.put("gender", p.getGender());
         values.put("size", p.getSize());
         values.put("alignment", p.getAlignment());
         values.put("weight", p.getWeight());
         values.put("religion", p.getReligion());
         values.put("race", p.getRace());
-        values.put("name", p.getName());
+        values.put("speed", p.getSpeed());
+        values.put("initiativeMod", p.getInitiativeMod());
+        values.put("initiative", p.getInitiative());
+        values.put("reflexMod", p.getReflexMod());
+        values.put("willMod", p.getWillMod());
+        values.put("fortMod", p.getFortMod());
         values.put("isMonster", p.getIsMonster());
         values.put("inGame", p.getInGame());
         values.put("imageFile", p.getImageFile());
         values.put("gameId", p.getGameId());
-
         values.put("playerName", p.getPlayerName());
         values.put("XP", p.getXP());
         values.put("health", p.getHealth());
@@ -112,13 +132,19 @@ public class Actors extends Database implements DAO<Actor> {
     private void createTable() {
         String q = "CREATE TABLE IF NOT EXISTS "+TABLE+" (" +
                 "id integer primary key AUTOINCREMENT," +
+                "name TEXT," +
                 "gender TEXT," +
                 "size integer," +
                 "alignment TEXT," +
                 "weight integer," +
                 "religion TEXT," +
                 "race TEXT," +
-                "name TEXT," +
+                "speed integer," +
+                "initiativeMod integer," +
+                "initiative integer," +
+                "reflexMod integer," +
+                "willMod integer," +
+                "fortMod integer," +
                 "isMonster integer," +
                 "inGame integer," +
                 "imageFile TEXT," +
@@ -134,3 +160,27 @@ public class Actors extends Database implements DAO<Actor> {
         database.execSQL("DROP TABLE " + TABLE);
     }
 }
+
+/*
+        this.id = id;
+        this.name = name;
+        this.gender = gender;
+        this.size = size;
+        this.alignment = alignment;
+        this.weight = weight;
+        this.religion = religion;
+        this.race = race;
+        this.speed = speed;
+        this.initiativeMod = initiativeMod;
+        this.initiative = initiative;
+        this.reflexMod = reflexMod;
+        this.willMod = willMod;
+        this.fortMod = fortMod;
+        this.isMonster = isMonster;
+        this.inGame = inGame;
+        this.imageFile = imageFile;
+        this.gameId = gameId;
+        this.playerName = playerName;
+        this.XP = XP;
+        this.health = health;
+ */

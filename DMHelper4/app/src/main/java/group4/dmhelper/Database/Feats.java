@@ -64,16 +64,16 @@ public class Feats extends Database implements DAO<Feat> {
         ContentValues values = new ContentValues();
         if(feat.getId() > 0) values.put("id", feat.getId());
 
-        values.put("Player Id", feat.getPlayerId());
-        values.put("Item Id", feat.getFeatId());
+        values.put("playerId", feat.getPlayerId());
+        values.put("itemId", feat.getFeatId());
         return values;
     }
 
     private void createTable() {
         String q = "CREATE TABLE IF NOT EXISTS "+TABLE+" (" +
                 "id integer primary key AUTOINCREMENT," +
-                "Player Id INTEGER," +
-                "Item Id INTEGER" +
+                "playerId INTEGER," +
+                "ItemId INTEGER" +
                 ")";
         database.execSQL(q);
     }

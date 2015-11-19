@@ -65,16 +65,16 @@ public class Spells extends Database implements DAO<Spell> {
         ContentValues values = new ContentValues();
         if(spell.getId() > 0) values.put("id", spell.getId());
 
-        values.put("Player Id", spell.getPlayerId());
-        values.put("Spell Id", spell.getSpellId());
+        values.put("playerId", spell.getPlayerId());
+        values.put("spellId", spell.getSpellId());
         return values;
     }
 
     private void createTable() {
         String q = "CREATE TABLE IF NOT EXISTS "+TABLE+" (" +
                 "id integer primary key AUTOINCREMENT," +
-                "Player Id INTEGER," +
-                "Spell Id INTEGER" +
+                "playerId INTEGER," +
+                "spellId INTEGER" +
                 ")";
         database.execSQL(q);
     }
