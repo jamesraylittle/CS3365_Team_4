@@ -1,6 +1,7 @@
 package group4.dmhelper.Activities;
 
 import android.content.Intent;
+import android.content.res.Resources;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -37,7 +38,7 @@ public class ActivityCharacterSheet extends AppCompatActivity {
         player = new Actor(PlayerIdentifier, getApplicationContext());
         populateSpinners();
         setupButtons(PlayerIdentifier);
-        editProgressBars(PlayerIdentifier);
+        editProgressBars();
         populateFillIn();
 
         LinearLayout health=(LinearLayout) findViewById(R.id.healthBarLayout);
@@ -72,15 +73,19 @@ public class ActivityCharacterSheet extends AppCompatActivity {
                     String inText = characterName.getText().toString();
                     if( database== null || !database.equals(inText)) {
                         FragmentFeed.feedItems.add(PlayerIdentifier + "Changed character name to " + inText);
-                        player.setName(database);
+                        player.setName(inText);
                     }
                 }
 
                 EditText playerName = (EditText) findViewById(R.id.editText_player_name);
                 if (!playerName.getText().toString().equals("")) //TODO CHECK IF DIFFERENT FROM CURRENT
                 {
-                    final String s = playerName.getText().toString();
-                    FragmentFeed.feedItems.add(PlayerIdentifier + "Changed player name to " + playerName.getText());
+                    String database = player.getPlayerName();
+                    String inText = playerName.getText().toString();
+                    if( database== null || !database.equals(inText)) {
+                        FragmentFeed.feedItems.add(PlayerIdentifier + "Changed player name to " + playerName.getText());
+                        player.setPlayerName(inText);
+                    }
                 }
 
                 EditText height = (EditText) findViewById(R.id.editText_Height);
@@ -98,7 +103,12 @@ public class ActivityCharacterSheet extends AppCompatActivity {
                 EditText religion = (EditText) findViewById(R.id.editText_religion);
                 if (!religion.getText().toString().equals("")) //TODO CHECK IF DIFFERENT FROM CURRENT
                 {
-                    FragmentFeed.feedItems.add(PlayerIdentifier + "Changed religion to " + religion.getText());
+                    String database = player.getReligion();
+                    String inText = religion.getText().toString();
+                    if( database== null || !database.equals(inText)) {
+                        FragmentFeed.feedItems.add(PlayerIdentifier + "Changed player name to " + playerName.getText());
+                        player.setReligion(inText);
+                    }
                 }
 
                 Spinner characterClass = (Spinner) findViewById(R.id.spinner_search_class);
@@ -124,6 +134,12 @@ public class ActivityCharacterSheet extends AppCompatActivity {
         });
 
 
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        editProgressBars();
     }
 
     private void populateFillIn() {
@@ -159,23 +175,35 @@ public class ActivityCharacterSheet extends AppCompatActivity {
 //            EditText religion = (EditText) findViewById(R.id.editText_Weight);
 //            religion.setText(databaseString);
 //        }
+        //sets weight
+        float database = player.getWeight();
+        if(database !=0)
+        {
+            EditText religion = (EditText) findViewById(R.id.editText_Weight);
+            religion.setText(Float.toString(database));
+        }
     }
 
-    private void editProgressBars(int playerIdentifier) {
-        //Actor player = new Actor(playerIdentifer);
+    private void editProgressBars() {
+        player.pullFromDatabase();
         ProgressBar healthbar = (ProgressBar) findViewById(R.id.progressBar_health);
-        healthbar.setMax(100);  //TODO GET FROM DATABASE
-                                // healthbar.setMax(player.calcMaxHealth());
-        healthbar.setProgress(45);  //TODO GET FROM DATABASE
-                                // healthbar.setProgress(player.getHealth());
+        healthbar.setMax(100);  //TODO calc the max health
+        healthbar.setProgress(player.getHealth());
         TextView health = (TextView) findViewById(R.id.txt_health_ratio);
         health.setText(healthbar.getProgress() + "/" + healthbar.getMax());
 
         ProgressBar xpbar = (ProgressBar) findViewById(R.id.progressBar_experience);
-        xpbar.setMax(100); //TODO GET FROM DATABASE
-                            // xpbar.setMax(player.calcMaxXp());
-        xpbar.setProgress(10);  //TODO GET FROM DATABASE
-                            //xpbar.setProgress(
+        Resources res = getResources();
+        int[] levels = res.getIntArray(R.array.Levels);
+
+        for(int level : levels) {
+            if(level > player.getXP())
+            {
+                xpbar.setMax(level); //TODO GET FROM DATABASE
+                break;
+            }
+        }
+        xpbar.setProgress(player.getXP());  //TODO GET FROM DATABASE
         TextView xp = (TextView) findViewById(R.id.txt_experience_ratio);
         xp.setText(xpbar.getProgress() + "/" + xpbar.getMax());
 
