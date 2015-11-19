@@ -38,13 +38,20 @@ public class ActivitySearchSpells extends Activity {
     ListAdapter adapter;
     List<String> listUsers = new ArrayList<>();
     private String[] arraySchool, arraySub;
+    int playerId;
+    public static Activity spellSearchActivity;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search_spell);
+        spellSearchActivity = this;
         myDbHelper = new DataBaseHelper(this);
         initializeWidgets();
+        try {
+            playerId = getIntent().getExtras().getInt("Identifier");
+        }
+        catch (Exception e) {}
     }
 
     @Override
@@ -118,6 +125,7 @@ public class ActivitySearchSpells extends Activity {
                         }
                         Intent intent = new Intent(ActivitySearchSpells.this, PopupSpellInfo.class);
                         intent.putExtra("spell_values", mv);
+                        intent.putExtra("playerID",playerId);
                         startActivity(intent);
                     }
                 }
@@ -136,6 +144,7 @@ public class ActivitySearchSpells extends Activity {
             for (int i = 1; i < 32; i++) {
                 si.add(query.getString(i));
             }
+            si.add(""+query.getInt(0));
             query.close();
         }
         myDbHelper.close();

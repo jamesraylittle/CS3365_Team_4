@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import group4.dmhelper.Activities.Search.ActivitySearchEquipment;
 import group4.dmhelper.Activities.Search.ActivitySearchItems;
 import group4.dmhelper.R;
 
@@ -17,7 +18,7 @@ public class ActivityCharacterInventory extends AppCompatActivity {
         setContentView(R.layout.activity_character_inventory);
 
         Bundle extras = getIntent().getExtras();
-        final String PlayerIdentifier = extras.getString("Identifier");
+        final int PlayerIdentifier = extras.getInt("Identifier");
         //Actor player = new Actor(PlayerIdentifier);
         //player.getItems();
         //TODO POPULATE LISTVIEW
@@ -29,7 +30,6 @@ public class ActivityCharacterInventory extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(ActivityCharacterInventory.this, ActivitySearchItems.class);
                 intent.putExtra("Identifier", PlayerIdentifier);
-                intent.putExtra("playerName", PlayerIdentifier);
                 startActivity(intent);
             }
         });

@@ -33,15 +33,22 @@ public class ActivitySearchEquipment extends Activity {
     Spinner catInput, subInput, famInput;
     ListView searchResults;
     ListAdapter adapter;
+    int playerId;
     List<String> listItems = new ArrayList<>();
     private String[] arrayCat, arraySub, arrayFam;
+    public static Activity equipmentSearchActivity;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search_equipment);
+        equipmentSearchActivity = this;
         myDbHelper = new DataBaseHelper(this);
         initializeWidgets();
+        try {
+            playerId = getIntent().getExtras().getInt("Identifier");
+        }
+        catch (Exception e) {}
     }
 
     @Override
@@ -127,6 +134,7 @@ public class ActivitySearchEquipment extends Activity {
                         }
                         Intent intent = new Intent(ActivitySearchEquipment.this, PopupEquipmentInfo.class);
                         intent.putExtra("equipment_values", ev);
+                        intent.putExtra("playerID",playerId);
                         startActivity(intent);
                     }
                 }
@@ -145,6 +153,7 @@ public class ActivitySearchEquipment extends Activity {
             for (int i = 1; i < 18; i++) {
                 ei.add(query.getString(i));
             }
+            ei.add(""+query.getInt(0));
             query.close();
         }
         myDbHelper.close();
