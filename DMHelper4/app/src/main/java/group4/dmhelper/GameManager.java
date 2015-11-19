@@ -56,6 +56,19 @@ public class GameManager {
     //Managing monsters and players
     //$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#
 
+    public Actor getActor(int actorId) {
+        for(int i = 0; i < initiativeRoll.size(); i++)
+            if(initiativeRoll.get(i).getId() == actorId) return initiativeRoll.get(i);
+        return null;
+    }
+
+    public void removeActor(int actorId) {
+        Actor p = getActor(actorId);
+        initiativeRoll.remove(p);
+        p = null;
+        if(getPlayer(actorId) == null);//success note;
+    }
+
     public Player getPlayer(int playerId) {
         for(int i = 0; i < playerList.size(); i++)
             if(playerList.get(i).getId() == playerId) return playerList.get(i);
@@ -75,7 +88,7 @@ public class GameManager {
         //this function should delete an actor in the playerList
         dActors.delete(actorId);
         Player p = getPlayer(actorId);
-        monsterList.remove(p);
+        playerList.remove(p);
         p = null;
         if(getPlayer(actorId) == null);//success note;
     }
@@ -151,7 +164,16 @@ public class GameManager {
         //list spells
     }
 
-    private void attack(int actorId1, int actorId2) {
+    private Boolean attack(Actor actor1, Actor actor2, int iRoll) {
+        return actor1.rollToHit() + iRoll > actor2.calculateAC();
+    }
+
+    private ArrayList<Boolean> attack(Actor actor1, Actor actor2, ArrayList<Integer> iRolls) {
+        ArrayList<Boolean> bSuccess = new ArrayList<Boolean>();
+        for(int i=0;i<iRolls.size();i++) {
+            bSuccess.add(actor1.rollToHit() + iRolls.get(i) > actor2.calculateAC());
+        }
+        return bSuccess;
     }
 
     public void killMonster(int actorId) {
