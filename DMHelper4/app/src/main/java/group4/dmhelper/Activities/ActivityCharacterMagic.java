@@ -17,7 +17,7 @@ public class ActivityCharacterMagic extends AppCompatActivity {
         setContentView(R.layout.activity_character_magic);
 
         Bundle extras = getIntent().getExtras();
-        final String PlayerIdentifier = extras.getString("Identifier");
+        final int PlayerIdentifier = extras.getInt("Identifier");
         //Actor player = new Actor(PlayerIdentifier);
         //player.getSpells();
         //TODO POPULATE LISTVIEW
