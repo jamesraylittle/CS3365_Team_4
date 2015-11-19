@@ -4,6 +4,8 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 
+import java.util.ArrayList;
+
 import group4.dmhelper.Actors.Game;
 
 /**
@@ -20,6 +22,19 @@ public class Games extends Database implements DAO<Game> {
     public int create(Game p) { return super.create(TABLE, values(p)); }
 
     public void update(Game p) { super.update(TABLE, p, values(p)); }
+
+    public ArrayList<Game> retrieveAll() {
+        String [] args = new String[] {};
+        Cursor c = database.rawQuery("Select * from Games", args);
+        ArrayList<Game> list = new ArrayList<>();
+        if (c.moveToFirst()) {
+            do {
+                Game g = new Game(c.getInt(0), c.getString(1), c.getInt(2));
+                list.add(g);
+            } while (c.moveToNext());
+        }
+        return list;
+    }
 
     public Game retrieve(int id) {
         String [] args = new String[] { id+"" };

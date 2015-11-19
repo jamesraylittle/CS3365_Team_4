@@ -151,6 +151,12 @@
             android:theme="@style/AppTheme.popup"
             android:noHistory="true">
         </activity>
+        <activity
+            android:name=".Activities.Popups.PopupSelectGame"
+            android:label="@string/title_activity_num_player"
+            android:theme="@style/AppTheme.popup"
+            android:noHistory="true">
+        </activity>
 
     </application>
 
