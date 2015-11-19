@@ -14,11 +14,13 @@ import group4.dmhelper.Database.Actors;
 import group4.dmhelper.Database.ClassTypes;
 import group4.dmhelper.Database.Equipments;
 import group4.dmhelper.Database.Feats;
+import group4.dmhelper.Database.Games;
 import group4.dmhelper.Database.Items;
 import group4.dmhelper.Database.PlayerAbilities;
 import group4.dmhelper.Database.Races;
 import group4.dmhelper.Database.Skills;
 import group4.dmhelper.Database.Spells;
+import group4.dmhelper.globalVariables;
 
 /**
  *
@@ -159,26 +161,43 @@ public class Actor extends Model implements Comparable<Actor>{
 
         for(int i=0;i<40;i++)skillIds.add(new Skill(id, i+1));
 
-        dropAllTables();
+        globalVariables gv = globalVariables.getInstance();
+        gameId = gv.getGameId();
+
+        //dropAllTables();
 
     }
 
     public void equalsDatabaseValues(Actor a) {
-        this.gender = a.gender;
-        this.size = a.size;
-        this.alignment = a.alignment;
-        this.weight = a.weight;
-        this.religion = a.religion;
-        this.race = a.race;
-        this.name = a.name;
-        this.isMonster = a.isMonster;
-        this.inGame = a.inGame;
-        this.imageFile = a.imageFile;
+        this.id = a.getId();
+        this.name = a.getName();
+        this.gender = a.getGender();
+        this.size = a.getSize();
+        this.alignment = a.getAlignment();
+        this.weight = a.getWeight();
+        this.height = a.getHeight();
+        this.religion = a.getReligion();
+        this.race = a.getRace();
+        this.speed = a.getSpeed();
+        this.initiativeMod = a.getInitiativeMod();
+        this.initiative = a.getInitiative();
+        this.reflexMod = a.getReflexMod();
+        this.willMod = a.getWillMod();
+        this.fortMod = a.getFortMod();
+        this.isMonster = a.getIsMonster();
+        this.inGame = a.getInGame();
+        this.imageFile = a.getImageFile();
+        this.gameId = a.getGameId();
+        this.playerName = a.getPlayerName();
+        this.XP = a.getXP();
+        this.health = a.getHealth();
     }
 
     //public Actor() {}
 
     public void dropAllTables() {
+        Games g = new Games(context);
+        g.dropTable();
         dActor.dropTable();
         dClass.dropTable();
         dEquipments.dropTable();
