@@ -21,6 +21,8 @@ import group4.dmhelper.Database.Actors;
  */
 public class GameManager {
 
+    int gameId;
+
     private GameManager() {}
 
     private static GameManager instance;    //Singleton structure
@@ -62,7 +64,7 @@ public class GameManager {
 
     public void createPlayer() {
         //this function should put a new actor in the playerList
-        Player p = new Player();
+        Player p = new Player(context);
         dActors.create(p);
         //Activity editing all data goes here.
         p.pushToDatabase();
@@ -95,7 +97,7 @@ public class GameManager {
     }
 
     public void createMonster() {
-        Monster m = new Monster();
+        Monster m = new Monster(context);
         dActors.create(m);
         //Activity editing all data goes here.
         m.pushToDatabase();

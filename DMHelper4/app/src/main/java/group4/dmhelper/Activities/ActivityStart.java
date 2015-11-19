@@ -10,11 +10,13 @@ import android.widget.RelativeLayout;
 
 import group4.dmhelper.Activities.Popups.PopupNumPlayer;
 import group4.dmhelper.R;
+import group4.dmhelper.globalVariables;
 
 public class ActivityStart extends AppCompatActivity {
 
     private Button btnNewGame;
     private RelativeLayout relativeLayout;
+    globalVariables g = globalVariables.getInstance();
     public static Activity start;
 
     @Override
@@ -27,6 +29,7 @@ public class ActivityStart extends AppCompatActivity {
         btnNewGame.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                g.setGameId(10); //TODO generate unique game id
                 startActivity(new Intent(ActivityStart.this, PopupNumPlayer.class));
             }
         });

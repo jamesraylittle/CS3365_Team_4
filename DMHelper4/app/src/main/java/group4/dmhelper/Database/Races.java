@@ -4,6 +4,8 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 
+import java.util.ArrayList;
+
 import group4.dmhelper.Actors.Feat;
 import group4.dmhelper.Actors.Race;
 
@@ -56,4 +58,24 @@ public class Races extends Database implements DAO<Race> {
                 ")";
         database.execSQL(q);
     }
+
+    public ArrayList<Race> getAllByPlayerId(int playerId) {
+        String args[] = new String[] { playerId + ""};
+        Cursor c = database.query(TABLE, null, "playerId = ?", args, null, null, null);
+
+        ArrayList<Race> list = new ArrayList<Race>();
+        Race oC = null;
+        if(c.moveToFirst()) {
+            do {
+                oC = new Race(c.getInt(0), c.getString(1));
+                list.add(oC);
+            } while(c.moveToNext());
+        }
+        return list;
+    }
+
+    public void dropTable(){
+        database.execSQL("DROP TABLE " + TABLE);
+    }
+
 }

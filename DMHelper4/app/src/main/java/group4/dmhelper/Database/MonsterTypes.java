@@ -6,50 +6,49 @@ import android.database.Cursor;
 
 import java.util.ArrayList;
 
-import group4.dmhelper.Actors.ClassType;
-import group4.dmhelper.Actors.Feat;
+import group4.dmhelper.Actors.MonsterType;
 
 /**
- * Created by james.
+ * Created by Daniel.
  */
-public class ClassTypes extends Database implements DAO<ClassType> {
-    private String TABLE = "classTypes";
+public class MonsterTypes extends Database implements DAO<MonsterType> {
+    private String TABLE = "MonsterTypes";
 
-    public ClassTypes(Context context) {
-        super(context, "classTypes");
+    public MonsterTypes(Context context) {
+        super(context, "MonsterTypes");
         createTable();
     }
 
-    public int create(ClassType c) { return super.create(TABLE, values(c)); }
+    public int create(MonsterType c) { return super.create(TABLE, values(c)); }
 
-    public void update(ClassType c) { super.update(TABLE, c, values(c)); }
+    public void update(MonsterType c) { super.update(TABLE, c, values(c)); }
 
-    public ClassType retrieve(int id) {
+    public MonsterType retrieve(int id) {
         String[] args = new String[] { id+"" };
         Cursor c = database.query(TABLE, null, "id = ?", args, null, null, null);
-        ClassType ct = new ClassType();
+        MonsterType ct = new MonsterType();
 
         if (c.moveToFirst()) {
             do {
                 ct.setId(c.getInt(0));
-                ct.setClassId(c.getInt(1));
-                ct.setClass_tableId(c.getInt(2));
-                ct.setPlayerId(c.getInt(3));
+                ct.setPlayerId(c.getInt(2));
+                ct.setMonsterId(c.getInt(3));
+                ct.setHD(c.getInt(4));
             } while (c.moveToNext());
         }
 
         return ct;
     }
 
-    public ArrayList<ClassType> getAllByPlayerId(int playerId) {
+    public ArrayList<MonsterType> getAllByPlayerId(int playerId) {
         String args[] = new String[] { playerId + ""};
         Cursor c = database.query(TABLE, null, "playerId = ?", args, null, null, null);
 
-        ArrayList<ClassType> list = new ArrayList<ClassType>();
-        ClassType oC = null;
+        ArrayList<MonsterType> list = new ArrayList<MonsterType>();
+        MonsterType oC = null;
         if(c.moveToFirst()) {
             do {
-                oC = new ClassType(c.getInt(0), c.getInt(3), c.getInt(1), c.getInt(2));
+                oC = new MonsterType(c.getInt(0), c.getInt(1), c.getInt(2), c.getInt(3));
                 list.add(oC);
             } while(c.moveToNext());
         }
@@ -63,20 +62,20 @@ public class ClassTypes extends Database implements DAO<ClassType> {
     private void createTable() {
         String q = "CREATE TABLE IF NOT EXISTS "+TABLE+" (" +
                 "id integer primary key AUTOINCREMENT," +
-                "class INTEGER," +
-                "class_table INTEGER," +
-                "playerId INTEGER" +
+                "playerId INTEGER," +
+                "monsterId INTEGER," +
+                "hd INTEGER" +
                 ")";
         database.execSQL(q);
     }
 
-    private ContentValues values(ClassType c) {
+    private ContentValues values(MonsterType c) {
         ContentValues v = new ContentValues();
         if(c.getId() > 0) v.put("id", c.getId());
 
-        v.put("class", c.getClassId());
-        v.put("class_table", c.getClass_tableId());
         v.put("playerId", c.getPlayerId());
+        v.put("monsterId", c.getMonsterId());
+        v.put("hd", c.getHD());
         return v;
     }
 

@@ -4,8 +4,11 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 
+import java.util.ArrayList;
+
 import group4.dmhelper.Actors.Feat;
 import group4.dmhelper.Actors.PlayerAbility;
+import group4.dmhelper.Actors.Skill;
 
 /**
  * Created by james.
@@ -30,15 +33,30 @@ public class PlayerAbilities extends Database implements DAO<PlayerAbility> {
         if (c.moveToFirst()) {
             do {
                 p.setId(c.getInt(0));
-                p.setStrengthAbility(c.getInt(1));
-                p.setDexAbility(c.getInt(2));
-                p.setConstAbility(c.getInt(3));
-                p.setIntelAbility(c.getInt(4));
-                p.setWisdomAbility(c.getInt(5));
-                p.setCrismaAbility(c.getInt(6));
+                p.setPlayerId(c.getInt(1));
+                p.setStrengthAbility(c.getInt(2));
+                p.setDexAbility(c.getInt(3));
+                p.setConstAbility(c.getInt(4));
+                p.setIntelAbility(c.getInt(5));
+                p.setWisdomAbility(c.getInt(6));
+                p.setCrismaAbility(c.getInt(7));
             } while (c.moveToNext());
         }
         return p;
+    }
+
+    public ArrayList<PlayerAbility> getAllByPlayerId(int playerId) {
+        String args[] = new String[] { playerId + ""};
+        Cursor c = database.query(TABLE, null, "playerId = ?", args, null, null, null);
+
+        ArrayList<PlayerAbility> list = new ArrayList<PlayerAbility>();
+        if(c.moveToFirst()) {
+            do {
+                PlayerAbility s = new PlayerAbility(c.getInt(0), c.getInt(1), c.getInt(2), c.getInt(3), c.getInt(4), c.getInt(5), c.getInt(6), c.getInt(7));
+                list.add(s);
+            } while(c.moveToNext());
+        }
+        return list;
     }
 
     public void delete(int id) { super.delete(id, TABLE); }
@@ -63,6 +81,7 @@ public class PlayerAbilities extends Database implements DAO<PlayerAbility> {
     private void createTable() {
         String q = "CREATE TABLE IF NOT EXISTS "+TABLE+" (" +
                 "id integer primary key AUTOINCREMENT," +
+                "playerId INTEGER," +
                 "strengthAbility INTEGER," +
                 "dexAbility INTEGER," +
                 "constAbility INTEGER," +
@@ -73,4 +92,7 @@ public class PlayerAbilities extends Database implements DAO<PlayerAbility> {
         database.execSQL(q);
     }
 
+    public void dropTable(){
+        database.execSQL("DROP TABLE " + TABLE);
+    }
 }

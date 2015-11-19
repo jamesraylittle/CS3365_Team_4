@@ -8,6 +8,7 @@ import java.util.ArrayList;
 
 import group4.dmhelper.Actors.Actor;
 import group4.dmhelper.Actors.Feat;
+import group4.dmhelper.Actors.Player;
 import group4.dmhelper.GameManager;
 
 /**
@@ -28,28 +29,73 @@ public class Actors extends Database implements DAO<Actor> {
     public Actor retrieve(int id) {
         String [] args = new String[] { id+"" };
         Cursor c = database.query(TABLE, null, "id = ?", args, null, null, null);
-        Actor from = new Actor(id);
+        Actor from = null;
         if (c.moveToFirst()) {
             do {
-                from.setId(c.getInt(0));
-                from.setGender(c.getString(1));
-                from.setSize(c.getInt(2));
-                from.setAlignment(c.getString(3));
-                from.setWeight(c.getInt(4));
-                from.setReligion(c.getString(5));
-                from.setRace(c.getString(6));  //Temporary
-                from.setName(c.getString(7));
-                from.setIsMonster(c.getInt(8));
-                from.setInGame(c.getInt(9));
-                //from.setActorAbilityId(c.getInt(6)); These all already have a connection to the player.
-                //from.setEquippedItemsId(c.getInt(7));
-                //from.setSkillsId(c.getInt(8));
-                //from.setActorWeaponsId(c.getInt(9));
-                //from.setRaceId(c.getString(10));
+                from = new Actor(
+                        c.getInt(0),
+                        c.getString(1),
+                        c.getString(2),
+                        c.getInt(3),
+                        c.getString(4),
+                        c.getInt(5),
+                        c.getString(6),
+                        c.getString(7),
+                        c.getInt(8),
+                        c.getInt(9),
+                        c.getInt(10),
+                        c.getInt(11),
+                        c.getInt(12),
+                        c.getInt(13),
+                        c.getInt(14),
+                        c.getInt(15),
+                        c.getString(16),
+                        c.getInt(17),
+                        c.getString(18),
+                        c.getInt(19),
+                        c.getInt(20)
+                );
             } while (c.moveToNext());
         }
 
        return from;
+    }
+
+    public ArrayList<Actor> getAllActors() {
+        Cursor c = database.query(TABLE, null, null, null, null, null, null);
+
+        ArrayList<Actor> list = new ArrayList<Actor>();
+        if(c.moveToFirst()) {
+            do {
+                Actor a = new Actor(
+                        c.getInt(0),
+                        c.getString(1),
+                        c.getString(2),
+                        c.getInt(3),
+                        c.getString(4),
+                        c.getInt(5),
+                        c.getString(6),
+                        c.getString(7),
+                        c.getInt(8),
+                        c.getInt(9),
+                        c.getInt(10),
+                        c.getInt(11),
+                        c.getInt(12),
+                        c.getInt(13),
+                        c.getInt(14),
+                        c.getInt(15),
+                        c.getString(16),
+                        c.getInt(17),
+                        c.getString(18),
+                        c.getInt(19),
+                        c.getInt(20)
+                       //c.getInt(0),
+                       //c.getString(1),
+                );
+                list.add(a);
+            } while (c.moveToNext());
+        }
+        return list;
     }
 
     public void delete(int id) { super.delete(id, TABLE); }
@@ -60,72 +106,81 @@ public class Actors extends Database implements DAO<Actor> {
         ContentValues values = new ContentValues();
         if(p.getId() > 0) values.put("id", p.getId());
 
+        values.put("name", p.getName());
         values.put("gender", p.getGender());
         values.put("size", p.getSize());
         values.put("alignment", p.getAlignment());
         values.put("weight", p.getWeight());
         values.put("religion", p.getReligion());
         values.put("race", p.getRace());
-        values.put("name", p.getName());
-        values.put("isMonster", p.getName());
-        values.put("name", p.getName());
-        //values.put("actorAbilityId", p.getActorAbilityId());
-        //values.put("equippedItemsId", p.getEquippedItemsId());
-        //values.put("skillsId", p.getSkillsId());
-        //values.put("actorWeaponsId", p.getActorWeaponsId());
-        //values.put("raceId", p.getRaceId());
+        values.put("speed", p.getSpeed());
+        values.put("initiativeMod", p.getInitiativeMod());
+        values.put("initiative", p.getInitiative());
+        values.put("reflexMod", p.getReflexMod());
+        values.put("willMod", p.getWillMod());
+        values.put("fortMod", p.getFortMod());
+        values.put("isMonster", p.getIsMonster());
+        values.put("inGame", p.getInGame());
+        values.put("imageFile", p.getImageFile());
+        values.put("gameId", p.getGameId());
+        values.put("playerName", p.getPlayerName());
+        values.put("XP", p.getXP());
+        values.put("health", p.getHealth());
         return values;
     }
 
     private void createTable() {
         String q = "CREATE TABLE IF NOT EXISTS "+TABLE+" (" +
                 "id integer primary key AUTOINCREMENT," +
+                "name TEXT," +
                 "gender TEXT," +
                 "size integer," +
                 "alignment TEXT," +
                 "weight integer," +
                 "religion TEXT," +
-                //"actorAbilityId integer," +
-                //"equippedItemsId integer," +
-                //"skillsId integer," +
-                //"actorWeaponsId integer," +
-                //"raceId integer," +
                 "race TEXT," +
-                "name TEXT" +
-                "isMonster integer" +
-                "inGame integer" +
+                "speed integer," +
+                "initiativeMod integer," +
+                "initiative integer," +
+                "reflexMod integer," +
+                "willMod integer," +
+                "fortMod integer," +
+                "isMonster integer," +
+                "inGame integer," +
+                "imageFile TEXT," +
+                "gameId integer," +
+                "playerName TEXT," +
+                "XP integer," +
+                "health integer" +
                 ")";
         database.execSQL(q);
     }
 
-    public ArrayList<Actor> retrieveAll() {
-        ArrayList<Actor> oFrom = new ArrayList<Actor>();
-        String [] args = new String[] { "" };
-        //Cursor c = database.query(TABLE, null, "id = ?", args, null, null, null);
-        Cursor c = database.query(TABLE,null,null,args,null,null,null);
-        int i = 0;
-        if (c.moveToFirst()) {
-            do {
-                Actor from = new Actor(c.getInt(0));
-                from.setId(c.getInt(0));
-                from.setGender(c.getString(1));
-                from.setSize(c.getInt(2));
-                from.setAlignment(c.getString(3));
-                from.setWeight(c.getInt(4));
-                from.setReligion(c.getString(5));
-                from.setRace(c.getString(6));  //Temporary
-                from.setName(c.getString(7));
-                from.setIsMonster(c.getInt(8));
-                from.setInGame(c.getInt(9));
-                //from.setActorAbilityId(c.getInt(6)); These all already have a connection to the player.
-                //from.setEquippedItemsId(c.getInt(7));
-                //from.setSkillsId(c.getInt(8));
-                //from.setActorWeaponsId(c.getInt(9));
-                //from.setRaceId(c.getString(10));
-                oFrom.add(from);
-            } while (c.moveToNext());
-        }
-
-        return oFrom;
+    public void dropTable(){
+        database.execSQL("DROP TABLE " + TABLE);
     }
 }
+
+/*
+        this.id = id;
+        this.name = name;
+        this.gender = gender;
+        this.size = size;
+        this.alignment = alignment;
+        this.weight = weight;
+        this.religion = religion;
+        this.race = race;
+        this.speed = speed;
+        this.initiativeMod = initiativeMod;
+        this.initiative = initiative;
+        this.reflexMod = reflexMod;
+        this.willMod = willMod;
+        this.fortMod = fortMod;
+        this.isMonster = isMonster;
+        this.inGame = inGame;
+        this.imageFile = imageFile;
+        this.gameId = gameId;
+        this.playerName = playerName;
+        this.XP = XP;
+        this.health = health;
+ */

@@ -8,6 +8,9 @@ public class Equipment extends Model {
     private int playerId;
     private int equipmentId;
 
+    private int handsHolding; // TODO: 11/15/2015
+    private int ammo; // TODO: 11/15/2015
+
     public Equipment(int id, int playerId, int equipmentId) {
         this.id = id;
         this.playerId = playerId;
