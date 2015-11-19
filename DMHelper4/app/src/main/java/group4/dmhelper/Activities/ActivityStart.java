@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.RelativeLayout;
 
 import group4.dmhelper.Activities.Popups.PopupNumPlayer;
+import group4.dmhelper.Activities.Popups.PopupSelectGame;
 import group4.dmhelper.R;
 import group4.dmhelper.globalVariables;
 
@@ -39,6 +40,7 @@ public class ActivityStart extends AppCompatActivity {
 
     public void loadAdventure(View view)
     {
-
+        Intent intent = new Intent(ActivityStart.this, PopupSelectGame.class);
+        startActivity(intent);
     }
 }
