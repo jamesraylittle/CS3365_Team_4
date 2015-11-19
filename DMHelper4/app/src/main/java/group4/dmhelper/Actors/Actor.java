@@ -142,6 +142,9 @@ public class Actor extends Model implements Comparable<Actor>{
 
     public Actor(Context context) { //Saving/Loading
 
+        globalVariables gv = globalVariables.getInstance();
+        this.gameId = gv.getGameId();
+
         dActor = new Actors(context);
 
         this.context = context;
@@ -161,9 +164,7 @@ public class Actor extends Model implements Comparable<Actor>{
 
         for(int i=0;i<40;i++)skillIds.add(new Skill(id, i+1));
 
-        globalVariables gv = globalVariables.getInstance();
-        gameId = gv.getGameId();
-
+        //pushToDatabase();
         //dropAllTables();
 
     }
