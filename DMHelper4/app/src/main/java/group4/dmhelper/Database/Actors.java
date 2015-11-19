@@ -4,6 +4,7 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 
+
 import java.util.ArrayList;
 
 import group4.dmhelper.Actors.Actor;
@@ -60,6 +61,43 @@ public class Actors extends Database implements DAO<Actor> {
         }
 
        return from;
+    }
+
+    public ArrayList<Actor> getAllActorsByGameId(int gameId) {
+        String [] args = new String[] { gameId+"" };
+        Cursor c = database.query(TABLE, null, "gameId = ?", args, null, null, null);
+
+        ArrayList<Actor> list = new ArrayList<Actor>();
+        if(c.moveToFirst()) {
+            do {
+                Actor a = new Actor(
+                        c.getInt(0),
+                        c.getString(1),
+                        c.getString(2),
+                        c.getInt(3),
+                        c.getString(4),
+                        c.getInt(5),
+                        c.getString(6),
+                        c.getString(7),
+                        c.getString(8),
+                        c.getInt(9),
+                        c.getInt(10),
+                        c.getInt(11),
+                        c.getInt(12),
+                        c.getInt(13),
+                        c.getInt(14),
+                        c.getInt(15),
+                        c.getInt(16),
+                        c.getString(17),
+                        c.getInt(18),
+                        c.getString(19),
+                        c.getInt(20),
+                        c.getInt(21)
+                );
+                list.add(a);
+            } while (c.moveToNext());
+        }
+        return list;
     }
 
     public ArrayList<Actor> getAllActors() {
