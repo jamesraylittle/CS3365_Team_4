@@ -40,4 +40,25 @@
         <item>Chaotic Neutral</item>
         <item>Chaotic Evil</item>
     </string-array>
+    <integer-array name="Levels">
+        <item name="levelOne">       1000 </item>
+        <item name="levelTwo">       3000 </item>
+        <item name="levelThree">     6000 </item>
+        <item name="levelFour">      10000 </item>
+        <item name="levelFive">      15000 </item>
+        <item name="levelSix">       21000 </item>
+        <item name="levelSeven">     28000 </item>
+        <item name="levelEight">     36000 </item>
+        <item name="levelNine">      45000 </item>
+        <item name="levelTen">       55000 </item>
+        <item name="levelEleven">    66000 </item>
+        <item name="levelTwelve">    780000 </item>
+        <item name="levelThirteen">  91000 </item>
+        <item name="levelFourteen">  105000 </item>
+        <item name="levelFifteen">   120000 </item>
+        <item name="levelSixteen">   136000 </item>
+        <item name="levelSeventeen"> 153000 </item>
+        <item name="levelEighteen">  171000 </item>
+        <item name="levelNineteen">  190000 </item>
+    </integer-array>
 </resources>
