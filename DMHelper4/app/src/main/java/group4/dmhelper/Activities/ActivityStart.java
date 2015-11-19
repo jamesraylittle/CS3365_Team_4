@@ -4,11 +4,14 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.RelativeLayout;
 
 import group4.dmhelper.Activities.Popups.PopupNumPlayer;
+import group4.dmhelper.Activities.Popups.PopupSelectGame;
+import group4.dmhelper.Database.DataBaseHelper;
 import group4.dmhelper.R;
 import group4.dmhelper.globalVariables;
 
@@ -16,7 +19,6 @@ public class ActivityStart extends AppCompatActivity {
 
     private Button btnNewGame;
     private RelativeLayout relativeLayout;
-    globalVariables g = globalVariables.getInstance();
     public static Activity start;
 
     @Override
@@ -29,7 +31,6 @@ public class ActivityStart extends AppCompatActivity {
         btnNewGame.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                g.setGameId(10); //TODO generate unique game id
                 startActivity(new Intent(ActivityStart.this, PopupNumPlayer.class));
             }
         });
@@ -39,6 +40,7 @@ public class ActivityStart extends AppCompatActivity {
 
     public void loadAdventure(View view)
     {
-
+        Intent intent = new Intent(ActivityStart.this, PopupSelectGame.class);
+        startActivity(intent);
     }
 }

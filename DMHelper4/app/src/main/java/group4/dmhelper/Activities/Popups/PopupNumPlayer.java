@@ -17,13 +17,17 @@ import android.widget.Toast;
 
 import group4.dmhelper.Activities.ActivityGame;
 import group4.dmhelper.Actors.Actor;
+import group4.dmhelper.Actors.Game;
+import group4.dmhelper.Database.Games;
 import group4.dmhelper.R;
+import group4.dmhelper.globalVariables;
 
 public class PopupNumPlayer extends AppCompatActivity {
 
     private static RadioGroup g;
     private static RadioButton rb;
     private static EditText e;
+    globalVariables gv = globalVariables.getInstance();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,8 +57,16 @@ public class PopupNumPlayer extends AppCompatActivity {
             Toast.makeText(getApplicationContext(), "Please enter an adventure name", Toast.LENGTH_SHORT).show();
             return;
         }
+
+        String name = e.getText().toString();
         int numPlayers = Integer.parseInt(rb.getText().toString());
         int[] playerIds = new int[numPlayers];
+
+        Game game = new Game(name, numPlayers);
+        Games games = new Games(this.getApplicationContext());
+        int id = games.create(game);
+        gv.setGameId(id);
+
         for (int i = 0; i < numPlayers; i ++)
         {
             Actor player = new Actor(getApplicationContext());
@@ -63,7 +75,6 @@ public class PopupNumPlayer extends AppCompatActivity {
         Intent intent = new Intent(this, ActivityGame.class);
         intent.putExtra("numplayers", numPlayers);
         intent.putExtra("playerids", playerIds);
-
         startActivity(intent);
         finish();
     }

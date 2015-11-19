@@ -25,8 +25,8 @@ public class PopupEditExperience extends AppCompatActivity {
         getWindowManager().getDefaultDisplay().getMetrics(dm);
 
         Bundle extras = getIntent().getExtras();
-        final String PlayerIdentifier = extras.getString("Identifier");
-        //Actor player = new Actor(PlayerIdentifier);
+        final int PlayerIdentifier = extras.getInt("Identifier");
+        Actor player = new Actor(PlayerIdentifier,getApplicationContext());
         WindowManager.LayoutParams windowManager = getWindow().getAttributes();
         windowManager.dimAmount = 0.5f;
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_DIM_BEHIND);
@@ -42,10 +42,11 @@ public class PopupEditExperience extends AppCompatActivity {
                 String text = xpchange.getText().toString();
                 if(text != "") {
                     int xp = Integer.parseInt(text);
-                    //TODO EDIT ACTOR XP
-                    //player.setXP(player.getxp() + xp)
+                    Actor player = new Actor(PlayerIdentifier,getApplicationContext());
+                    player.setXP(player.getXP() + xp);
                     FragmentFeed.feedItems.add(PlayerIdentifier + " edited experience by: " + xp); //TODO ADD PLAYER NAME
                     Toast.makeText(getApplicationContext(),PlayerIdentifier + " edited experience by: " + xp, Toast.LENGTH_LONG).show();
+                    player.pushToDatabase();
                     finish();
                 }
                 else {
