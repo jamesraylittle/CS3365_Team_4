@@ -49,12 +49,13 @@ public class Actor extends Model implements Comparable<Actor>{
     //Constructors
     //$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#
 
-    public Actor(String name, String gender, int size, String alignment, float weight, String religion, String race, int speed, int initiativeMod, int initiative, int reflexMod, int willMod, int fortMod, int isMonster, int inGame, String imageFile, int gameId, String playerName, int XP, int health) {
+    public Actor(String name, String gender, int size, String alignment, int weight, String height, String religion, String race, int speed, int initiativeMod, int initiative, int reflexMod, int willMod, int fortMod, int isMonster, int inGame, String imageFile, int gameId, String playerName, int XP, int health) {
         this.name = name;
         this.gender = gender;
         this.size = size;
         this.alignment = alignment;
         this.weight = weight;
+        this.height = height;
         this.religion = religion;
         this.race = race;
         this.speed = speed;
@@ -72,13 +73,14 @@ public class Actor extends Model implements Comparable<Actor>{
         this.health = health;
     }
 
-    public Actor(int id, String name, String gender, int size, String alignment, float weight, String religion, String race, int speed, int initiativeMod, int initiative, int reflexMod, int willMod, int fortMod, int isMonster, int inGame, String imageFile, int gameId, String playerName, int XP, int health) {
+    public Actor(int id, String name, String gender, int size, String alignment, int weight, String height, String religion, String race, int speed, int initiativeMod, int initiative, int reflexMod, int willMod, int fortMod, int isMonster, int inGame, String imageFile, int gameId, String playerName, int XP, int health) {
         this.id = id;
         this.name = name;
         this.gender = gender;
         this.size = size;
         this.alignment = alignment;
         this.weight = weight;
+        this.height = height;
         this.religion = religion;
         this.race = race;
         this.speed = speed;
@@ -95,7 +97,7 @@ public class Actor extends Model implements Comparable<Actor>{
         this.XP = XP;
         this.health = health;
     }
-    public Actor(int id, String gender, int size, String alignment, int weight, String religion, String race, String name, int isMonster, int inGame, String imageFile, int gameId, String playerName, int xp, int health) {
+    public Actor(int id, String gender, int size, String alignment, int weight, String height, String religion, String race, String name, int isMonster, int inGame, String imageFile, int gameId, String playerName, int xp, int health) {
         this.id = id;
         this.name = name;
         this.gender = gender;
@@ -157,7 +159,7 @@ public class Actor extends Model implements Comparable<Actor>{
 
         for(int i=0;i<40;i++)skillIds.add(new Skill(id, i+1));
 
-        //dropAllTables();
+        dropAllTables();
 
     }
 
@@ -202,7 +204,8 @@ public class Actor extends Model implements Comparable<Actor>{
     private String gender;
     private int size;
     private String alignment;
-    private float weight;
+    private int weight;
+    private String height;
     private String religion;
     private String race;
 
@@ -265,11 +268,17 @@ public class Actor extends Model implements Comparable<Actor>{
     public void setAlignment(String alignment) {
         this.alignment = alignment;
     }
-    public float getWeight() {
+    public int getWeight() {
         return weight;
     }
-    public void setWeight(float weight) {
+    public void setWeight(int weight) {
         this.weight = weight;
+    }
+    public String getHeight() {
+        return height;
+    }
+    public void setHeight(String height) {
+        this.height = height;
     }
     public String getReligion() {
         return religion;
@@ -508,7 +517,7 @@ public class Actor extends Model implements Comparable<Actor>{
     public int calculateFlatFootedAC() {return 0;}// TODO: 11/11/2015 Need to figure out calculation for this.
 
     public int rollToHit(){return calculateBAB();}// TODO: 11/15/2015 dx+BAB+STR
-    public int calculateDamage(){return 0;}// TODO: 11/15/2015 1 handed = (1dx + str/2*(number of hands))
+    public int calculateDamage(){return 0;}// TODO: 11/15/2015 1 handed = (roll + str/2*(number of hands))
 
     public int rollToHitRanged(){return 0;}// TODO: 11/15/2015 bab+dx+DEX+RANGED MOD
     public int calculateRangeMod(){return -2;}// TODO: 11/15/2015 -2*(range/range_increment)
@@ -525,6 +534,17 @@ public class Actor extends Model implements Comparable<Actor>{
 
     public int roll(int i){return 0;}// TODO: 11/15/2015 NEEDS AN ACTIVITY FOR ROLLING DIE 
     public int getRollNum(String s){return 0;}// TODO: 11/15/2015
+
+    public int getCritRoll(){return 20;}// TODO: 11/18/2015 returns lowest crit roll
+
+    public int getDamage(ArrayList<Integer> critHits, ArrayList<Integer> hits){
+        int sum=0;
+
+        for(int i=0;i<critHits.size();i++)sum += critHits.get(i);
+        for(int i=0;i<hits.size();i++)sum += hits.get(i);
+
+        return sum;
+    }
 
     //$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#
     //activity functions
