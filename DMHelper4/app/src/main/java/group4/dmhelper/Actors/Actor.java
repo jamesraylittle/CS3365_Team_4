@@ -513,7 +513,7 @@ public class Actor extends Model implements Comparable<Actor>{
     public int calculateFlatFootedAC() {return 0;}// TODO: 11/11/2015 Need to figure out calculation for this.
 
     public int rollToHit(){return calculateBAB();}// TODO: 11/15/2015 dx+BAB+STR
-    public int calculateDamage(){return 0;}// TODO: 11/15/2015 1 handed = (roll + str/2*(number of hands))
+    public int calculateDamage(){return 0;}// TODO: 11/15/2015 (roll + str/2*(number of hands))
 
     public int rollToHitRanged(){return 0;}// TODO: 11/15/2015 bab+dx+DEX+RANGED MOD
     public int calculateRangeMod(){return -2;}// TODO: 11/15/2015 -2*(range/range_increment)
@@ -533,14 +533,14 @@ public class Actor extends Model implements Comparable<Actor>{
 
     public int getCritRoll(){return 20;}// TODO: 11/18/2015 returns lowest crit roll
 
-    public int getDamage(ArrayList<Integer> critHits, ArrayList<Integer> hits){
+    public int getDamage(ArrayList<Integer> critHits, ArrayList<Integer> hits, int numOfHands){
         int sum=0;
 
-        for(int i=0;i<critHits.size();i++)sum += critHits.get(i);
-        for(int i=0;i<hits.size();i++)sum += hits.get(i);
+        for(int i=0;i<critHits.size();i++)sum += (critHits.get(i)+getStr()/2*numOfHands)*2;
+        for(int i=0;i<hits.size();i++)sum += hits.get(i)+getStr()/2*numOfHands;
 
         return sum;
-    }// TODO: 11/19/2015
+    }
 
     //$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#
     //activity functions
