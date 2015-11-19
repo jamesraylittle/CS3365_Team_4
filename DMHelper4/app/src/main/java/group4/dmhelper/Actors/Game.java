@@ -17,6 +17,12 @@ public class Game extends Model {
         this.numPlayers = numPlayers;
     }
 
+    public Game(int id, String name, int numPlayers) {
+        this.id = id;
+        this.name = name;
+        this.numPlayers = numPlayers;
+    }
+
     public String getName() {
         return name;
     }
