@@ -453,19 +453,26 @@ public class Actor extends Model implements Comparable<Actor>{
     public ClassType getClassTypeId()     {return classTypeId;}
     public void setClassTypeId(ClassType value)  {classTypeId = value;}
 
-    public int getStr() {return playerAbilityIds.getStrengthAbility();}
-    public int getDex() {return playerAbilityIds.getDexAbility();}
-    public int getCon() {return playerAbilityIds.getConstAbility();}
-    public int getInt() {return playerAbilityIds.getIntelAbility();}
-    public int getWis() {return playerAbilityIds.getWisdomAbility();}
-    public int getCha() {return playerAbilityIds.getCrismaAbility();}
+    public int getStrength()    {return playerAbilityIds.getStrengthAbility();}
+    public int getDexterity()   {return playerAbilityIds.getDexAbility();}
+    public int getConstitution(){return playerAbilityIds.getConstAbility();}
+    public int getIntel()       {return playerAbilityIds.getIntelAbility();}
+    public int getWisdom()      {return playerAbilityIds.getWisdomAbility();}
+    public int getCharisma()    {return playerAbilityIds.getCrismaAbility();}
 
-    public void setStr(int value)    {playerAbilityIds.setStrengthAbility(value);}
-    public void setDex(int value)    {playerAbilityIds.setDexAbility(value);}
-    public void setCon(int value)    {playerAbilityIds.setConstAbility(value);}
-    public void setWis(int value)    {playerAbilityIds.setWisdomAbility(value);}
-    public void setInt(int value)    {playerAbilityIds.setIntelAbility(value);}
-    public void setCha(int value)    {playerAbilityIds.setCrismaAbility(value);}
+    public void setStrength(int value)      {playerAbilityIds.setStrengthAbility(value);}
+    public void setDexterity(int value)     {playerAbilityIds.setDexAbility(value);}
+    public void setConstitution(int value)  {playerAbilityIds.setConstAbility(value);}
+    public void setWisdom(int value)        {playerAbilityIds.setWisdomAbility(value);}
+    public void setIntel(int value)         {playerAbilityIds.setIntelAbility(value);}
+    public void setCharisma(int value)      {playerAbilityIds.setCrismaAbility(value);}
+
+    public int getSTR() {return this.getStrength();}
+    public int getDEX() {return this.getStrength();}
+    public int getCON() {return this.getStrength();}
+    public int getWIS() {return this.getStrength();}
+    public int getINT() {return this.getStrength();}
+    public int getCHA() {return this.getStrength();}
 
     //$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#
     //"add" and "remove" functions for id objects
@@ -536,8 +543,8 @@ public class Actor extends Model implements Comparable<Actor>{
     public int getDamage(ArrayList<Integer> critHits, ArrayList<Integer> hits, int numOfHands){
         int sum=0;
 
-        for(int i=0;i<critHits.size();i++)sum += (critHits.get(i)+getStr()/2*numOfHands)*2;
-        for(int i=0;i<hits.size();i++)sum += hits.get(i)+getStr()/2*numOfHands;
+        for(int i=0;i<critHits.size();i++)sum += (critHits.get(i)+getSTR()/2*numOfHands)*2;
+        for(int i=0;i<hits.size();i++)sum += hits.get(i)+getSTR()/2*numOfHands;
 
         return sum;
     }
