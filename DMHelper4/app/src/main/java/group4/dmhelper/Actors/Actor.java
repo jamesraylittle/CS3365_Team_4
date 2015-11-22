@@ -518,8 +518,8 @@ public class Actor extends Model implements Comparable<Actor>{
     public Spell getSpell(int ID)               {return dSpells.retrieve(ID);}
     public Feat getFeat(int ID)                 {return dFeats.retrieve(ID);}
 
-    public void addEquippedItems(int ID)    {Equipment e = new Equipment(this.id,ID); dEquipments.create(e);}
-    public void addSpells(int ID)           {Spell s = new Spell(this.id,ID); dSpells.create(s);}
+    //public void addEquippedItems(int ID)    {Equipment e = new Equipment(this.id,ID); dEquipments.create(e);}
+    //public void addSpells(int ID)           {Spell s = new Spell(this.id,ID); dSpells.create(s);}
     public void addFeats(int ID)            {Feat f = new Feat(this.id,ID); dFeats.create(f);}
 
     public void removeEquippedItems(int ID) {dEquipments.delete(ID);}

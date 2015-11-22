@@ -10,14 +10,12 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TableLayout;
 import android.widget.TableRow;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 
-import group4.dmhelper.Activities.ActivityCharacterSheet;
+import group4.dmhelper.Activities.CharacterSheet.ActivityCharacterSheet;
 import group4.dmhelper.Activities.ActivityGame;
 import group4.dmhelper.Activities.Popups.PopupMonsterInfo;
-import group4.dmhelper.Actors.Actor;
 import group4.dmhelper.R;
 
 /**

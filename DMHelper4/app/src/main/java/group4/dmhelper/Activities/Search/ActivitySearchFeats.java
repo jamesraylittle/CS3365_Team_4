@@ -162,7 +162,7 @@ public class ActivitySearchFeats extends Activity {
         }
         else { // Otherwise, populate the list with the results
             listUsers.clear();
-            Toast.makeText(getApplicationContext(), query.getCount() + " results found.", Toast.LENGTH_LONG).show();
+            //Toast.makeText(getApplicationContext(), query.getCount() + " results found.", Toast.LENGTH_LONG).show();
             query.moveToFirst();
             do { listUsers.add(query.getString(0)); }
             while (query.moveToNext());

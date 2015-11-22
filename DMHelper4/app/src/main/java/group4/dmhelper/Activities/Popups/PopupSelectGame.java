@@ -31,6 +31,9 @@ import group4.dmhelper.Fragments.FragmentFeed;
 import group4.dmhelper.R;
 import group4.dmhelper.globalVariables;
 
+/**
+ * created by Kyle
+ */
 public class PopupSelectGame extends Activity {
 
     List<String> gameNames = new ArrayList<>();

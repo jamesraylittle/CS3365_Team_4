@@ -1,4 +1,4 @@
-package group4.dmhelper.Activities;
+package group4.dmhelper.Activities.CharacterSheet;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -6,7 +6,9 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import group4.dmhelper.R;
-
+/**
+ * Created by Mose
+ */
 public class ActivityCharacterRacialClass extends AppCompatActivity {
 
     @Override

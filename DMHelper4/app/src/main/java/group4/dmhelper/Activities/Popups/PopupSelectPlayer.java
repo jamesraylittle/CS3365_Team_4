@@ -23,13 +23,20 @@ import java.util.List;
 
 import group4.dmhelper.Activities.Search.ActivitySearchItems;
 import group4.dmhelper.Actors.Actor;
+import group4.dmhelper.Actors.Equipment;
 import group4.dmhelper.Actors.Item;
+import group4.dmhelper.Actors.Spell;
 import group4.dmhelper.Database.Actors;
+import group4.dmhelper.Database.Equipments;
 import group4.dmhelper.Database.Items;
+import group4.dmhelper.Database.Spells;
 import group4.dmhelper.Fragments.FragmentFeed;
 import group4.dmhelper.R;
 import group4.dmhelper.globalVariables;
 
+/**
+ * Created by Kyle
+ */
 public class PopupSelectPlayer extends Activity {
 
     ListView players;
@@ -53,18 +60,25 @@ public class PopupSelectPlayer extends Activity {
                         String name = playerNames[position];
                         int playerId = playerIds[position];
                         String feedMessage = "";
+                        Log.d("num44",objectName+ " added with ID "+ objectID+ " to playerID "+playerId+ " ("+name+")");
                         switch (typeID) {
                             case 0:
                                 feedMessage = objectName + " was given to " + name;
-                                // TODO  add item to actor/db
+                                Items dbItem = new Items(getApplicationContext());
+                                int i = dbItem.create(new Item(playerId, objectID, objectName));
+                                Log.d("num44", "items table id: "+i);
                                 break;
                             case 1:
                                 feedMessage = objectName + " was given to " + name;
-                                // TODO  add equipment to actor/db
+                                Equipments dbEquip = new Equipments(getApplicationContext());
+                                int e =dbEquip.create(new Equipment(playerId, objectID, objectName, 0));
+                                Log.d("num44", "equipment table id: " + e);
                                 break;
                             case 2:
                                 feedMessage = name+" learned the spell "+objectName;
-                                // TODO  add spell to actor/db
+                                Spells dbSpell = new Spells(getApplicationContext());
+                                int s = dbSpell.create(new Spell(playerId, objectID, objectName));
+                                Log.d("num44", "spells table id: " + s);
                                 break;
                             default:
                                 feedMessage = "Something went wrong adding this object!";

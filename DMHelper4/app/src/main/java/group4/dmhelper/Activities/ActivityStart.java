@@ -2,6 +2,7 @@ package group4.dmhelper.Activities;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -9,9 +10,13 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.RelativeLayout;
 
+import java.util.ArrayList;
+
 import group4.dmhelper.Activities.Popups.PopupNumPlayer;
 import group4.dmhelper.Activities.Popups.PopupSelectGame;
+import group4.dmhelper.Actors.Item;
 import group4.dmhelper.Database.DataBaseHelper;
+import group4.dmhelper.Database.Items;
 import group4.dmhelper.R;
 import group4.dmhelper.globalVariables;
 

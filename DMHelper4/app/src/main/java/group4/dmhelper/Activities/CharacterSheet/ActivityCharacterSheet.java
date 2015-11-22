@@ -1,11 +1,9 @@
-package group4.dmhelper.Activities;
+package group4.dmhelper.Activities.CharacterSheet;
 
 import android.content.Intent;
 import android.content.res.Resources;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -22,7 +20,9 @@ import group4.dmhelper.Activities.Popups.PopupEditHealth;
 import group4.dmhelper.Actors.Actor;
 import group4.dmhelper.Fragments.FragmentFeed;
 import group4.dmhelper.R;
-
+/**
+ * Created by Mose
+ */
 public class ActivityCharacterSheet extends AppCompatActivity {
 
     private int PlayerIdentifier;

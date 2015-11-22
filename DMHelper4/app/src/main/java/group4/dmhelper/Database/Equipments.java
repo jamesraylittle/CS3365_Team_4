@@ -3,6 +3,7 @@ package group4.dmhelper.Database;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
+import android.util.Log;
 
 import java.util.ArrayList;
 
@@ -24,7 +25,7 @@ public class Equipments extends Database implements DAO<Equipment> {
 
     public void update(Equipment p) { super.update(TABLE, p, values(p)); }
 
-    public Equipment retrieve(int id) {    // TODO: 11/4/2015 @james is this a player id?
+    public Equipment retrieve(int id) {
         String args[] = new String[] { id+"" };
         Cursor c = database.query(TABLE, null, "id = ?", args, null, null, null);
 
@@ -35,6 +36,8 @@ public class Equipments extends Database implements DAO<Equipment> {
                 p.setId(c.getInt(0));
                 p.setPlayerId(c.getInt(1));
                 p.setEquipmentId(c.getInt(2));
+                p.setEquipmentName(c.getString(3));
+                p.setIsEquipped(c.getInt(4));
             } while (c.moveToNext());
         }
 
@@ -50,6 +53,8 @@ public class Equipments extends Database implements DAO<Equipment> {
         if(p.getId() > 0) values.put("id", p.getId());
         values.put("playerId", p.getPlayerId());
         values.put("weaponId", p.getEquipmentId());
+        values.put("equipmentName", p.getEquipmentName());
+        values.put("isEquipped", p.getIsEquipped());
         return values;
     }
 
@@ -57,7 +62,9 @@ public class Equipments extends Database implements DAO<Equipment> {
         String q = "CREATE TABLE IF NOT EXISTS "+TABLE+" (" +
                 "id integer primary key AUTOINCREMENT," +
                 "playerId INTEGER," +
-                "weaponId INTEGER" +
+                "weaponId INTEGER," +
+                "equipmentName TEXT," +
+                "isEquipped INTEGER" +
                 ")";
         database.execSQL(q);
     }
@@ -66,11 +73,11 @@ public class Equipments extends Database implements DAO<Equipment> {
         String args[] = new String[] { playerId + "" };
         Cursor c = database.query(TABLE, null, "playerId = ?", args, null, null, null);
 
-        ArrayList<Equipment> list = new ArrayList<Equipment>();
+        ArrayList<Equipment> list = new ArrayList();
 
         if(c.moveToFirst()) {
             do {
-                Equipment i = new Equipment(c.getInt(0),c.getInt(1) ,c.getInt(2));
+                Equipment i = new Equipment(c.getInt(0), c.getInt(1) ,c.getInt(2), c.getString(3), c.getInt(4));
                 list.add(i);
             } while (c.moveToNext());
         }
