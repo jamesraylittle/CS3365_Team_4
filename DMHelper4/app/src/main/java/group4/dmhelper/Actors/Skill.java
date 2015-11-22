@@ -1,9 +1,10 @@
 package group4.dmhelper.Actors;
+import java.util.ArrayList;
 
 /**
  * Created by Daniel on 10/19/2015.
  */
-public class Skill extends Ability {
+public class Skill extends Ability implements Comparable<Skill> {
     private int playerId;   //read/write DB
     private int skillId;    //read only DB
 
@@ -26,6 +27,11 @@ public class Skill extends Ability {
 
     public Skill() {
         this(0, 0, 0, "", 0, 0);
+    }
+
+    @Override
+    public int compareTo(Skill skill) {
+        return this.baseScore - skill.getBaseScore();
     }
 
     public int getPlayerId() {

@@ -25,6 +25,8 @@ import group4.dmhelper.globalVariables;
 
 public class Actor extends Model implements Comparable<Actor>{
 
+    globalVariables gv = globalVariables.getInstance();
+
     //$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#
     //Various Player Attributes
     //$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#
@@ -157,7 +159,8 @@ public class Actor extends Model implements Comparable<Actor>{
 
     public Actor(Context context) { //Saving/Loading
 
-        globalVariables gv = globalVariables.getInstance();
+        this("","",4,"Neutral",150,"5'5\"","","Human",30,0,1,0,0,0,0,1,"",0,"",0,4);
+
         this.gameId = gv.getGameId();
 
         dActor = new Actors(context);
@@ -467,12 +470,12 @@ public class Actor extends Model implements Comparable<Actor>{
     public void setIntel(int value)         {playerAbilityIds.setIntelAbility(value);}
     public void setCharisma(int value)      {playerAbilityIds.setCrismaAbility(value);}
 
-    public int getSTR() {return this.getStrength();}
-    public int getDEX() {return this.getStrength();}
-    public int getCON() {return this.getStrength();}
-    public int getWIS() {return this.getStrength();}
-    public int getINT() {return this.getStrength();}
-    public int getCHA() {return this.getStrength();}
+    public int getSTR() {if(this.getStrength()>=10)return (this.getStrength()-10)/2; else return (this.getStrength()-11)/2;}
+    public int getDEX() {if(this.getDexterity()>=10)return (this.getDexterity()-10)/2; else return (this.getDexterity()-11)/2;}
+    public int getCON() {if(this.getConstitution()>=10)return (this.getConstitution()-10)/2; else return (this.getConstitution()-11)/2;}
+    public int getWIS() {if(this.getIntel()>=10)return (this.getIntel()-10)/2; else return (this.getIntel()-11)/2;}
+    public int getINT() {if(this.getWisdom()>=10)return (this.getWisdom()-10)/2; else return (this.getWisdom()-11)/2;}
+    public int getCHA() {if(this.getCharisma()>=10)return (this.getCharisma()-10)/2; else return (this.getCharisma()-11)/2;}
 
     //$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#
     //"add" and "remove" functions for id objects
@@ -499,8 +502,6 @@ public class Actor extends Model implements Comparable<Actor>{
     public Spell getSpell(int ID)               {return dSpells.retrieve(ID);}
     public Feat getFeat(int ID)                 {return dFeats.retrieve(ID);}
 
-    //public void addEquippedItems(int ID)    {Equipment e = new Equipment(this.id,ID); dEquipments.create(e);}
-    //public void addSpells(int ID)           {Spell s = new Spell(this.id,ID); dSpells.create(s);}
     public void addFeats(int ID)            {Feat f = new Feat(this.id,ID); dFeats.create(f);}
 
     public void removeEquippedItems(int ID) {dEquipments.delete(ID);}
