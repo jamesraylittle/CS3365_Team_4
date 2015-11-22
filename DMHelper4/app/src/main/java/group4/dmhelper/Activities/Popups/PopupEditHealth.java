@@ -11,9 +11,13 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import group4.dmhelper.Actors.Actor;
 import group4.dmhelper.Fragments.FragmentFeed;
 import group4.dmhelper.R;
 
+/**
+ * Created by Mose
+ */
 public class PopupEditHealth extends AppCompatActivity {
 
 
@@ -26,14 +30,16 @@ public class PopupEditHealth extends AppCompatActivity {
         getWindowManager().getDefaultDisplay().getMetrics(dm);
 
         Bundle extras = getIntent().getExtras();
-        final String PlayerIdentifier = extras.getString("Identifier");
-        //Actor player = new Actor(PlayerIdentifier);
+        final int PlayerIdentifier = extras.getInt("Identifier");
+
+
         WindowManager.LayoutParams windowManager = getWindow().getAttributes();
         windowManager.dimAmount = 0.5f;
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_DIM_BEHIND);
         int width = dm.widthPixels;
         int height = dm.heightPixels;
         getWindow().setLayout((int) (width * 0.7), (int) (height * 0.3));
+
         Button submit = (Button) findViewById(R.id.btn_submit_health);
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -44,10 +50,11 @@ public class PopupEditHealth extends AppCompatActivity {
                 if(text != "") {
                     int health = Integer.parseInt(text);
                     //TODO EDIT ACTOR HEALTH
-
-                    //player.setHealth(player.getHealth() + health)
+                    Actor player = new Actor(PlayerIdentifier,getApplicationContext());
+                    player.setHealth(player.getHealth() + health);
                     FragmentFeed.feedItems.add(PlayerIdentifier + " edited health by: " + health); //TODO ADD PLAYER NAME
                     Toast.makeText(getApplicationContext(),PlayerIdentifier + " edited health by: " + health, Toast.LENGTH_LONG).show();
+                    player.pushToDatabase();
                     finish();
                 }
                 else {

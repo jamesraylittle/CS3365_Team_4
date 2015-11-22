@@ -73,4 +73,9 @@ public class Races extends Database implements DAO<Race> {
         }
         return list;
     }
+
+    public void dropTable(){
+        database.execSQL("DROP TABLE " + TABLE);
+    }
+
 }

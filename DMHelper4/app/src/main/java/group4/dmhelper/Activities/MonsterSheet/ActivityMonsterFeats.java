@@ -1,4 +1,4 @@
-package group4.dmhelper.Activities;
+package group4.dmhelper.Activities.MonsterSheet;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -8,16 +8,18 @@ import android.widget.Button;
 
 import group4.dmhelper.Activities.Search.ActivitySearchFeats;
 import group4.dmhelper.R;
-
-public class ActivityCharacterFeats extends AppCompatActivity {
+/**
+ * Created by Derek
+ */
+public class ActivityMonsterFeats extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_character_feats);
+        setContentView(R.layout.activity_monster_feats);
 
         Bundle extras = getIntent().getExtras();
-        final String PlayerIdentifier = extras.getString("Identifier");
+        final String MonsterIdentifier = extras.getString("Identifier");
         //Actor player = new Actor(PlayerIdentifier);
         //player.getFeats();
         //TODO POPULATE LISTVIEW
@@ -27,8 +29,8 @@ public class ActivityCharacterFeats extends AppCompatActivity {
         searchFeats.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(ActivityCharacterFeats.this, ActivitySearchFeats.class);
-                intent.putExtra("Identifier", PlayerIdentifier);
+                Intent intent = new Intent(ActivityMonsterFeats.this, ActivitySearchFeats.class);
+                intent.putExtra("Identifier", MonsterIdentifier);
                 startActivity(intent);
             }
         });

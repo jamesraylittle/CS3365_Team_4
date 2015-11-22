@@ -6,6 +6,7 @@ import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.util.TypedValue;
 import android.view.View;
 import android.view.WindowManager;
@@ -21,34 +22,72 @@ import java.util.ArrayList;
 import java.util.List;
 
 import group4.dmhelper.Activities.Search.ActivitySearchItems;
+import group4.dmhelper.Actors.Actor;
+import group4.dmhelper.Actors.Equipment;
+import group4.dmhelper.Actors.Feat;
 import group4.dmhelper.Actors.Item;
+import group4.dmhelper.Actors.Spell;
+import group4.dmhelper.Database.Actors;
+import group4.dmhelper.Database.Equipments;
+import group4.dmhelper.Database.Feats;
 import group4.dmhelper.Database.Items;
+import group4.dmhelper.Database.Spells;
 import group4.dmhelper.Fragments.FragmentFeed;
 import group4.dmhelper.R;
+import group4.dmhelper.globalVariables;
 
+/**
+ * Created by Kyle
+ */
 public class PopupSelectPlayer extends Activity {
 
-    List<String> playerNames = new ArrayList<>();
     ListView players;
     ListAdapter adapter;
+    globalVariables g = globalVariables.getInstance();
+    int[] playerIds;
+    String[] playerNames;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.popup_select_players);
-        final String item = getIntent().getExtras().getString("item_equipment_name");
-        final int itemId = getIntent().getExtras().getInt("item_equipment_id");
+        final String objectName = getIntent().getExtras().getString("objectName");
+        final int objectID = getIntent().getExtras().getInt("objectId");
+        final int typeID = getIntent().getExtras().getInt("typeId");
         players = (ListView) findViewById(R.id.listView_players);
         players.setOnItemClickListener(
                 new AdapterView.OnItemClickListener() {
                     @Override
                     public void onItemClick(AdapterView<?> arg0, View view, int position, long id) {
-                        String name = playerNames.get(position);
-                        FragmentFeed.feedItems.add(item + " was given to " + name);
-                        Toast.makeText(getApplicationContext(), item + " was given to " + name, Toast.LENGTH_SHORT).show();
-                        //Item myItem = new Item(playerId, itemId);
-                        //Items i = new Items();
-                        //i.create(myItem);
+                        String name = playerNames[position];
+                        int playerId = playerIds[position];
+                        String feedMessage = "";
+                        switch (typeID) {
+                            case 0:
+                                feedMessage = objectName + " was given to " + name;
+                                Items dbItem = new Items(getApplicationContext());
+                                int i = dbItem.create(new Item(playerId, objectID, objectName));
+                                break;
+                            case 1:
+                                feedMessage = objectName + " was given to " + name;
+                                Equipments dbEquip = new Equipments(getApplicationContext());
+                                int e =dbEquip.create(new Equipment(playerId, objectID, objectName, 0));
+                                break;
+                            case 2:
+                                feedMessage = name+" learned the spell "+objectName;
+                                Spells dbSpell = new Spells(getApplicationContext());
+                                int s = dbSpell.create(new Spell(playerId, objectID, objectName));
+                                break;
+                            case 3:
+                                feedMessage = name+" gained feat "+objectName;
+                                Feats dbFeat = new Feats(getApplicationContext());
+                                int f = dbFeat.create(new Feat(playerId, objectID, objectName));
+                                break;
+                            default:
+                                feedMessage = "Something went wrong adding this object!";
+                        }
+                        FragmentFeed.feedItems.add(feedMessage);
+                        Toast.makeText(getApplicationContext(), feedMessage, Toast.LENGTH_SHORT).show();
                         finish();
                     }
                 }
@@ -65,15 +104,24 @@ public class PopupSelectPlayer extends Activity {
         this.getApplicationContext().getTheme().resolveAttribute(android.R.attr.listPreferredItemHeightSmall, typedValue, true);
         int y = getResources().getDimensionPixelSize(typedValue.resourceId);
 
-        playerNames.add("PlayerOne");
-        playerNames.add("PlayerTwo");
-        playerNames.add("PlayerThree");
-        playerNames.add("PlayerFour");
-        playerNames.add("PlayerFive");
+        Actors actor = new Actors(getApplicationContext());
+        ArrayList<Actor> playerss;
+        playerss = actor.getAllActorsByGameId(g.getGameId());
+        playerIds = new int[playerss.size()];
+        playerNames = new String[playerss.size()];
+        for (int k = 0; k < playerss.size(); k++) {
+            playerIds[k] = playerss.get(k).getId();
+            if (playerss.get(k).getName() == null || playerss.get(k).getName() == "") {
+                playerNames[k] = "Player"+(k+1);
+            }
+            else {
+                playerNames[k] = playerss.get(k).getName();
+            }
+        }
 
         Resources r = getResources();
         int pxW = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 280, r.getDisplayMetrics());
-        int pxH = y * playerNames.size() +
+        int pxH = y * playerNames.length +
                 (int)TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 31, r.getDisplayMetrics());
         getWindow().setLayout(pxW, pxH);
 

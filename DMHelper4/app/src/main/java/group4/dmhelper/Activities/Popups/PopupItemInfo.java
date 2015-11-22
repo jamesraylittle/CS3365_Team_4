@@ -11,6 +11,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import group4.dmhelper.Activities.Search.ActivitySearchItems;
+import group4.dmhelper.Actors.Actor;
 import group4.dmhelper.Actors.Item;
 import group4.dmhelper.Database.Items;
 import group4.dmhelper.Fragments.FragmentFeed;
@@ -76,10 +77,7 @@ public class PopupItemInfo extends Activity {
         setContentView(R.layout.popup_item_info);
         setPopupDimensions();
         setTextViews();
-        if (getIntent().getExtras().getString("playerID") != null) {
-            playerId = 1;
-        }
-        playerName = getIntent().getExtras().getString("playerName");
+        playerId = getIntent().getExtras().getInt("playerID");
     }
 
     private void setPopupDimensions() {
@@ -101,17 +99,22 @@ public class PopupItemInfo extends Activity {
         int itemId = Integer.parseInt(itemInfo[11]);
         if (playerId == 0) {
             Intent intent = new Intent(PopupItemInfo.this, PopupSelectPlayer.class);
-            intent.putExtra("item_equipment_name", itemInfo[0]);
-            intent.putExtra("item_equipment_id", itemId);
+            intent.putExtra("objectName", itemInfo[0]);
+            intent.putExtra("objectId", itemId);
+            intent.putExtra("typeId", 0); //0 for item, 1 for equipment, 2 for spell
             startActivity(intent);
             return;
         }
         else {
+            Actor a = new Actor(playerId, this.getApplicationContext());
+            playerName = a.getName();
+            if (playerName == null) {
+                playerName = "Unnamed Player";
+            }
             FragmentFeed.feedItems.add(itemInfo[0] + " was given to " + playerName);
             Toast.makeText(getApplicationContext(), itemInfo[0] + " was given to " + playerName, Toast.LENGTH_SHORT).show();
-           // Item myItem = new Item(playerId, itemId);
-           // Items i = new Items(this.getApplicationContext());
-           // i.create(myItem);
+            Items dbItem = new Items(getApplicationContext());
+            int i = dbItem.create(new Item(playerId, itemId, itemInfo[0]));
             PopupItemInfo.this.finish();
             ActivitySearchItems.itemSearchActivity.finish();
         }

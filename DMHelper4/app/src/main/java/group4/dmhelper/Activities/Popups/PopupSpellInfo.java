@@ -1,13 +1,20 @@
 package group4.dmhelper.Activities.Popups;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import group4.dmhelper.Activities.Search.ActivitySearchEquipment;
+import group4.dmhelper.Activities.Search.ActivitySearchSpells;
+import group4.dmhelper.Actors.Actor;
+import group4.dmhelper.Actors.Spell;
+import group4.dmhelper.Database.Spells;
 import group4.dmhelper.Fragments.FragmentFeed;
 import group4.dmhelper.Fragments.FragmentGame;
 import group4.dmhelper.R;
@@ -18,6 +25,8 @@ import group4.dmhelper.R;
 public class PopupSpellInfo extends Activity {
 
     String[] spellInfo;
+    int playerId;
+    String playerName;
     TextView name, altname, school, subschool, descriptor, spellcraft_dc, level, components,
              casting_time, range, target, area, effect, duration, saving_throw, spell_resistance,
              short_description, to_develop, material_components, arcane_material_components,
@@ -55,6 +64,7 @@ public class PopupSpellInfo extends Activity {
     spellInfo[27] = bard focus
     spellInfo[28] = cleric focus
     spellInfo[29] = druid focus
+    spellInfo[30] = id
     ============================================*/
 
     private void setTextViews() {
@@ -125,6 +135,7 @@ public class PopupSpellInfo extends Activity {
         setContentView(R.layout.popup_spell_info);
         setPopupDimensions();
         setTextViews();
+        playerId = getIntent().getExtras().getInt("playerID");
     }
 
     private void setPopupDimensions() {
@@ -143,8 +154,27 @@ public class PopupSpellInfo extends Activity {
     }
 
     public void doAddSpell(View view) {
-        FragmentFeed.feedItems.add(spellInfo[1] + " was added to the game");
-        Toast.makeText(getApplicationContext(), spellInfo[1]+" Added to Game", Toast.LENGTH_LONG).show();
-        PopupSpellInfo.this.finish();
+        int spellId = Integer.parseInt(spellInfo[31]);
+        if (playerId == 0) {
+            Intent intent = new Intent(PopupSpellInfo.this, PopupSelectPlayer.class);
+            intent.putExtra("objectName", spellInfo[0]);
+            intent.putExtra("objectId", spellId);
+            intent.putExtra("typeId", 2); //0 for item, 1 for equipment, 2 for spells
+            startActivity(intent);
+            return;
+        }
+        else {
+            Actor a = new Actor(playerId, this.getApplicationContext());
+            playerName = a.getName();
+            if (playerName == null) {
+                playerName = "Unnamed Player";
+            }
+            FragmentFeed.feedItems.add(playerName + " learned the spell " + spellInfo[0]);
+            Toast.makeText(getApplicationContext(), playerName + " learned the spell " + spellInfo[0], Toast.LENGTH_SHORT).show();
+            Spells dbSpell = new Spells(getApplicationContext());
+            dbSpell.create(new Spell(playerId, spellId, spellInfo[0]));
+            PopupSpellInfo.this.finish();
+            ActivitySearchSpells.spellSearchActivity.finish();
+        }
     }
 }

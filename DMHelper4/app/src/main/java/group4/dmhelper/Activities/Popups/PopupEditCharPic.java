@@ -15,6 +15,9 @@ import android.widget.Toast;
 import group4.dmhelper.Activities.ActivityGame;
 import group4.dmhelper.R;
 
+/**
+ * Created by Kyle
+ */
 public class PopupEditCharPic extends AppCompatActivity {
 
     @Override

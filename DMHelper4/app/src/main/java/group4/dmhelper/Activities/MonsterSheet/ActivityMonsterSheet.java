@@ -1,10 +1,8 @@
-package group4.dmhelper.Activities;
+package group4.dmhelper.Activities.MonsterSheet;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -20,28 +18,30 @@ import group4.dmhelper.Activities.Popups.PopupEditExperience;
 import group4.dmhelper.Activities.Popups.PopupEditHealth;
 import group4.dmhelper.Fragments.FragmentFeed;
 import group4.dmhelper.R;
+/**
+ * Created by Derek
+ */
+public class ActivityMonsterSheet extends AppCompatActivity {
 
-public class ActivityCharacterSheet extends AppCompatActivity {
-
-    private String PlayerIdentifier;
+    private String MonsterIdentifier;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_character_sheet);
+        setContentView(R.layout.activity_monster_sheet);
 
         Bundle extras = getIntent().getExtras();
-        PlayerIdentifier = extras.getString("Identifier");
+        MonsterIdentifier = extras.getString("Identifier");
         populateSpinners();
-        setupButtons(PlayerIdentifier);
-        editProgressBars(PlayerIdentifier);
+        setupButtons(MonsterIdentifier);
+        editProgressBars(MonsterIdentifier);
 
         LinearLayout health=(LinearLayout) findViewById(R.id.healthBarLayout);
         health.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(ActivityCharacterSheet.this, PopupEditHealth.class);
-                intent.putExtra("Identifier", PlayerIdentifier);
+                Intent intent = new Intent(ActivityMonsterSheet.this, PopupEditHealth.class);
+                intent.putExtra("Identifier", MonsterIdentifier);
                 startActivity(intent);
             }
         });
@@ -50,65 +50,58 @@ public class ActivityCharacterSheet extends AppCompatActivity {
         xp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(ActivityCharacterSheet.this, PopupEditExperience.class);
-                intent.putExtra("Identifier", PlayerIdentifier);
+                Intent intent = new Intent(ActivityMonsterSheet.this, PopupEditExperience.class);
+                intent.putExtra("Identifier", MonsterIdentifier);
                 startActivity(intent);
             }
         });
 
         // Button for Submit
-        Button Submit = (Button) findViewById(R.id.btn_submit_character_sheet);
+        Button Submit = (Button) findViewById(R.id.btn_submit_monster_sheet);
         Submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                EditText characterName = (EditText) findViewById(R.id.editText_character_name);
-                if (!characterName.getText().toString().equals("")) //TODO CHECK IF DIFFERENT FROM CURRENT
+                EditText monsterName = (EditText) findViewById(R.id.editText_monster_name);
+                if (!monsterName.getText().toString().equals("")) //TODO CHECK IF DIFFERENT FROM CURRENT
                 {
-                    FragmentFeed.feedItems.add(PlayerIdentifier + "Changed character name to " + characterName.getText());
-                }
-
-                EditText playerName = (EditText) findViewById(R.id.editText_player_name);
-                if (!playerName.getText().toString().equals("")) //TODO CHECK IF DIFFERENT FROM CURRENT
-                {
-                    final String s = playerName.getText().toString();
-                    FragmentFeed.feedItems.add(PlayerIdentifier + "Changed player name to " + playerName.getText());
+                    FragmentFeed.feedItems.add(MonsterIdentifier + "Changed monster name to " + monsterName.getText());
                 }
 
                 EditText height = (EditText) findViewById(R.id.editText_Height);
                 if (!height.getText().toString().equals("")) //TODO CHECK IF DIFFERENT FROM CURRENT
                 {
-                    FragmentFeed.feedItems.add(PlayerIdentifier + "Changed height to " + height.getText());
+                    FragmentFeed.feedItems.add(MonsterIdentifier + "Changed height to " + height.getText());
                 }
 
                 EditText weight = (EditText) findViewById(R.id.editText_Weight);
                 if (!weight.getText().toString().equals("")) //TODO CHECK IF DIFFERENT FROM CURRENT
                 {
-                    FragmentFeed.feedItems.add(PlayerIdentifier + "Changed weight to " + weight.getText());
+                    FragmentFeed.feedItems.add(MonsterIdentifier + "Changed weight to " + weight.getText());
                 }
 
                 EditText religion = (EditText) findViewById(R.id.editText_religion);
                 if (!religion.getText().toString().equals("")) //TODO CHECK IF DIFFERENT FROM CURRENT
                 {
-                    FragmentFeed.feedItems.add(PlayerIdentifier + "Changed religion to " + religion.getText());
+                    FragmentFeed.feedItems.add(MonsterIdentifier + "Changed religion to " + religion.getText());
                 }
 
-                Spinner characterClass = (Spinner) findViewById(R.id.spinner_search_class);
-                if (!characterClass.getSelectedItem().toString().equals("")) //TODO CHECK IF DIFFERENT FROM CURRENT
+                Spinner monsterClass = (Spinner) findViewById(R.id.spinner_search_class);
+                if (!monsterClass.getSelectedItem().toString().equals("")) //TODO CHECK IF DIFFERENT FROM CURRENT
                 {
-                    FragmentFeed.feedItems.add(PlayerIdentifier + "Changed class to " + characterClass.getSelectedItem().toString());
+                    FragmentFeed.feedItems.add(MonsterIdentifier + "Changed class to " + monsterClass.getSelectedItem().toString());
                 }
 
                 Spinner race = (Spinner) findViewById(R.id.spinner_search_race);
                 if (!race.getSelectedItem().toString().equals("")) //TODO CHECK IF DIFFERENT FROM CURRENT
                 {
-                    FragmentFeed.feedItems.add(PlayerIdentifier + "Changed race to " + race.getSelectedItem().toString());
+                    FragmentFeed.feedItems.add(MonsterIdentifier + "Changed race to " + race.getSelectedItem().toString());
                 }
 
                 Spinner alignment = (Spinner) findViewById(R.id.spinner_search_alignment);
                 if (!alignment.getSelectedItem().toString().equals("")) //TODO CHECK IF DIFFERENT FROM current
                 {
-                    FragmentFeed.feedItems.add(PlayerIdentifier + "Changed alignment to " + alignment.getSelectedItem().toString());
+                    FragmentFeed.feedItems.add(MonsterIdentifier + "Changed alignment to " + alignment.getSelectedItem().toString());
                 }
 
                 finish();
@@ -122,17 +115,17 @@ public class ActivityCharacterSheet extends AppCompatActivity {
         //Actor player = new Actor(playerIdentifer);
         ProgressBar healthbar = (ProgressBar) findViewById(R.id.progressBar_health);
         healthbar.setMax(100);  //TODO GET FROM DATABASE
-                                // healthbar.setMax(player.calcMaxHealth());
+        // healthbar.setMax(player.calcMaxHealth());
         healthbar.setProgress(45);  //TODO GET FROM DATABASE
-                                // healthbar.setProgress(player.getHealth());
+        // healthbar.setProgress(player.getHealth());
         TextView health = (TextView) findViewById(R.id.txt_health_ratio);
         health.setText(healthbar.getProgress() + "/" + healthbar.getMax());
 
         ProgressBar xpbar = (ProgressBar) findViewById(R.id.progressBar_experience);
         xpbar.setMax(100); //TODO GET FROM DATABASE
-                            // xpbar.setMax(player.calcMaxXp());
+        // xpbar.setMax(player.calcMaxXp());
         xpbar.setProgress(10);  //TODO GET FROM DATABASE
-                            //xpbar.setProgress(
+        //xpbar.setProgress(
         TextView xp = (TextView) findViewById(R.id.txt_experience_ratio);
         xp.setText(xpbar.getProgress() + "/" + xpbar.getMax());
 
@@ -144,7 +137,7 @@ public class ActivityCharacterSheet extends AppCompatActivity {
         skills.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(ActivityCharacterSheet.this, ActivityCharacterSkills.class);
+                Intent intent = new Intent(ActivityMonsterSheet.this, ActivityMonsterSkills.class);
                 intent.putExtra("Identifier", ID);
                 startActivity(intent);
             }
@@ -155,7 +148,7 @@ public class ActivityCharacterSheet extends AppCompatActivity {
         racialclass.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(ActivityCharacterSheet.this, ActivityCharacterRacialClass.class);
+                Intent intent = new Intent(ActivityMonsterSheet.this, ActivityMonsterRacialClass.class);
                 intent.putExtra("Identifier", ID);
                 startActivity(intent);
             }
@@ -165,7 +158,7 @@ public class ActivityCharacterSheet extends AppCompatActivity {
         magic.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(ActivityCharacterSheet.this, ActivityCharacterMagic.class);
+                Intent intent = new Intent(ActivityMonsterSheet.this, ActivityMonsterMagic.class);
                 intent.putExtra("Identifier", ID);
                 startActivity(intent);
             }
@@ -176,7 +169,7 @@ public class ActivityCharacterSheet extends AppCompatActivity {
         feats.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(ActivityCharacterSheet.this, ActivityCharacterFeats.class);
+                Intent intent = new Intent(ActivityMonsterSheet.this, ActivityMonsterFeats.class);
                 intent.putExtra("Identifier", ID);
                 startActivity(intent);
             }
@@ -186,7 +179,7 @@ public class ActivityCharacterSheet extends AppCompatActivity {
         inventory.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(ActivityCharacterSheet.this, ActivityCharacterInventory.class);
+                Intent intent = new Intent(ActivityMonsterSheet.this, ActivityMonsterInventory.class);
                 intent.putExtra("Identifier", ID);
                 startActivity(intent);
             }
@@ -197,7 +190,7 @@ public class ActivityCharacterSheet extends AppCompatActivity {
         abilities.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(ActivityCharacterSheet.this, ActivityCharacterAbilities.class);
+                Intent intent = new Intent(ActivityMonsterSheet.this, ActivityMonsterAbilities.class);
                 intent.putExtra("Identifier", ID);
                 startActivity(intent);
             }
@@ -208,7 +201,7 @@ public class ActivityCharacterSheet extends AppCompatActivity {
         charPic.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(ActivityCharacterSheet.this, PopupEditCharPic.class);
+                Intent intent = new Intent(ActivityMonsterSheet.this, PopupEditCharPic.class);
                 //intent.putExtra("Identifier", ID);
                 startActivity(intent);
             }

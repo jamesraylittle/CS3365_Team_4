@@ -49,7 +49,7 @@ public class ClassTypes extends Database implements DAO<ClassType> {
         ClassType oC = null;
         if(c.moveToFirst()) {
             do {
-                oC = new ClassType(c.getInt(0), c.getInt(1), c.getInt(2), c.getInt(3));
+                oC = new ClassType(c.getInt(0), c.getInt(3), c.getInt(1), c.getInt(2));
                 list.add(oC);
             } while(c.moveToNext());
         }
@@ -65,7 +65,7 @@ public class ClassTypes extends Database implements DAO<ClassType> {
                 "id integer primary key AUTOINCREMENT," +
                 "class INTEGER," +
                 "class_table INTEGER," +
-                "player INTEGER" +
+                "playerId INTEGER" +
                 ")";
         database.execSQL(q);
     }
@@ -76,8 +76,12 @@ public class ClassTypes extends Database implements DAO<ClassType> {
 
         v.put("class", c.getClassId());
         v.put("class_table", c.getClass_tableId());
-        v.put("player", c.getPlayerId());
+        v.put("playerId", c.getPlayerId());
         return v;
+    }
+
+    public void dropTable(){
+        database.execSQL("DROP TABLE " + TABLE);
     }
 
 }

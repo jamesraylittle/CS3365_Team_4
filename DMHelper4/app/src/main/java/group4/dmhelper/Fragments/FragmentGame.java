@@ -10,11 +10,10 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TableLayout;
 import android.widget.TableRow;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 
-import group4.dmhelper.Activities.ActivityCharacterSheet;
+import group4.dmhelper.Activities.CharacterSheet.ActivityCharacterSheet;
 import group4.dmhelper.Activities.ActivityGame;
 import group4.dmhelper.Activities.Popups.PopupMonsterInfo;
 import group4.dmhelper.R;
@@ -124,27 +123,27 @@ public class FragmentGame extends Fragment implements View.OnClickListener{
                 break;
             case R.id.playerOne:
                 intent = new Intent(getContext(), ActivityCharacterSheet.class);
-                intent.putExtra("Identifier","PlayerOne");
+                intent.putExtra("Identifier",((ActivityGame) getActivity()).getPlayerId(0));
                 startActivity(intent);
                 break;
             case R.id.playerTwo:
                 intent = new Intent(getContext(), ActivityCharacterSheet.class);
-                intent.putExtra("Identifier","PlayerTwo");
+                intent.putExtra("Identifier",((ActivityGame) getActivity()).getPlayerId(1));
                 startActivity(intent);
                 break;
             case R.id.playerThree:
                 intent = new Intent(getContext(), ActivityCharacterSheet.class);
-                intent.putExtra("Identifier","PlayerThree");
+                intent.putExtra("Identifier",((ActivityGame) getActivity()).getPlayerId(2));
                 startActivity(intent);
                 break;
             case R.id.playerFour:
                 intent = new Intent(getContext(), ActivityCharacterSheet.class);
-                intent.putExtra("Identifier","PlayerFour");
+                intent.putExtra("Identifier",((ActivityGame) getActivity()).getPlayerId(3));
                 startActivity(intent);
                 break;
             case R.id.playerFive:
                 intent = new Intent(getContext(), ActivityCharacterSheet.class);
-                intent.putExtra("Identifier", "PlayerFive");
+                intent.putExtra("Identifier", ((ActivityGame) getActivity()).getPlayerId(4));
                 startActivity(intent);
                 break;
             default :

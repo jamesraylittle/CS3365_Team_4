@@ -1,4 +1,4 @@
-package group4.dmhelper;
+package group4.dmhelper.Activities.Popups;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -16,8 +16,9 @@ import android.widget.TextView;
 import group4.dmhelper.Activities.ActivityCharacterSheet;
 import group4.dmhelper.Actors.Actor;
 import group4.dmhelper.Actors.Skill;
+import group4.dmhelper.R;
 
-public class popup_dice_roll extends AppCompatActivity implements View.OnClickListener{
+public class PopupDiceRoller extends AppCompatActivity implements View.OnClickListener{
 
     private LinearLayout linearLayout;
     private int id, roll;
@@ -165,7 +166,7 @@ public class popup_dice_roll extends AppCompatActivity implements View.OnClickLi
                 if(flag_skill)
                 {
                     linearLayout.removeAllViews();
-                    skill_selected = new Skill(id, v.getId());
+//                    skill_selected = new Skill(id, v.getId());
                     textView = new TextView(this);
                     textView.setText(skill_selected.getName());
 

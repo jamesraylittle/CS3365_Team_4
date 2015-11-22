@@ -6,26 +6,26 @@ package group4.dmhelper.Actors;
 public class Item extends Model {
     private int playerId;
     private int itemId;
+    private String itemName;
 
-    public Item(int id, int playerId, int itemId) {
+    public Item(int id, int playerId, int itemId, String itemName) {
         this.id = id;
         this.playerId = playerId;
         this.itemId = itemId;
+        this.itemName = itemName;
     }
 
-    public Item(int playerId, int itemId) {
+    public Item(int playerId, int itemId, String itemName) {
         this.playerId = playerId;
         this.itemId = itemId;
+        this.itemName = itemName;
     }
 
-    public Item() {
-        this(0,0,0);
+    public Item(int id) {
+        this.id = id;
     }
 
-    public int getPlayerId() {
-        return playerId;
-    }
-
+    public int getPlayerId() { return playerId; }
     public void setPlayerId(int playerId) {
         this.playerId = playerId;
     }
@@ -33,8 +33,14 @@ public class Item extends Model {
     public int getItemId() {
         return itemId;
     }
-
     public void setItemId(int itemId) {
         this.itemId = itemId;
+    }
+
+    public String getItemName() {
+        return itemName;
+    }
+    public void setItemName(String itemName) {
+        this.itemName = itemName;
     }
 }

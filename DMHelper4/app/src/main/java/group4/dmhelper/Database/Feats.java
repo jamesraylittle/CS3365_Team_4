@@ -35,6 +35,7 @@ public class Feats extends Database implements DAO<Feat> {
                 from.setId(c.getInt(0));
                 from.setPlayerId(c.getInt(1));
                 from.setFeatId(c.getInt(2));
+                from.setFeatName(c.getString(3));
             } while (c.moveToNext());
         }
 
@@ -45,10 +46,10 @@ public class Feats extends Database implements DAO<Feat> {
         String args[] = new String[] { playerId + ""};
         Cursor c = database.query(TABLE, null, "playerId = ?", args, null, null, null);
 
-        ArrayList<Feat> list = new ArrayList<Feat>();
+        ArrayList<Feat> list = new ArrayList();
         if(c.moveToFirst()) {
             do {
-                Feat s = new Feat(c.getInt(0), c.getInt(1));
+                Feat s = new Feat(c.getInt(0), c.getInt(1), c.getInt(2), c.getString(3));
                 list.add(s);
             } while(c.moveToNext());
         }
@@ -63,20 +64,25 @@ public class Feats extends Database implements DAO<Feat> {
     private ContentValues values(Feat feat) {
         ContentValues values = new ContentValues();
         if(feat.getId() > 0) values.put("id", feat.getId());
-
-        values.put("Player Id", feat.getPlayerId());
-        values.put("Item Id", feat.getFeatId());
+        values.put("playerId", feat.getPlayerId());
+        values.put("featId", feat.getFeatId());
+        values.put("featName", feat.getFeatName());
         return values;
     }
 
     private void createTable() {
         String q = "CREATE TABLE IF NOT EXISTS "+TABLE+" (" +
                 "id integer primary key AUTOINCREMENT," +
-                "Player Id INTEGER," +
-                "Item Id INTEGER," +
+                "playerId INTEGER," +
+                "featId INTEGER," +
+                "featName TEXT" +
                 ")";
         database.execSQL(q);
     }
 
 
+    public void dropTable(){
+        database.execSQL("DROP TABLE " + TABLE);
+    }
+    
 }

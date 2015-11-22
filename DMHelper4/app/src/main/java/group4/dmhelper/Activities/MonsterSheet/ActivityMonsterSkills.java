@@ -1,4 +1,4 @@
-package group4.dmhelper.Activities;
+package group4.dmhelper.Activities.MonsterSheet;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -7,18 +7,21 @@ import android.view.MenuItem;
 
 import group4.dmhelper.R;
 
-public class ActivityCharacterSkills extends AppCompatActivity {
+/**
+ * Created by Derek
+ */
+public class ActivityMonsterSkills extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_character_skills);
+        setContentView(R.layout.activity_monster_skills);
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_activity_character_skills, menu);
+        getMenuInflater().inflate(R.menu.menu_activity_monster_skills, menu);
         return true;
     }
 
