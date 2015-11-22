@@ -1,4 +1,4 @@
-package group4.dmhelper.Activities;
+package group4.dmhelper.Activities.CharacterSheet;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -8,7 +8,9 @@ import android.widget.Button;
 
 import group4.dmhelper.Activities.Search.ActivitySearchFeats;
 import group4.dmhelper.R;
-
+/**
+ * Created by Mose
+ */
 public class ActivityCharacterFeats extends AppCompatActivity {
 
     @Override

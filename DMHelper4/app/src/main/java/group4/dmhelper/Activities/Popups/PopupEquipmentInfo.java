@@ -1,13 +1,20 @@
 package group4.dmhelper.Activities.Popups;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import group4.dmhelper.Activities.Search.ActivitySearchEquipment;
+import group4.dmhelper.Activities.Search.ActivitySearchItems;
+import group4.dmhelper.Actors.Actor;
+import group4.dmhelper.Actors.Equipment;
+import group4.dmhelper.Database.Equipments;
 import group4.dmhelper.Fragments.FragmentFeed;
 import group4.dmhelper.R;
 
@@ -17,9 +24,11 @@ import group4.dmhelper.R;
 public class PopupEquipmentInfo extends Activity {
 
     String[] equipmentInfo;
+    String playerName;
     TextView name, family, category, subcategory, cost, damage_s, armor_shield_bonus,
              maximum_dex_bonus, damage_m, weight, critical, armor_check_penalty,
              arcane_spell_failure_check, range_increment, speed_30, type, speed_20;
+    int playerId;
 
     /*============================================
     equipmentInfo[0] = name
@@ -39,6 +48,7 @@ public class PopupEquipmentInfo extends Activity {
     equipmentInfo[14] = speed 30
     equipmentInfo[15] = type
     equipmentInfo[16] = speed 20
+    equipmentInfo[17] = id
     ============================================*/
 
     private void setTextViews() {
@@ -85,6 +95,7 @@ public class PopupEquipmentInfo extends Activity {
         setContentView(R.layout.popup_equipment_info);
         setPopupDimensions();
         setTextViews();
+        playerId = getIntent().getExtras().getInt("playerID");
     }
 
     private void setPopupDimensions() {
@@ -103,8 +114,27 @@ public class PopupEquipmentInfo extends Activity {
     }
 
     public void doAddEquipment(View view) {
-        FragmentFeed.feedItems.add(equipmentInfo[0] + " was added to the game");
-        Toast.makeText(getApplicationContext(), equipmentInfo[0]+" Added to Game", Toast.LENGTH_LONG).show();
-        PopupEquipmentInfo.this.finish();
+        int equipmentId = Integer.parseInt(equipmentInfo[17]);
+        if (playerId == 0) {
+            Intent intent = new Intent(PopupEquipmentInfo.this, PopupSelectPlayer.class);
+            intent.putExtra("objectName", equipmentInfo[0]);
+            intent.putExtra("objectId", equipmentId);
+            intent.putExtra("typeId", 1); //0 for item, 1 for equipment, 2 for spells
+            startActivity(intent);
+            return;
+        }
+        else {
+            Actor a = new Actor(playerId, this.getApplicationContext());
+            playerName = a.getName();
+            if (playerName == null) {
+                playerName = "Unnamed Player";
+            }
+            FragmentFeed.feedItems.add(equipmentInfo[0] + " was given to " + playerName);
+            Toast.makeText(getApplicationContext(), equipmentInfo[0] + " was given to " + playerName, Toast.LENGTH_SHORT).show();
+            Equipments dbEquip = new Equipments(getApplicationContext());
+            int e =dbEquip.create(new Equipment(playerId, equipmentId, equipmentInfo[0], 0));
+            PopupEquipmentInfo.this.finish();
+            ActivitySearchEquipment.equipmentSearchActivity.finish();
+        }
     }
 }

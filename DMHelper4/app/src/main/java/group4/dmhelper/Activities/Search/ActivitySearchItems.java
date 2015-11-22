@@ -35,7 +35,7 @@ public class ActivitySearchItems extends Activity {
     ListAdapter adapter;
     List<String> listUsers = new ArrayList<>();
     List<Integer> listIds = new ArrayList<>();
-    String playerId, playerName;
+    int playerId;
     private String[] arrayCat, arraySub, arraySpecial;
     public static Activity itemSearchActivity;
 
@@ -47,8 +47,7 @@ public class ActivitySearchItems extends Activity {
         myDbHelper = new DataBaseHelper(this);
         initializeWidgets();
         try {
-            playerId = getIntent().getExtras().getString("Identifier");
-            playerName = getIntent().getExtras().getString("playerName");
+            playerId = getIntent().getExtras().getInt("Identifier");
         }
         catch (Exception e) {}
     }
@@ -56,31 +55,22 @@ public class ActivitySearchItems extends Activity {
     @Override
     protected void onPause() {
         super.onPause();
-        try {
-            myDbHelper.close();
-        }catch(SQLException sqle){
-            throw sqle;
-        }
+        try { myDbHelper.close(); }
+        catch(SQLException sqle){ throw sqle; }
     }
 
     @Override
     protected void onStop() {
         super.onStop();
-        try {
-            myDbHelper.close();
-        }catch(SQLException sqle){
-            throw sqle;
-        }
+        try { myDbHelper.close(); }
+        catch(SQLException sqle){ throw sqle; }
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        try {
-            myDbHelper.openDataBase();
-        }catch(SQLException sqle){
-            throw sqle;
-        }
+        try { myDbHelper.openDataBase(); }
+        catch(SQLException sqle){ throw sqle; }
     }
 
     private void initializeWidgets() {
@@ -133,7 +123,6 @@ public class ActivitySearchItems extends Activity {
                         Intent intent = new Intent(ActivitySearchItems.this, PopupItemInfo.class);
                         intent.putExtra("item_values", iv);
                         intent.putExtra("playerID",playerId);
-                        intent.putExtra("playerName",playerName);
                         startActivity(intent);
                     }
                 }
@@ -225,7 +214,8 @@ public class ActivitySearchItems extends Activity {
         }
         else { // Otherwise, populate the list with the results
             listUsers.clear();
-            Toast.makeText(getApplicationContext(), query.getCount() + " results found.", Toast.LENGTH_LONG).show();
+            listIds.clear();
+            //Toast.makeText(getApplicationContext(), query.getCount() + " results found.", Toast.LENGTH_LONG).show();
             query.moveToFirst();
             do {
                 listUsers.add(query.getString(1));

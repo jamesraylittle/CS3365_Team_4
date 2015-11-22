@@ -93,14 +93,100 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         return query;
     }
 
-    public Cursor performStartsWithSearch(String columns, String tables, String whereColumn, String orderColumn, String orderType, String input) {
-        String[] SelectionArgs;
+    public Cursor generalQuery(String table) {
         Cursor query;
-
-        SelectionArgs = new String[] {input+"%"};
-
-        query = myDataBase.rawQuery("SELECT "+columns+" FROM "+tables+" WHERE "+whereColumn+" LIKE ? ORDER BY "+orderColumn+" "+orderType, SelectionArgs);
-
+        String[] SelectionArgs = new String[]{};
+        String queryText = "Select * from "+table;
+        query = myDataBase.rawQuery(queryText, SelectionArgs);
         return query;
+    }
+
+    public Cursor generalQuery(String table, int id) {
+        Cursor query;
+        String[] SelectionArgs = new String[]{""+id};
+        String queryText = "Select * from "+table+" where _id = ?";
+        query = myDataBase.rawQuery(queryText, SelectionArgs);
+        return query;
+    }
+
+    public String[] retrieveClassByID(int id) {
+        this.openDataBase();
+        String[] SelectionArgs = new String[]{""+id};
+        Cursor query = myDataBase.rawQuery("Select * from class where _id = ?", SelectionArgs);
+        return getCursorData(query);
+    }
+
+    public String[] retrieveClassTableByID(int id) {
+        this.openDataBase();
+        String[] SelectionArgs = new String[]{""+id};
+        Cursor query = myDataBase.rawQuery("Select * from class_table where _id = ?", SelectionArgs);
+        return getCursorData(query);
+    }
+
+    public String[] retrieveDomainByID(int id) {
+        this.openDataBase();
+        String[] SelectionArgs = new String[]{""+id};
+        Cursor query = myDataBase.rawQuery("Select * from domain where _id = ?", SelectionArgs);
+        return getCursorData(query);
+    }
+
+    public String[] retrieveEquipmentByID(int id) {
+        this.openDataBase();
+        String[] SelectionArgs = new String[]{""+id};
+        Cursor query = myDataBase.rawQuery("Select * from equipment where _id = ?", SelectionArgs);
+        return getCursorData(query);
+    }
+
+    public String[] retrieveFeatByID(int id) {
+        this.openDataBase();
+        String[] SelectionArgs = new String[]{""+id};
+        Cursor query = myDataBase.rawQuery("Select * from feat where _id = ?", SelectionArgs);
+        return getCursorData(query);
+    }
+
+    public String[] retrieveItemByID(int id) {
+        this.openDataBase();
+        String[] SelectionArgs = new String[]{""+id};
+        Cursor query = myDataBase.rawQuery("Select * from item where _id = ?", SelectionArgs);
+        Log.d("num44","query'd - " + query.getColumnCount());
+        return getCursorData(query);
+    }
+
+    public String[] retrieveMonsterByID(int id) {
+        this.openDataBase();
+        String[] SelectionArgs = new String[]{""+id};
+        Cursor query = myDataBase.rawQuery("Select * from monster where _id = ?", SelectionArgs);
+        return getCursorData(query);
+    }
+
+    public String[] retrievePowerByID(int id) {
+        this.openDataBase();
+        String[] SelectionArgs = new String[]{""+id};
+        Cursor query = myDataBase.rawQuery("Select * from power where _id = ?", SelectionArgs);
+        return getCursorData(query);
+    }
+
+    public String[] retrieveSkillByID(int id) {
+        this.openDataBase();
+        String[] SelectionArgs = new String[]{""+id};
+        Cursor query = myDataBase.rawQuery("Select * from skill where _id = ?", SelectionArgs);
+        return getCursorData(query);
+    }
+
+    public String[] retrieveSpellByID(int id) {
+        this.openDataBase();
+        String[] SelectionArgs = new String[]{""+id};
+        Cursor query = myDataBase.rawQuery("Select * from spell where _id = ?", SelectionArgs);
+        return getCursorData(query);
+    }
+
+    private String[] getCursorData(Cursor c) {
+        String[] data = new String[c.getColumnCount()-2];
+        if (c.moveToFirst()) {
+            for (int i = 1; i < c.getColumnCount()-1; i++) {
+                data[i-1] = c.getString(i);
+            }
+        }
+        return data;
     }
 }

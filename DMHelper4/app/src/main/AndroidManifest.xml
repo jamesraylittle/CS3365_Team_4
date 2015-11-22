@@ -55,7 +55,7 @@
             android:windowSoftInputMode="adjustPan" >
         </activity>
         <activity
-            android:name=".Activities.ActivityCharacterSheet"
+            android:name=".Activities.CharacterSheet.ActivityCharacterSheet"
             android:label="@string/title_activity_activity_character_sheet"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustPan" >
@@ -71,27 +71,27 @@
             android:theme="@style/AppTheme.popup" >
         </activity>
         <activity
-            android:name=".Activities.ActivityCharacterSkills"
+            android:name=".Activities.CharacterSheet.ActivityCharacterSkills"
             android:label="@string/title_activity_activity_character_skills" >
         </activity>
         <activity
-            android:name=".Activities.ActivityCharacterMagic"
+            android:name=".Activities.CharacterSheet.ActivityCharacterMagic"
             android:label="@string/title_activity_activity_character_magic" >
         </activity>
         <activity
-            android:name=".Activities.ActivityCharacterRacialClass"
+            android:name=".Activities.CharacterSheet.ActivityCharacterRacialClass"
             android:label="@string/title_activity_activity_character_racial_class" >
         </activity>
         <activity
-            android:name=".Activities.ActivityCharacterFeats"
+            android:name=".Activities.CharacterSheet.ActivityCharacterFeats"
             android:label="@string/title_activity_activity_character_feats" >
         </activity>
         <activity
-            android:name=".Activities.ActivityCharacterInventory"
+            android:name=".Activities.CharacterSheet.ActivityCharacterInventory"
             android:label="@string/title_activity_activity_character_inventory" >
         </activity>
         <activity
-            android:name=".Activities.ActivityCharacterAbilities"
+            android:name=".Activities.CharacterSheet.ActivityCharacterAbilities"
             android:label="@string/title_activity_activity_character_abilities" >
         </activity>
         <activity

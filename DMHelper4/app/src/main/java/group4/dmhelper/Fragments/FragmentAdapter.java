@@ -3,7 +3,9 @@ package group4.dmhelper.Fragments;
 import android.content.Context;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
-
+/**
+ * Created by Kyle
+ */
 public class FragmentAdapter extends android.support.v4.app.FragmentPagerAdapter {
     final int PAGE_COUNT = 3;
     private String tabTitles[] = new String[] { "Feed", "Game", "Search" };
