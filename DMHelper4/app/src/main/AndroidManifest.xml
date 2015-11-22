@@ -63,36 +63,44 @@
         <activity
             android:name=".Activities.Popups.PopupEditExperience"
             android:label="@string/title_activity_popup_edit_experience"
-            android:theme="@style/AppTheme.popup" >
+            android:theme="@style/AppTheme.popup"
+            android:screenOrientation="portrait">
         </activity>
         <activity
             android:name=".Activities.Popups.PopupEditHealth"
             android:label="@string/title_activity_popup_edit_health"
-            android:theme="@style/AppTheme.popup" >
+            android:theme="@style/AppTheme.popup"
+            android:screenOrientation="portrait">
         </activity>
         <activity
             android:name=".Activities.CharacterSheet.ActivityCharacterSkills"
-            android:label="@string/title_activity_activity_character_skills" >
+            android:label="@string/title_activity_activity_character_skills"
+            android:screenOrientation="portrait">
         </activity>
         <activity
             android:name=".Activities.CharacterSheet.ActivityCharacterMagic"
-            android:label="@string/title_activity_activity_character_magic" >
+            android:label="@string/title_activity_activity_character_magic"
+            android:screenOrientation="portrait">
         </activity>
         <activity
             android:name=".Activities.CharacterSheet.ActivityCharacterRacialClass"
-            android:label="@string/title_activity_activity_character_racial_class" >
+            android:label="@string/title_activity_activity_character_racial_class"
+            android:screenOrientation="portrait">
         </activity>
         <activity
             android:name=".Activities.CharacterSheet.ActivityCharacterFeats"
-            android:label="@string/title_activity_activity_character_feats" >
+            android:label="@string/title_activity_activity_character_feats"
+            android:screenOrientation="portrait">
         </activity>
         <activity
             android:name=".Activities.CharacterSheet.ActivityCharacterInventory"
-            android:label="@string/title_activity_activity_character_inventory" >
+            android:label="@string/title_activity_activity_character_inventory"
+            android:screenOrientation="portrait">
         </activity>
         <activity
             android:name=".Activities.CharacterSheet.ActivityCharacterAbilities"
-            android:label="@string/title_activity_activity_character_abilities" >
+            android:label="@string/title_activity_activity_character_abilities"
+            android:screenOrientation="portrait">
         </activity>
         <activity
             android:name=".Activities.Popups.PopupMonsterInfo"
@@ -137,25 +145,36 @@
         <activity
             android:name=".Activities.Popups.PopupNumPlayer"
             android:label="@string/title_activity_num_player"
-            android:theme="@style/AppTheme.popup">
+            android:theme="@style/AppTheme.popup"
+            android:screenOrientation="portrait">
         </activity>
         <activity
             android:name=".Activities.Popups.PopupEditCharPic"
             android:label="@string/title_activity_num_player"
             android:theme="@style/AppTheme.popup"
-            android:noHistory="true">
+            android:noHistory="true"
+            android:screenOrientation="portrait">
         </activity>
         <activity
             android:name=".Activities.Popups.PopupSelectPlayer"
             android:label="@string/title_activity_num_player"
             android:theme="@style/AppTheme.popup"
-            android:noHistory="true">
+            android:noHistory="true"
+            android:screenOrientation="portrait">
         </activity>
         <activity
             android:name=".Activities.Popups.PopupSelectGame"
             android:label="@string/title_activity_num_player"
             android:theme="@style/AppTheme.popup"
-            android:noHistory="true">
+            android:noHistory="true"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity
+            android:name=".Activities.Popups.PopupSelectSkill"
+            android:label="@string/title_activity_num_player"
+            android:theme="@style/AppTheme.popup"
+            android:noHistory="true"
+            android:screenOrientation="portrait">
         </activity>
 
     </application>

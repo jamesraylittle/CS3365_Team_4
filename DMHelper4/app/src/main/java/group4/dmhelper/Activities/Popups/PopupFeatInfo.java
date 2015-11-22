@@ -1,6 +1,7 @@
 package group4.dmhelper.Activities.Popups;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.view.View;
@@ -8,6 +9,13 @@ import android.view.WindowManager;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import group4.dmhelper.Activities.Search.ActivitySearchEquipment;
+import group4.dmhelper.Activities.Search.ActivitySearchFeats;
+import group4.dmhelper.Actors.Actor;
+import group4.dmhelper.Actors.Equipment;
+import group4.dmhelper.Actors.Feat;
+import group4.dmhelper.Database.Equipments;
+import group4.dmhelper.Database.Feats;
 import group4.dmhelper.Fragments.FragmentFeed;
 import group4.dmhelper.R;
 
@@ -18,6 +26,8 @@ public class PopupFeatInfo extends Activity {
 
     String[] featInfo;
     TextView name, type, multiple, stack, choice, prereq, normal, special;
+    int playerId;
+    String playerName;
 
     /*============================================
     featInfo[0] = name
@@ -28,6 +38,7 @@ public class PopupFeatInfo extends Activity {
     featInfo[5] = prereq
     featInfo[7] = normal
     featInfo[8] = special
+    featInfo[9] = id
     ============================================*/
 
     private void setTextViews() {
@@ -56,6 +67,7 @@ public class PopupFeatInfo extends Activity {
         setContentView(R.layout.popup_feat_info);
         setPopupDimensions();
         setTextViews();
+        playerId = getIntent().getExtras().getInt("playerID");
     }
 
     private void setPopupDimensions() {
@@ -74,8 +86,27 @@ public class PopupFeatInfo extends Activity {
     }
 
     public void doAddFeat(View view) {
-        FragmentFeed.feedItems.add(featInfo[0] + " was added to the game");
-        Toast.makeText(getApplicationContext(), featInfo[0]+" Added to Game", Toast.LENGTH_LONG).show();
-        PopupFeatInfo.this.finish();
+        int featId = Integer.parseInt(featInfo[9]);
+        if (playerId == 0) {
+            Intent intent = new Intent(PopupFeatInfo.this, PopupSelectPlayer.class);
+            intent.putExtra("objectName", featInfo[0]);
+            intent.putExtra("objectId", featId);
+            intent.putExtra("typeId", 3); //0 for item, 1 for equipment, 2 for spells, 3 for feats
+            startActivity(intent);
+            return;
+        }
+        else {
+            Actor a = new Actor(playerId, this.getApplicationContext());
+            playerName = a.getName();
+            if (playerName == null) {
+                playerName = "Unnamed Player";
+            }
+            FragmentFeed.feedItems.add(playerName + " gained feat " + featInfo[0]);
+            Toast.makeText(getApplicationContext(), playerName + " gained feat " + featInfo[0], Toast.LENGTH_SHORT).show();
+            Feats dbFeat = new Feats(getApplicationContext());
+            int e = dbFeat.create(new Feat(playerId, featId, featInfo[0]));
+            PopupFeatInfo.this.finish();
+            ActivitySearchFeats.featSearchActivity.finish();
+        }
     }
 }

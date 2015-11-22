@@ -7,20 +7,23 @@ import java.util.ArrayList;
 public class Skill extends Ability implements Comparable<Skill> {
     private int playerId;   //read/write DB
     private int skillId;    //read only DB
+    private int baseScore;
+    private int miscBonus;
+    private String name;
 
     public Skill(int id, int baseScore, int miscBonus, String name, int playerId, int skillId) {
-        super(id, baseScore, miscBonus, name);
+        this.id = id;
+        this.baseScore = baseScore;
+        this.miscBonus = miscBonus;
+        this.name = name;
         this.playerId = playerId;
         this.skillId = skillId;
     }
 
     public Skill(int baseScore, int miscBonus, String name, int playerId, int skillId) {
-        super(baseScore, miscBonus, name);
-        this.playerId = playerId;
-        this.skillId = skillId;
-    }
-
-    public Skill(int playerId, int skillId) {
+        this.baseScore = baseScore;
+        this.miscBonus = miscBonus;
+        this.name = name;
         this.playerId = playerId;
         this.skillId = skillId;
     }
@@ -37,16 +40,27 @@ public class Skill extends Ability implements Comparable<Skill> {
     public int getPlayerId() {
         return playerId;
     }
+    public void setPlayerId(int playerId) { this.playerId = playerId; }
 
-    public void setPlayerId(int playerId) {
-        this.playerId = playerId;
+    public int getSkillId() { return skillId; }
+    public void setSkillId(int skillId) {this.skillId = skillId;}
+
+    public int getBaseScore() {return baseScore;}
+    public void setBaseScore(int baseScore) {
+        this.baseScore = baseScore;
     }
 
-    public int getSkillId() {
-        return skillId;
+    public int getMiscBonus() {
+        return miscBonus;
+    }
+    public void setMiscBonus(int miscBonus) {
+        this.miscBonus = miscBonus;
     }
 
-    public void setSkillId(int skillId) {
-        this.skillId = skillId;
+    public String getName() {
+        return name;
+    }
+    public void setName(String name) {
+        this.name = name;
     }
 }
