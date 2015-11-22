@@ -43,7 +43,6 @@ public class ActivityCharacterMagic extends AppCompatActivity {
 
         spells = (ListView)findViewById(R.id.listView_Magic);
 
-        // Button for opening item info
         final Button searchFeats = (Button) findViewById(R.id.btn_search_Magic_CS);
         searchFeats.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -65,7 +64,7 @@ public class ActivityCharacterMagic extends AppCompatActivity {
                         .setIcon(android.R.drawable.ic_dialog_alert)
                         .setIconAttribute(android.R.attr.alertDialogIcon)
                         .setTitle("Confirm Delete")
-                        .setMessage("Are you sure you want delete the spell \"" + selectedSpell.getSpellName() + "\"?")
+                        .setMessage("Are you sure you want to delete the spell \"" + selectedSpell.getSpellName() + "\"?")
                         .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {

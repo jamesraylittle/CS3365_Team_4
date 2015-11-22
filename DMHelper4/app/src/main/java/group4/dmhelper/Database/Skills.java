@@ -3,6 +3,7 @@ package group4.dmhelper.Database;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
+import android.util.Log;
 
 import java.util.ArrayList;
 
@@ -15,11 +16,11 @@ import group4.dmhelper.Actors.Skill;
  * This class needs to get the skill ids somehow
  */
 public class Skills extends Database implements DAO<Skill> {
-    private String TABLE = "abilities";
+    private String TABLE = "skills";
     private int skillId;
 
     public Skills(Context context) {
-        super(context, "abilities");
+        super(context, "skills");
         createTable();
     }
 
@@ -31,7 +32,7 @@ public class Skills extends Database implements DAO<Skill> {
     public Skill retrieve(int id) {
         String[] args = new String[]{id + ""};
         Cursor c = database.query(TABLE, null, "id = ?", args, null, null, null);
-        Skill a = new Skill(id, skillId);
+        Skill a = new Skill();
 
         if (c.moveToFirst()) {
             do {
@@ -48,10 +49,10 @@ public class Skills extends Database implements DAO<Skill> {
     }
 
     public ArrayList<Skill> getAllByPlayerId(int playerId) {
-        String args[] = new String[] { playerId + ""};
-        Cursor c = database.query(TABLE, null, "playerId = ?", args, null, null, null);
+        String args[] = new String[] {playerId+""};
+        Cursor c = database.rawQuery("Select * from skills where playerId = ?", args);
 
-        ArrayList<Skill> list = new ArrayList<Skill>();
+        ArrayList<Skill> list = new ArrayList();
         if(c.moveToFirst()) {
             do {
                 Skill s = new Skill(c.getInt(0), c.getInt(1), c.getInt(2), c.getString(3), c.getInt(4), c.getInt(5));
@@ -74,7 +75,7 @@ public class Skills extends Database implements DAO<Skill> {
         values.put("baseScore", a.getBaseScore());
         values.put("miscBonus", a.getMiscBonus());
         values.put("name", a.getName());
-        values.put("playerId", a.getSkillId());
+        values.put("playerId", a.getPlayerId());
         values.put("skillId", a.getSkillId());
         return values;
     }

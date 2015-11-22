@@ -35,14 +35,20 @@ public class ActivitySearchFeats extends Activity {
     ListAdapter adapter;
     List<String> listUsers = new ArrayList<>();
     private String[] arraySize;
-    //private final String tagName = "android:switcher:" + R.id.viewpager + ":" + 0;
+    public static Activity featSearchActivity;
+    int playerId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search_feat);
+        featSearchActivity = this;
         myDbHelper = new DataBaseHelper(this);
         initializeWidgets();
+        try {
+            playerId = getIntent().getExtras().getInt("Identifier");
+        }
+        catch (Exception e) {}
     }
 
     @Override
@@ -105,6 +111,7 @@ public class ActivitySearchFeats extends Activity {
                         }
                         Intent intent = new Intent(ActivitySearchFeats.this, PopupFeatInfo.class);
                         intent.putExtra("feat_values", ev);
+                        intent.putExtra("playerID", playerId);
                         startActivity(intent);
                     }
                 }
@@ -123,6 +130,7 @@ public class ActivitySearchFeats extends Activity {
             for (int i = 1; i < 10; i++) {
                 ei.add(query.getString(i));
             }
+            ei.add(""+query.getInt(0));
             query.close();
         }
         myDbHelper.close();
