@@ -180,6 +180,13 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         return getCursorData(query);
     }
 
+    public Cursor retrieveAllSkills() {
+        this.openDataBase();
+        String[] SelectionArgs = new String[]{};
+        Cursor query = myDataBase.rawQuery("Select _id, name from skill", SelectionArgs);
+        return query;
+    }
+
     private String[] getCursorData(Cursor c) {
         String[] data = new String[c.getColumnCount()-2];
         if (c.moveToFirst()) {

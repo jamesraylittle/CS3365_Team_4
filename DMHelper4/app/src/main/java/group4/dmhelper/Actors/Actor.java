@@ -135,7 +135,7 @@ public class Actor extends Model implements Comparable<Actor>{
         classTypeId = new ClassType();
         playerAbilityIds = new PlayerAbility();
 
-        for(int i=0;i<40;i++)skillIds.add(new Skill(id, i+1));
+       // for(int i=0;i<40;i++)skillIds.add(new Skill(id, i+1));
 
         pullFromDatabase();
     }
@@ -164,7 +164,7 @@ public class Actor extends Model implements Comparable<Actor>{
         classTypeId = new ClassType();
         playerAbilityIds = new PlayerAbility();
 
-        for(int i=0;i<40;i++)skillIds.add(new Skill(id, i+1));
+       // for(int i=0;i<40;i++)skillIds.add(new Skill(id, i+1));
     }
 
     public void equalsDatabaseValues(Actor a) {
@@ -520,7 +520,7 @@ public class Actor extends Model implements Comparable<Actor>{
 
     //public void addEquippedItems(int ID)    {Equipment e = new Equipment(this.id,ID); dEquipments.create(e);}
     //public void addSpells(int ID)           {Spell s = new Spell(this.id,ID); dSpells.create(s);}
-    public void addFeats(int ID)            {Feat f = new Feat(this.id,ID); dFeats.create(f);}
+    //public void addFeats(int ID)            {Feat f = new Feat(this.id,ID); dFeats.create(f);}
 
     public void removeEquippedItems(int ID) {dEquipments.delete(ID);}
     public void removeSpells(int ID)        {dSpells.delete(ID);}

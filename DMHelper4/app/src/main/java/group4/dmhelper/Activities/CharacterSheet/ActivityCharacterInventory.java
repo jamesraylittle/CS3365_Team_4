@@ -63,7 +63,7 @@ public class ActivityCharacterInventory extends AppCompatActivity {
                         .setIcon(android.R.drawable.ic_dialog_alert)
                         .setIconAttribute(android.R.attr.alertDialogIcon)
                         .setTitle("Confirm Delete")
-                        .setMessage("Are you sure you want delete the spell \"" + selectedItem.getItemName() + "\"?")
+                        .setMessage("Are you sure you want to delete the spell \"" + selectedItem.getItemName() + "\"?")
                         .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
@@ -88,7 +88,7 @@ public class ActivityCharacterInventory extends AppCompatActivity {
                         .setIcon(android.R.drawable.ic_dialog_alert)
                         .setIconAttribute(android.R.attr.alertDialogIcon)
                         .setTitle("Confirm Delete")
-                        .setMessage("Are you sure you want delete the spell \"" + selectedEquipment.getEquipmentName() + "\"?")
+                        .setMessage("Are you sure you want to delete the spell \"" + selectedEquipment.getEquipmentName() + "\"?")
                         .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
