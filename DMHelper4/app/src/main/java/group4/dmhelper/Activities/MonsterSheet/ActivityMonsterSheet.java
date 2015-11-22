@@ -1,10 +1,8 @@
-package group4.dmhelper.Activities;
+package group4.dmhelper.Activities.MonsterSheet;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -18,10 +16,11 @@ import android.widget.TextView;
 import group4.dmhelper.Activities.Popups.PopupEditCharPic;
 import group4.dmhelper.Activities.Popups.PopupEditExperience;
 import group4.dmhelper.Activities.Popups.PopupEditHealth;
-import group4.dmhelper.Actors.Monster;
 import group4.dmhelper.Fragments.FragmentFeed;
 import group4.dmhelper.R;
-
+/**
+ * Created by Derek
+ */
 public class ActivityMonsterSheet extends AppCompatActivity {
 
     private String MonsterIdentifier;

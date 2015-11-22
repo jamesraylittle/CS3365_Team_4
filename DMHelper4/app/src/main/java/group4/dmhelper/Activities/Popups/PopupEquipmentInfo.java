@@ -13,6 +13,8 @@ import android.widget.Toast;
 import group4.dmhelper.Activities.Search.ActivitySearchEquipment;
 import group4.dmhelper.Activities.Search.ActivitySearchItems;
 import group4.dmhelper.Actors.Actor;
+import group4.dmhelper.Actors.Equipment;
+import group4.dmhelper.Database.Equipments;
 import group4.dmhelper.Fragments.FragmentFeed;
 import group4.dmhelper.R;
 
@@ -129,7 +131,8 @@ public class PopupEquipmentInfo extends Activity {
             }
             FragmentFeed.feedItems.add(equipmentInfo[0] + " was given to " + playerName);
             Toast.makeText(getApplicationContext(), equipmentInfo[0] + " was given to " + playerName, Toast.LENGTH_SHORT).show();
-            // TODO add equipment to actor/db
+            Equipments dbEquip = new Equipments(getApplicationContext());
+            int e =dbEquip.create(new Equipment(playerId, equipmentId, equipmentInfo[0], 0));
             PopupEquipmentInfo.this.finish();
             ActivitySearchEquipment.equipmentSearchActivity.finish();
         }

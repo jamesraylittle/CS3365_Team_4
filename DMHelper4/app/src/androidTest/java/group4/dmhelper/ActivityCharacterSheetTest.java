@@ -7,7 +7,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 
-import group4.dmhelper.Activities.ActivityCharacterSheet;
+import group4.dmhelper.Activities.CharacterSheet.ActivityCharacterSheet;
 
 /**
  * Created by Kyle on 11/2/2015.

@@ -24,17 +24,17 @@ public class Items extends Database implements DAO<Item> {
 
     public void update(Item item) { super.update(TABLE, item, values(item)); }
 
-
     public Item retrieve(int id) {
         String[] args = new String[] { id+"" };
         Cursor c = database.query(TABLE, null, "id = ?", args, null, null, null);
-        Item from = new Item();
+        Item from = new Item(id);
 
         if (c.moveToFirst()) {
             do {
                 from.setId(c.getInt(0));
                 from.setPlayerId(c.getInt(1));
                 from.setItemId(c.getInt(2));
+                from.setItemName(c.getString(3));
             } while (c.moveToNext());
         }
 
@@ -45,11 +45,11 @@ public class Items extends Database implements DAO<Item> {
         String args[] = new String[] { playerId + "" };
         Cursor c = database.query(TABLE, null, "playerId = ?", args, null, null, null);
 
-        ArrayList<Item> list = new ArrayList<Item>();
+        ArrayList<Item> list = new ArrayList();
 
         if(c.moveToFirst()) {
             do {
-                Item i = new Item(c.getInt(0), c.getInt(1), c.getInt(2));
+                Item i = new Item(c.getInt(0), c.getInt(1), c.getInt(2), c.getString(3));
                 list.add(i);
             } while (c.moveToNext());
         }
@@ -67,7 +67,8 @@ public class Items extends Database implements DAO<Item> {
         if(item.getId() > 0) values.put("id", item.getId());
 
         values.put("playerId", item.getPlayerId());
-        values.put("ptemId", item.getItemId());
+        values.put("itemId", item.getItemId());
+        values.put("itemName", item.getItemName());
         return values;
     }
 
@@ -75,7 +76,8 @@ public class Items extends Database implements DAO<Item> {
         String q = "CREATE TABLE IF NOT EXISTS "+TABLE+" (" +
                 "id integer primary key AUTOINCREMENT," +
                 "playerId INTEGER," +
-                "itemId INTEGER" +
+                "itemId INTEGER," +
+                "itemName TEXT" +
                 ")";
         database.execSQL(q);
     }

@@ -1,4 +1,4 @@
-package group4.dmhelper.Activities;
+package group4.dmhelper.Activities.MonsterSheet;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -7,6 +7,9 @@ import android.view.MenuItem;
 
 import group4.dmhelper.R;
 
+/**
+ * Created by Derek
+ */
 public class ActivityMonsterSkills extends AppCompatActivity {
 
     @Override

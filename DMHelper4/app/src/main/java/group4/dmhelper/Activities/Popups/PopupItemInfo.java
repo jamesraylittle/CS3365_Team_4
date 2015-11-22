@@ -113,7 +113,8 @@ public class PopupItemInfo extends Activity {
             }
             FragmentFeed.feedItems.add(itemInfo[0] + " was given to " + playerName);
             Toast.makeText(getApplicationContext(), itemInfo[0] + " was given to " + playerName, Toast.LENGTH_SHORT).show();
-            // TODO add item to actor/db
+            Items dbItem = new Items(getApplicationContext());
+            int i = dbItem.create(new Item(playerId, itemId, itemInfo[0]));
             PopupItemInfo.this.finish();
             ActivitySearchItems.itemSearchActivity.finish();
         }

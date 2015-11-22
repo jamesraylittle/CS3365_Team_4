@@ -13,6 +13,8 @@ import android.widget.Toast;
 import group4.dmhelper.Activities.Search.ActivitySearchEquipment;
 import group4.dmhelper.Activities.Search.ActivitySearchSpells;
 import group4.dmhelper.Actors.Actor;
+import group4.dmhelper.Actors.Spell;
+import group4.dmhelper.Database.Spells;
 import group4.dmhelper.Fragments.FragmentFeed;
 import group4.dmhelper.Fragments.FragmentGame;
 import group4.dmhelper.R;
@@ -169,7 +171,8 @@ public class PopupSpellInfo extends Activity {
             }
             FragmentFeed.feedItems.add(playerName + " learned the spell " + spellInfo[0]);
             Toast.makeText(getApplicationContext(), playerName + " learned the spell " + spellInfo[0], Toast.LENGTH_SHORT).show();
-            // TODO add spell to actor/db
+            Spells dbSpell = new Spells(getApplicationContext());
+            dbSpell.create(new Spell(playerId, spellId, spellInfo[0]));
             PopupSpellInfo.this.finish();
             ActivitySearchSpells.spellSearchActivity.finish();
         }

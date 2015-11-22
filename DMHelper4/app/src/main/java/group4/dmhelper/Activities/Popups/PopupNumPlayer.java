@@ -21,7 +21,10 @@ import group4.dmhelper.Actors.Game;
 import group4.dmhelper.Database.Games;
 import group4.dmhelper.R;
 import group4.dmhelper.globalVariables;
-
+/**
+ * Created by Emilie
+ * Edited by Kyle and Mose
+ */
 public class PopupNumPlayer extends AppCompatActivity {
 
     private static RadioGroup g;

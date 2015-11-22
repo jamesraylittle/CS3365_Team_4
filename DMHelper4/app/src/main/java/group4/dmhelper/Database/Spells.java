@@ -36,6 +36,7 @@ public class Spells extends Database implements DAO<Spell> {
                 from.setId(c.getInt(0));
                 from.setPlayerId(c.getInt(1));
                 from.setSpellId(c.getInt(2));
+                from.setSpellName(c.getString(3));
             } while (c.moveToNext());
         }
 
@@ -49,7 +50,7 @@ public class Spells extends Database implements DAO<Spell> {
         ArrayList<Spell> list = new ArrayList<Spell>();
         if(c.moveToFirst()) {
             do {
-                Spell s = new Spell(c.getInt(0), c.getInt(1), c.getInt(2));
+                Spell s = new Spell(c.getInt(0), c.getInt(1), c.getInt(2), c.getString(3));
                 list.add(s);
             } while(c.moveToNext());
         }
@@ -67,6 +68,7 @@ public class Spells extends Database implements DAO<Spell> {
 
         values.put("playerId", spell.getPlayerId());
         values.put("spellId", spell.getSpellId());
+        values.put("spellName", spell.getSpellName());
         return values;
     }
 
@@ -74,7 +76,8 @@ public class Spells extends Database implements DAO<Spell> {
         String q = "CREATE TABLE IF NOT EXISTS "+TABLE+" (" +
                 "id integer primary key AUTOINCREMENT," +
                 "playerId INTEGER," +
-                "spellId INTEGER" +
+                "spellId INTEGER," +
+                "spellName TEXT" +
                 ")";
         database.execSQL(q);
     }
