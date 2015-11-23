@@ -37,6 +37,8 @@ public class Skill extends Ability implements Comparable<Skill> {
         return this.baseScore - skill.getBaseScore();
     }
 
+    public int getId() { return id; }
+
     public int getPlayerId() {
         return playerId;
     }
