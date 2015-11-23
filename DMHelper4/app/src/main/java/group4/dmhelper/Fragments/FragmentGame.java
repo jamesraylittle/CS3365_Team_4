@@ -185,7 +185,7 @@ public class FragmentGame extends Fragment implements View.OnClickListener{
             default :
                 intent = new Intent(getContext(), PopupMonsterInfo.class);
                 //// TODO: 11/2/2015 Change to monster sheet class
-                intent.putExtra("Identifier", monsters.get(v.getId()));
+                intent.putExtra("monster_values", monsters.get(v.getId()));
                 startActivity(intent);
                 break;
         }
