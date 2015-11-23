@@ -139,7 +139,7 @@ public class PopupDiceRoller extends AppCompatActivity implements View.OnClickLi
                     button.setOnClickListener(this);
                     linearLayout.addView(button);
                 }
-                flag_skill = true;
+//                flag_skill = true;
                 break;
             case R.id.btn_useWeapon:
                 // TODO: 11/16/2015  find out how to view weapons
@@ -153,7 +153,7 @@ public class PopupDiceRoller extends AppCompatActivity implements View.OnClickLi
                     button.setOnClickListener(this);
                     linearLayout.addView(button);
                 }
-                flag_weapon = true;
+//                flag_weapon = true;
                 break;
             case R.id.btn_useSpell:
                 linearLayout.removeAllViews();
@@ -166,7 +166,7 @@ public class PopupDiceRoller extends AppCompatActivity implements View.OnClickLi
                     button.setOnClickListener(this);
                     linearLayout.addView(button);
                 }
-                flag_weapon = true;
+//                flag_weapon = true;
                 break;
             case R.id.btn_player:
                 intent = new Intent(getApplicationContext(), ActivityCharacterSheet.class);
