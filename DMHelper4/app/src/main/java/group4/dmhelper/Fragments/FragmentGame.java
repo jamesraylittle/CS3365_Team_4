@@ -82,15 +82,30 @@ public class FragmentGame extends Fragment implements View.OnClickListener{
         numPlayers = ((ActivityGame) getActivity()).getNumPlayers();
         switch (numPlayers) {
             case 5:
-                setBackgroundPlayer(4,playerFive);
+                if(whoseTurn == 5)
+                    setBackgroundPlayerHighlighted(4,playerFive);
+                else
+                    setBackgroundPlayer(4,playerFive);
             case 4:
-                setBackgroundPlayer(3,playerFour);
+                if(whoseTurn == 4)
+                    setBackgroundPlayerHighlighted(3,playerFour);
+                else
+                    setBackgroundPlayer(3,playerFour);
             case 3:
-                setBackgroundPlayer(2,playerThree);
+                if(whoseTurn == 3)
+                    setBackgroundPlayerHighlighted(2,playerThree);
+                else
+                    setBackgroundPlayer(2,playerThree);
             case 2:
-                setBackgroundPlayer(1,playerTwo);
+                if(whoseTurn == 2)
+                    setBackgroundPlayerHighlighted(1,playerTwo);
+                else
+                    setBackgroundPlayer(1,playerTwo);
             case 1:
-                setBackgroundPlayer(0,playerOne);
+                if(whoseTurn == 1)
+                    setBackgroundPlayerHighlighted(0,playerOne);
+                else
+                    setBackgroundPlayer(0,playerOne);
         }
     }
 
@@ -103,7 +118,7 @@ public class FragmentGame extends Fragment implements View.OnClickListener{
         {
             numPlayers = ((ActivityGame) parent).getNumPlayers();
         }
-        whoseTurn = 1;
+        whoseTurn = 0;
         switch (numPlayers)
         {
             case 1:
@@ -159,22 +174,22 @@ public class FragmentGame extends Fragment implements View.OnClickListener{
                 break;
             case R.id.playerOne:
                 intent = new Intent(getContext(), PopupDiceRoller.class);
-                intent.putExtra("Identifier",((ActivityGame) getActivity()).getPlayerId(0));
+                intent.putExtra("Identifier", ((ActivityGame) getActivity()).getPlayerId(0));
                 startActivity(intent);
                 break;
             case R.id.playerTwo:
                 intent = new Intent(getContext(), PopupDiceRoller.class);
-                intent.putExtra("Identifier",((ActivityGame) getActivity()).getPlayerId(1));
+                intent.putExtra("Identifier", ((ActivityGame) getActivity()).getPlayerId(1));
                 startActivity(intent);
                 break;
             case R.id.playerThree:
                 intent = new Intent(getContext(), PopupDiceRoller.class);
-                intent.putExtra("Identifier",((ActivityGame) getActivity()).getPlayerId(2));
+                intent.putExtra("Identifier", ((ActivityGame) getActivity()).getPlayerId(2));
                 startActivity(intent);
                 break;
             case R.id.playerFour:
                 intent = new Intent(getContext(), PopupDiceRoller.class);
-                intent.putExtra("Identifier",((ActivityGame) getActivity()).getPlayerId(3));
+                intent.putExtra("Identifier", ((ActivityGame) getActivity()).getPlayerId(3));
                 startActivity(intent);
                 break;
             case R.id.playerFive:
@@ -184,7 +199,7 @@ public class FragmentGame extends Fragment implements View.OnClickListener{
                 break;
             default :
                 intent = new Intent(getContext(), PopupMonsterInfo.class);
-                //// TODO: 11/2/2015 Change to monster sheet class
+                // TODO: 11/2/2015 Change to monster sheet class
                 intent.putExtra("monster_values", monsters.get(v.getId()));
                 startActivity(intent);
                 break;
@@ -231,6 +246,7 @@ public class FragmentGame extends Fragment implements View.OnClickListener{
 
     public void nextTurn(View view)
     {
+
         if(whoseTurn == numPlayers)
         {
             whoseTurn = 1;
@@ -239,47 +255,45 @@ public class FragmentGame extends Fragment implements View.OnClickListener{
         {
             whoseTurn++;
         }
-        FragmentFeed feed = (FragmentFeed)getActivity().getSupportFragmentManager().findFragmentByTag(tagName);
+
         switch (whoseTurn)
         {
+            case 0:
+                setBackgroundPlayerHighlighted(0,playerOne);
+                break;
             case 1:
                 switch (numPlayers){
                     case 1: break;
                     case 2:
-                        playerTwo.setBackgroundColor(getContext().getResources().getColor(R.color.colorButton));
+                        setBackgroundPlayer(1,playerTwo);
                         break;
                     case 3:
-                        playerThree.setBackgroundColor(getContext().getResources().getColor(R.color.colorButton));
+                        setBackgroundPlayer(2, playerThree);
                         break;
                     case 4:
-                        playerFour.setBackgroundColor(getContext().getResources().getColor(R.color.colorButton));
+                        setBackgroundPlayer(3, playerFour);
                         break;
                     case 5:
-                        playerFive.setBackgroundColor(getContext().getResources().getColor(R.color.colorButton));
+                        setBackgroundPlayer(4, playerFive);
                         break;
                 }
-                playerOne.setBackgroundColor(getContext().getResources().getColor(R.color.highlight));
-                feed.addFeed("PlayerOne's Turn");
+                setBackgroundPlayerHighlighted(0, playerOne);
                 break;
             case 2:
-                playerOne.setBackgroundColor(getContext().getResources().getColor(R.color.colorButton));
-                playerTwo.setBackgroundColor(getContext().getResources().getColor(R.color.highlight));
-                feed.addFeed("PlayerTwo's Turn");
+                setBackgroundPlayer(0, playerOne);
+                setBackgroundPlayerHighlighted(1, playerTwo);
                 break;
             case 3:
-                playerTwo.setBackgroundColor(getContext().getResources().getColor(R.color.colorButton));
-                playerThree.setBackgroundColor(getContext().getResources().getColor(R.color.highlight));
-                feed.addFeed("PlayerThree's Turn");
+                setBackgroundPlayer(1, playerTwo);
+                setBackgroundPlayerHighlighted(2, playerThree);
                 break;
             case 4:
-                playerThree.setBackgroundColor(getContext().getResources().getColor(R.color.colorButton));
-                playerFour.setBackgroundColor(getContext().getResources().getColor(R.color.highlight));
-                feed.addFeed("PlayerFour's Turn");
+                setBackgroundPlayer(2, playerThree);
+                setBackgroundPlayerHighlighted(3, playerFour);
                 break;
             case 5:
-                playerFour.setBackgroundColor(getContext().getResources().getColor(R.color.colorButton));
-                playerFive.setBackgroundColor(getContext().getResources().getColor(R.color.highlight));
-                feed.addFeed("PlayerFive's Turn");
+                setBackgroundPlayer(3, playerFour);
+                setBackgroundPlayerHighlighted(4, playerFive);
                 break;
         }
     }
@@ -296,5 +310,21 @@ public class FragmentGame extends Fragment implements View.OnClickListener{
             button.setBackgroundResource(R.drawable.player1);
         }
         button.setText(name);
+    }
+    public void setBackgroundPlayerHighlighted(int PlayerID, Button button) {
+        Actor player = new Actor(((ActivityGame) getActivity()).getPlayerId(PlayerID),getContext());
+        String image = player.getImageFile();
+        String name = player.getPlayerName();
+        if (image != null) {
+            image = image.concat("h");
+            int imageResource = getResources().getIdentifier(image, "drawable", getContext().getPackageName());
+            button.setBackgroundResource(imageResource);
+        }
+        else {
+            button.setBackgroundResource(R.drawable.player1);
+        }
+        button.setText(name);
+        FragmentFeed feed = (FragmentFeed)getActivity().getSupportFragmentManager().findFragmentByTag(tagName);
+        feed.addFeed(player.getPlayerName()+"'s Turn");
     }
 }

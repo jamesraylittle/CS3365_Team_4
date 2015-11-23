@@ -73,6 +73,12 @@ public class ActivityCharacterSheet extends AppCompatActivity {
 
     }
 
+    @Override
+    protected void onPause() {
+        super.onPause();
+        submitData();
+    }
+
     private void submitData() {
         // Button for Submit
         Button Submit = (Button) findViewById(R.id.btn_submit_character_sheet);
@@ -212,15 +218,15 @@ public class ActivityCharacterSheet extends AppCompatActivity {
             int spinnerPosition = AlignmentAdapter.getPosition(databaseString);
             Alignment_spinner.setSelection(spinnerPosition);
         }
-/*
+
         //Sets Height TODO fix these, maybe save as strings in DB instead
-        float database = player.getWeight();
-        if(database)
+        String database = player.getHeight();
+        if(database != null)
         {
             EditText religion = (EditText) findViewById(R.id.editText_Weight);
             religion.setText(databaseString);
         }
-        //sets weight
+ /*       //sets weight
         float database = player.getWeight();
         if(database !=0)
         {
