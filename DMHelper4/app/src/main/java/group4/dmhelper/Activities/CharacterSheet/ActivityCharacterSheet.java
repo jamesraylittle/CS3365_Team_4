@@ -2,6 +2,7 @@ package group4.dmhelper.Activities.CharacterSheet;
 
 import android.content.Intent;
 import android.content.res.Resources;
+import android.media.Image;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -60,6 +61,12 @@ public class ActivityCharacterSheet extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        ImageButton playerIcon = (ImageButton) findViewById(R.id.charPictureButton);
+        String image = player.getImageFile();
+        if (image != null) {
+            int imageResource = getResources().getIdentifier(image, "drawable", getPackageName());
+            playerIcon.setImageResource(imageResource);
+        }
         submitData();
 
     }
@@ -142,6 +149,13 @@ public class ActivityCharacterSheet extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         editProgressBars();
+        // Fix the Players Icon on Resume
+        ImageButton playerIcon = (ImageButton) findViewById(R.id.charPictureButton);
+        String image = player.getImageFile();
+        if (image != null) {
+            int imageResource = getResources().getIdentifier(image, "drawable", getPackageName());
+            playerIcon.setImageResource(imageResource);
+        }
     }
 
     private void populateFillIn() {

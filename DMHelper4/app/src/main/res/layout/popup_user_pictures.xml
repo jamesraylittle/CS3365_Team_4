@@ -68,6 +68,7 @@
                         android:layout_centerHorizontal="true"
                         android:scaleType="centerInside"
                         android:src="@drawable/player2"
+                        android:onClick="setPlayerImage"
                         android:tag="player2"
                         android:background="@null"/>
                 </RelativeLayout>
@@ -87,6 +88,7 @@
                         android:layout_centerHorizontal="true"
                         android:scaleType="centerInside"
                         android:src="@drawable/player3"
+                        android:onClick="setPlayerImage"
                         android:tag="player3"
                         android:background="@null"/>
                 </RelativeLayout>
@@ -106,6 +108,7 @@
                         android:layout_centerHorizontal="true"
                         android:scaleType="centerInside"
                         android:src="@drawable/player4"
+                        android:onClick="setPlayerImage"
                         android:tag="player4"
                         android:background="@null"/>
                 </RelativeLayout>
@@ -132,6 +135,7 @@
                         android:layout_centerHorizontal="true"
                         android:scaleType="centerInside"
                         android:src="@drawable/player5"
+                        android:onClick="setPlayerImage"
                         android:tag="player5"
                         android:background="@null"/>
                 </RelativeLayout>
@@ -151,6 +155,7 @@
                         android:layout_centerHorizontal="true"
                         android:scaleType="centerInside"
                         android:src="@drawable/player6"
+                        android:onClick="setPlayerImage"
                         android:tag="player6"
                         android:background="@null"/>
                 </RelativeLayout>
@@ -170,6 +175,7 @@
                         android:layout_centerHorizontal="true"
                         android:scaleType="centerInside"
                         android:src="@drawable/player7"
+                        android:onClick="setPlayerImage"
                         android:tag="player7"
                         android:background="@null"/>
                 </RelativeLayout>
@@ -189,6 +195,7 @@
                         android:layout_centerHorizontal="true"
                         android:scaleType="centerInside"
                         android:src="@drawable/player8"
+                        android:onClick="setPlayerImage"
                         android:tag="player8"
                         android:background="@null"/>
                 </RelativeLayout>
@@ -215,6 +222,7 @@
                         android:layout_centerHorizontal="true"
                         android:scaleType="centerInside"
                         android:src="@drawable/player9"
+                        android:onClick="setPlayerImage"
                         android:tag="player9"
                         android:background="@null"/>
                 </RelativeLayout>
@@ -234,6 +242,7 @@
                         android:layout_centerHorizontal="true"
                         android:scaleType="centerInside"
                         android:src="@drawable/player10"
+                        android:onClick="setPlayerImage"
                         android:tag="player10"
                         android:background="@null"/>
                 </RelativeLayout>
@@ -253,6 +262,7 @@
                         android:layout_centerHorizontal="true"
                         android:scaleType="centerInside"
                         android:src="@drawable/player11"
+                        android:onClick="setPlayerImage"
                         android:tag="player11"
                         android:background="@null"/>
                 </RelativeLayout>
@@ -272,6 +282,7 @@
                         android:layout_centerHorizontal="true"
                         android:scaleType="centerInside"
                         android:src="@drawable/player12"
+                        android:onClick="setPlayerImage"
                         android:tag="player12"
                         android:background="@null"/>
                 </RelativeLayout>
