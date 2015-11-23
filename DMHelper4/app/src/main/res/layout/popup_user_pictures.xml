@@ -43,11 +43,13 @@
                     <ImageButton
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
-                        android:id="@+id/imageButton12"
+                        android:id="@+id/btn_image_player1"
                         android:layout_centerVertical="true"
                         android:layout_centerHorizontal="true"
                         android:scaleType="centerInside"
                         android:src="@drawable/player1"
+                        android:onClick="setPlayerImage"
+                        android:tag="player1"
                         android:background="@null" />
                 </RelativeLayout>
 
@@ -61,11 +63,12 @@
                     <ImageButton
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
-                        android:id="@+id/imageButton13"
+                        android:id="@+id/btn_image_player2"
                         android:layout_centerVertical="true"
                         android:layout_centerHorizontal="true"
                         android:scaleType="centerInside"
                         android:src="@drawable/player2"
+                        android:tag="player2"
                         android:background="@null"/>
                 </RelativeLayout>
 
@@ -79,11 +82,12 @@
                     <ImageButton
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
-                        android:id="@+id/imageButton14"
+                        android:id="@+id/btn_image_player3"
                         android:layout_centerVertical="true"
                         android:layout_centerHorizontal="true"
                         android:scaleType="centerInside"
                         android:src="@drawable/player3"
+                        android:tag="player3"
                         android:background="@null"/>
                 </RelativeLayout>
 
@@ -97,11 +101,12 @@
                     <ImageButton
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
-                        android:id="@+id/imageButton15"
+                        android:id="@+id/btn_image_player4"
                         android:layout_centerVertical="true"
                         android:layout_centerHorizontal="true"
                         android:scaleType="centerInside"
                         android:src="@drawable/player4"
+                        android:tag="player4"
                         android:background="@null"/>
                 </RelativeLayout>
             </LinearLayout>
@@ -122,11 +127,12 @@
                     <ImageButton
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
-                        android:id="@+id/imageButton7"
+                        android:id="@+id/btn_image_player5"
                         android:layout_centerVertical="true"
                         android:layout_centerHorizontal="true"
                         android:scaleType="centerInside"
                         android:src="@drawable/player5"
+                        android:tag="player5"
                         android:background="@null"/>
                 </RelativeLayout>
 
@@ -140,11 +146,12 @@
                     <ImageButton
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
-                        android:id="@+id/imageButton5"
+                        android:id="@+id/btn_image_player6"
                         android:layout_centerVertical="true"
                         android:layout_centerHorizontal="true"
                         android:scaleType="centerInside"
                         android:src="@drawable/player6"
+                        android:tag="player6"
                         android:background="@null"/>
                 </RelativeLayout>
 
@@ -158,11 +165,12 @@
                     <ImageButton
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
-                        android:id="@+id/imageButton4"
+                        android:id="@+id/btn_image_player7"
                         android:layout_centerVertical="true"
                         android:layout_centerHorizontal="true"
                         android:scaleType="centerInside"
                         android:src="@drawable/player7"
+                        android:tag="player7"
                         android:background="@null"/>
                 </RelativeLayout>
 
@@ -176,11 +184,12 @@
                     <ImageButton
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
-                        android:id="@+id/imageButton6"
+                        android:id="@+id/btn_image_player8"
                         android:layout_centerVertical="true"
                         android:layout_centerHorizontal="true"
                         android:scaleType="centerInside"
                         android:src="@drawable/player8"
+                        android:tag="player8"
                         android:background="@null"/>
                 </RelativeLayout>
             </LinearLayout>
@@ -201,11 +210,12 @@
                     <ImageButton
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
-                        android:id="@+id/imageButton8"
+                        android:id="@+id/btn_image_player9"
                         android:layout_centerVertical="true"
                         android:layout_centerHorizontal="true"
                         android:scaleType="centerInside"
                         android:src="@drawable/player9"
+                        android:tag="player9"
                         android:background="@null"/>
                 </RelativeLayout>
 
@@ -219,11 +229,12 @@
                     <ImageButton
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
-                        android:id="@+id/imageButton9"
+                        android:id="@+id/btn_image_player10"
                         android:layout_centerVertical="true"
                         android:layout_centerHorizontal="true"
                         android:scaleType="centerInside"
                         android:src="@drawable/player10"
+                        android:tag="player10"
                         android:background="@null"/>
                 </RelativeLayout>
 
@@ -237,11 +248,12 @@
                     <ImageButton
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
-                        android:id="@+id/imageButton10"
+                        android:id="@+id/btn_image_player11"
                         android:layout_centerVertical="true"
                         android:layout_centerHorizontal="true"
                         android:scaleType="centerInside"
                         android:src="@drawable/player11"
+                        android:tag="player11"
                         android:background="@null"/>
                 </RelativeLayout>
 
@@ -255,11 +267,12 @@
                     <ImageButton
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
-                        android:id="@+id/imageButton11"
+                        android:id="@+id/btn_image_player12"
                         android:layout_centerVertical="true"
                         android:layout_centerHorizontal="true"
                         android:scaleType="centerInside"
-                        android:src="@drawable/player1"
+                        android:src="@drawable/player12"
+                        android:tag="player12"
                         android:background="@null"/>
                 </RelativeLayout>
             </LinearLayout>

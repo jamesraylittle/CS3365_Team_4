@@ -60,30 +60,34 @@ public class ActivityCharacterSheet extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        submitData();
 
+    }
+
+    private void submitData() {
         // Button for Submit
         Button Submit = (Button) findViewById(R.id.btn_submit_character_sheet);
         Submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 EditText characterName = (EditText) findViewById(R.id.editText_character_name);
-                if (!characterName.getText().toString().equals("")) //TODO CHECK IF DIFFERENT FROM CURRENT
+                if (!characterName.getText().toString().equals(""))
                 {
                     String database = player.getName();
                     String inText = characterName.getText().toString();
                     if( database== null || !database.equals(inText)) {
-                        FragmentFeed.feedItems.add(PlayerIdentifier + "Changed character name to " + inText);
+                        FragmentFeed.feedItems.add(player.getPlayerName() + " Changed character name to " + inText);
                         player.setName(inText);
                     }
                 }
 
                 EditText playerName = (EditText) findViewById(R.id.editText_player_name);
-                if (!playerName.getText().toString().equals("")) //TODO CHECK IF DIFFERENT FROM CURRENT
+                if (!playerName.getText().toString().equals(""))
                 {
                     String database = player.getPlayerName();
                     String inText = playerName.getText().toString();
                     if( database== null || !database.equals(inText)) {
-                        FragmentFeed.feedItems.add(PlayerIdentifier + "Changed player name to " + playerName.getText());
+                        FragmentFeed.feedItems.add(player.getPlayerName() + " Changed player name to " + playerName.getText());
                         player.setPlayerName(inText);
                     }
                 }
@@ -91,22 +95,22 @@ public class ActivityCharacterSheet extends AppCompatActivity {
                 EditText height = (EditText) findViewById(R.id.editText_Height);
                 if (!height.getText().toString().equals("")) //TODO CHECK IF DIFFERENT FROM CURRENT
                 {
-                    FragmentFeed.feedItems.add(PlayerIdentifier + "Changed height to " + height.getText());
+                    FragmentFeed.feedItems.add(player.getPlayerName() + " Changed height to " + height.getText());
                 }
 
                 EditText weight = (EditText) findViewById(R.id.editText_Weight);
                 if (!weight.getText().toString().equals("")) //TODO CHECK IF DIFFERENT FROM CURRENT
                 {
-                    FragmentFeed.feedItems.add(PlayerIdentifier + "Changed weight to " + weight.getText());
+                    FragmentFeed.feedItems.add(player.getPlayerName() + " Changed weight to " + weight.getText());
                 }
 
                 EditText religion = (EditText) findViewById(R.id.editText_religion);
-                if (!religion.getText().toString().equals("")) //TODO CHECK IF DIFFERENT FROM CURRENT
+                if (!religion.getText().toString().equals(""))
                 {
                     String database = player.getReligion();
                     String inText = religion.getText().toString();
                     if( database== null || !database.equals(inText)) {
-                        FragmentFeed.feedItems.add(PlayerIdentifier + "Changed player name to " + playerName.getText());
+                        FragmentFeed.feedItems.add(player.getPlayerName() + " Changed player name to " + playerName.getText());
                         player.setReligion(inText);
                     }
                 }
@@ -114,26 +118,24 @@ public class ActivityCharacterSheet extends AppCompatActivity {
                 Spinner characterClass = (Spinner) findViewById(R.id.spinner_search_class);
                 if (!characterClass.getSelectedItem().toString().equals("")) //TODO CHECK IF DIFFERENT FROM CURRENT
                 {
-                    FragmentFeed.feedItems.add(PlayerIdentifier + "Changed class to " + characterClass.getSelectedItem().toString());
+                    FragmentFeed.feedItems.add(player.getPlayerName() + " Changed class to " + characterClass.getSelectedItem().toString());
                 }
 
                 Spinner race = (Spinner) findViewById(R.id.spinner_search_race);
                 if (!race.getSelectedItem().toString().equals("")) //TODO CHECK IF DIFFERENT FROM CURRENT
                 {
-                    FragmentFeed.feedItems.add(PlayerIdentifier + "Changed race to " + race.getSelectedItem().toString());
+                    FragmentFeed.feedItems.add(player.getPlayerName() + " Changed race to " + race.getSelectedItem().toString());
                 }
 
                 Spinner alignment = (Spinner) findViewById(R.id.spinner_search_alignment);
                 if (!alignment.getSelectedItem().toString().equals("")) //TODO CHECK IF DIFFERENT FROM current
                 {
-                    FragmentFeed.feedItems.add(PlayerIdentifier + "Changed alignment to " + alignment.getSelectedItem().toString());
+                    FragmentFeed.feedItems.add(player.getPlayerName() + " Changed alignment to " + alignment.getSelectedItem().toString());
                 }
                 player.pushToDatabase();
                 finish();
             }
         });
-
-
     }
 
     @Override
@@ -280,7 +282,7 @@ public class ActivityCharacterSheet extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(ActivityCharacterSheet.this, PopupEditCharPic.class);
-                //intent.putExtra("Identifier", ID);
+                intent.putExtra("Identifier", ID);
                 startActivity(intent);
             }
         });

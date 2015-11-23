@@ -47,7 +47,7 @@ public class PopupEditHealth extends AppCompatActivity {
                 //TODO Edit players health.
                 EditText healthchange = (EditText) findViewById(R.id.text_input_health);
                 String text = healthchange.getText().toString();
-                if(text != "") {
+                if(!text.equals("")) {
                     int health = Integer.parseInt(text);
                     //TODO EDIT ACTOR HEALTH
                     Actor player = new Actor(PlayerIdentifier,getApplicationContext());
