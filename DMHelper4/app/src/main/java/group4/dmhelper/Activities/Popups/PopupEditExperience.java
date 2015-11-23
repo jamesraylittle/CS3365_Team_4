@@ -29,7 +29,6 @@ public class PopupEditExperience extends AppCompatActivity {
 
         Bundle extras = getIntent().getExtras();
         final int PlayerIdentifier = extras.getInt("Identifier");
-        Actor player = new Actor(PlayerIdentifier,getApplicationContext());
         WindowManager.LayoutParams windowManager = getWindow().getAttributes();
         windowManager.dimAmount = 0.5f;
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_DIM_BEHIND);

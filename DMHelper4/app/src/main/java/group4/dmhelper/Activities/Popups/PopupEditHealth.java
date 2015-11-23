@@ -44,7 +44,6 @@ public class PopupEditHealth extends AppCompatActivity {
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //TODO Edit players health.
                 EditText healthchange = (EditText) findViewById(R.id.text_input_health);
                 String text = healthchange.getText().toString();
                 if(!text.equals("")) {
