@@ -12,8 +12,6 @@ import group4.dmhelper.Actors.Player;
 import group4.dmhelper.Database.Actors;
 
 /**
- * I figured that this class would help keep track of actors and objects.  This class should be
- * in charge of saving, loading, creating new characters, deleting characters, etc.
  *
  * There should only be one instance of the GameManager
  *
@@ -93,20 +91,10 @@ public class GameManager {
         if(getPlayer(actorId) == null);//success note;
     }
 
-    public void updatePlayer() {
-        //in case they get poisoned.
-        // TODO: 11/11/2015 ...? 
-    }
-
     public Monster getMonster(int monsterId) {
         for(int i = 0; i < monsterList.size(); i++)
             if(monsterList.get(i).getId() == monsterId) return monsterList.get(i);
         return null;
-    }
-
-    public void quickCreateMonster() {
-        //this function should be able to generate new monsters quickly
-        // TODO: 11/11/2015 ...? 
     }
 
     public void createMonster() {
