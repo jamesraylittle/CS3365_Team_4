@@ -493,10 +493,15 @@ public class Actor extends Model implements Comparable<Actor>{
     public ArrayList<Spell> getSpellIds() { return spellIds;}
     public void setSpellIds(ArrayList<Spell> spellIds) { this.spellIds = spellIds;}
 
-    public int getSkill(int i)                  {if(i>=0&&i<40)return dSkills.retrieve(skillIds.get(i).getSkillId()).getBaseScore(); else return -1000;}
+    public Skill getSkill(int ID)   {
+        for(int i=0;i<40;i++)
+            if(skillIds.get(i).getId() == ID)
+                return skillIds.get(i);
+        return null;
+    }/*
     public void setSkill(int i, int value)      {if(i>=0&&i<40){skillIds.get(i).setBaseScore(value); dSkills.update(skillIds.get(i));}}
     public int getSkillMod(int i)               {if(i>=0&&i<40)return dSkills.retrieve(skillIds.get(i).getSkillId()).getMiscBonus(); else return -1000;}
-    public void setSkillMod(int i, int value)   {if(i>=0&&i<40){skillIds.get(i).setMiscBonus(value); dSkills.update(skillIds.get(i));}}
+    public void setSkillMod(int i, int value)   {if(i>=0&&i<40){skillIds.get(i).setMiscBonus(value); dSkills.update(skillIds.get(i));}}//*/
 
     public Equipment getEquippedItem(int ID)    {return dEquipments.retrieve(ID);}
     public Spell getSpell(int ID)               {return dSpells.retrieve(ID);}
@@ -534,7 +539,7 @@ public class Actor extends Model implements Comparable<Actor>{
 
     public int grappleCheck(){return 0;}// TODO: 11/15/2015 Bab + Str
     
-    public int calculateHealth(){return 0;}// TODO: 11/15/2015 (.5*hit_die+1)*(level-1) + hit_die + const_mod*level 
+    public int calculateHealth(){return 100;}// TODO: 11/15/2015 (.5*hit_die+1)*(level-1) + hit_die + const_mod*level
     
     public int calculateSkillPoints(){return 0;}// TODO: 11/15/2015 4*(skill_points+int_mod) @ level 1 and skill_points+int_mod
 
