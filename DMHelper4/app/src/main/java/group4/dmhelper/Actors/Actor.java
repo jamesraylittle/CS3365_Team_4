@@ -498,7 +498,9 @@ public class Actor extends Model implements Comparable<Actor>{
             if(skillIds.get(i).getId() == ID)
                 return skillIds.get(i);
         return null;
-    }/*
+    }
+
+    /*
     public void setSkill(int i, int value)      {if(i>=0&&i<40){skillIds.get(i).setBaseScore(value); dSkills.update(skillIds.get(i));}}
     public int getSkillMod(int i)               {if(i>=0&&i<40)return dSkills.retrieve(skillIds.get(i).getSkillId()).getMiscBonus(); else return -1000;}
     public void setSkillMod(int i, int value)   {if(i>=0&&i<40){skillIds.get(i).setMiscBonus(value); dSkills.update(skillIds.get(i));}}//*/
