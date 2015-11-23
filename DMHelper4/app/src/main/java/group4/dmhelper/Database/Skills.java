@@ -7,6 +7,7 @@ import android.util.Log;
 
 import java.util.ArrayList;
 
+import group4.dmhelper.Actors.Equipment;
 import group4.dmhelper.Actors.Feat;
 import group4.dmhelper.Actors.Skill;
 
