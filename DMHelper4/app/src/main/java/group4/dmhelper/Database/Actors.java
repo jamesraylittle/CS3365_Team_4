@@ -39,7 +39,7 @@ public class Actors extends Database implements DAO<Actor> {
                         c.getString(2),
                         c.getInt(3),
                         c.getString(4),
-                        c.getInt(5),
+                        c.getString(5),
                         c.getString(6),
                         c.getString(7),
                         c.getString(8),
@@ -76,7 +76,7 @@ public class Actors extends Database implements DAO<Actor> {
                         c.getString(2),
                         c.getInt(3),
                         c.getString(4),
-                        c.getInt(5),
+                        c.getString(5),
                         c.getString(6),
                         c.getString(7),
                         c.getString(8),
@@ -112,7 +112,7 @@ public class Actors extends Database implements DAO<Actor> {
                         c.getString(2),
                         c.getInt(3),
                         c.getString(4),
-                        c.getInt(5),
+                        c.getString(5),
                         c.getString(6),
                         c.getString(7),
                         c.getString(8),
@@ -175,7 +175,7 @@ public class Actors extends Database implements DAO<Actor> {
                 "gender TEXT," +
                 "size integer," +
                 "alignment TEXT," +
-                "weight integer," +
+                "weight TEXT," +
                 "height TEXT," +
                 "religion TEXT," +
                 "race TEXT," +
@@ -200,27 +200,3 @@ public class Actors extends Database implements DAO<Actor> {
         database.execSQL("DROP TABLE " + TABLE);
     }
 }
-
-/*
-        this.id = id;
-        this.name = name;
-        this.gender = gender;
-        this.size = size;
-        this.alignment = alignment;
-        this.weight = weight;
-        this.religion = religion;
-        this.race = race;
-        this.speed = speed;
-        this.initiativeMod = initiativeMod;
-        this.initiative = initiative;
-        this.reflexMod = reflexMod;
-        this.willMod = willMod;
-        this.fortMod = fortMod;
-        this.isMonster = isMonster;
-        this.inGame = inGame;
-        this.imageFile = imageFile;
-        this.gameId = gameId;
-        this.playerName = playerName;
-        this.XP = XP;
-        this.health = health;
- */

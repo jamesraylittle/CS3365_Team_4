@@ -39,7 +39,7 @@ public class ActivityCharacterAbilities extends AppCompatActivity {
                 Actor player = new Actor(PlayerIdentifier,getApplicationContext());
                 int databaseValue, inputtedValue = 0;
                 //Check Strength
-                databaseValue = player.getSTR();
+                databaseValue = player.getStrength();
                 EditText strength = (EditText) findViewById(R.id.text_input_strength);
 
                 if(!strength.getText().toString().equals("")) {
@@ -50,7 +50,7 @@ public class ActivityCharacterAbilities extends AppCompatActivity {
                 }
 
                 //Check Dexterity
-                databaseValue = player.getDEX();
+                databaseValue = player.getDexterity();
                 EditText dexterity = (EditText) findViewById(R.id.text_input_dexterity);
                 if(!dexterity.getText().toString().equals("")) {
                     inputtedValue = Integer.parseInt(dexterity.getText().toString());
@@ -60,7 +60,7 @@ public class ActivityCharacterAbilities extends AppCompatActivity {
                 }
 
                 //Check Constitution
-                databaseValue = player.getCON();
+                databaseValue = player.getConstitution();
                 EditText constitution = (EditText) findViewById(R.id.text_input_constitution);
                 if(!constitution.getText().toString().equals("")) {
                     inputtedValue = Integer.parseInt(constitution.getText().toString());
@@ -70,7 +70,7 @@ public class ActivityCharacterAbilities extends AppCompatActivity {
                 }
 
                 //Check Intelligence
-                databaseValue = player.getINT();
+                databaseValue = player.getIntel();
                 EditText intelligence = (EditText) findViewById(R.id.text_input_intelligence);
                 if(!intelligence.getText().toString().equals("")) {
                     inputtedValue = Integer.parseInt(intelligence.getText().toString());
@@ -80,7 +80,7 @@ public class ActivityCharacterAbilities extends AppCompatActivity {
                 }
 
                 //Check Wisdom
-                databaseValue = player.getWIS();
+                databaseValue = player.getWisdom();
                 EditText wisdom = (EditText) findViewById(R.id.text_input_wisdom);
                 if(!wisdom.getText().toString().equals("")) {
                     inputtedValue = Integer.parseInt(wisdom.getText().toString());
@@ -90,7 +90,7 @@ public class ActivityCharacterAbilities extends AppCompatActivity {
                 }
 
                 //Check Charisma
-                databaseValue = player.getCHA();
+                databaseValue = player.getCharisma();
                 EditText charisma = (EditText) findViewById(R.id.text_input_charisma);
                 if(!charisma.getText().toString().equals("")) {
                     inputtedValue = Integer.parseInt(charisma.getText().toString());
