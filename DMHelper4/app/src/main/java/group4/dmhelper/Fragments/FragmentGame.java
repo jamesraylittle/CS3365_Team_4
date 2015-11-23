@@ -1,14 +1,19 @@
 package group4.dmhelper.Fragments;
 
+import android.app.ActionBar;
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 
@@ -209,8 +214,19 @@ public class FragmentGame extends Fragment implements View.OnClickListener{
             tableRow.setLayoutParams(tableRowParams);
             Button button = new Button(getContext());
             button.setText(monsters.get(i)[1]);
-            button.setBackgroundColor(getContext().getResources().getColor(R.color.colorButton));
-            button.setId(monsters.size());
+            button.setTextColor(Color.WHITE);
+            button.setTextSize(9);
+            button.setGravity(Gravity.CENTER | Gravity.BOTTOM);
+            TableRow.LayoutParams layoutParams = new TableRow.LayoutParams(300, 225);
+            //layoutParams.setMargins(0,15,0,0);
+            button.setLayoutParams(layoutParams);
+
+            String image = monsters.get(i)[4];
+            image = image.replace(" ", "_");
+            image = image.toLowerCase();
+            int imageResource = getResources().getIdentifier(image, "drawable", getContext().getPackageName());
+            button.setBackgroundResource(imageResource);
+            button.setId(monsters.size()); //TODO THIS NEEDS TO BE LOOKED AT
             tableRow.addView(button);
             tableLayout.addView(tableRow, monsters.size());
             button.setOnClickListener(this);

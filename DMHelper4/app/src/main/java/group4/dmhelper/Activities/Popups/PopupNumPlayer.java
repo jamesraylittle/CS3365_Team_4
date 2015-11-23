@@ -75,6 +75,8 @@ public class PopupNumPlayer extends AppCompatActivity {
             Actor player = new Actor(getApplicationContext());
             playerIds[i] = player.getId();
             player.setPlayerName("Player"+ ++i);
+            player.setImageFile("player1");
+            player.setHealth(0);
             player.pushToDatabase();
         }
         Intent intent = new Intent(this, ActivityGame.class);
