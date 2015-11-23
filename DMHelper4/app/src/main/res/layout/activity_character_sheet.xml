@@ -414,6 +414,19 @@ tools:context="group4.dmhelper.Activities.CharacterSheet.ActivityCharacterSheet"
                         android:hint="Weight"
                         android:inputType="text"/>
                 </android.support.design.widget.TextInputLayout>
+                <android.support.design.widget.TextInputLayout
+                    android:id="@+id/text_input_Level"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <EditText
+                        android:id="@+id/editText_Level"
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:hint="Level"
+                        android:inputType="text"
+                        android:editable="false"/>
+                </android.support.design.widget.TextInputLayout>
 
             </LinearLayout>
 

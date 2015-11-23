@@ -29,7 +29,6 @@ public class PopupEditExperience extends AppCompatActivity {
 
         Bundle extras = getIntent().getExtras();
         final int PlayerIdentifier = extras.getInt("Identifier");
-        Actor player = new Actor(PlayerIdentifier,getApplicationContext());
         WindowManager.LayoutParams windowManager = getWindow().getAttributes();
         windowManager.dimAmount = 0.5f;
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_DIM_BEHIND);
@@ -40,15 +39,14 @@ public class PopupEditExperience extends AppCompatActivity {
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //TODO Edit players health.
                 EditText xpchange = (EditText) findViewById(R.id.change_experience);
                 String text = xpchange.getText().toString();
-                if(text != "") {
+                if(!text.equals("")) {
                     int xp = Integer.parseInt(text);
                     Actor player = new Actor(PlayerIdentifier,getApplicationContext());
                     player.setXP(player.getXP() + xp);
-                    FragmentFeed.feedItems.add(PlayerIdentifier + " edited experience by: " + xp); //TODO ADD PLAYER NAME
-                    Toast.makeText(getApplicationContext(),PlayerIdentifier + " edited experience by: " + xp, Toast.LENGTH_LONG).show();
+                    FragmentFeed.feedItems.add(player.getPlayerName() + " edited experience by: " + xp);
+                    Toast.makeText(getApplicationContext(),player.getPlayerName() + " edited experience by: " + xp, Toast.LENGTH_LONG).show();
                     player.pushToDatabase();
                     finish();
                 }
