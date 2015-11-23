@@ -35,7 +35,7 @@ public class Players extends Database implements DAO<Player> {
                 from.setGender(c.getString(1));
                 from.setSize(c.getInt(2));
                 from.setAlignment(c.getString(3));
-                from.setWeight(c.getInt(4));
+                from.setWeight(c.getString(4));
                 from.setReligion(c.getString(5));
                 from.setRace(c.getString(6));  //Temporary
                 from.setName(c.getString(7));

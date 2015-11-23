@@ -5,6 +5,7 @@ import java.util.ArrayList;
 
 import group4.dmhelper.Database.Actors;
 import group4.dmhelper.Database.ClassTypes;
+import group4.dmhelper.Database.DataBaseHelper;
 import group4.dmhelper.Database.Equipments;
 import group4.dmhelper.Database.Feats;
 import group4.dmhelper.Database.Games;
@@ -26,6 +27,7 @@ import group4.dmhelper.globalVariables;
 public class Actor extends Model implements Comparable<Actor>{
 
     globalVariables gv = globalVariables.getInstance();
+    DataBaseHelper dbh;
 
     //$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#
     //Various Player Attributes
@@ -35,7 +37,7 @@ public class Actor extends Model implements Comparable<Actor>{
     private String gender;
     private int size;
     private String alignment;
-    private int weight;
+    private String weight;
     private String height;
     private String religion;
     private String race;
@@ -84,7 +86,7 @@ public class Actor extends Model implements Comparable<Actor>{
     //Constructors
     //$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#
 
-    public Actor(String name, String gender, int size, String alignment, int weight, String height, String religion, String race, int speed, int initiativeMod, int initiative, int reflexMod, int willMod, int fortMod, int isMonster, int inGame, String imageFile, int gameId, String playerName, int XP, int health) {
+    public Actor(String name, String gender, int size, String alignment, String weight, String height, String religion, String race, int speed, int initiativeMod, int initiative, int reflexMod, int willMod, int fortMod, int isMonster, int inGame, String imageFile, int gameId, String playerName, int XP, int health) {
         this.name = name;
         this.gender = gender;
         this.size = size;
@@ -108,7 +110,7 @@ public class Actor extends Model implements Comparable<Actor>{
         this.health = health;
     }
 
-    public Actor(int id, String name, String gender, int size, String alignment, int weight, String height, String religion, String race, int speed, int initiativeMod, int initiative, int reflexMod, int willMod, int fortMod, int isMonster, int inGame, String imageFile, int gameId, String playerName, int XP, int health) {
+    public Actor(int id, String name, String gender, int size, String alignment, String weight, String height, String religion, String race, int speed, int initiativeMod, int initiative, int reflexMod, int willMod, int fortMod, int isMonster, int inGame, String imageFile, int gameId, String playerName, int XP, int health) {
         this.id = id;
         this.name = name;
         this.gender = gender;
@@ -157,10 +159,13 @@ public class Actor extends Model implements Comparable<Actor>{
         pullFromDatabase();
     }
 
+    //height and weight and class string change
+
     public Actor(Context context) { //Saving/Loading
 
-        this("","",4,"Neutral",150,"5'5\"","","Human",30,0,1,0,0,0,0,1,"",0,"",0,4);
+        this("","",4,"Neutral","150","5'5\"","","Human",30,0,1,0,0,0,0,1,"",0,"",0,4);
 
+        dbh = new DataBaseHelper(context);
         this.gameId = gv.getGameId();
 
         dActor = new Actors(context);
@@ -180,10 +185,21 @@ public class Actor extends Model implements Comparable<Actor>{
 
         this.id = dActor.create(this);
 
-        classTypeId = new ClassType();
-        playerAbilityIds = new PlayerAbility();
+        classTypeId = new ClassType(id,-1,-1);
+        classTypeId.id = dClass.create(classTypeId);
 
-       // for(int i=0;i<40;i++)skillIds.add(new Skill(id, i+1));
+        monsterTypeId = new MonsterType(id,0,0);
+        monsterTypeId.id = dMonster.create(monsterTypeId);
+
+        playerAbilityIds = new PlayerAbility(id,10,10,10,10,10,10);
+        playerAbilityIds.id = dPlayerAbilities.create(playerAbilityIds);
+
+        for(int i=0;i<40;i++) {
+            skillIds.add(new Skill(0, 0, "", i + 1, 0));
+            skillIds.get(i).id = dSkills.create(skillIds.get(i));
+        }
+
+        pushToDatabase();
     }
 
     public void equalsDatabaseValues(Actor a) {
@@ -271,10 +287,10 @@ public class Actor extends Model implements Comparable<Actor>{
     public void setAlignment(String alignment) {
         this.alignment = alignment;
     }
-    public int getWeight() {
+    public String getWeight() {
         return weight;
     }
-    public void setWeight(int weight) {
+    public void setWeight(String weight) {
         this.weight = weight;
     }
     public String getHeight() {
@@ -495,25 +511,31 @@ public class Actor extends Model implements Comparable<Actor>{
 
     public Skill getSkill(int ID)   {
         for(int i=0;i<40;i++)
-            if(skillIds.get(i).getId() == ID)
+            if(skillIds.get(i).id == ID)
                 return skillIds.get(i);
         return null;
-    }/*
+    }
+
+    /*
     public void setSkill(int i, int value)      {if(i>=0&&i<40){skillIds.get(i).setBaseScore(value); dSkills.update(skillIds.get(i));}}
     public int getSkillMod(int i)               {if(i>=0&&i<40)return dSkills.retrieve(skillIds.get(i).getSkillId()).getMiscBonus(); else return -1000;}
     public void setSkillMod(int i, int value)   {if(i>=0&&i<40){skillIds.get(i).setMiscBonus(value); dSkills.update(skillIds.get(i));}}//*/
 
+    public Item getItem(int ID)                 {return dItems.retrieve(ID);}
     public Equipment getEquippedItem(int ID)    {return dEquipments.retrieve(ID);}
     public Spell getSpell(int ID)               {return dSpells.retrieve(ID);}
     public Feat getFeat(int ID)                 {return dFeats.retrieve(ID);}
 
-    //public void addEquippedItems(int ID)    {Equipment e = new Equipment(this.id,ID); dEquipments.create(e);}
-    //public void addSpells(int ID)           {Spell s = new Spell(this.id,ID); dSpells.create(s);}
-    //public void addFeats(int ID)            {Feat f = new Feat(this.id,ID); dFeats.create(f);}
+    public void addItems(int ID)                {Item e = new Item(this.id,ID,dbh.retrieveItemByID(ID)[1]); dItems.create(e);}
+    public void addEquippedItems(int ID)        {Equipment e = new Equipment(this.id,ID,dbh.retrieveEquipmentByID(ID)[1],0); dEquipments.create(e);}
+    public void addSpells(int ID)               {Spell s = new Spell(this.id,ID,dbh.retrieveSpellByID(ID)[1]); dSpells.create(s);}
+    public void addFeats(int ID)                {Feat f = new Feat(this.id,ID,dbh.retrieveFeatByID(ID)[1]); dFeats.create(f);}
 
+    /*
+    public void removeItems(int ID)         {dEquipments.delete(ID);}
     public void removeEquippedItems(int ID) {dEquipments.delete(ID);}
     public void removeSpells(int ID)        {dSpells.delete(ID);}
-    public void removeFeats(int ID)         {dSpells.delete(ID);}
+    public void removeFeats(int ID)         {dFeats.delete(ID);}//*/
 
     //$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#
     //"calculate" functions

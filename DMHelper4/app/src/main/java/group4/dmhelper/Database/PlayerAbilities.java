@@ -52,7 +52,15 @@ public class PlayerAbilities extends Database implements DAO<PlayerAbility> {
         ArrayList<PlayerAbility> list = new ArrayList<PlayerAbility>();
         if(c.moveToFirst()) {
             do {
-                PlayerAbility s = new PlayerAbility(c.getInt(0), c.getInt(1), c.getInt(2), c.getInt(3), c.getInt(4), c.getInt(5), c.getInt(6), c.getInt(7));
+                PlayerAbility s = new PlayerAbility(
+                        c.getInt(0),
+                        c.getInt(1),
+                        c.getInt(2),
+                        c.getInt(3),
+                        c.getInt(4),
+                        c.getInt(5),
+                        c.getInt(6),
+                        c.getInt(7));
                 list.add(s);
             } while(c.moveToNext());
         }
