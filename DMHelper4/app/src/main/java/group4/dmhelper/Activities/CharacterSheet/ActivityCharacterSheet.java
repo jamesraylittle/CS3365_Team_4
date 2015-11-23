@@ -192,12 +192,12 @@ public class ActivityCharacterSheet extends AppCompatActivity {
 //            religion.setText(databaseString);
 //        }
         //sets weight
-        float database = player.getWeight();
-        if(database !=0)
-        {
-            EditText religion = (EditText) findViewById(R.id.editText_Weight);
-            religion.setText(Float.toString(database));
-        }
+//        float database = player.getWeight();
+//        if(database !=0)
+//        {
+//            EditText weight = (EditText) findViewById(R.id.editText_Weight);
+//            weight.setText(Float.toString(database));
+//        }
     }
 
     private void editProgressBars() {
@@ -211,15 +211,17 @@ public class ActivityCharacterSheet extends AppCompatActivity {
         ProgressBar xpbar = (ProgressBar) findViewById(R.id.progressBar_experience);
         Resources res = getResources();
         int[] levels = res.getIntArray(R.array.Levels);
-
-        for(int level : levels) {
-            if(level > player.getXP())
+        xpbar.setMax(190000); //Cap Level
+        for(int i = 0; i <levels.length ; i++) {
+            if(levels[i] > player.getXP())
             {
-                xpbar.setMax(level); //TODO GET FROM DATABASE
+                xpbar.setMax(levels[i]);
+                EditText level = (EditText) findViewById(R.id.editText_Level);
+                level.setText("" + ++i);
                 break;
             }
         }
-        xpbar.setProgress(player.getXP());  //TODO GET FROM DATABASE
+        xpbar.setProgress(player.getXP());
         TextView xp = (TextView) findViewById(R.id.txt_experience_ratio);
         xp.setText(xpbar.getProgress() + "/" + xpbar.getMax());
 
