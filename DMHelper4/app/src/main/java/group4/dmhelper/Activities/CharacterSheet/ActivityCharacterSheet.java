@@ -28,6 +28,8 @@ public class ActivityCharacterSheet extends AppCompatActivity {
 
     private int PlayerIdentifier;
     private Actor player;
+    Spinner Race_spinner, Alignment_spinner, Class_spinner;
+    ArrayAdapter<CharSequence> ClassAdapter, RaceAdapter, AlignmentAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -123,21 +125,27 @@ public class ActivityCharacterSheet extends AppCompatActivity {
                 }
 
                 Spinner characterClass = (Spinner) findViewById(R.id.spinner_search_class);
-                if (!characterClass.getSelectedItem().toString().equals("")) //TODO CHECK IF DIFFERENT FROM CURRENT
+                if (!characterClass.getSelectedItem().toString().equals("")) //TODO CHECK IF DIFFERENT FROM CURRENT, also talk about how class is saved
                 {
                     FragmentFeed.feedItems.add(player.getPlayerName() + " Changed class to " + characterClass.getSelectedItem().toString());
                 }
 
                 Spinner race = (Spinner) findViewById(R.id.spinner_search_race);
-                if (!race.getSelectedItem().toString().equals("")) //TODO CHECK IF DIFFERENT FROM CURRENT
+                if (!race.getSelectedItem().toString().equals(""))
                 {
-                    FragmentFeed.feedItems.add(player.getPlayerName() + " Changed race to " + race.getSelectedItem().toString());
+                    if(player.getRace() == null || !player.getRace().equals(race.getSelectedItem().toString())) {
+                        FragmentFeed.feedItems.add(player.getPlayerName() + " Changed race to " + race.getSelectedItem().toString());
+                        player.setRace(race.getSelectedItem().toString());
+                    }
                 }
 
                 Spinner alignment = (Spinner) findViewById(R.id.spinner_search_alignment);
-                if (!alignment.getSelectedItem().toString().equals("")) //TODO CHECK IF DIFFERENT FROM current
+                if (!alignment.getSelectedItem().toString().equals(""))
                 {
-                    FragmentFeed.feedItems.add(player.getPlayerName() + " Changed alignment to " + alignment.getSelectedItem().toString());
+                    if(player.getAlignment() == null || !player.getAlignment().equals(alignment.getSelectedItem().toString())) {
+                        FragmentFeed.feedItems.add(player.getPlayerName() + " Changed alignment to " + alignment.getSelectedItem().toString());
+                        player.setAlignment(alignment.getSelectedItem().toString());
+                    }
                 }
                 player.pushToDatabase();
                 finish();
@@ -184,20 +192,42 @@ public class ActivityCharacterSheet extends AppCompatActivity {
             religion.setText(databaseString);
         }
 
-//        //Sets Height
-//        float database = player.getWeight();
-//        if(database)
-//        {
-//            EditText religion = (EditText) findViewById(R.id.editText_Weight);
-//            religion.setText(databaseString);
-//        }
+ /*       //sets class
+        databaseString = player.getClass(); //TODO fix this
+        if (databaseString != null) {
+            int spinnerPosition = ClassAdapter.getPosition(databaseString);
+            Class_spinner.setSelection(spinnerPosition);
+        } */
+
+        //sets race
+        databaseString = player.getRace();
+        if (databaseString != null) {
+            int spinnerPosition = RaceAdapter.getPosition(databaseString);
+            Race_spinner.setSelection(spinnerPosition);
+        }
+
+        //sets alignment
+        databaseString = player.getAlignment();
+        if (databaseString != null) {
+            int spinnerPosition = AlignmentAdapter.getPosition(databaseString);
+            Alignment_spinner.setSelection(spinnerPosition);
+        }
+/*
+        //Sets Height TODO fix these, maybe save as strings in DB instead
+        float database = player.getWeight();
+        if(database)
+        {
+            EditText religion = (EditText) findViewById(R.id.editText_Weight);
+            religion.setText(databaseString);
+        }
         //sets weight
-//        float database = player.getWeight();
-//        if(database !=0)
-//        {
-//            EditText weight = (EditText) findViewById(R.id.editText_Weight);
-//            weight.setText(Float.toString(database));
-//        }
+        float database = player.getWeight();
+        if(database !=0)
+        {
+            EditText weight = (EditText) findViewById(R.id.editText_Weight);
+            weight.setText(Float.toString(database));
+        }
+*/
     }
 
     private void editProgressBars() {
@@ -306,24 +336,24 @@ public class ActivityCharacterSheet extends AppCompatActivity {
 
     private void populateSpinners(){
         //Populate Class Tables
-        Spinner Class_spinner = (Spinner) findViewById(R.id.spinner_search_class);
-        ArrayAdapter<CharSequence> ClassAdapter = ArrayAdapter
+        Class_spinner = (Spinner) findViewById(R.id.spinner_search_class);
+        ClassAdapter = ArrayAdapter
                 .createFromResource(this, R.array.Classes,
                         android.R.layout.simple_spinner_item);
         ClassAdapter.setDropDownViewResource(R.layout.spinner_layout_dropdown);
         Class_spinner.setAdapter(ClassAdapter);
 
         //Populate Race Spinner
-        Spinner Race_spinner = (Spinner) findViewById(R.id.spinner_search_race);
-        ArrayAdapter<CharSequence> RaceAdapter = ArrayAdapter
+        Race_spinner = (Spinner) findViewById(R.id.spinner_search_race);
+        RaceAdapter = ArrayAdapter
                 .createFromResource(this, R.array.Races,
                         android.R.layout.simple_spinner_item);
         RaceAdapter.setDropDownViewResource(R.layout.spinner_layout_dropdown);
         Race_spinner.setAdapter(RaceAdapter);
 
         //Populate Race Spinner
-        Spinner Alignment_spinner = (Spinner) findViewById(R.id.spinner_search_alignment);
-        ArrayAdapter<CharSequence> AlignmentAdapter = ArrayAdapter
+        Alignment_spinner = (Spinner) findViewById(R.id.spinner_search_alignment);
+        AlignmentAdapter = ArrayAdapter
                 .createFromResource(this, R.array.Alignments,
                         android.R.layout.simple_spinner_item);
         AlignmentAdapter.setDropDownViewResource(R.layout.spinner_layout_dropdown);
