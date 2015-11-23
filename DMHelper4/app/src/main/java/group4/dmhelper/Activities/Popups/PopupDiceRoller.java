@@ -17,8 +17,12 @@ import java.util.ArrayList;
 
 import group4.dmhelper.Activities.CharacterSheet.ActivityCharacterSheet;
 import group4.dmhelper.Actors.Actor;
+import group4.dmhelper.Actors.Equipment;
 import group4.dmhelper.Actors.Skill;
+import group4.dmhelper.Actors.Spell;
+import group4.dmhelper.Database.Equipments;
 import group4.dmhelper.Database.Skills;
+import group4.dmhelper.Database.Spells;
 import group4.dmhelper.R;
 
 public class PopupDiceRoller extends AppCompatActivity implements View.OnClickListener{
@@ -106,8 +110,17 @@ public class PopupDiceRoller extends AppCompatActivity implements View.OnClickLi
     public void onClick(View v)
     {
         Skills q = new Skills(getApplicationContext());
+        Equipments eq = new Equipments(getApplicationContext());
+        Spells s = new Spells(getApplicationContext());
+
         ArrayList<String> skillNames = new ArrayList<String>();
+        ArrayList<String> equipmentNames = new ArrayList<String>();
+        ArrayList<String> spellNames = new ArrayList<String>();
+
         ArrayList<Skill> dbSkillObjects = q.getAllByPlayerId(id);
+        ArrayList<Equipment> dbEquipedObjects = eq.getAllByPlayerId(id);
+        ArrayList<Spell> dbSpellObjects = s.getAllByPlayerId(id);
+
         Intent intent;
         TextView textView;
         EditText diceRoll = new EditText(this);
@@ -129,16 +142,30 @@ public class PopupDiceRoller extends AppCompatActivity implements View.OnClickLi
                 break;
             case R.id.btn_useWeapon:
                 // TODO: 11/16/2015  find out how to view weapons
-//                linearLayout.removeAllViews();
-//                for(Weapon weapon: actor.getWeapons)
-//                {
-//                    Button button = new Button(this);
-//                    button.setText(weapon.getName());
-//                    button.setId(weapon.getWeaponId());
-//                    button.setOnClickListener(this);
-//                    linearLayout.addView(button);
-//                }
-//                flag_weapon = true;
+                linearLayout.removeAllViews();
+                for (int i = 0; i < dbEquipedObjects.size(); i++) {
+                    equipmentNames.add(dbEquipedObjects.get(i).getEquipmentName());
+                    Button button = new Button(this);
+                    button.setText(dbEquipedObjects.get(i).getEquipmentName());
+                    //why doesn't this work?
+                    button.setId(dbEquipedObjects.get(i).getId());
+                    button.setOnClickListener(this);
+                    linearLayout.addView(button);
+                }
+                flag_weapon = true;
+                break;
+            case R.id.btn_useSpell:
+                linearLayout.removeAllViews();
+                for (int i = 0; i < dbSpellObjects.size(); i++) {
+                    spellNames.add(dbSpellObjects.get(i).getSpellName());
+                    Button button = new Button(this);
+                    button.setText(dbSpellObjects.get(i).getSpellName());
+                    //why doesn't this work?
+                    button.setId(dbSpellObjects.get(i).getId());
+                    button.setOnClickListener(this);
+                    linearLayout.addView(button);
+                }
+                flag_weapon = true;
                 break;
             case R.id.btn_player:
                 intent = new Intent(getApplicationContext(), ActivityCharacterSheet.class);
@@ -205,7 +232,7 @@ public class PopupDiceRoller extends AppCompatActivity implements View.OnClickLi
 
 //                    EditText diceRoll = new EditText(this);
                     diceRoll.setHint("d20 Roll"); // TODO: 11/16/2015 replace this with the roll the weapon has 
-                    roll = Integer.parseInt(diceRoll.getText().toString());
+//                    roll = Integer.parseInt(diceRoll.getText().toString());
 
                     Button submit = new Button(this);
                     submit.setText("Submit");
