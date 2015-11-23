@@ -82,15 +82,30 @@ public class FragmentGame extends Fragment implements View.OnClickListener{
         numPlayers = ((ActivityGame) getActivity()).getNumPlayers();
         switch (numPlayers) {
             case 5:
-                setBackgroundPlayer(4,playerFive);
+                if(whoseTurn == 5)
+                    setBackgroundPlayerHighlighted(4,playerFive);
+                else
+                    setBackgroundPlayer(4,playerFive);
             case 4:
-                setBackgroundPlayer(3,playerFour);
+                if(whoseTurn == 4)
+                    setBackgroundPlayerHighlighted(3,playerFour);
+                else
+                    setBackgroundPlayer(3,playerFour);
             case 3:
-                setBackgroundPlayer(2,playerThree);
+                if(whoseTurn == 3)
+                    setBackgroundPlayerHighlighted(2,playerThree);
+                else
+                    setBackgroundPlayer(2,playerThree);
             case 2:
-                setBackgroundPlayer(1,playerTwo);
+                if(whoseTurn == 2)
+                    setBackgroundPlayerHighlighted(1,playerTwo);
+                else
+                    setBackgroundPlayer(1,playerTwo);
             case 1:
-                setBackgroundPlayer(0,playerOne);
+                if(whoseTurn == 1)
+                    setBackgroundPlayerHighlighted(0,playerOne);
+                else
+                    setBackgroundPlayer(0,playerOne);
         }
     }
 
@@ -103,7 +118,7 @@ public class FragmentGame extends Fragment implements View.OnClickListener{
         {
             numPlayers = ((ActivityGame) parent).getNumPlayers();
         }
-        whoseTurn = 1;
+        whoseTurn = 0;
         switch (numPlayers)
         {
             case 1:
@@ -243,6 +258,9 @@ public class FragmentGame extends Fragment implements View.OnClickListener{
 
         switch (whoseTurn)
         {
+            case 0:
+                setBackgroundPlayerHighlighted(0,playerOne);
+                break;
             case 1:
                 switch (numPlayers){
                     case 1: break;

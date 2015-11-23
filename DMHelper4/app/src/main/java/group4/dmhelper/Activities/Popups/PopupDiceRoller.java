@@ -78,10 +78,11 @@ public class PopupDiceRoller extends AppCompatActivity implements View.OnClickLi
         player.setId(R.id.btn_player);
         player.setOnClickListener(this);
 
+        linearLayout.addView(player);
         linearLayout.addView(skillList);
         linearLayout.addView(useWeapon);
         linearLayout.addView(useSpell);
-        linearLayout.addView(player);
+
     }
 
     @Override
