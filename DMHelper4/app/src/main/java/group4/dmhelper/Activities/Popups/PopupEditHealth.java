@@ -44,16 +44,15 @@ public class PopupEditHealth extends AppCompatActivity {
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //TODO Edit players health.
                 EditText healthchange = (EditText) findViewById(R.id.text_input_health);
                 String text = healthchange.getText().toString();
-                if(text != "") {
+                if(!text.equals("")) {
                     int health = Integer.parseInt(text);
                     //TODO EDIT ACTOR HEALTH
                     Actor player = new Actor(PlayerIdentifier,getApplicationContext());
                     player.setHealth(player.getHealth() + health);
-                    FragmentFeed.feedItems.add(PlayerIdentifier + " edited health by: " + health); //TODO ADD PLAYER NAME
-                    Toast.makeText(getApplicationContext(),PlayerIdentifier + " edited health by: " + health, Toast.LENGTH_LONG).show();
+                    FragmentFeed.feedItems.add(player.getPlayerName() + " edited health by: " + health); //TODO ADD PLAYER NAME
+                    Toast.makeText(getApplicationContext(),player.getPlayerName() + " edited health by: " + health, Toast.LENGTH_LONG).show();
                     player.pushToDatabase();
                     finish();
                 }

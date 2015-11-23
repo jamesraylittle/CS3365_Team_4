@@ -70,10 +70,14 @@ public class PopupNumPlayer extends AppCompatActivity {
         int id = games.create(game);
         gv.setGameId(id);
 
-        for (int i = 0; i < numPlayers; i ++)
+        for (int i = 0; i < numPlayers;)
         {
             Actor player = new Actor(getApplicationContext());
             playerIds[i] = player.getId();
+            player.setPlayerName("Player"+ ++i);
+            player.setImageFile("player1");
+            player.setHealth(0);
+            player.pushToDatabase();
         }
         Intent intent = new Intent(this, ActivityGame.class);
         intent.putExtra("numplayers", numPlayers);
