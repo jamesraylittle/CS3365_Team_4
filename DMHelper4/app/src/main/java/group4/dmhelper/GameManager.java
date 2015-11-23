@@ -19,105 +19,40 @@ import group4.dmhelper.Database.Actors;
  */
 public class GameManager {
 
-    int gameId;
+    globalVariables gv;
 
-    private GameManager() {}
+    public GameManager(Context context) {
 
-    private static GameManager instance;    //Singleton structure
+        dActors = new Actors(context);
 
-    public static GameManager getInstance() {   //only one instance
-        if (instance != null) return instance;
-        else return new GameManager();
+        playerList = dActors.getAllActorsByGameId(gv.getGameId());
+        for(int i=0;i<playerList.size();i++){
+            if(playerList.get(i).getIsMonster()==1){
+                playerList.remove(i);
+                i--;
+            }
+        }
+
+        monsterList = dActors.getAllActorsByGameId(gv.getGameId());
+        for(int i=0;i<monsterList.size();i++){
+            if(monsterList.get(i).getIsMonster()==0){
+                monsterList.remove(i);
+                i--;
+            }
+        }
     }
 
-    private Context context;
+    Actors dActors;
 
-    public void setContext(Context context) {
-        this.context = context;
-    }
-
-    public Context getContext() {
-        return context;
-    }
-
-    Actors dActors = new Actors(context);
-
-    ArrayList<Player> playerList = new ArrayList<Player>();
-    ArrayList<Monster> monsterList = new ArrayList<Monster>();
+    ArrayList<Actor> playerList = new ArrayList<Actor>();
+    ArrayList<Actor> monsterList = new ArrayList<Actor>();
     ArrayList<Actor> monsterBacklog = new ArrayList<Actor>();   //This is for the DMs who want to create monsters before the game
     ArrayList<Item> itemBackLog = new ArrayList<Item>();   //This is for the DMs who want to create items before the game
     ArrayList<Actor> initiativeRoll = new ArrayList<Actor>();   //this should be replaced with a circular linked list
 
     //ArrayList<DATABASE OBJECT> dataBases = new ArrayList<DATABASE OBJECT>();
 
-    //$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#
-    //Managing monsters and players
-    //$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#
 
-    public Actor getActor(int actorId) {
-        for(int i = 0; i < initiativeRoll.size(); i++)
-            if(initiativeRoll.get(i).getId() == actorId) return initiativeRoll.get(i);
-        return null;
-    }
-
-    public void removeActor(int actorId) {
-        Actor p = getActor(actorId);
-        initiativeRoll.remove(p);
-        p = null;
-        if(getPlayer(actorId) == null);//success note;
-    }
-
-    public Player getPlayer(int playerId) {
-        for(int i = 0; i < playerList.size(); i++)
-            if(playerList.get(i).getId() == playerId) return playerList.get(i);
-        return null;
-    }
-
-    public void createPlayer() {
-        //this function should put a new actor in the playerList
-        Player p = new Player(context);
-        dActors.create(p);
-        //Activity editing all data goes here.
-        p.pushToDatabase();
-        playerList.add(p);
-    }
-
-    public void deletePlayer(int actorId) {//THIS IS NOT THE FUNCTION YOU USE TO KILL THE PLAYERS
-        //this function should delete an actor in the playerList
-        dActors.delete(actorId);
-        Player p = getPlayer(actorId);
-        playerList.remove(p);
-        p = null;
-        if(getPlayer(actorId) == null);//success note;
-    }
-
-    public Monster getMonster(int monsterId) {
-        for(int i = 0; i < monsterList.size(); i++)
-            if(monsterList.get(i).getId() == monsterId) return monsterList.get(i);
-        return null;
-    }
-
-    public void createMonster() {
-        Monster m = new Monster(context);
-        dActors.create(m);
-        //Activity editing all data goes here.
-        m.pushToDatabase();
-        monsterList.add(m);
-    }
-
-    public void deleteMonster(int actorId) {//THIS IS NOT THE FUNCTION YOU USE TO KILL THE MONSTERS
-        //this function should delete an actor in the monsterList
-        dActors.delete(actorId);
-        Monster m = getMonster(actorId);
-        monsterList.remove(m);
-        m = null;
-        if(getMonster(actorId) == null);//success note;
-    }
-
-    public void updateMonster() {
-        //in case they get poisoned, etc.
-        // TODO: 11/11/2015 Activity...? 
-    }
 
     //$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#
     //Managing Turns
@@ -169,7 +104,7 @@ public class GameManager {
         
         // TODO: 11/11/2015 Remove Items
         // TODO: 11/11/2015 Activity to "spill" items
-        deleteMonster(actorId);
+        //deleteMonster(actorId);
     }
 
     public void killPlayer(int actorId) {
@@ -177,7 +112,7 @@ public class GameManager {
 
         // TODO: 11/11/2015 Remove Items
         // TODO: 11/11/2015 Activity to "spill" items
-        deletePlayer(actorId);
+        //deletePlayer(actorId);
     }
 
     private void sortActors() {
