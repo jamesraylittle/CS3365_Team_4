@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 
@@ -16,6 +17,7 @@ import java.util.ArrayList;
 import group4.dmhelper.Activities.CharacterSheet.ActivityCharacterSheet;
 import group4.dmhelper.Activities.ActivityGame;
 import group4.dmhelper.Activities.Popups.PopupMonsterInfo;
+import group4.dmhelper.Actors.Actor;
 import group4.dmhelper.R;
 
 /**
@@ -52,11 +54,43 @@ public class FragmentGame extends Fragment implements View.OnClickListener{
         nextTurn = (Button) view.findViewById(R.id.nextTurn);
         nextTurn.setOnClickListener(this);
 
+
+        numPlayers = ((ActivityGame) getActivity()).getNumPlayers();
+        switch (numPlayers) {
+            case 5:
+                setBackgroundPlayer(4,playerFive);
+            case 4:
+                setBackgroundPlayer(3,playerFour);
+            case 3:
+                setBackgroundPlayer(2,playerThree);
+            case 2:
+                setBackgroundPlayer(1,playerTwo);
+            case 1:
+                setBackgroundPlayer(0,playerOne);
+        }
 //        if(monsters != null)
 //        {
 //            tableLayout.removeAllViews();
 //        }
         return view;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        numPlayers = ((ActivityGame) getActivity()).getNumPlayers();
+        switch (numPlayers) {
+            case 5:
+                setBackgroundPlayer(4,playerFive);
+            case 4:
+                setBackgroundPlayer(3,playerFour);
+            case 3:
+                setBackgroundPlayer(2,playerThree);
+            case 2:
+                setBackgroundPlayer(1,playerTwo);
+            case 1:
+                setBackgroundPlayer(0,playerOne);
+        }
     }
 
     @Override
@@ -74,6 +108,7 @@ public class FragmentGame extends Fragment implements View.OnClickListener{
             case 1:
                 playerOne.setVisibility(View.VISIBLE);
                 playerOne.setOnClickListener(this);
+
                 break;
             case 2:
                 playerOne.setVisibility(View.VISIBLE);
@@ -123,22 +158,22 @@ public class FragmentGame extends Fragment implements View.OnClickListener{
                 break;
             case R.id.playerOne:
                 intent = new Intent(getContext(), ActivityCharacterSheet.class);
-                intent.putExtra("Identifier",((ActivityGame) getActivity()).getPlayerId(0));
+                intent.putExtra("Identifier", ((ActivityGame) getActivity()).getPlayerId(0));
                 startActivity(intent);
                 break;
             case R.id.playerTwo:
                 intent = new Intent(getContext(), ActivityCharacterSheet.class);
-                intent.putExtra("Identifier",((ActivityGame) getActivity()).getPlayerId(1));
+                intent.putExtra("Identifier", ((ActivityGame) getActivity()).getPlayerId(1));
                 startActivity(intent);
                 break;
             case R.id.playerThree:
                 intent = new Intent(getContext(), ActivityCharacterSheet.class);
-                intent.putExtra("Identifier",((ActivityGame) getActivity()).getPlayerId(2));
+                intent.putExtra("Identifier", ((ActivityGame) getActivity()).getPlayerId(2));
                 startActivity(intent);
                 break;
             case R.id.playerFour:
                 intent = new Intent(getContext(), ActivityCharacterSheet.class);
-                intent.putExtra("Identifier",((ActivityGame) getActivity()).getPlayerId(3));
+                intent.putExtra("Identifier", ((ActivityGame) getActivity()).getPlayerId(3));
                 startActivity(intent);
                 break;
             case R.id.playerFive:
@@ -149,7 +184,7 @@ public class FragmentGame extends Fragment implements View.OnClickListener{
             default :
                 intent = new Intent(getContext(), PopupMonsterInfo.class);
                 //// TODO: 11/2/2015 Change to monster sheet class
-                intent.putExtra("monster_values",monsters.get(v.getId()-1));
+                intent.putExtra("monster_values", monsters.get(v.getId() - 1));
                 startActivity(intent);
                 break;
         }
@@ -236,5 +271,19 @@ public class FragmentGame extends Fragment implements View.OnClickListener{
                 feed.addFeed("PlayerFive's Turn");
                 break;
         }
+    }
+
+    public void setBackgroundPlayer(int PlayerID, Button button) {
+        Actor player = new Actor(((ActivityGame) getActivity()).getPlayerId(PlayerID),getContext());
+        String image = player.getImageFile();
+        String name = player.getPlayerName();
+        if (image != null) {
+            int imageResource = getResources().getIdentifier(image, "drawable", getContext().getPackageName());
+            button.setBackgroundResource(imageResource);
+        }
+        else {
+            button.setBackgroundResource(R.drawable.player1);
+        }
+        button.setText(name);
     }
 }
