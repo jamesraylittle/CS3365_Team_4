@@ -146,12 +146,16 @@
         <activity
             android:name=".Activities.Popups.PopupNumPlayer"
             android:label="@string/title_activity_num_player"
+
+            android:theme="@style/AppTheme.popup" >
             android:theme="@style/AppTheme.popup"
             android:screenOrientation="portrait">
         </activity>
         <activity
             android:name=".Activities.Popups.PopupEditCharPic"
             android:label="@string/title_activity_num_player"
+            android:noHistory="true"
+            android:theme="@style/AppTheme.popup" >
             android:theme="@style/AppTheme.popup"
             android:noHistory="true"
             android:screenOrientation="portrait">
@@ -159,6 +163,13 @@
         <activity
             android:name=".Activities.Popups.PopupSelectPlayer"
             android:label="@string/title_activity_num_player"
+            android:noHistory="true"
+            android:theme="@style/AppTheme.popup" >
+        </activity>
+        <activity
+            android:name=".Activities.Popups.PopupDiceRoller"
+            android:label="@string/title_activity_popup_dice_roller"
+            android:theme="@style/AppTheme.popup">
             android:theme="@style/AppTheme.popup"
             android:noHistory="true"
             android:screenOrientation="portrait">
@@ -177,7 +188,6 @@
             android:noHistory="true"
             android:screenOrientation="portrait">
         </activity>
-
     </application>
 
 </manifest>
