@@ -46,6 +46,7 @@ public class PopupDiceRoller extends AppCompatActivity implements View.OnClickLi
         getWindowManager().getDefaultDisplay().getMetrics(dm);
         WindowManager.LayoutParams windowManager = getWindow().getAttributes();
         windowManager.dimAmount = 0.5f;
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_DIM_BEHIND);
         int width = dm.widthPixels;
         int height = dm.heightPixels;
         getWindow().setLayout((int) (width * 0.7), (int) (height * 0.4));
