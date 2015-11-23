@@ -13,9 +13,12 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import group4.dmhelper.Activities.ActivityCharacterSheet;
+import java.util.ArrayList;
+
+import group4.dmhelper.Activities.CharacterSheet.ActivityCharacterSheet;
 import group4.dmhelper.Actors.Actor;
 import group4.dmhelper.Actors.Skill;
+import group4.dmhelper.Database.Skills;
 import group4.dmhelper.R;
 
 public class PopupDiceRoller extends AppCompatActivity implements View.OnClickListener{
@@ -34,7 +37,7 @@ public class PopupDiceRoller extends AppCompatActivity implements View.OnClickLi
         Intent intent = getIntent();
         Bundle b = intent.getExtras();
         id = (int) b.get("Identifier");
-        actor = new Actor(id, getApplicationContext());
+//        actor = new Actor(id, getApplicationContext());
         roll=0;
         flag_skill = flag_weapon = false;
         skill_selected = new Skill();
@@ -45,12 +48,13 @@ public class PopupDiceRoller extends AppCompatActivity implements View.OnClickLi
         windowManager.dimAmount = 0.5f;
         int width = dm.widthPixels;
         int height = dm.heightPixels;
-        getWindow().setLayout((int) (width * 0.7), (int) (height * 0.3));
+        getWindow().setLayout((int) (width * 0.7), (int) (height * 0.4));
 
         linearLayout = (LinearLayout) findViewById(R.id.buttonList);
 
         Button skillList = new Button(this);
         Button useWeapon = new Button(this);
+        Button useSpell = new Button(this);
         Button player = new Button(this);
 
         skillList.setText("Skill List");
@@ -61,12 +65,17 @@ public class PopupDiceRoller extends AppCompatActivity implements View.OnClickLi
         useWeapon.setId(R.id.btn_useWeapon);
         useWeapon.setOnClickListener(this);
 
+        useSpell.setText("Use Spell");
+        useSpell.setId(R.id.btn_useSpell);
+        useSpell.setOnClickListener(this);
+
         player.setText("Character Sheet");
         player.setId(R.id.btn_player);
         player.setOnClickListener(this);
 
         linearLayout.addView(skillList);
         linearLayout.addView(useWeapon);
+        linearLayout.addView(useSpell);
         linearLayout.addView(player);
     }
 
@@ -95,20 +104,26 @@ public class PopupDiceRoller extends AppCompatActivity implements View.OnClickLi
     @Override
     public void onClick(View v)
     {
+        Skills q = new Skills(getApplicationContext());
+        ArrayList<String> skillNames = new ArrayList<String>();
+        ArrayList<Skill> dbSkillObjects = q.getAllByPlayerId(id);
         Intent intent;
         TextView textView;
+        EditText diceRoll = new EditText(this);
         switch (v.getId())
         {
             case R.id.btn_skillList:
                 linearLayout.removeAllViews();
-//                for(Skill skill: actor.getSkills)
-//                {
-//                    Button button = new Button(this);
-//                    button.setText(skill.getName());
-//                    button.setId(skill.getSkillId());
-//                    button.setOnClickListener(this);
-//                    linearLayout.addView(button);
-//                }
+                for (int i = 0; i < dbSkillObjects.size(); i++) {
+                    skillNames.add(dbSkillObjects.get(i).getName());
+//                    skill_selected = dbSkillObjects.get(i);
+                    Button button = new Button(this);
+                    button.setText(dbSkillObjects.get(i).getName());
+                    //why doesn't this work?
+                    button.setId(dbSkillObjects.get(i).getId());
+                    button.setOnClickListener(this);
+                    linearLayout.addView(button);
+                }
                 flag_skill = true;
                 break;
             case R.id.btn_useWeapon:
@@ -130,6 +145,7 @@ public class PopupDiceRoller extends AppCompatActivity implements View.OnClickLi
                 startActivity(intent);
                 break;
             case R.id.submit_d20:
+//                roll = Integer.parseInt(diceRoll.getText().toString());
                 textView = new TextView(this);
                 textView.setText(skill_selected.getName());
 
@@ -166,14 +182,10 @@ public class PopupDiceRoller extends AppCompatActivity implements View.OnClickLi
                 if(flag_skill)
                 {
                     linearLayout.removeAllViews();
-//                    skill_selected = new Skill(id, v.getId());
+//                    skill_selected = new Skill(v.getId());
                     textView = new TextView(this);
                     textView.setText(skill_selected.getName());
-
-                    EditText diceRoll = new EditText(this);
                     diceRoll.setHint("d20 Roll");
-                    roll = Integer.parseInt(diceRoll.getText().toString());
-
                     Button submit = new Button(this);
                     submit.setText("Submit");
                     submit.setId(R.id.submit_d20);
@@ -190,7 +202,7 @@ public class PopupDiceRoller extends AppCompatActivity implements View.OnClickLi
                     textView = new TextView(this);
                     textView.setText(skill_selected.getName()); // TODO: 11/16/2015 replace with weapon selected
 
-                    EditText diceRoll = new EditText(this);
+//                    EditText diceRoll = new EditText(this);
                     diceRoll.setHint("d20 Roll"); // TODO: 11/16/2015 replace this with the roll the weapon has 
                     roll = Integer.parseInt(diceRoll.getText().toString());
 

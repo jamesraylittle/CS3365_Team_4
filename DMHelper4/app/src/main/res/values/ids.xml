@@ -5,4 +5,5 @@
     <item name="btn_player" type="id" />
     <item name="btn_useWeapon" type="id" />
     <item name="btn_skillList" type="id" />
+    <item name="btn_useSpell" type="id" />
 </resources>

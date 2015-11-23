@@ -167,7 +167,8 @@
         </activity>
         <activity
             android:name=".Activities.Popups.PopupDiceRoller"
-            android:label="@string/title_activity_popup_dice_roller" >
+            android:label="@string/title_activity_popup_dice_roller"
+            android:theme="@style/AppTheme.popup">
             android:theme="@style/AppTheme.popup"
             android:noHistory="true"
             android:screenOrientation="portrait">

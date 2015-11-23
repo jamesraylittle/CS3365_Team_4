@@ -13,9 +13,9 @@ import android.widget.TableRow;
 
 import java.util.ArrayList;
 
-import group4.dmhelper.Activities.CharacterSheet.ActivityCharacterSheet;
 import group4.dmhelper.Activities.ActivityGame;
-import group4.dmhelper.Activities.Popups.PopupMonsterInfo;
+import group4.dmhelper.Activities.MonsterSheet.ActivityMonsterSheet;
+import group4.dmhelper.Activities.Popups.PopupDiceRoller;
 import group4.dmhelper.R;
 
 /**
@@ -122,34 +122,34 @@ public class FragmentGame extends Fragment implements View.OnClickListener{
                 nextTurn(v);
                 break;
             case R.id.playerOne:
-                intent = new Intent(getContext(), ActivityCharacterSheet.class);
+                intent = new Intent(getContext(), PopupDiceRoller.class);
                 intent.putExtra("Identifier",((ActivityGame) getActivity()).getPlayerId(0));
                 startActivity(intent);
                 break;
             case R.id.playerTwo:
-                intent = new Intent(getContext(), ActivityCharacterSheet.class);
+                intent = new Intent(getContext(), PopupDiceRoller.class);
                 intent.putExtra("Identifier",((ActivityGame) getActivity()).getPlayerId(1));
                 startActivity(intent);
                 break;
             case R.id.playerThree:
-                intent = new Intent(getContext(), ActivityCharacterSheet.class);
+                intent = new Intent(getContext(), PopupDiceRoller.class);
                 intent.putExtra("Identifier",((ActivityGame) getActivity()).getPlayerId(2));
                 startActivity(intent);
                 break;
             case R.id.playerFour:
-                intent = new Intent(getContext(), ActivityCharacterSheet.class);
+                intent = new Intent(getContext(), PopupDiceRoller.class);
                 intent.putExtra("Identifier",((ActivityGame) getActivity()).getPlayerId(3));
                 startActivity(intent);
                 break;
             case R.id.playerFive:
-                intent = new Intent(getContext(), ActivityCharacterSheet.class);
+                intent = new Intent(getContext(), PopupDiceRoller.class);
                 intent.putExtra("Identifier", ((ActivityGame) getActivity()).getPlayerId(4));
                 startActivity(intent);
                 break;
             default :
-                intent = new Intent(getContext(), PopupMonsterInfo.class);
+                intent = new Intent(getContext(), ActivityMonsterSheet.class);
                 //// TODO: 11/2/2015 Change to monster sheet class
-                intent.putExtra("monster_values",monsters.get(v.getId()-1));
+                intent.putExtra("Identifier",monsters.get(v.getId()));
                 startActivity(intent);
                 break;
         }
@@ -175,7 +175,7 @@ public class FragmentGame extends Fragment implements View.OnClickListener{
             Button button = new Button(getContext());
             button.setText(monsters.get(i)[1]);
             button.setBackgroundColor(getContext().getResources().getColor(R.color.colorButton));
-            button.setId(monsters.size());
+            button.setId(i);
             tableRow.addView(button);
             tableLayout.addView(tableRow, monsters.size());
             button.setOnClickListener(this);
