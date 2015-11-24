@@ -547,7 +547,7 @@ public class Actor extends Model implements Comparable<Actor>{
     public int calculateBAB(){return 0;}// TODO: 11/15/2015 returns first value in BAB list
     public int rollToHit(){return calculateBAB();}// TODO: 11/15/2015 dx+BAB+STR
 
-    /*
+    //*
     public int calculateAC() {return 0;}// TODO: 11/11/2015  Need to figure out calculation for this.
     public int calculateTouchAC() {return 0;}// TODO: 11/11/2015 Need to figure out calculation for this.
     public int calculateFlatFootedAC() {return 0;}// TODO: 11/11/2015 Need to figure out calculation for this.
