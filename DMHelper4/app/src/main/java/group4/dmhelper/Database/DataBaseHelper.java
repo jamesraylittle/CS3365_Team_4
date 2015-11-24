@@ -12,6 +12,10 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.util.ArrayList;
+import java.util.List;
+
+import group4.dmhelper.Actors.Feat;
 
 /**
  * Created by Kyle on 9/22/2015.
@@ -185,6 +189,20 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         String[] SelectionArgs = new String[]{};
         Cursor query = myDataBase.rawQuery("Select _id, name from skill", SelectionArgs);
         return query;
+    }
+
+    public ArrayList<String> retireveAllClassNames() {
+        this.openDataBase();
+        String[] args = new String[]{};
+        ArrayList<String> names = new ArrayList<>();
+        Cursor query = myDataBase.rawQuery("select name from class order by name asc", args);
+        names.add("");
+        if(query.moveToFirst()) {
+            do {
+                names.add(query.getString(0));
+            } while(query.moveToNext());
+        }
+        return names;
     }
 
     private String[] getCursorData(Cursor c) {
