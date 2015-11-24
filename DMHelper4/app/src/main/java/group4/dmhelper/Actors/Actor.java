@@ -199,7 +199,8 @@ public class Actor extends Model implements Comparable<Actor>{
         playerAbilityIds.id = dPlayerAbilities.create(playerAbilityIds);
 
         for(int i=0;i<40;i++) {
-            skillIds.add(new Skill(0, 0, "", i + 1, 0));
+            String[] skills = dbh.retrieveSkillByID(i+1);
+            skillIds.add(new Skill(0, 0, skills[1], id, i + 1));
             skillIds.get(i).id = dSkills.create(skillIds.get(i));
         }
 
