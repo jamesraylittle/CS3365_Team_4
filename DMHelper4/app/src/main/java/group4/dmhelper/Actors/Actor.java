@@ -229,6 +229,7 @@ public class Actor extends Model implements Comparable<Actor>{
         this.playerName = a.getPlayerName();
         this.XP = a.getXP();
         this.health = a.getHealth();
+        this.className = a.getClassName();
     }
 
     //public Actor() {}
