@@ -16,16 +16,6 @@
             android:layout_height="fill_parent"
             android:layout_weight="1">
 
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Add Skill"
-                android:id="@+id/btn_char_add_skill"
-                android:layout_centerVertical="true"
-                android:layout_alignParentEnd="true"
-                android:background="@color/colorButton"
-                android:onClick="doAddSkill" />
-
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

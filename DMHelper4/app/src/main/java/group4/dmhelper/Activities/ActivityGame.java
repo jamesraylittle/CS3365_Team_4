@@ -53,13 +53,6 @@ public class ActivityGame extends AppCompatActivity  {
         viewPager.setCurrentItem(1);
         viewPager.setOffscreenPageLimit(3);
 
-        DataBaseHelper myDbHelper = new DataBaseHelper(this);
-
-        try {
-            myDbHelper.createDataBase();
-        } catch (IOException ioe) {
-            throw new Error("Unable to create database");
-        }
 
         //get the intent extras here, then send them to the fragment with setters
         Bundle b = getIntent().getExtras();
