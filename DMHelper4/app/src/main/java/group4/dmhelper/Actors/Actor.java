@@ -543,8 +543,9 @@ public class Actor extends Model implements Comparable<Actor>{
 
     public void calculateSaves(){}
 
-    public void rollInitiative() {initiative = initiativeMod + roll(20)/*replace 10 with roll activity*/;}            // TODO: 11/10/2015 An activity needs to be connected to this
+    public int rollInitiative(int iRoll) {initiative = iRoll+initiativeMod; return initiative;}
 
+    /*
     public int calculateAC() {return 0;}// TODO: 11/11/2015  Need to figure out calculation for this.
     public int calculateTouchAC() {return 0;}// TODO: 11/11/2015 Need to figure out calculation for this.
     public int calculateFlatFootedAC() {return 0;}// TODO: 11/11/2015 Need to figure out calculation for this.
@@ -560,9 +561,31 @@ public class Actor extends Model implements Comparable<Actor>{
     public int numOfAttacks(){return (calculateBAB() - 1)/5 + 1;}// TODO: 11/15/2015 Num of attacks - based off of bab
 
     public int grappleCheck(){return 0;}// TODO: 11/15/2015 Bab + Str
-    
-    public int calculateHealth(){return 100;}// TODO: 11/15/2015 (.5*hit_die+1)*(level-1) + hit_die + const_mod*level
-    
+    //*/
+
+    public int calculateMaxHealth(){
+        if(classTypeId.getClassId() == 0) return 10;
+        String sHd = dbh.retrieveClassByID(classTypeId.getClassId())[4];
+        int iHd = Integer.parseInt(sHd.substring(1));
+        String sLvl = dbh.retrieveClassTableByID(classTypeId.getClass_tableId())[2];
+        int iLvl = Integer.parseInt(sLvl);
+        return (iHd/2+1)*(iLvl-1)+iHd+getCON()*iLvl;
+    }
+
+    public int calculateSkill(int ID){
+        String key_ability = dbh.retrieveSkillByID(ID)[3];
+        int abilityBonus = 0;
+        switch(key_ability) {
+            case "Str": abilityBonus = getSTR(); break;
+            case "Dex": abilityBonus = getDEX(); break;
+            case "Con": abilityBonus = getCON(); break;
+            case "Wis": abilityBonus = getWIS(); break;
+            case "Int": abilityBonus = getINT(); break;
+            case "Cha": abilityBonus = getCHA(); break;
+        }
+        return getSkill(ID).getBaseScore() + abilityBonus;
+    }
+
     public int calculateSkillPoints(){return 0;}// TODO: 11/15/2015 4*(skill_points+int_mod) @ level 1 and skill_points+int_mod
 
     public int roll(int i){return 0;}// TODO: 11/15/2015 NEEDS AN ACTIVITY FOR ROLLING DIE 
