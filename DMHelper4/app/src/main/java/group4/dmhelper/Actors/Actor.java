@@ -358,6 +358,12 @@ public class Actor extends Model implements Comparable<Actor>{
     public void setHealth(int health) {
         this.health = health;
     }
+    public String getClassName() {
+        return className;
+    }
+    public void setClassName(String className) {
+        this.className = className;
+    }
 
     //Calculated
     public int getSpeed() {
@@ -407,13 +413,6 @@ public class Actor extends Model implements Comparable<Actor>{
     }
     public void setFortMod(int fortMod) {
         this.fortMod = fortMod;
-    }
-
-    public String getClassName() {
-        return className;
-    }
-    public void setClassName(String className) {
-        this.className = className;
     }
 
     //$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#

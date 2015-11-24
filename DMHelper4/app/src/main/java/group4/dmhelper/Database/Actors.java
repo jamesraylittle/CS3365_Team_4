@@ -168,7 +168,7 @@ public class Actors extends Database implements DAO<Actor> {
         values.put("playerName", p.getPlayerName());
         values.put("XP", p.getXP());
         values.put("health", p.getHealth());
-        values.put("className", p.getHealth());
+        values.put("className", p.getClassName());
         return values;
     }
 
