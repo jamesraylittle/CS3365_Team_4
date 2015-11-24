@@ -108,14 +108,14 @@ public class ActivityCharacterAbilities extends AppCompatActivity {
     private void fillInAbilities(Actor player) {
         int databaseString;
         //Sets Strength
-        databaseString = player.getSTR();
+        databaseString = player.getStrength();
         if(databaseString >= 0)
         {
             EditText strength = (EditText) findViewById(R.id.text_input_strength);
             strength.setText("" + databaseString);
         }
         //Sets Dexterity
-        databaseString = player.getDEX();
+        databaseString = player.getDexterity();
         if(databaseString >= 0)
         {
             EditText dexterity = (EditText) findViewById(R.id.text_input_dexterity);
@@ -123,7 +123,7 @@ public class ActivityCharacterAbilities extends AppCompatActivity {
         }
 
         //Sets Constitution
-        databaseString = player.getCON();
+        databaseString = player.getConstitution();
         if(databaseString >= 0)
         {
             EditText constitution = (EditText) findViewById(R.id.text_input_constitution);
@@ -131,7 +131,7 @@ public class ActivityCharacterAbilities extends AppCompatActivity {
         }
 
         //Sets Intelligence
-        databaseString = player.getINT();
+        databaseString = player.getIntel();
         if(databaseString >= 0)
         {
             EditText intelligence = (EditText) findViewById(R.id.text_input_intelligence);
@@ -139,7 +139,7 @@ public class ActivityCharacterAbilities extends AppCompatActivity {
         }
 
         //Sets Wisdom
-        databaseString = player.getWIS();
+        databaseString = player.getWisdom();
         if(databaseString >= 0)
         {
             EditText wisdom = (EditText) findViewById(R.id.text_input_wisdom);
@@ -147,7 +147,7 @@ public class ActivityCharacterAbilities extends AppCompatActivity {
         }
 
         //Sets Charisma
-        databaseString = player.getCHA();
+        databaseString = player.getCharisma();
         if(databaseString >= 0)
         {
             EditText charisma = (EditText) findViewById(R.id.text_input_charisma);
