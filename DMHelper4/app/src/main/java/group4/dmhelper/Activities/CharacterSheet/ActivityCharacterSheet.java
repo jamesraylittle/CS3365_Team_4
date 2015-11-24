@@ -5,6 +5,7 @@ import android.content.res.Resources;
 import android.media.Image;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -15,10 +16,13 @@ import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+
 import group4.dmhelper.Activities.Popups.PopupEditCharPic;
 import group4.dmhelper.Activities.Popups.PopupEditExperience;
 import group4.dmhelper.Activities.Popups.PopupEditHealth;
 import group4.dmhelper.Actors.Actor;
+import group4.dmhelper.Database.DataBaseHelper;
 import group4.dmhelper.Fragments.FragmentFeed;
 import group4.dmhelper.R;
 /**
@@ -29,7 +33,8 @@ public class ActivityCharacterSheet extends AppCompatActivity {
     private int PlayerIdentifier;
     private Actor player;
     Spinner Race_spinner, Alignment_spinner, Class_spinner;
-    ArrayAdapter<CharSequence> ClassAdapter, RaceAdapter, AlignmentAdapter;
+    ArrayAdapter<CharSequence> RaceAdapter, AlignmentAdapter;
+    ArrayAdapter<String> ClassAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -108,15 +113,25 @@ public class ActivityCharacterSheet extends AppCompatActivity {
                 }
 
                 EditText height = (EditText) findViewById(R.id.editText_Height);
-                if (!height.getText().toString().equals("")) //TODO CHECK IF DIFFERENT FROM CURRENT
+                if (!height.getText().toString().equals(""))
                 {
-                    FragmentFeed.feedItems.add(player.getPlayerName() + " Changed height to " + height.getText());
+                    String database = player.getHeight();
+                    String inText = height.getText().toString();
+                    if( database== null || !database.equals(inText)) {
+                        FragmentFeed.feedItems.add(player.getPlayerName() + " Changed character height to " + inText);
+                        player.setHeight(inText);
+                    }
                 }
 
                 EditText weight = (EditText) findViewById(R.id.editText_Weight);
-                if (!weight.getText().toString().equals("")) //TODO CHECK IF DIFFERENT FROM CURRENT
+                if (!weight.getText().toString().equals(""))
                 {
-                    FragmentFeed.feedItems.add(player.getPlayerName() + " Changed weight to " + weight.getText());
+                    String database = player.getWeight();
+                    String inText = weight.getText().toString();
+                    if( database== null || !database.equals(inText)) {
+                        FragmentFeed.feedItems.add(player.getPlayerName() + " Changed character weight to " + inText);
+                        player.setWeight(inText);
+                    }
                 }
 
                 EditText religion = (EditText) findViewById(R.id.editText_religion);
@@ -131,9 +146,12 @@ public class ActivityCharacterSheet extends AppCompatActivity {
                 }
 
                 Spinner characterClass = (Spinner) findViewById(R.id.spinner_search_class);
-                if (!characterClass.getSelectedItem().toString().equals("")) //TODO CHECK IF DIFFERENT FROM CURRENT, also talk about how class is saved
+                if (!characterClass.getSelectedItem().toString().equals(""))
                 {
-                    FragmentFeed.feedItems.add(player.getPlayerName() + " Changed class to " + characterClass.getSelectedItem().toString());
+                    if(player.getClassName() == null || !player.getClassName().equals(characterClass.getSelectedItem().toString())) {
+                        FragmentFeed.feedItems.add(player.getPlayerName() + " Changed class to " + characterClass.getSelectedItem().toString());
+                        player.setRace(characterClass.getSelectedItem().toString());
+                    }
                 }
 
                 Spinner race = (Spinner) findViewById(R.id.spinner_search_race);
@@ -198,12 +216,13 @@ public class ActivityCharacterSheet extends AppCompatActivity {
             religion.setText(databaseString);
         }
 
- /*       //sets class
-        databaseString = player.getClass(); //TODO fix this
+        //sets class
+        databaseString = player.getClassName(); //TODO fix this
+        Log.d("num44","Class name: "+player.getClassName());
         if (databaseString != null) {
             int spinnerPosition = ClassAdapter.getPosition(databaseString);
             Class_spinner.setSelection(spinnerPosition);
-        } */
+        }
 
         //sets race
         databaseString = player.getRace();
@@ -219,21 +238,24 @@ public class ActivityCharacterSheet extends AppCompatActivity {
             Alignment_spinner.setSelection(spinnerPosition);
         }
 
-        //Sets Height TODO fix these, maybe save as strings in DB instead
-        String database = player.getHeight();
-        if(database != null)
+        //Sets Height
+        databaseString = player.getHeight();
+        if(databaseString != null)
         {
-            EditText religion = (EditText) findViewById(R.id.editText_Weight);
-            religion.setText(databaseString);
+            Log.d("num44","Wight: "+databaseString);
+            EditText height = (EditText) findViewById(R.id.editText_Height);
+            height.setText(databaseString);
         }
- /*       //sets weight
-        float database = player.getWeight();
-        if(database !=0)
+
+        //sets weight
+        databaseString = player.getWeight();
+        if(databaseString != null)
         {
+            Log.d("num44","Height: "+databaseString);
             EditText weight = (EditText) findViewById(R.id.editText_Weight);
-            weight.setText(Float.toString(database));
+            weight.setText(databaseString);
         }
-*/
+
     }
 
     private void editProgressBars() {
@@ -343,11 +365,13 @@ public class ActivityCharacterSheet extends AppCompatActivity {
     private void populateSpinners(){
         //Populate Class Tables
         Class_spinner = (Spinner) findViewById(R.id.spinner_search_class);
-        ClassAdapter = ArrayAdapter
-                .createFromResource(this, R.array.Classes,
-                        android.R.layout.simple_spinner_item);
+        DataBaseHelper readDB = new DataBaseHelper(getApplicationContext());
+        ArrayList<String> classNames = readDB.retireveAllClassNames();
+        ClassAdapter = new ArrayAdapter<>(this,
+                android.R.layout.simple_spinner_item, classNames);
         ClassAdapter.setDropDownViewResource(R.layout.spinner_layout_dropdown);
         Class_spinner.setAdapter(ClassAdapter);
+        readDB.close();
 
         //Populate Race Spinner
         Race_spinner = (Spinner) findViewById(R.id.spinner_search_race);
@@ -357,7 +381,7 @@ public class ActivityCharacterSheet extends AppCompatActivity {
         RaceAdapter.setDropDownViewResource(R.layout.spinner_layout_dropdown);
         Race_spinner.setAdapter(RaceAdapter);
 
-        //Populate Race Spinner
+        //Populate Alignment Spinner
         Alignment_spinner = (Spinner) findViewById(R.id.spinner_search_alignment);
         AlignmentAdapter = ArrayAdapter
                 .createFromResource(this, R.array.Alignments,
