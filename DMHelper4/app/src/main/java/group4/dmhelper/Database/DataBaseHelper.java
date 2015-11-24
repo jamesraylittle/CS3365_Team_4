@@ -120,6 +120,13 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         return getCursorData(query);
     }
 
+    public String[] retrieveClassByName(String name) {
+        this.openDataBase();
+        String[] SelectionArgs = new String[]{name};
+        Cursor query = myDataBase.rawQuery("Select * from class where name = ?", SelectionArgs);
+        return getCursorData(query);
+    }
+
     public String[] retrieveClassTableByID(int id) {
         this.openDataBase();
         String[] SelectionArgs = new String[]{""+id};
