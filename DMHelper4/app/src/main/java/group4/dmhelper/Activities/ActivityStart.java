@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.RelativeLayout;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 import group4.dmhelper.Activities.Popups.PopupNumPlayer;
@@ -41,6 +42,14 @@ public class ActivityStart extends AppCompatActivity {
         });
 
         start = this;
+
+        DataBaseHelper myDbHelper = new DataBaseHelper(this);
+
+        try {
+            myDbHelper.createDataBase();
+        } catch (IOException ioe) {
+            throw new Error("Unable to create database");
+        }
     }
 
     public void loadAdventure(View view)
