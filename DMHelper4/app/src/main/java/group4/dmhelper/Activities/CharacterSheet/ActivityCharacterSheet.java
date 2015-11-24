@@ -148,15 +148,18 @@ public class ActivityCharacterSheet extends AppCompatActivity {
                 Spinner characterClass = (Spinner) findViewById(R.id.spinner_search_class);
                 if (!characterClass.getSelectedItem().toString().equals(""))
                 {
+                    Log.d("num44", characterClass.getSelectedItem().toString());
+                    Log.d("num44", "Current Class: "+player.getClassName()+" class to be saved: "+characterClass.getSelectedItem());
                     if(player.getClassName() == null || !player.getClassName().equals(characterClass.getSelectedItem().toString())) {
                         FragmentFeed.feedItems.add(player.getPlayerName() + " Changed class to " + characterClass.getSelectedItem().toString());
-                        player.setRace(characterClass.getSelectedItem().toString());
+                        player.setClassName(characterClass.getSelectedItem().toString());
                     }
                 }
 
                 Spinner race = (Spinner) findViewById(R.id.spinner_search_race);
                 if (!race.getSelectedItem().toString().equals(""))
                 {
+                    Log.d("num44", "Current Race: "+player.getRace()+" race to be saved: "+race.getSelectedItem());
                     if(player.getRace() == null || !player.getRace().equals(race.getSelectedItem().toString())) {
                         FragmentFeed.feedItems.add(player.getPlayerName() + " Changed race to " + race.getSelectedItem().toString());
                         player.setRace(race.getSelectedItem().toString());
