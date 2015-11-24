@@ -544,20 +544,20 @@ public class Actor extends Model implements Comparable<Actor>{
     public void calculateSaves(){}
 
     public int rollInitiative(int iRoll) {initiative = iRoll+initiativeMod; return initiative;}
+    public int calculateBAB(){return 0;}// TODO: 11/15/2015 returns first value in BAB list
+    public int rollToHit(){return calculateBAB();}// TODO: 11/15/2015 dx+BAB+STR
 
     /*
     public int calculateAC() {return 0;}// TODO: 11/11/2015  Need to figure out calculation for this.
     public int calculateTouchAC() {return 0;}// TODO: 11/11/2015 Need to figure out calculation for this.
     public int calculateFlatFootedAC() {return 0;}// TODO: 11/11/2015 Need to figure out calculation for this.
 
-    public int rollToHit(){return calculateBAB();}// TODO: 11/15/2015 dx+BAB+STR
     public int calculateDamage(){return 0;}// TODO: 11/15/2015 (roll + str/2*(number of hands))
 
     public int rollToHitRanged(){return 0;}// TODO: 11/15/2015 bab+dx+DEX+RANGED MOD
     public int calculateRangeMod(){return -2;}// TODO: 11/15/2015 -2*(range/range_increment)
     public int calculateDamageRanged(){return 0;}// TODO: 11/15/2015 1dx
 
-    public int calculateBAB(){return 0;}// TODO: 11/15/2015 returns first value in BAB list
     public int numOfAttacks(){return (calculateBAB() - 1)/5 + 1;}// TODO: 11/15/2015 Num of attacks - based off of bab
 
     public int grappleCheck(){return 0;}// TODO: 11/15/2015 Bab + Str
