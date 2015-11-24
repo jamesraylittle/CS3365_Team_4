@@ -65,6 +65,8 @@ public class Actor extends Model implements Comparable<Actor>{
     private int XP;
     private int health;
 
+    private String className;
+
     //$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#
     //DAOs
     //$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#
@@ -86,7 +88,7 @@ public class Actor extends Model implements Comparable<Actor>{
     //Constructors
     //$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#@!$#
 
-    public Actor(String name, String gender, int size, String alignment, String weight, String height, String religion, String race, int speed, int initiativeMod, int initiative, int reflexMod, int willMod, int fortMod, int isMonster, int inGame, String imageFile, int gameId, String playerName, int XP, int health) {
+    public Actor(String name, String gender, int size, String alignment, String weight, String height, String religion, String race, int speed, int initiativeMod, int initiative, int reflexMod, int willMod, int fortMod, int isMonster, int inGame, String imageFile, int gameId, String playerName, int XP, int health, String className) {
         this.name = name;
         this.gender = gender;
         this.size = size;
@@ -108,9 +110,10 @@ public class Actor extends Model implements Comparable<Actor>{
         this.playerName = playerName;
         this.XP = XP;
         this.health = health;
+        this.className = className;
     }
 
-    public Actor(int id, String name, String gender, int size, String alignment, String weight, String height, String religion, String race, int speed, int initiativeMod, int initiative, int reflexMod, int willMod, int fortMod, int isMonster, int inGame, String imageFile, int gameId, String playerName, int XP, int health) {
+    public Actor(int id, String name, String gender, int size, String alignment, String weight, String height, String religion, String race, int speed, int initiativeMod, int initiative, int reflexMod, int willMod, int fortMod, int isMonster, int inGame, String imageFile, int gameId, String playerName, int XP, int health, String className) {
         this.id = id;
         this.name = name;
         this.gender = gender;
@@ -133,6 +136,7 @@ public class Actor extends Model implements Comparable<Actor>{
         this.playerName = playerName;
         this.XP = XP;
         this.health = health;
+        this.className = className;
     }
 
     public Actor(int id, Context context) {
@@ -163,7 +167,7 @@ public class Actor extends Model implements Comparable<Actor>{
 
     public Actor(Context context) { //Saving/Loading
 
-        this("","",4,"Neutral","150","5'5\"","","Human",30,0,1,0,0,0,0,1,"",0,"",0,4);
+        this("","",4,"Neutral","150","5'5\"","","Human",30,0,1,0,0,0,0,1,"",0,"",0,4,"Barbarian");
 
         dbh = new DataBaseHelper(context);
         this.gameId = gv.getGameId();

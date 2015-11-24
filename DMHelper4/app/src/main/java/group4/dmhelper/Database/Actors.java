@@ -55,7 +55,8 @@ public class Actors extends Database implements DAO<Actor> {
                         c.getInt(18),
                         c.getString(19),
                         c.getInt(20),
-                        c.getInt(21)
+                        c.getInt(21),
+                        c.getString(22)
                 );
             } while (c.moveToNext());
         }
@@ -92,7 +93,8 @@ public class Actors extends Database implements DAO<Actor> {
                         c.getInt(18),
                         c.getString(19),
                         c.getInt(20),
-                        c.getInt(21)
+                        c.getInt(21),
+                        c.getString(22)
                 );
                 list.add(a);
             } while (c.moveToNext());
@@ -128,7 +130,8 @@ public class Actors extends Database implements DAO<Actor> {
                         c.getInt(18),
                         c.getString(19),
                         c.getInt(20),
-                        c.getInt(21)
+                        c.getInt(21),
+                        c.getString(22)
                 );
                 list.add(a);
             } while (c.moveToNext());
@@ -165,6 +168,7 @@ public class Actors extends Database implements DAO<Actor> {
         values.put("playerName", p.getPlayerName());
         values.put("XP", p.getXP());
         values.put("health", p.getHealth());
+        values.put("className", p.getHealth());
         return values;
     }
 
@@ -191,7 +195,8 @@ public class Actors extends Database implements DAO<Actor> {
                 "gameId integer," +
                 "playerName TEXT," +
                 "XP integer," +
-                "health integer" +
+                "health integer," +
+                "className TEXT" +
                 ")";
         database.execSQL(q);
     }
