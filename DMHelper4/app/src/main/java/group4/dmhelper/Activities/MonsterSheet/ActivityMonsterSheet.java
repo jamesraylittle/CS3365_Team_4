@@ -210,12 +210,12 @@ public class ActivityMonsterSheet extends AppCompatActivity {
 
     private void populateSpinners(){
         //Populate Class Tables
-        Spinner Class_spinner = (Spinner) findViewById(R.id.spinner_search_class);
+   /*     Spinner Class_spinner = (Spinner) findViewById(R.id.spinner_search_class);
         ArrayAdapter<CharSequence> ClassAdapter = ArrayAdapter
                 .createFromResource(this, R.array.Classes,
                         android.R.layout.simple_spinner_item);
         ClassAdapter.setDropDownViewResource(R.layout.spinner_layout_dropdown);
-        Class_spinner.setAdapter(ClassAdapter);
+        Class_spinner.setAdapter(ClassAdapter);*/
 
         //Populate Race Spinner
         Spinner Race_spinner = (Spinner) findViewById(R.id.spinner_search_race);

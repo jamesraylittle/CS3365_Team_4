@@ -149,9 +149,9 @@ tools:context="group4.dmhelper.Activities.CharacterSheet.ActivityCharacterSheet"
         <Button
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
-            android:text="Skills"
             android:background="@color/colorButton"
-            android:id="@+id/btn_skills"
+            android:text="Class Info"
+            android:id="@+id/btn_racialclass"
             android:scaleType="fitXY"
             android:layout_alignParentStart="true"
             android:layout_centerInParent="true"/>
@@ -168,9 +168,9 @@ tools:context="group4.dmhelper.Activities.CharacterSheet.ActivityCharacterSheet"
         <Button
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
+            android:text="Skills"
             android:background="@color/colorButton"
-            android:text="Race &amp; Class"
-            android:id="@+id/btn_racialclass"
+            android:id="@+id/btn_skills"
             android:scaleType="fitXY"
             android:layout_alignParentStart="true"
             android:layout_centerInParent="true"/>
@@ -212,11 +212,11 @@ tools:context="group4.dmhelper.Activities.CharacterSheet.ActivityCharacterSheet"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
             android:background="@color/colorButton"
-            android:text="Feats"
-            android:id="@+id/btn_feats"
+            android:text="Abilities"
             android:scaleType="fitXY"
-            android:layout_alignParentStart="true"
-            android:layout_centerInParent="true" />
+            android:id="@+id/btn_abilities"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true" />
     </RelativeLayout>
 
     <RelativeLayout
@@ -231,11 +231,11 @@ tools:context="group4.dmhelper.Activities.CharacterSheet.ActivityCharacterSheet"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
             android:background="@color/colorButton"
-            android:text="Abilities"
+            android:text="Feats"
+            android:id="@+id/btn_feats"
             android:scaleType="fitXY"
-            android:id="@+id/btn_abilities"
-            android:layout_centerVertical="true"
-            android:layout_centerHorizontal="true" />
+            android:layout_alignParentStart="true"
+            android:layout_centerInParent="true" />
     </RelativeLayout>
 
     <RelativeLayout

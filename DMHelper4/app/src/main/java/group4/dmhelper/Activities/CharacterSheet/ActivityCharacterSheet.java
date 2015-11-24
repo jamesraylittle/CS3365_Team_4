@@ -148,8 +148,6 @@ public class ActivityCharacterSheet extends AppCompatActivity {
                 Spinner characterClass = (Spinner) findViewById(R.id.spinner_search_class);
                 if (!characterClass.getSelectedItem().toString().equals(""))
                 {
-                    Log.d("num44", characterClass.getSelectedItem().toString());
-                    Log.d("num44", "Current Class: "+player.getClassName()+" class to be saved: "+characterClass.getSelectedItem());
                     if(player.getClassName() == null || !player.getClassName().equals(characterClass.getSelectedItem().toString())) {
                         FragmentFeed.feedItems.add(player.getPlayerName() + " Changed class to " + characterClass.getSelectedItem().toString());
                         player.setClassName(characterClass.getSelectedItem().toString());
@@ -159,7 +157,6 @@ public class ActivityCharacterSheet extends AppCompatActivity {
                 Spinner race = (Spinner) findViewById(R.id.spinner_search_race);
                 if (!race.getSelectedItem().toString().equals(""))
                 {
-                    Log.d("num44", "Current Race: "+player.getRace()+" race to be saved: "+race.getSelectedItem());
                     if(player.getRace() == null || !player.getRace().equals(race.getSelectedItem().toString())) {
                         FragmentFeed.feedItems.add(player.getPlayerName() + " Changed race to " + race.getSelectedItem().toString());
                         player.setRace(race.getSelectedItem().toString());
@@ -220,8 +217,7 @@ public class ActivityCharacterSheet extends AppCompatActivity {
         }
 
         //sets class
-        databaseString = player.getClassName(); //TODO fix this
-        Log.d("num44","Class name: "+player.getClassName());
+        databaseString = player.getClassName();
         if (databaseString != null) {
             int spinnerPosition = ClassAdapter.getPosition(databaseString);
             Class_spinner.setSelection(spinnerPosition);
@@ -245,7 +241,6 @@ public class ActivityCharacterSheet extends AppCompatActivity {
         databaseString = player.getHeight();
         if(databaseString != null)
         {
-            Log.d("num44","Wight: "+databaseString);
             EditText height = (EditText) findViewById(R.id.editText_Height);
             height.setText(databaseString);
         }
@@ -254,7 +249,6 @@ public class ActivityCharacterSheet extends AppCompatActivity {
         databaseString = player.getWeight();
         if(databaseString != null)
         {
-            Log.d("num44","Height: "+databaseString);
             EditText weight = (EditText) findViewById(R.id.editText_Weight);
             weight.setText(databaseString);
         }
@@ -306,7 +300,7 @@ public class ActivityCharacterSheet extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(ActivityCharacterSheet.this, ActivityCharacterRacialClass.class);
-                intent.putExtra("Identifier", ID);
+                intent.putExtra("className", Class_spinner.getSelectedItem().toString());
                 startActivity(intent);
             }
         });
